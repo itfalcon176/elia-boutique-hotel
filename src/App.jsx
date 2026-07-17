@@ -162,7 +162,7 @@ function App() {
           >
             <Instagram size={20} className="sm:w-6 sm:h-6" />
           </a>
-          <a
+          {/* <a
             href="#"
             className="text-white opacity-70 hover:opacity-100 hover:scale-115 transition-all duration-300 ease-out p-2"
             aria-label="YouTube"
@@ -175,7 +175,7 @@ function App() {
             aria-label="TikTok"
           >
             <Tiktok size={20} className="sm:w-6 sm:h-6" />
-          </a>
+          </a> */}
         </motion.div>
       </div>
     </div>
