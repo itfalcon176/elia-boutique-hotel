@@ -94,7 +94,7 @@ function App() {
             className="w-48 sm:w-56 md:w-64 lg:w-72 flex items-center justify-center mb-6 sm:mb-8"
           >
             <img
-              src="/Logos/white.png"
+              src="/Logos/white-new.png"
               alt="Elia Boutique Hotel Logo"
               className="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(212,175,55,0.25)]"
               onError={(e) => {
