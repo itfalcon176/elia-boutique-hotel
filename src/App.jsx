@@ -154,7 +154,9 @@ function App() {
             <Facebook size={20} className="sm:w-6 sm:h-6" />
           </a>
           <a
-            href="#"
+            href="https://www.instagram.com/eliaboutiquehotel/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white opacity-70 hover:opacity-100 hover:scale-115 transition-all duration-300 ease-out p-2"
             aria-label="Instagram"
           >
