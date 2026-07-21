@@ -1,5 +1,6 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { Facebook, Instagram } from 'lucide-react';
 import './App.css';
 
 // Custom TikTok icon to match Lucide style (standard Feather path)
@@ -21,6 +22,34 @@ const Tiktok = ({ size = 24, ...props }) => (
 );
 
 function App() {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    // Attempt automatic playback on mount
+    const startAudio = () => {
+      if (audioRef.current) {
+        audioRef.current.play().catch(() => {
+          // If browser autoplay policy blocks un-muted audio before user interaction,
+          // play as soon as the user touches/clicks anywhere on the site
+          const handleFirstGesture = () => {
+            if (audioRef.current) {
+              audioRef.current.play();
+            }
+            window.removeEventListener('click', handleFirstGesture);
+            window.removeEventListener('touchstart', handleFirstGesture);
+            window.removeEventListener('keydown', handleFirstGesture);
+          };
+
+          window.addEventListener('click', handleFirstGesture);
+          window.addEventListener('touchstart', handleFirstGesture);
+          window.addEventListener('keydown', handleFirstGesture);
+        });
+      }
+    };
+
+    startAudio();
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -69,6 +98,26 @@ function App() {
         Your browser does not support the video tag.
       </video>
 
+      {/* Invisible Background Audio Element */}
+      <audio
+        ref={audioRef}
+        src="/background-music.mp3"
+        loop
+        preload="auto"
+        className="hidden"
+      />
+
+      {/* Hidden Spotify embed fallback */}
+      <iframe
+        src="https://open.spotify.com/embed/track/5xbuJuQsTVheVZvX2AJVIv?utm_source=generator&autoplay=1"
+        width="0"
+        height="0"
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        className="hidden pointer-events-none opacity-0 absolute w-0 h-0"
+        title="Background Music Track"
+      ></iframe>
+
       {/* Dark Overlay (45-55% opacity) */}
       <motion.div
         variants={overlayVariants}
@@ -108,17 +157,6 @@ function App() {
               }}
             />
           </motion.div>
-
-          {/* Hotel Name */}
-          {/* <motion.h1
-            variants={itemVariants}
-            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[0.18em] text-white text-shadow-lux leading-tight mb-4 sm:mb-5"
-          >
-            ELIA
-            <span className="block text-xl sm:text-2xl md:text-3xl font-light tracking-[0.35em] mt-2 sm:mt-3 opacity-95 text-white/95">
-              BOUTIQUE HOTEL
-            </span>
-          </motion.h1> */}
 
           {/* Golden Divider Line (Subtle Luxury Highlight) */}
           <motion.div
@@ -162,20 +200,6 @@ function App() {
           >
             <Instagram size={20} className="sm:w-6 sm:h-6" />
           </a>
-          {/* <a
-            href="#"
-            className="text-white opacity-70 hover:opacity-100 hover:scale-115 transition-all duration-300 ease-out p-2"
-            aria-label="YouTube"
-          >
-            <Youtube size={20} className="sm:w-6 sm:h-6" />
-          </a>
-          <a
-            href="#"
-            className="text-white opacity-70 hover:opacity-100 hover:scale-115 transition-all duration-300 ease-out p-2"
-            aria-label="TikTok"
-          >
-            <Tiktok size={20} className="sm:w-6 sm:h-6" />
-          </a> */}
         </motion.div>
       </div>
     </div>
