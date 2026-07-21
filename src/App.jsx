@@ -25,29 +25,40 @@ function App() {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    // Attempt automatic playback on mount
-    const startAudio = () => {
+    const playAudio = () => {
       if (audioRef.current) {
-        audioRef.current.play().catch(() => {
-          // If browser autoplay policy blocks un-muted audio before user interaction,
-          // play as soon as the user touches/clicks anywhere on the site
-          const handleFirstGesture = () => {
-            if (audioRef.current) {
-              audioRef.current.play();
-            }
-            window.removeEventListener('click', handleFirstGesture);
-            window.removeEventListener('touchstart', handleFirstGesture);
-            window.removeEventListener('keydown', handleFirstGesture);
-          };
-
-          window.addEventListener('click', handleFirstGesture);
-          window.addEventListener('touchstart', handleFirstGesture);
-          window.addEventListener('keydown', handleFirstGesture);
+        audioRef.current.play().then(() => {
+          // Playback started successfully
+          removeListeners();
+        }).catch(() => {
+          // Browser prevented autoplay before interaction
         });
       }
     };
 
-    startAudio();
+    const events = ['mousemove', 'pointermove', 'touchstart', 'scroll', 'mouseenter', 'click', 'keydown'];
+
+    const handleUserMovement = () => {
+      playAudio();
+    };
+
+    const removeListeners = () => {
+      events.forEach(evt => {
+        window.removeEventListener(evt, handleUserMovement);
+      });
+    };
+
+    // Try immediately on load
+    playAudio();
+
+    // Attach listeners for any subtle cursor movement / scroll
+    events.forEach(evt => {
+      window.addEventListener(evt, handleUserMovement, { passive: true });
+    });
+
+    return () => {
+      removeListeners();
+    };
   }, []);
 
   const containerVariants = {
@@ -102,7 +113,9 @@ function App() {
       <audio
         ref={audioRef}
         src="/background-music.mp3"
+        autoPlay
         loop
+        playsInline
         preload="auto"
         className="hidden"
       />
