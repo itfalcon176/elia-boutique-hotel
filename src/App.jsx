@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Facebook, Instagram } from 'lucide-react';
+import { Facebook, Instagram, Volume2, VolumeX } from 'lucide-react';
 import './App.css';
 
 // Custom TikTok icon to match Lucide style (standard Feather path)
@@ -23,43 +23,70 @@ const Tiktok = ({ size = 24, ...props }) => (
 
 function App() {
   const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const removeListenersRef = useRef(() => {});
 
   useEffect(() => {
-    const playAudio = () => {
-      if (audioRef.current) {
-        audioRef.current.play().then(() => {
-          // Playback started successfully
-          removeListeners();
-        }).catch(() => {
-          // Browser prevented autoplay before interaction
-        });
-      }
-    };
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    const events = ['mousemove', 'pointermove', 'touchstart', 'scroll', 'mouseenter', 'click', 'keydown'];
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
 
-    const handleUserMovement = () => {
-      playAudio();
-    };
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
+
+    const events = ['click', 'touchstart', 'mousemove', 'scroll', 'keydown'];
 
     const removeListeners = () => {
       events.forEach(evt => {
-        window.removeEventListener(evt, handleUserMovement);
+        window.removeEventListener(evt, handleUserInteraction);
       });
     };
 
-    // Try immediately on load
-    playAudio();
+    removeListenersRef.current = removeListeners;
 
-    // Attach listeners for any subtle cursor movement / scroll
+    const handleUserInteraction = () => {
+      if (!audio) return;
+      audio.play().then(() => {
+        // Once audio starts playing, remove listeners so mousemove doesn't override manual pause
+        removeListeners();
+      }).catch(() => {
+        // Autoplay blocked by browser policy, keep listening until user gesture
+      });
+    };
+
+    // Attempt autoplay immediately
+    handleUserInteraction();
+
+    // Trigger on any screen gesture/movement
     events.forEach(evt => {
-      window.addEventListener(evt, handleUserMovement, { passive: true });
+      window.addEventListener(evt, handleUserInteraction, { passive: true });
     });
 
     return () => {
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('pause', onPause);
       removeListeners();
     };
   }, []);
+
+  const toggleSound = (e) => {
+    e.stopPropagation();
+    // Stop all background auto-start listeners permanently on button click
+    if (removeListenersRef.current) {
+      removeListenersRef.current();
+    }
+
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -120,17 +147,6 @@ function App() {
         className="hidden"
       />
 
-      {/* Hidden Spotify embed fallback */}
-      <iframe
-        src="https://open.spotify.com/embed/track/5xbuJuQsTVheVZvX2AJVIv?utm_source=generator&autoplay=1"
-        width="0"
-        height="0"
-        frameBorder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        className="hidden pointer-events-none opacity-0 absolute w-0 h-0"
-        title="Background Music Track"
-      ></iframe>
-
       {/* Dark Overlay (45-55% opacity) */}
       <motion.div
         variants={overlayVariants}
@@ -141,6 +157,41 @@ function App() {
 
       {/* Vignette Overlay */}
       <div className="absolute inset-0 bg-vignette z-20" />
+
+      {/* Top Right Luxury Sound Toggle Button */}
+      <div className="absolute top-6 right-6 sm:top-8 sm:right-10 z-40">
+        <motion.button
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 1 }}
+          onClick={toggleSound}
+          className="flex items-center gap-3 bg-black/40 backdrop-blur-xl border border-gold/40 hover:border-gold hover:bg-black/60 rounded-full px-4 py-2.5 shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.35)] transition-all duration-500 group cursor-pointer"
+          aria-label={isPlaying ? 'Pause Background Music' : 'Play Background Music'}
+        >
+          {/* Animated Equalizer Sound Bars / Mute Icon */}
+          <div className="flex items-end justify-center gap-0.5 h-4 w-4">
+            {isPlaying ? (
+              <>
+                <span className="w-[2.5px] bg-gold rounded-full animate-eq-1"></span>
+                <span className="w-[2.5px] bg-gold rounded-full animate-eq-2"></span>
+                <span className="w-[2.5px] bg-gold rounded-full animate-eq-3"></span>
+              </>
+            ) : (
+              <VolumeX size={16} className="text-white/60 group-hover:text-gold transition-colors" />
+            )}
+          </div>
+
+          {/* Button Text Label */}
+          <div className="flex flex-col text-left">
+            <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.2em] uppercase text-gold leading-tight">
+              {isPlaying ? 'SOUND ON' : 'PLAY MUSIC'}
+            </span>
+            <span className="text-[8px] font-light tracking-[0.15em] text-white/70 hidden sm:inline leading-tight mt-0.5">
+              SPRING 1 — MAX RICHTER
+            </span>
+          </div>
+        </motion.button>
+      </div>
 
       {/* Main Content Area */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-30 px-6">
