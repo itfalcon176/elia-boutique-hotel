@@ -123,7 +123,7 @@ function App() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-[#08080a] text-white select-none">
+    <div className="relative w-full h-[100dvh] overflow-hidden bg-[#08080a] text-white select-none">
       {/* Background Video */}
       <video
         autoPlay
@@ -156,16 +156,16 @@ function App() {
       />
 
       {/* Vignette Overlay */}
-      <div className="absolute inset-0 bg-vignette z-20" />
+      <div className="absolute inset-0 bg-vignette z-20 pointer-events-none" />
 
       {/* Top Right Luxury Sound Toggle Button */}
-      <div className="absolute top-6 right-6 sm:top-8 sm:right-10 z-40">
+      <div className="absolute top-5 right-5 sm:top-8 sm:right-10 z-40">
         <motion.button
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 1 }}
           onClick={toggleSound}
-          className="flex items-center gap-3 bg-black/40 backdrop-blur-xl border border-gold/40 hover:border-gold hover:bg-black/60 rounded-full px-4 py-2.5 shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.35)] transition-all duration-500 group cursor-pointer"
+          className="flex items-center gap-2.5 sm:gap-3 bg-black/40 backdrop-blur-xl border border-gold/40 hover:border-gold hover:bg-black/60 rounded-full px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_30px_rgba(212,175,55,0.35)] transition-all duration-500 group cursor-pointer"
           aria-label={isPlaying ? 'Pause Background Music' : 'Play Background Music'}
         >
           {/* Animated Equalizer Sound Bars / Mute Icon */}
@@ -193,25 +193,28 @@ function App() {
         </motion.button>
       </div>
 
-      {/* Main Content Area */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-30 px-6">
+      {/* Main Responsive Layout Wrapper (Full Viewport Height) */}
+      <div className="absolute inset-0 flex flex-col justify-between items-center z-30 px-6 py-6 sm:py-12 pointer-events-none">
+        {/* Spacer for Top Bar */}
+        <div className="h-10 sm:h-12 w-full" />
+
+        {/* Center Content Area: Logo + Opening Text */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-center text-center max-w-4xl"
+          className="flex flex-col items-center text-center max-w-4xl pointer-events-auto my-auto"
         >
-          {/* Logo Container (No circular frame background) */}
+          {/* Logo Container */}
           <motion.div
             variants={itemVariants}
-            className="w-48 sm:w-56 md:w-64 lg:w-72 flex items-center justify-center mb-6 sm:mb-8"
+            className="w-44 sm:w-56 md:w-64 lg:w-72 flex items-center justify-center mb-5 sm:mb-8"
           >
             <img
               src="/Logos/white-new.png"
               alt="Elia Boutique Hotel Logo"
               className="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(212,175,55,0.25)]"
               onError={(e) => {
-                // Fail-safe placeholder if image fails to load
                 e.target.style.display = 'none';
                 const parent = e.target.parentElement;
                 const placeholder = document.createElement('div');
@@ -222,29 +225,27 @@ function App() {
             />
           </motion.div>
 
-          {/* Golden Divider Line (Subtle Luxury Highlight) */}
+          {/* Golden Divider Line */}
           <motion.div
             variants={itemVariants}
-            className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mb-5 sm:mb-6"
+            className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mb-4 sm:mb-6"
           />
 
           {/* Opening text */}
           <motion.p
             variants={itemVariants}
-            className="font-sans text-xs sm:text-sm md:text-base font-light tracking-[0.3em] sm:tracking-[0.4em] uppercase text-white/90 text-shadow-lux"
+            className="font-sans text-[11px] sm:text-sm md:text-base font-light tracking-[0.25em] sm:tracking-[0.4em] uppercase text-white/90 text-shadow-lux"
           >
             Opening November 2026
           </motion.p>
         </motion.div>
-      </div>
 
-      {/* Social Icons at Bottom Center */}
-      <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-30">
+        {/* Bottom Social Icons */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 1.2, ease: "easeOut" }}
-          className="flex items-center gap-6 md:gap-8"
+          className="flex items-center gap-6 sm:gap-8 pointer-events-auto pb-2 sm:pb-0"
         >
           <a
             href="https://www.facebook.com/profile.php?id=61590545618953"
@@ -253,7 +254,7 @@ function App() {
             className="text-white opacity-70 hover:opacity-100 hover:scale-115 transition-all duration-300 ease-out p-2"
             aria-label="Facebook"
           >
-            <Facebook size={20} className="sm:w-6 sm:h-6" />
+            <Facebook size={22} className="sm:w-6 sm:h-6" />
           </a>
           <a
             href="https://www.instagram.com/eliaboutiquehotel/"
@@ -262,7 +263,7 @@ function App() {
             className="text-white opacity-70 hover:opacity-100 hover:scale-115 transition-all duration-300 ease-out p-2"
             aria-label="Instagram"
           >
-            <Instagram size={20} className="sm:w-6 sm:h-6" />
+            <Instagram size={22} className="sm:w-6 sm:h-6" />
           </a>
         </motion.div>
       </div>
