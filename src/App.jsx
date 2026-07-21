@@ -265,6 +265,15 @@ function App() {
           >
             <Instagram size={22} className="sm:w-6 sm:h-6" />
           </a>
+          <a
+            href="https://www.tiktok.com/@elia.boutique.hote"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white opacity-70 hover:opacity-100 hover:scale-115 transition-all duration-300 ease-out p-2"
+            aria-label="TikTok"
+          >
+            <Tiktok size={22} className="sm:w-6 sm:h-6" />
+          </a>
         </motion.div>
       </div>
     </div>
