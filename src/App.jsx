@@ -25,7 +25,7 @@ function App() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const removeListenersRef = useRef(() => {});
+  const removeListenersRef = useRef(() => { });
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -139,7 +139,7 @@ function App() {
       {/* Invisible Background Audio Element */}
       <audio
         ref={audioRef}
-        src="/background-music.m4a"
+        src="/background-music.mp3"
         autoPlay
         loop
         playsInline
@@ -187,7 +187,7 @@ function App() {
               {isPlaying ? 'SOUND ON' : 'PLAY MUSIC'}
             </span>
             <span className="text-[8px] font-light tracking-[0.15em] text-white/70 hidden sm:inline leading-tight mt-0.5">
-              SPRING 2 — MAX RICHTER
+              SPRING 1 — MAX RICHTER
             </span>
           </div>
         </motion.button>
