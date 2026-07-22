@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Volume2, VolumeX } from 'lucide-react';
 import './App.css';
+import { initGA, trackPageView } from './utils/analytics';
 
 // Custom TikTok icon to match Lucide style (standard Feather path)
 const Tiktok = ({ size = 24, ...props }) => (
@@ -26,6 +27,28 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const removeListenersRef = useRef(() => { });
+
+  useEffect(() => {
+    // Initialize Google Analytics 4
+    initGA();
+
+    // Track the initial page view
+    trackPageView();
+
+    const handleLocationChange = () => {
+      // Small timeout to ensure DOM has updated (e.g. document.title changes) before tracking the page view
+      setTimeout(trackPageView, 0);
+    };
+
+    // Listen to history changes for SPA route tracking
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('locationchange', handleLocationChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('locationchange', handleLocationChange);
+    };
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
