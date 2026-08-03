@@ -642,7 +642,7 @@ export default function MenusPage({ onNavigate }) {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: (idx % 5) * 0.05 }}
-                      className="bg-white rounded-xl p-2.5 sm:p-3 border border-[#E5DEC9] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group text-left"
+                      className="bg-white rounded-xl p-2.5 sm:p-3 border border-[#E5DEC9] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group text-center"
                     >
                       <div>
                         {/* Food Photo Container */}
@@ -669,7 +669,7 @@ export default function MenusPage({ onNavigate }) {
                       </div>
 
                       {/* Price */}
-                      <div className="pt-2 border-t border-[#F0EBE1] flex items-center justify-between">
+                      <div className="pt-2 border-t border-[#F0EBE1] flex items-center justify-center">
                         <span className="text-[11px] font-sans font-semibold text-[#A38B68]">
                           {item.price}
                         </span>
