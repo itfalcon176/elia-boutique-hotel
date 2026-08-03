@@ -366,23 +366,14 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
             </div>
           </div>
 
-          {/* Block 3: Bespoke Experiences (Landscape & Content Split) */}
+          {/* Block 3: Bespoke Experiences (Content Left & Image Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-            <div className="lg:col-span-7 relative order-2 lg:order-1">
-              <div className="aspect-[16/10] w-full overflow-hidden rounded-xl shadow-lg border border-[#A38B68]/20 group">
-                <img
-                  src="/images/latenight.png"
-                  alt="Phuket Bespoke Experiences"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 order-1 lg:order-2 relative">
+            <div className="lg:col-span-7 order-1 lg:order-1 relative">
               {/* Thin L-shaped connecting line */}
               <div className="hidden lg:block absolute -top-4 left-0 right-0 h-[1px] bg-[#23211E]/30" />
+              <div className="hidden lg:block absolute -top-4 right-0 w-[1px] h-28 bg-[#23211E]/30" />
 
-              <div className="pt-2 lg:pt-4 pl-0 lg:pl-4">
+              <div className="pt-2 lg:pt-4 pr-0 lg:pr-6 max-w-lg">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold block mb-1.5 font-sans">
                   Land & Sea Journeys
                 </span>
@@ -398,6 +389,16 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
                 >
                   EXPLORE LOCATION
                 </button>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 relative order-2 lg:order-2">
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg border border-[#A38B68]/20 group">
+                <img
+                  src="/images/latenight.png"
+                  alt="Phuket Bespoke Experiences"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
               </div>
             </div>
           </div>
