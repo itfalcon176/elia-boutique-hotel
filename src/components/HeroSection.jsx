@@ -102,47 +102,8 @@ export default function HeroSection({
         </motion.button>
       </div>
 
-      {/* Hero Center Content */}
-      <div className="relative z-30 flex-1 flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-16">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center max-w-4xl"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="w-48 sm:w-64 md:w-80 lg:w-96 flex items-center justify-center mb-6"
-          >
-            <img
-              src="/Logos/white-new.png"
-              alt="Elia Boutique Hotel Logo"
-              className="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(197,168,128,0.25)]"
-            />
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center gap-4 bg-[#141312]/60 backdrop-blur-xl border border-[#FAF7F2]/15 p-2 sm:p-2.5 rounded-2xl sm:rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.6)] mb-6"
-          >
-            <button
-              onClick={onOpenReservation}
-              className="flex items-center gap-2.5 text-xs uppercase tracking-[0.2em] font-medium px-6 py-3 rounded-full bg-gradient-to-r from-[#C5A880] to-[#9E8158] text-[#141312] hover:brightness-110 shadow-[0_0_25px_rgba(197,168,128,0.4)] transition-all"
-            >
-              <Calendar size={15} />
-              <span>Book Your Sanctuary</span>
-            </button>
-
-            <button
-              onClick={onExploreClick}
-              className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-[#FAF7F2] border border-white/20 transition-all"
-            >
-              <Users size={15} className="text-[#C5A880]" />
-              <span>Reserve Table</span>
-            </button>
-          </motion.div>
-        </motion.div>
-      </div>
+      {/* Hero Center Content Spacer */}
+      <div className="relative z-30 flex-1 flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-16" />
 
       {/* Hero Bottom Bar */}
       <div className="relative z-30 px-6 py-6 flex items-center justify-between max-w-7xl mx-auto w-full">
