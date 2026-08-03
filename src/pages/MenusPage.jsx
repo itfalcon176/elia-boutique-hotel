@@ -6,14 +6,32 @@ export default function MenusPage({ onNavigate }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categoryPills = [
-    { id: 'all', label: 'All Menus' },
+  const row1Categories = [
     { id: 'starters', label: 'Finger Bites & Starters' },
     { id: 'salads', label: 'Salads' },
     { id: 'mains', label: 'Mains, Pasta & Steak' },
     { id: 'thai', label: 'Local Thai Dishes' },
     { id: 'desserts', label: 'Desserts' },
-    { id: 'drinks', label: 'Signature Cocktails' },
+  ];
+
+  const row2Categories = [
+    { id: 'champagne', label: 'Champagne & Prosecco' },
+    { id: 'wine', label: 'Red, White & Rosé Wine' },
+    { id: 'signature-cocktails', label: 'Signature Cocktails' },
+    { id: 'classic-cocktails', label: 'Classic Cocktails' },
+    { id: 'spirits', label: 'Spirits, Aperitifs & Liqueurs' },
+    { id: 'beers', label: 'Beers' },
+  ];
+
+  const row3Categories = [
+    { id: 'soft-drinks', label: 'Soft Drinks, Juices, Smoothies & Other Drinks' },
+  ];
+
+  const allCategoryPills = [
+    { id: 'all', label: 'All Menus' },
+    ...row1Categories,
+    ...row2Categories,
+    ...row3Categories,
   ];
 
   const menuSections = [
@@ -89,26 +107,26 @@ export default function MenusPage({ onNavigate }) {
       items: [
         {
           name: 'Greek Salad',
-          desc: 'Crisp cucumbers, tomatoes, olives, and feta cheese.',
-          price: '310 THB',
+          desc: 'Crisp cucumbers, vine tomatoes, kalamata olives, red onions, wild oregano, and barrel-aged feta.',
+          price: '฿310',
           image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Grilled Chicken Caesar Salad',
-          desc: 'Romaine lettuce, grilled chicken breast, parmesan, croutons.',
-          price: '340 THB',
+          desc: 'Romaine lettuce, charcoal-grilled chicken breast, shaved parmesan, bacon bits, and garlic croutons.',
+          price: '฿340',
           image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Burrata & Heirloom Tomato',
-          desc: 'Creamy burrata cheese with heirloom tomatoes and pesto.',
-          price: '420 THB',
+          desc: 'Creamy Italian burrata cheese, fresh heirloom tomatoes, basil pesto, and aged balsamic glaze.',
+          price: '฿420',
           image: 'https://images.unsplash.com/photo-1592417817098-8f3d6ef23a85?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Smoked Salmon & Avocado Salad',
-          desc: 'Smoked salmon, mixed greens, avocado, lemon dressing.',
-          price: '390 THB',
+          desc: 'Premium smoked Atlantic salmon, mixed baby greens, avocado, capers, and lemon vinaigrette.',
+          price: '฿390',
           image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80',
         },
       ],
@@ -119,50 +137,50 @@ export default function MenusPage({ onNavigate }) {
       items: [
         {
           name: 'Wagyu Beef Cheeseburger',
-          desc: 'Wagyu beef patty, cheddar cheese, caramelized onions, fries.',
-          price: '450 THB',
+          desc: 'Grilled Australian Wagyu patty, aged cheddar, caramelized onions, truffle mayo, and French fries.',
+          price: '฿450',
           image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Mini Slider Trio',
-          desc: 'Three mini burgers: Wagyu beef, chicken, and pulled pork.',
-          price: '380 THB',
+          desc: 'Trio of mini burgers: Wagyu beef, crispy buttermilk chicken, and slow-cooked pulled pork.',
+          price: '฿380',
           image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Grilled Australian Sirloin (250g)',
-          desc: 'Sirloin steak, garlic butter, baby potatoes, red wine jus.',
-          price: '890 THB',
+          desc: 'Charcoal-grilled sirloin steak served with garlic herb butter, roasted baby potatoes, and red wine jus.',
+          price: '฿890',
           image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'BBQ Pork Baby Back Ribs',
-          desc: 'Tender pork ribs glazed with BBQ sauce, coleslaw, fries.',
-          price: '580 THB',
+          desc: 'Slow-cooked tender pork ribs glazed with signature BBQ sauce, served with coleslaw and fries.',
+          price: '฿580',
           image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Spaghetti Carbonara',
-          desc: 'Spaghetti with guanciale, egg yolk, black pepper, pecorino.',
-          price: '380 THB',
+          desc: 'Classic Italian spaghetti with crispy guanciale, egg yolk cream, black pepper, and pecorino romano.',
+          price: '฿380',
           image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Seafood Linguine',
-          desc: 'Linguine with prawns, squid, mussels, garlic white wine.',
-          price: '480 THB',
+          desc: 'Linguine pasta tossed with tiger prawns, squid, mussels, cherry tomatoes, and garlic white wine sauce.',
+          price: '฿480',
           image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Truffle Mushroom Risotto',
-          desc: 'Arborio rice, porcini mushrooms, black truffle oil, parmesan.',
-          price: '420 THB',
+          desc: 'Creamy arborio rice cooked with porcini mushrooms, black truffle oil, and shaved parmesan.',
+          price: '฿420',
           image: 'https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Penne Arrabbiata',
-          desc: 'Penne in spicy tomato basil sauce with chili & parmesan.',
-          price: '320 THB',
+          desc: 'Penne pasta in a spicy tomato basil sauce with garlic, chili flakes, and fresh parmesan.',
+          price: '฿320',
           image: 'https://images.unsplash.com/photo-1621996346565-e3d5d628830f?w=600&auto=format&fit=crop&q=80',
         },
       ],
@@ -173,50 +191,50 @@ export default function MenusPage({ onNavigate }) {
       items: [
         {
           name: 'Tom Yum Goong',
-          desc: 'Spicy & sour Thai soup with tiger prawns & lemongrass.',
-          price: '340 THB',
+          desc: 'Authentic spicy & sour Thai soup with tiger prawns, lemongrass, galangal, and kaffir lime leaves.',
+          price: '฿340',
           image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Tom Kha Gai',
-          desc: 'Coconut soup with tender chicken, galangal, cilantro.',
-          price: '290 THB',
+          desc: 'Creamy coconut milk soup infused with tender chicken, galangal, straw mushrooms, and cilantro.',
+          price: '฿290',
           image: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Pineapple Fried Rice',
-          desc: 'Jasmine rice with prawns, cashews, raisins in pineapple.',
-          price: '380 THB',
+          desc: 'Jasmine rice fried with prawns, cashews, raisins, and curry spices, served in a carved pineapple.',
+          price: '฿380',
           image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Pad Thai Goong',
-          desc: 'Stir-fried rice noodles with prawns, tofu, bean sprouts.',
-          price: '320 THB',
+          desc: 'Stir-fried Thai rice noodles with tiger prawns, tofu, bean sprouts, crushed peanuts, and tamarind.',
+          price: '฿320',
           image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Green Curry Chicken',
-          desc: 'Thai green curry with chicken, basil, Thai eggplants.',
-          price: '310 THB',
+          desc: 'Classic Thai green curry with chicken breast, sweet basil, Thai eggplants, and coconut milk.',
+          price: '฿310',
           image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Spicy Beef Salad (Yum Nua)',
-          desc: 'Grilled beef slices tossed with cucumber, mint, lime.',
-          price: '360 THB',
+          desc: 'Charcoal-grilled beef slices tossed with cucumber, mint, red onions, chili, and lime dressing.',
+          price: '฿360',
           image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Khao Pad Crab',
-          desc: 'Thai fried rice loaded with lump crab meat & egg.',
-          price: '390 THB',
+          desc: 'Traditional Thai fried rice loaded with sweet lump crab meat, eggs, and spring onions.',
+          price: '฿390',
           image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Pad Krapow Pork',
-          desc: 'Stir-fried minced pork with holy basil & fried egg.',
-          price: '290 THB',
+          desc: 'Stir-fried minced pork with fresh holy basil, garlic, and red chili, topped with a fried egg.',
+          price: '฿290',
           image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=600&auto=format&fit=crop&q=80',
         },
       ],
@@ -227,57 +245,237 @@ export default function MenusPage({ onNavigate }) {
       items: [
         {
           name: 'Molten Chocolate Lava Cake',
-          desc: 'Warm chocolate lava cake with vanilla bean gelato.',
-          price: '290 THB',
+          desc: 'Warm chocolate cake with a rich molten center, served with vanilla bean gelato and fresh berries.',
+          price: '฿290',
           image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Classic Tiramisu',
-          desc: 'Ladyfingers soaked in espresso with mascarpone cream.',
-          price: '260 THB',
+          desc: 'Espresso-soaked ladyfinger biscuits layered with rich mascarpone cream and cocoa powder.',
+          price: '฿260',
           image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Mango Sticky Rice',
-          desc: 'Ripe Thai mango with warm coconut sticky rice.',
-          price: '240 THB',
+          desc: 'Sweet ripe Thai mango with warm coconut sticky rice and toasted mung beans.',
+          price: '฿240',
           image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Artisanal Gelato Selection',
-          desc: 'Two scoops: Vanilla, Dark Chocolate, Mango, Coconut.',
-          price: '190 THB',
+          desc: 'Selection of two scoops: Vanilla Bean, Dark Chocolate, Mango Sorbet, or Fresh Coconut.',
+          price: '฿190',
           image: 'https://images.unsplash.com/photo-1567206563064-6f60f4078b57?w=600&auto=format&fit=crop&q=80',
         },
       ],
     },
     {
-      id: 'drinks',
+      id: 'champagne',
+      title: 'Champagne & Prosecco',
+      items: [
+        {
+          name: 'Moët & Chandon Impérial Brut',
+          desc: 'Iconic French champagne with vibrant green apple, citrus notes, and crisp minerality.',
+          price: '฿5,800',
+          image: 'https://images.unsplash.com/photo-1594488669399-bfb7e2894562?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Veuve Clicquot Yellow Label Brut',
+          desc: 'Pinot Noir dominant champagne with aromas of peach, plum, and subtle vanilla brioche.',
+          price: '฿6,500',
+          image: 'https://images.unsplash.com/photo-1569919659476-f0852f6834b7?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Prosecco Superiore DOCG',
+          desc: 'Crisp Italian sparkling wine with delicate persistent bubbles and refreshing green apple notes.',
+          price: '฿2,400',
+          image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Dom Pérignon Vintage',
+          desc: 'Prestige champagne with complex aromas of candied fruit, brioche, roasted almonds, and citrus.',
+          price: '฿18,500',
+          image: 'https://images.unsplash.com/photo-1594488669399-bfb7e2894562?w=600&auto=format&fit=crop&q=80',
+        },
+      ],
+    },
+    {
+      id: 'wine',
+      title: 'Red, White & Rosé Wine',
+      items: [
+        {
+          name: 'Whispering Angel Rosé (Provence)',
+          desc: 'Premium French rosé with delicate aromas of red berries, fresh peach, and floral elegance.',
+          price: '฿3,200',
+          image: 'https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Marlborough Sauvignon Blanc (New Zealand)',
+          desc: 'Vibrant white wine with intense tropical passionfruit, grapefruit, and fresh lime notes.',
+          price: '฿2,600',
+          image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Chianti Classico DOCG (Tuscany)',
+          desc: 'Refined Italian red with ripe cherry, wild rosemary, and toasted oak complexities.',
+          price: '฿2,800',
+          image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Barossa Valley Shiraz (Australia)',
+          desc: 'Full-bodied red wine packed with ripe blackberry, dark chocolate, and spicy oak character.',
+          price: '฿3,100',
+          image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=600&auto=format&fit=crop&q=80',
+        },
+      ],
+    },
+    {
+      id: 'signature-cocktails',
       title: 'Signature Cocktails',
       items: [
         {
           name: 'Elia Sunset Breeze (Signature)',
-          desc: 'Chalong Bay Rum, passionfruit, coconut, pineapple.',
-          price: '380 THB',
+          desc: 'Chalong Bay Thai Rum, fresh passionfruit, coconut cream, lime, and roasted pineapple rim.',
+          price: '฿380',
           image: '/images/cocktail.png',
         },
         {
           name: 'Smoked Mezcalita',
-          desc: 'Mezcal, Cointreau, lime, agave, volcanic salt.',
-          price: '420 THB',
+          desc: 'Montelobos Mezcal, Cointreau, fresh lime juice, agave nectar, and black volcanic salt rim.',
+          price: '฿420',
           image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Phuket Passion Spritz',
-          desc: 'Aperol, Prosecco, passionfruit, soda, mint.',
-          price: '360 THB',
+          desc: 'Aperol, Prosecco, fresh passionfruit, soda water, and fresh mint leaf.',
+          price: '฿360',
           image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
         },
         {
           name: 'Coconut Lychee Martini',
-          desc: 'Gin, lychee liqueur, coconut water, rose blossom.',
-          price: '360 THB',
+          desc: 'Tanqueray Gin, lychee liqueur, fresh coconut water, and a dash of rose blossom.',
+          price: '฿360',
           image: 'https://images.unsplash.com/photo-1536935338788-846bb9981813?w=600&auto=format&fit=crop&q=80',
+        },
+      ],
+    },
+    {
+      id: 'classic-cocktails',
+      title: 'Classic Cocktails',
+      items: [
+        {
+          name: 'Classic Mojito',
+          desc: 'White rum, fresh muddled mint leaves, fresh lime juice, cane sugar, and chilled soda water.',
+          price: '฿340',
+          image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Aperol Spritz',
+          desc: 'Aperol, Prosecco, soda water, and fresh orange slice.',
+          price: '฿360',
+          image: 'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Espresso Martini',
+          desc: 'Premium vodka, freshly brewed espresso, Kahlúa coffee liqueur, and vanilla bean syrup.',
+          price: '฿380',
+          image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Negroni',
+          desc: 'Campari, sweet vermouth, Tanqueray London Dry Gin, and charred orange wheel.',
+          price: '฿380',
+          image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
+        },
+      ],
+    },
+    {
+      id: 'spirits',
+      title: 'Spirits, Aperitifs & Liqueurs',
+      items: [
+        {
+          name: 'Macallan 12 Years Double Cask',
+          desc: 'Single malt Scotch whisky with balanced honeyed wood, citrus, and ginger character.',
+          price: '฿480',
+          image: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Hennessy VSOP Cognac',
+          desc: 'Smooth French cognac with harmonious aromas of candied fruit and subtle vanilla.',
+          price: '฿520',
+          image: 'https://images.unsplash.com/photo-1569919659476-f0852f6834b7?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Tanqueray No. TEN Gin',
+          desc: 'Small batch premium gin distilled with whole fresh citrus fruits and hand-selected botanicals.',
+          price: '฿380',
+          image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Patrón Añejo Tequila',
+          desc: 'Delicate blend of uniquely aged tequilas with warm notes of oak, vanilla, and roasted agave.',
+          price: '฿450',
+          image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&auto=format&fit=crop&q=80',
+        },
+      ],
+    },
+    {
+      id: 'beers',
+      title: 'Beers',
+      items: [
+        {
+          name: 'Singha Thai Premium Beer',
+          desc: 'Crisp 100% barley malt Thai lager with a light golden hue and clean bitter finish.',
+          price: '฿160',
+          image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Chang Cold Brew Lager',
+          desc: 'Smooth Thai lager brewed using sub-zero cold brew technology.',
+          price: '฿160',
+          image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Corona Extra',
+          desc: 'Classic Mexican pale lager served chilled with a fresh lime wedge.',
+          price: '฿220',
+          image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Hoegaarden White Beer',
+          desc: 'Refreshing Belgian wheat beer with orange peel and coriander spice aromas.',
+          price: '฿260',
+          image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&auto=format&fit=crop&q=80',
+        },
+      ],
+    },
+    {
+      id: 'soft-drinks',
+      title: 'Soft Drinks, Juices, Smoothies & Other Drinks',
+      items: [
+        {
+          name: 'Fresh Young Coconut',
+          desc: 'Chilled whole organic Thai coconut with sweet coconut water and tender meat.',
+          price: '฿180',
+          image: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Mango Passionfruit Smoothie',
+          desc: 'Blended sweet Thai mango, passionfruit, wild honey, and Greek yogurt.',
+          price: '฿220',
+          image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Freshly Squeezed Orange Juice',
+          desc: 'Pure 100% natural orange juice served chilled over ice.',
+          price: '฿160',
+          image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'San Pellegrino Sparkling Water (750ml)',
+          desc: 'Classic Italian sparkling mineral water.',
+          price: '฿240',
+          image: 'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=600&auto=format&fit=crop&q=80',
         },
       ],
     },
@@ -308,23 +506,72 @@ export default function MenusPage({ onNavigate }) {
           </p>
         </div>
 
-        {/* Category Jump Navigation */}
-        <div className="flex items-center justify-center gap-4 flex-wrap text-xs sm:text-sm font-sans mb-4 text-[#7A756C]">
-          {categoryPills.map((pill, idx) => (
-            <div key={pill.id} className="flex items-center gap-4">
+        {/* Category Jump Navigation Layout matching Screenshot (3 Rows) */}
+        <div className="flex flex-col items-center gap-2 mb-6 text-xs sm:text-sm font-sans text-[#7A756C]">
+          {/* Row 1: Food Categories */}
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            {row1Categories.map((pill, idx) => (
+              <div key={pill.id} className="flex items-center gap-3">
+                <button
+                  onClick={() => setActiveCategory(pill.id)}
+                  className={`transition-colors cursor-pointer border-b ${
+                    activeCategory === pill.id
+                      ? 'text-[#23211E] font-semibold border-[#23211E]'
+                      : 'border-transparent hover:text-[#23211E] hover:border-[#23211E]/40'
+                  }`}
+                >
+                  {pill.label}
+                </button>
+                {idx < row1Categories.length - 1 && <span className="text-[#C5BEB2]">•</span>}
+              </div>
+            ))}
+          </div>
+
+          {/* Row 2: Wine & Drinks Categories */}
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            {row2Categories.map((pill, idx) => (
+              <div key={pill.id} className="flex items-center gap-3">
+                <button
+                  onClick={() => setActiveCategory(pill.id)}
+                  className={`transition-colors cursor-pointer border-b ${
+                    activeCategory === pill.id
+                      ? 'text-[#23211E] font-semibold border-[#23211E]'
+                      : 'border-transparent hover:text-[#23211E] hover:border-[#23211E]/40'
+                  }`}
+                >
+                  {pill.label}
+                </button>
+                {idx < row2Categories.length - 1 && <span className="text-[#C5BEB2]">•</span>}
+              </div>
+            ))}
+          </div>
+
+          {/* Row 3: Soft Drinks & Smoothies */}
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            {row3Categories.map((pill) => (
               <button
+                key={pill.id}
                 onClick={() => setActiveCategory(pill.id)}
-                className={`transition-colors cursor-pointer ${
+                className={`transition-colors cursor-pointer border-b ${
                   activeCategory === pill.id
-                    ? 'text-[#23211E] font-semibold border-b border-[#23211E]'
-                    : 'hover:text-[#23211E]'
+                    ? 'text-[#23211E] font-semibold border-[#23211E]'
+                    : 'border-transparent hover:text-[#23211E] hover:border-[#23211E]/40'
                 }`}
               >
                 {pill.label}
               </button>
-              {idx < categoryPills.length - 1 && <span className="text-[#C5BEB2]">•</span>}
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* View All Button */}
+          {activeCategory !== 'all' && (
+            <button
+              onClick={() => setActiveCategory('all')}
+              className="mt-1 text-[11px] uppercase tracking-wider text-[#A38B68] font-semibold hover:underline cursor-pointer"
+            >
+              Show All Menu Categories
+            </button>
+          )}
         </div>
 
         {/* Late Night Banner Link */}
@@ -344,7 +591,7 @@ export default function MenusPage({ onNavigate }) {
           <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#A38B68]" />
           <input
             type="text"
-            placeholder="Search menu items..."
+            placeholder="Search food or beverage items..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-2 rounded-full bg-white border border-[#DDD5C5] text-[#23211E] text-xs placeholder-[#99948B] focus:outline-none focus:border-[#23211E] transition-all shadow-xs font-sans"
