@@ -405,7 +405,7 @@ export default function MenusPage({ onNavigate }) {
                         </h4>
 
                         {/* Description */}
-                        <p className="text-[10px] sm:text-xs text-[#77736C] font-light leading-relaxed mb-2 font-sans line-clamp-2">
+                        <p className="text-[10px] sm:text-xs text-[#77736C] font-light leading-relaxed mb-2 font-sans">
                           {item.desc}
                         </p>
                       </div>
