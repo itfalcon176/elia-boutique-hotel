@@ -137,7 +137,7 @@ export default function MenusPage({ onNavigate }) {
       subtitle: 'All steak dishes are served with a single side and sauce (Truffle Demi-Glaze / Chimichurri / Peppercorn / Nam Jim Jeaw)',
       items: [
         {
-          name: 'Elia Beef Burger with French Fries',
+          name: 'Nomad Beef Burger with French Fries',
           desc: 'Juicy beef stacked with toppings, served with crispy golden fries.',
           price: '฿590',
           image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
