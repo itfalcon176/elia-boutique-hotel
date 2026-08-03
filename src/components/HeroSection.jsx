@@ -57,6 +57,8 @@ export default function HeroSection({
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0 scale-105 origin-center"
       >
+        <source src="/hero banner video.MOV" type="video/quicktime" />
+        <source src="/hero banner video.MOV" type="video/mp4" />
         <source src="/Elia-boutique-hotel.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
