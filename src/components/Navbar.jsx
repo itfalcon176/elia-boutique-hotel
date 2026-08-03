@@ -48,12 +48,12 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
           {/* Logo */}
           <button
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 group focus:outline-none cursor-pointer"
+            className="flex items-center gap-3 group focus:outline-none cursor-pointer py-1"
           >
             <img
               src={scrolled ? "/Logos/logo with.png" : "/Logos/white-new.png"}
               alt="Elia Boutique Hotel Logo"
-              className="h-8 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-11 sm:h-14 lg:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               onError={(e) => {
                 // Fallback if logo transparent issue occurs
                 e.target.src = "/Logos/white-new.png";
@@ -143,7 +143,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   <img
                     src="/Logos/logo with.png"
                     alt="Elia Boutique Hotel Logo"
-                    className="h-7 w-auto object-contain"
+                    className="h-10 w-auto object-contain"
                     onError={(e) => { e.target.src = "/Logos/white-new.png"; }}
                   />
                 </button>

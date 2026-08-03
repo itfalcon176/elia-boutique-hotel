@@ -39,7 +39,7 @@ export default function Footer({ onNavClick }) {
               <img
                 src="/Logos/white-new.png"
                 alt="Elia Boutique Hotel"
-                className="h-10 w-auto object-contain mb-4 transition-transform duration-300 hover:scale-105"
+                className="h-14 sm:h-16 w-auto object-contain mb-4 transition-transform duration-300 hover:scale-105"
               />
             </button>
             <p className="text-[#FAF7F2]/70 text-xs font-light leading-relaxed max-w-sm font-sans">
