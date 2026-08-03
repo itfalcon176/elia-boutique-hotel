@@ -1,0 +1,633 @@
+﻿{
+    "mainContent":  "\u003cdiv class=\"sqs-layout sqs-grid-12 columns-12 empty\" data-type=\"page\" data-updated-on=\"1785758251901\" id=\"page-6a167c6494b755418abc1bd1\"\u003e\u003c/div\u003e",
+    "website":  {
+                    "id":  "6899bbbee6fd58299fcea38a",
+                    "captchaSettings":  {
+                                            "enabledForDonations":  false
+                                        },
+                    "cloneable":  false,
+                    "contentModifiedOn":  1785755924674,
+                    "identifier":  "nomad-beach-club-phuket",
+                    "imageMetadataProcessingEnabled":  false,
+                    "isHstsEnabled":  true,
+                    "language":  "en-GB",
+                    "location":  {
+                                     "addressTitle":  "Nomad Beach Club Phuket",
+                                     "addressLine1":  "323/13 M.2 Cherngtalay, Choeng Thale,  Thalang",
+                                     "addressLine2":  "Phuket, 83110",
+                                     "addressCountry":  "Thailand"
+                                 },
+                    "logoImageId":  "6899bc9e53109170b1aaea12",
+                    "primaryDomain":  "www.nomadbeachclubphuket.com",
+                    "screenshotId":  "abecb82765ed2e5be58b481bdb60a0c33c82f908a7c29491dcefb5289229732a",
+                    "shareButtonOptions":  {
+                                               "1":  true,
+                                               "4":  true,
+                                               "2":  true,
+                                               "6":  true,
+                                               "7":  true,
+                                               "8":  true,
+                                               "3":  true
+                                           },
+                    "showOwnerLogin":  false,
+                    "siteDescription":  "",
+                    "siteStatus":  {
+
+                                   },
+                    "siteTitle":  "Nomad Beach Club Phuket",
+                    "socialLogoImageId":  "6a449a6c8131357bef4dce20",
+                    "sslSetting":  3,
+                    "timeZone":  "Asia/Bangkok",
+                    "typekitId":  "",
+                    "websiteType":  1,
+                    "hasBeenCloneable":  false,
+                    "statsMigrated":  false,
+                    "authenticUrl":  "https://www.nomadbeachclubphuket.com",
+                    "baseUrl":  "https://www.nomadbeachclubphuket.com",
+                    "internalUrl":  "https://nomad-beach-club-phuket.squarespace.com",
+                    "logoImageUrl":  "//images.squarespace-cdn.com/content/v1/6899bbbee6fd58299fcea38a/68450f3f-fef4-479c-acfd-619a3db243d9/nomad_logo_RGB_NEG_v2.png",
+                    "machineTimeZoneOffset":  25200000,
+                    "socialAccounts":  [
+                                           {
+                                               "serviceId":  60,
+                                               "screenname":  "Facebook",
+                                               "addedOn":  1754905534623,
+                                               "profileUrl":  "https://www.facebook.com/nomadbeachclubphuket",
+                                               "iconEnabled":  true,
+                                               "serviceName":  "facebook-unauth"
+                                           },
+                                           {
+                                               "serviceId":  64,
+                                               "screenname":  "Instagram",
+                                               "addedOn":  1754905534632,
+                                               "profileUrl":  "https://www.instagram.com/nomadbeachclubphuket/",
+                                               "iconEnabled":  true,
+                                               "serviceName":  "instagram-unauth"
+                                           },
+                                           {
+                                               "serviceId":  82,
+                                               "screenname":  "TikTok",
+                                               "addedOn":  1762668949979,
+                                               "profileUrl":  "https://www.tiktok.com/@nomad_beach_club_phuket",
+                                               "iconEnabled":  true,
+                                               "serviceName":  "tiktok-unauth"
+                                           },
+                                           {
+                                               "serviceId":  69,
+                                               "screenname":  "YouTube",
+                                               "addedOn":  1762668981197,
+                                               "profileUrl":  "https://www.youtube.com/@NomadBeachClubPhuket",
+                                               "iconEnabled":  true,
+                                               "serviceName":  "youtube-unauth"
+                                           }
+                                       ],
+                    "socialLogoImageUrl":  "//images.squarespace-cdn.com/content/v1/6899bbbee6fd58299fcea38a/5fee4822-0cd8-4b7e-8b29-40d40a40d122/nomad_homepage_banner.webp",
+                    "timeZoneAbbr":  "ICT",
+                    "timeZoneOffset":  25200000
+                },
+    "websiteSettings":  {
+                            "id":  "6899bbbee6fd58299fcea38d",
+                            "websiteId":  "6899bbbee6fd58299fcea38a",
+                            "subjects":  [
+
+                                         ],
+                            "country":  "TH",
+                            "state":  "",
+                            "simpleLikingEnabled":  true,
+                            "mobileInfoBarSettings":  {
+                                                          "style":  1,
+                                                          "isContactEmailEnabled":  false,
+                                                          "isContactPhoneNumberEnabled":  false,
+                                                          "isLocationEnabled":  false,
+                                                          "isBusinessHoursEnabled":  false
+                                                      },
+                            "announcementBarSettings":  {
+                                                            "style":  1
+                                                        },
+                            "popupOverlaySettings":  {
+                                                         "style":  2,
+                                                         "showOnScroll":  false,
+                                                         "scrollPercentage":  25,
+                                                         "showOnTimer":  true,
+                                                         "timerDelay":  0,
+                                                         "showUntilSignup":  true,
+                                                         "displayFrequency":  1,
+                                                         "enableMobile":  true,
+                                                         "enabledPages":  [
+
+                                                                          ],
+                                                         "showOnAllPages":  true,
+                                                         "version":  1
+                                                     },
+                            "commentLikesAllowed":  true,
+                            "commentAnonAllowed":  true,
+                            "commentThreaded":  true,
+                            "commentApprovalRequired":  false,
+                            "commentAvatarsOn":  true,
+                            "commentSortType":  2,
+                            "commentFlagThreshold":  0,
+                            "commentFlagsAllowed":  true,
+                            "commentEnableByDefault":  true,
+                            "commentDisableAfterDaysDefault":  0,
+                            "disqusShortname":  "",
+                            "collectionTitleFormat":  "%p — %s",
+                            "itemTitleFormat":  "%i — %s",
+                            "commentsEnabled":  false,
+                            "uiComponentRegistrationsFlag":  false,
+                            "scriptRegistrationsFlag":  true,
+                            "bundleEligible":  false,
+                            "bucketingSeedId":  "83743e50-c7e5-4be6-9fde-71085c8a65d1",
+                            "creatorAccountCreationDate":  1753617368250,
+                            "newPlanArchitectureEligible":  true,
+                            "businessHours":  {
+                                                  "monday":  {
+                                                                 "text":  "9am - Midnight"
+                                                             },
+                                                  "tuesday":  {
+                                                                  "text":  "9am - Midnight"
+                                                              },
+                                                  "wednesday":  {
+                                                                    "text":  "9am - Midnight"
+                                                                },
+                                                  "thursday":  {
+                                                                   "text":  "9am - Midnight"
+                                                               },
+                                                  "friday":  {
+                                                                 "text":  "9am - Midnight"
+                                                             },
+                                                  "saturday":  {
+                                                                   "text":  "9am - Midnight"
+                                                               },
+                                                  "sunday":  {
+                                                                 "text":  "9am - Midnight"
+                                                             }
+                                              },
+                            "storeSettings":  {
+                                                  "returnPolicy":  null,
+                                                  "termsOfService":  null,
+                                                  "privacyPolicy":  null,
+                                                  "expressCheckout":  false,
+                                                  "continueShoppingLinkUrl":  "/",
+                                                  "useLightCart":  false,
+                                                  "showNoteField":  false,
+                                                  "shippingCountryDefaultValue":  "US",
+                                                  "billToShippingDefaultValue":  false,
+                                                  "showShippingPhoneNumber":  true,
+                                                  "isShippingPhoneRequired":  false,
+                                                  "showBillingPhoneNumber":  true,
+                                                  "isBillingPhoneRequired":  false,
+                                                  "currenciesSupported":  [
+                                                                              "USD",
+                                                                              "CAD",
+                                                                              "GBP",
+                                                                              "AUD",
+                                                                              "EUR",
+                                                                              "CHF",
+                                                                              "NOK",
+                                                                              "SEK",
+                                                                              "DKK",
+                                                                              "NZD",
+                                                                              "SGD",
+                                                                              "MXN",
+                                                                              "HKD",
+                                                                              "CZK",
+                                                                              "ILS",
+                                                                              "MYR",
+                                                                              "RUB",
+                                                                              "PHP",
+                                                                              "PLN",
+                                                                              "THB",
+                                                                              "BRL",
+                                                                              "ARS",
+                                                                              "COP",
+                                                                              "IDR",
+                                                                              "INR",
+                                                                              "JPY",
+                                                                              "ZAR"
+                                                                          ],
+                                                  "defaultCurrency":  "USD",
+                                                  "selectedCurrency":  "THB",
+                                                  "measurementStandard":  1,
+                                                  "showCustomCheckoutForm":  false,
+                                                  "checkoutPageMarketingOptInEnabled":  true,
+                                                  "enableMailingListOptInByDefault":  false,
+                                                  "sameAsRetailLocation":  false,
+                                                  "merchandisingSettings":  {
+                                                                                "scarcityEnabledOnProductItems":  false,
+                                                                                "scarcityEnabledOnProductBlocks":  false,
+                                                                                "scarcityMessageType":  "DEFAULT_SCARCITY_MESSAGE",
+                                                                                "scarcityThreshold":  10,
+                                                                                "multipleQuantityAllowedForServices":  true,
+                                                                                "restockNotificationsEnabled":  false,
+                                                                                "restockNotificationsSuccessText":  "",
+                                                                                "restockNotificationsMailingListSignUpEnabled":  false,
+                                                                                "relatedProductsEnabled":  false,
+                                                                                "relatedProductsOrdering":  "random",
+                                                                                "soldOutVariantsDropdownDisabled":  false,
+                                                                                "productComposerOptedIn":  false,
+                                                                                "productComposerABTestOptedOut":  false,
+                                                                                "productReviewsEnabled":  false
+                                                                            },
+                                                  "minimumOrderSubtotalEnabled":  false,
+                                                  "minimumOrderSubtotal":  {
+                                                                               "currency":  "THB",
+                                                                               "value":  "0.00"
+                                                                           },
+                                                  "addToCartConfirmationType":  2,
+                                                  "isLive":  false,
+                                                  "multipleQuantityAllowedForServices":  true
+                                              },
+                            "useEscapeKeyToLogin":  false,
+                            "ssBadgeType":  1,
+                            "ssBadgePosition":  4,
+                            "ssBadgeVisibility":  1,
+                            "ssBadgeDevices":  1,
+                            "pinterestOverlayOptions":  {
+                                                            "mode":  "disabled",
+                                                            "size":  "small",
+                                                            "shape":  "rect"
+                                                        },
+                            "ampEnabled":  false,
+                            "isRestrictiveCookiePolicyEnabled":  false,
+                            "seoHidden":  false,
+                            "userAccountsSettings":  {
+                                                         "loginAllowed":  true,
+                                                         "signupAllowed":  true
+                                                     },
+                            "isCookieBannerEnabled":  false,
+                            "isVisitorDataRestricted":  false
+                        },
+    "collection":  {
+                       "id":  "6a167c6494b755418abc1bd1",
+                       "websiteId":  "6899bbbee6fd58299fcea38a",
+                       "backgroundSource":  1,
+                       "enabled":  true,
+                       "starred":  false,
+                       "type":  10,
+                       "ordering":  3,
+                       "title":  "Menu Food (Low Season)",
+                       "navigationTitle":  "Menu Food (Low Season)",
+                       "urlId":  "menu-food",
+                       "itemCount":  0,
+                       "updatedOn":  1785755924622,
+                       "description":  "",
+                       "folder":  false,
+                       "dropdown":  false,
+                       "tags":  [
+
+                                ],
+                       "categories":  [
+
+                                      ],
+                       "homepage":  false,
+                       "typeName":  "page",
+                       "regionName":  "default",
+                       "synchronizing":  false,
+                       "seoData":  {
+                                       "seoTitle":  "Food Menu | International, BBQ \u0026 Seafood at Nomad Beach Club Phuket",
+                                       "seoDescription":  "Explore Nomad Beach Club Phuket’s food menu featuring international favourites, BBQ, and fresh seafood — served beachside from relaxed lunches to sunset dining.",
+                                       "seoHidden":  false
+                                   },
+                       "categoryPagesSeoHidden":  false,
+                       "tagPagesSeoHidden":  false,
+                       "headerFooterVisibilitySettings":  {
+                                                              "hideHeader":  false,
+                                                              "hideFooter":  false,
+                                                              "hideChildHeader":  false,
+                                                              "hideChildFooter":  false
+                                                          },
+                       "qrCodeEnabled":  false,
+                       "pagePermissionType":  1,
+                       "typeLabel":  "page",
+                       "fullUrl":  "/menu-food",
+                       "passwordProtected":  false,
+                       "draft":  false
+                   },
+    "shoppingCart":  {
+                         "websiteId":  "6899bbbee6fd58299fcea38a",
+                         "created":  1785758251889,
+                         "entries":  [
+
+                                     ],
+                         "shippingLocation":  {
+
+                                              },
+                         "taxLineItems":  [
+
+                                          ],
+                         "coupons":  [
+
+                                     ],
+                         "promoCodes":  [
+
+                                        ],
+                         "appliedGiftCards":  [
+
+                                              ],
+                         "cartType":  1,
+                         "validCoupons":  [
+
+                                          ],
+                         "invalidCoupons":  [
+
+                                            ],
+                         "subtotalCents":  0,
+                         "taxCents":  0,
+                         "shippingCostCents":  0,
+                         "discountCents":  0,
+                         "giftCardRedemptionTotalCents":  0,
+                         "grandTotalCents":  0,
+                         "amountDueCents":  0,
+                         "remainingBalanceCents":  0,
+                         "totalQuantity":  0,
+                         "purelyDigital":  false,
+                         "hasDigital":  false,
+                         "requiresShipping":  false,
+                         "shippingOptions":  [
+
+                                             ]
+                     },
+    "shareButtons":  {
+                         "twitter":  true,
+                         "facebook":  true,
+                         "reddit":  true,
+                         "tumblr":  true,
+                         "pinterest":  true,
+                         "google":  true,
+                         "linkedin":  true
+                     },
+    "showCart":  false,
+    "localizedStrings":  {
+                             "smartling":  {
+                                               "string_format":  "icu"
+                                           },
+                             "account":  "Account",
+                             "add":  "Add",
+                             "addVideo":  "Add a video",
+                             "all":  "All",
+                             "allProducts":  "All Products",
+                             "back":  "Back",
+                             "backToAllEvents":  "Back to All Events",
+                             "category":  "Category",
+                             "categories":  "Categories",
+                             "categorySelectText":  "Select a Category",
+                             "close":  "Close",
+                             "closeMenu":  "Close Menu",
+                             "completeAndContinue":  "Complete \u0026 Continue",
+                             "courseCtaStart":  "Start Course",
+                             "courseCtaContinue":  "Continue Course",
+                             "courseCtaPreview":  "Preview Course",
+                             "courseCtaRetake":  "Retake Course",
+                             "courseUnpublishedLessons":  "Lessons do not appear in navigation until published.",
+                             "courseProgress":  "Course Progress",
+                             "courseNavigation":  "Course Navigation",
+                             "openCourseNavigation":  "Open Course Navigation",
+                             "closeCourseNavigation":  "Close Course Navigation",
+                             "earlierEvent":  "Earlier Event:",
+                             "enableWebStorage":  "Please enable web storage in your browser.",
+                             "filter":  "Filter",
+                             "filteringByBoth":  "Filtering by: “{0}” and “{1}”",
+                             "filteringByOne":  "Filtering by: “{0}”",
+                             "filters":  "Filters",
+                             "folder":  "Folder:",
+                             "gallery":  "Gallery",
+                             "galleryThumbnails":  "Gallery thumbnails",
+                             "giftCardVariantSelectText":  "Select Value",
+                             "giftCardValueDisplayText":  "Value",
+                             "giftCardPurchaseText":  "Purchase",
+                             "googleCalendar":  "Google Calendar",
+                             "iCal":  "ICS",
+                             "joinNow":  "Join Now",
+                             "languageFlagIcon":  "flag icon",
+                             "laterEvent":  "Later Event:",
+                             "learnMore":  "Learn More",
+                             "lessonCount":  {
+                                                 "one":  "{count} Lesson",
+                                                 "other":  "{count} Lessons"
+                                             },
+                             "limitPerOrderPlural":  "{quantity, plural, one {Limit {quantity} per order} other {Limit {quantity} per order}}",
+                             "login":  "Login",
+                             "map":  "(map)",
+                             "newerPosts":  "Newer Posts",
+                             "next":  "Next",
+                             "nextLesson":  "Next Lesson",
+                             "nextPage":  "Next",
+                             "noResultsFound":  "No results found",
+                             "noUpcomingEvents":  "There are no upcoming events at this time.",
+                             "olderPosts":  "Older Posts",
+                             "openMenu":  "Open Menu",
+                             "pairsWellWith":  "PAIRS WELL WITH",
+                             "postedIn":  "Posted In:",
+                             "preview":  "Preview",
+                             "prev":  "Previous",
+                             "previous":  "Previous",
+                             "previousPage":  "Previous",
+                             "privateLanguages":  "Private",
+                             "productAddToCartText":  "Add To Cart",
+                             "productAddedToCartText":  "Added!",
+                             "productSelectOption":  "Select Option",
+                             "productAfterpayInfoButtonLabel":  "Button to Afterpay Information Popup",
+                             "productAfterpayInfoModalLabel":  "Afterpay Information Popup",
+                             "productAnswerMapAgree":  "Agree",
+                             "productAnswerMapDisagree":  "Disagree",
+                             "productAnswerMapNeutral":  "Neutral",
+                             "productAnswerMapStronglyDisagree":  "Strongly Disagree",
+                             "productAnswerStronglyAgree":  "Strongly Agree",
+                             "productListClearFilters":  "Clear",
+                             "productListNoResultsRemoveFilters":  "No results match your search. Try removing a few filters.",
+                             "productPrice__multiplePrices__1Monthly__indefinite":  "from {price} every month",
+                             "productPrice__multiplePrices__1Monthly__limited__1Years":  "from {price} every month for 1 year",
+                             "productPrice__multiplePrices__1Monthly__limited__nMonths":  "from {price} every month for {duration} months",
+                             "productPrice__multiplePrices__1Monthly__limited__nYears":  "from {price} every month for {duration} years",
+                             "productPrice__multiplePrices__1Weekly__indefinite":  "from {price} every week",
+                             "productPrice__multiplePrices__1Weekly__limited__1Months":  "from {price} every week for 1 month",
+                             "productPrice__multiplePrices__1Weekly__limited__1Years":  "from {price} every week for 1 year",
+                             "productPrice__multiplePrices__1Weekly__limited__nMonths":  "from {price} every week for {duration} months",
+                             "productPrice__multiplePrices__1Weekly__limited__nWeeks":  "from {price} every week for {duration} weeks",
+                             "productPrice__multiplePrices__1Weekly__limited__nYears":  "from {price} every week for {duration} years",
+                             "productPrice__multiplePrices__nMonthly__indefinite":  "from {price} every {billingPeriodValue} months",
+                             "productPrice__multiplePrices__nMonthly__limited__1Years":  "from {price} every {billingPeriodValue} months for 1 year",
+                             "productPrice__multiplePrices__nMonthly__limited__nMonths":  "from {price} every {billingPeriodValue} months for {duration} months",
+                             "productPrice__multiplePrices__nMonthly__limited__nYears":  "from {price} every {billingPeriodValue} months for {duration} years",
+                             "productPrice__multiplePrices__nWeekly__indefinite":  "from {price} every {billingPeriodValue} weeks",
+                             "productPrice__multiplePrices__nWeekly__limited__1Months":  "from {price} every {billingPeriodValue} weeks for 1 month",
+                             "productPrice__multiplePrices__nWeekly__limited__1Years":  "from {price} every {billingPeriodValue} weeks for 1 year",
+                             "productPrice__multiplePrices__nWeekly__limited__nMonths":  "from {price} every {billingPeriodValue} weeks for {duration} months",
+                             "productPrice__multiplePrices__nWeekly__limited__nWeeks":  "from {price} every {billingPeriodValue} weeks for {duration} weeks",
+                             "productPrice__multiplePrices__nWeekly__limited__nYears":  "from {price} every {billingPeriodValue} weeks for {duration} years",
+                             "productPrice__singlePrice__1Monthly__indefinite":  "{price} every month",
+                             "productPrice__singlePrice__1Monthly__limited__1Years":  "{price} every month for 1 year",
+                             "productPrice__singlePrice__1Monthly__limited__nMonths":  "{price} every month for {duration} months",
+                             "productPrice__singlePrice__1Monthly__limited__nYears":  "{price} every month for {duration} years",
+                             "productPrice__singlePrice__1Weekly__indefinite":  "{price} every week",
+                             "productPrice__singlePrice__1Weekly__limited__1Months":  "{price} every week for 1 month",
+                             "productPrice__singlePrice__1Weekly__limited__1Years":  "{price} every week for 1 year",
+                             "productPrice__singlePrice__1Weekly__limited__nMonths":  "{price} every week for {duration} months",
+                             "productPrice__singlePrice__1Weekly__limited__nWeeks":  "{price} every week for {duration} weeks",
+                             "productPrice__singlePrice__1Weekly__limited__nYears":  "{price} every week for {duration} years",
+                             "productPrice__singlePrice__nMonthly__indefinite":  "{price} every {billingPeriodValue} months",
+                             "productPrice__singlePrice__nMonthly__limited__1Years":  "{price} every {billingPeriodValue} months for 1 year",
+                             "productPrice__singlePrice__nMonthly__limited__nMonths":  "{price} every {billingPeriodValue} months for {duration} months",
+                             "productPrice__singlePrice__nMonthly__limited__nYears":  "{price} every {billingPeriodValue} months for {duration} years",
+                             "productPrice__singlePrice__nWeekly__indefinite":  "{price} every {billingPeriodValue} weeks",
+                             "productPrice__singlePrice__nWeekly__limited__1Months":  "{price} every {billingPeriodValue} weeks for 1 month",
+                             "productPrice__singlePrice__nWeekly__limited__1Years":  "{price} every {billingPeriodValue} weeks for 1 year",
+                             "productPrice__singlePrice__nWeekly__limited__nMonths":  "{price} every {billingPeriodValue} weeks for {duration} months",
+                             "productPrice__singlePrice__nWeekly__limited__nWeeks":  "{price} every {billingPeriodValue} weeks for {duration} weeks",
+                             "productPrice__singlePrice__nWeekly__limited__nYears":  "{price} every {billingPeriodValue} weeks for {duration} years",
+                             "productPriceFromMonthlyText":  {
+                                                                 "one":  "from {fromPrice} every month",
+                                                                 "other":  "from {fromPrice} every {billingPeriodValue} months"
+                                                             },
+                             "productPriceFromText":  "from {fromPrice}",
+                             "productPriceFromWeeklyText":  {
+                                                                "one":  "from {fromPrice} every week",
+                                                                "other":  "from {fromPrice} every {billingPeriodValue} weeks"
+                                                            },
+                             "productPricePerMonth":  {
+                                                          "one":  "{price} every month",
+                                                          "other":  "{price} every {billingPeriodValue} months"
+                                                      },
+                             "productPricePerWeek":  {
+                                                         "one":  "{price} every week",
+                                                         "other":  "{price} every {billingPeriodValue} weeks"
+                                                     },
+                             "productPriceUnavailable":  "Unavailable",
+                             "productQuantityInputLabel":  "Quantity",
+                             "productQuickViewText":  "Quick View",
+                             "productSaleText":  "sale",
+                             "productSaleTextSentenceCase":  "Sale",
+                             "productDefaultScarcityText":  "Only {qtyInStock} available",
+                             "productScarcityMessage1":  "Only {qtyInStock} left in stock",
+                             "productScarcityMessage2":  "{qtyInStock} available",
+                             "productScarcityMessage3":  "Limited Availability",
+                             "productRestockNotificationDefaultEmailPlaceholder":  "Email Address",
+                             "productRestockNotificationDefaultButtonText":  "Sign Up",
+                             "productRestockNotificationDefaultCTAText":  "Get notified by email when this product is in stock.",
+                             "productRestockNotificationDefaultMailingListDescription":  "Sign up to receive news and updates.",
+                             "productRestockNotificationDefaultSubmittedMessage":  "Signed Up!",
+                             "productRestockNotificationEmailBlankErrorMessage":  "Email cannot be blank",
+                             "productRestockNotificationEmailInvalidErrorMessage":  "Email is invalid",
+                             "productRestockNotificationDefaultFormSubmitErrorMessage":  "Unable to submit form. Please try again later.",
+                             "productResultCount":  {
+                                                        "one":  "{numberOfResults} Result",
+                                                        "other":  "{numberOfResults} Results"
+                                                    },
+                             "productReviewsTitle":  "Reviews",
+                             "productReviewsAverageStoreRating":  "Average store rating",
+                             "productReviewsAverageStoreRatingWithValue":  "{rating} average store rating",
+                             "productReviewsAverageProductRating":  "Average product rating",
+                             "productReviewsAverageProductRatingWithValue":  "{rating} average product rating",
+                             "productReviewsTotalProductReviews":  {
+                                                                       "one":  "{numberOfReviews} product review",
+                                                                       "other":  "{numberOfReviews} product reviews"
+                                                                   },
+                             "productReviewsTotalStoreReviews":  {
+                                                                     "one":  "{numberOfReviews} store review",
+                                                                     "other":  "{numberOfReviews} store reviews"
+                                                                 },
+                             "productReviewsViewProductReviews":  {
+                                                                      "one":  "View {numberOfReviews} product review",
+                                                                      "other":  "View {numberOfReviews} product reviews"
+                                                                  },
+                             "productReviewsViewStoreReviews":  {
+                                                                    "one":  "View {numberOfReviews} store review",
+                                                                    "other":  "View {numberOfReviews} store reviews"
+                                                                },
+                             "productReviewsStarRating":  "{starRating} out of 5 stars",
+                             "productReviewsStarRatingTitle":  "Star Rating",
+                             "productReviewsShowMore":  "Show More",
+                             "productReviewsShowMoreReviews":  "Show more reviews",
+                             "productReviewsRemainingReviewsCount":  "{numberOfReviews} more reviews",
+                             "productReviewsFailedToLoadMore":  "Failed to load more reviews",
+                             "productReviewsReviewerName":  "Reviewer Name",
+                             "productReviewsReviewDate":  "Review Date",
+                             "productReviewsAnonymousUser":  "Anonymous",
+                             "productReviewsReviewDescription":  "Description",
+                             "productReviewsViewLargerImage":  "View larger image",
+                             "productReviewsPostedOnEtsy":  "Posted on Etsy",
+                             "productReviewsProductNameLabel":  "Product",
+                             "progress":  "Progress",
+                             "salePriceText":  "Sale Price:",
+                             "originalPriceText":  "Original Price:",
+                             "productSoldOutText":  "sold out",
+                             "productSoldOutTextSentenceCase":  "Sold out",
+                             "productSoldOutTextCaptialized":  "Sold Out",
+                             "productSubscribeText":  "Subscribe",
+                             "productSummaryFormNoAnswerText":  "N/A",
+                             "productVariantSelectText":  "Select {variantName}",
+                             "readMore":  "Read More",
+                             "relatedProductsDefaultTitle":  "You Might Also Like",
+                             "relatedVideosDefaultTitle":  "You Might Also Like",
+                             "retakeCourseTitle":  "Retake this course?",
+                             "retakeCourseBody":  "Retaking this course from the beginning will reset all of your tracked progress.",
+                             "retakeCourseCtaConfirm":  "Retake",
+                             "retakeCourseCtaCancel":  "Cancel",
+                             "videoPaywallJoinButton":  "Join Now",
+                             "videoPaywallPrompt":  "Sign up to view this video",
+                             "signUpToReadThisPost":  "Sign up to read this post",
+                             "skipToContent":  "Skip to Content",
+                             "skipToVideos":  "Skip to Videos",
+                             "slideshowCurrentSlide":  "Slide {0} (current slide)",
+                             "slideshowNextSlide":  "Next Slide",
+                             "slideshowPreviousSlide":  "Previous Slide",
+                             "slideshowSlide":  "Slide {0}",
+                             "source":  "Source:",
+                             "tagged":  "Tagged:",
+                             "to":  "to",
+                             "untitledEvent":  "Untitled Event",
+                             "videos":  "Videos",
+                             "view":  "View",
+                             "viewEvent":  "View Event",
+                             "viewFullItem":  "View Full Item",
+                             "viewFullsize":  "View fullsize",
+                             "writtenBy":  "Written By",
+                             "image":  "Image {0} of {1}",
+                             "carousel":  "Carousel",
+                             "backgroundPause":  "Pause Background",
+                             "backgroundPlay":  "Play Background",
+                             "videoMissingLabel":  "Video missing",
+                             "viewOptions":  "View Options",
+                             "frequency":  "Frequency",
+                             "oneTimePurchase":  "One time purchase",
+                             "subscriptionFrequency-pluralized-weeks":  "{frequency, plural, one {Every week} other {Every {frequency} weeks}}",
+                             "subscriptionFrequency-pluralized-months":  "{frequency, plural, one {Every month} other {Every {frequency} months}}",
+                             "subscriptionFrequency-numberOfBillingCycles":  " • For {numOfBillingCycles} payments",
+                             "SubscriptionFrequency":  "Subscription Frequency",
+                             "savePercentage":  "Save {percentage}",
+                             "productQuantityStepperDecreaseLabel":  "Decrease quantity by 1",
+                             "productQuantityStepperIncreaseLabel":  "Increase quantity by 1",
+                             "payInFull":  "Pay in full",
+                             "paymentOptions":  "Payment Options",
+                             "payDepositAmount":  "Pay {price} deposit",
+                             "payDeposit":  "Pay deposit",
+                             "checkout":  "Checkout",
+                             "paymentPlanBreakdown":  "Payment plan breakdown",
+                             "dueToday":  "Due today",
+                             "dueOnDate":  "Due on {date}",
+                             "paymentMethodDisclaimer":  "Your payment method will be charged based on this payment schedule. Taxes are calculated at checkout. Please review our policies prior to purchase for more details.",
+                             "viewPaymentPlanLink":  "View payment plan",
+                             "remainingBalanceDue":  "Remaining balance due in {count} payments."
+                         },
+    "userAccountsContext":  {
+                                "showSignInLink":  true
+                            },
+    "template":  {
+                     "mobileStylesEnabled":  true
+                 },
+    "uiextensions":  {
+                         "product-badge":  "sqs-uiextensions-product-badge",
+                         "product-body":  "sqs-uiextensions-product-body",
+                         "product-badge-mobile":  "sqs-uiextensions-product-badge-mobile",
+                         "product-body-mobile":  "sqs-uiextensions-product-body-mobile",
+                         "product-collection-item":  "sqs-uiextensions-product-collection-item",
+                         "scripts-enabled":  true
+                     },
+    "empty":  false,
+    "emptyFolder":  false,
+    "calendarView":  false,
+    "pagePreviewContext":  {
+                               "isPreviewMode":  false,
+                               "memberAccessUrl":  "/menu-food?format=json\u0026requestAccess=true"
+                           }
+}
