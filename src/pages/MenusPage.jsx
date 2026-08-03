@@ -633,8 +633,8 @@ export default function MenusPage({ onNavigate }) {
                   )}
                 </div>
 
-                {/* 5-Column Grid (Exact Nomad Style) */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4">
+                {/* Centered Responsive Grid Layout */}
+                <div className="flex flex-wrap justify-center gap-3.5 sm:gap-4">
                   {section.items.map((item, idx) => (
                     <motion.div
                       key={idx}
@@ -642,7 +642,7 @@ export default function MenusPage({ onNavigate }) {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: (idx % 5) * 0.05 }}
-                      className="bg-white rounded-xl p-2.5 sm:p-3 border border-[#E5DEC9] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group text-center"
+                      className="w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)] max-w-[260px] bg-white rounded-xl p-2.5 sm:p-3 border border-[#E5DEC9] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group text-center"
                     >
                       <div>
                         {/* Food Photo Container */}
