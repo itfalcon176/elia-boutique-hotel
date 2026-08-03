@@ -43,7 +43,7 @@ export default function Footer({ onNavClick }) {
               />
             </button>
             <p className="text-[#FAF7F2]/70 text-xs font-light leading-relaxed max-w-sm font-sans">
-              A bohemian-minimalist luxury sanctuary along the sands of Cherngtalay, Phuket. Inspired by Japanese 'Oku' slow living and vibrant beach club dining.
+              A bohemian-minimalist luxury sanctuary along the sands of Cherngtalay, Phuket. Inspired by serene Japanese slow living and vibrant beach club dining.
             </p>
 
             <div className="pt-4 flex items-center gap-4 text-[#FAF7F2]/70">
@@ -132,7 +132,7 @@ export default function Footer({ onNavClick }) {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone size={16} className="text-[#C5A880] shrink-0" />
-                <span>+66 (0) 76 300 800</span>
+                <a href="tel:+66824899371" className="hover:text-[#C5A880] transition-colors">+66 82 489 9371</a>
               </div>
               <div className="pt-2 border-t border-white/5">
                 <span className="text-[10px] uppercase tracking-wider text-[#C5A880] font-medium block">

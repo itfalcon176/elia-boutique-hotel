@@ -1,5 +1,5 @@
 import HeroSection from '../components/HeroSection';
-import OkuShowcaseSection from '../components/OkuShowcaseSection';
+import EliaShowcaseSection from '../components/EliaShowcaseSection';
 import FaqsSection from '../components/FaqsSection';
 
 export default function HomePage({
@@ -16,14 +16,14 @@ export default function HomePage({
         toggleSound={toggleSound}
         onOpenReservation={onOpenReservation}
         onExploreClick={() => {
-          const el = document.getElementById('oku-showcase');
+          const el = document.getElementById('elia-showcase');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }}
       />
 
-      {/* OKU Ibiza Style Inspired Home Page Sections */}
-      <div id="oku-showcase">
-        <OkuShowcaseSection
+      {/* Elia Phuket Home Page Sections */}
+      <div id="elia-showcase">
+        <EliaShowcaseSection
           onNavigate={onNavigate}
           onOpenReservation={onOpenReservation}
         />

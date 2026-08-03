@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <Phone size={20} className="text-[#A38B68] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-[#23211E] block">Direct Line</span>
-                  <span>+66 (0) 76 300 800</span>
+                  <a href="tel:+66824899371" className="hover:text-[#A38B68] transition-colors">+66 82 489 9371</a>
                 </div>
               </div>
 

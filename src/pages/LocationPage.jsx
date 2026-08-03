@@ -45,7 +45,7 @@ export default function LocationPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone size={18} className="text-[#A38B68] shrink-0" />
-                  <span>+66 (0) 76 300 800</span>
+                  <a href="tel:+66824899371" className="hover:text-[#A38B68] transition-colors">+66 82 489 9371</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail size={18} className="text-[#A38B68] shrink-0" />

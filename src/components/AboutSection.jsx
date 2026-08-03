@@ -10,7 +10,7 @@ export default function AboutSection() {
     },
     {
       icon: Sparkles,
-      title: 'The "Oku" Ethos',
+      title: 'The Elia Ethos',
       desc: 'Inspired by the Japanese concept of inner space and sanctuary—a refuge for soul and senses.',
     },
     {

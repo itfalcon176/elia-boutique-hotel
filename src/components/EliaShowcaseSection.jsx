@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
+export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const rooms = [
@@ -79,7 +79,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
   return (
     <div className="w-full">
       {/* SECTION 1: Bohemian Minimalism Intro Text Block */}
-      <section className="py-20 sm:py-28 bg-[#EFECE6] text-[#23211E]">
+      <section className="py-14 sm:py-20 bg-[#EFECE6] text-[#23211E]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.span
             initial={{ opacity: 0, y: 15 }}
@@ -95,7 +95,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light tracking-wide text-[#23211E] leading-tight mb-8"
+            className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light tracking-wide text-[#23211E] leading-tight mb-6"
           >
             The Essence of <span className="italic text-gold-gradient font-serif">Elia</span>
           </motion.h2>
@@ -104,14 +104,14 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-8"
+            className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[#555047] text-sm sm:text-base leading-[2] font-sans font-light max-w-3xl mx-auto"
+            className="text-[#555047] text-sm sm:text-base leading-[1.8] font-sans font-light max-w-3xl mx-auto"
           >
             Elia Boutique Hotel is a bohemian-minimalist sanctuary born from the union of serene natural design, slow living, and vibrant beachfront spirit. Here along the golden sands of Bang Tao Beach, mornings begin with turquoise waves and gentle sea breezes, while evenings transition seamlessly into starlit Nikkei fusion gastronomy, handcrafted tropical mixology, and our signature 10 PM - 2 AM Late Night Menu.
           </motion.p>
@@ -119,21 +119,21 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
       </section>
 
       {/* SECTION 2: Modern Interactive Rooms & Suites Carousel */}
-      <section className="py-20 sm:py-28 bg-[#FFFFFF] text-[#23211E] relative overflow-hidden">
+      <section className="py-14 sm:py-20 bg-[#FFFFFF] text-[#23211E] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="text-center mb-10">
-            <span className="text-xs uppercase tracking-[0.4em] text-[#A38B68] font-semibold mb-3 block font-sans">
+          <div className="text-center mb-8">
+            <span className="text-xs uppercase tracking-[0.4em] text-[#A38B68] font-semibold mb-2 block font-sans">
               Sanctuary & Living
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-light tracking-wide text-[#23211E]">
               Rooms & <span className="italic text-gold-gradient font-serif">Suites</span>
             </h2>
-            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-4 mb-8" />
+            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3 mb-6" />
           </div>
 
           {/* Quick Room Selection Pills / Tabs */}
-          <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-12">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-10">
             {rooms.map((room, idx) => (
               <button
                 key={room.id}
@@ -150,7 +150,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
           </div>
 
           {/* Carousel Slider Display */}
-          <div className="relative py-4">
+          <div className="relative py-2">
             {/* Left / Right Arrow Controls */}
             <div className="flex items-center justify-between absolute top-1/2 -translate-y-1/2 -left-3 -right-3 sm:-left-5 sm:-right-5 z-30 pointer-events-none">
               <button
@@ -188,7 +188,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
                       className={`flex flex-col transition-all duration-500 rounded-xl overflow-hidden ${
                         isCenter
                           ? 'scale-105 sm:scale-105 z-20 shadow-[0_20px_50px_rgba(35,33,30,0.18)] border-2 border-[#A38B68] ring-4 ring-[#A38B68]/15 bg-white'
-                          : 'scale-95 z-0 opacity-65 hover:opacity-90 cursor-pointer border border-[#A38B68]/20 bg-[#EFECE6]'
+                          : 'scale-95 z-0 opacity-100 cursor-pointer border border-[#A38B68]/20 bg-[#EFECE6] hover:border-[#A38B68]/40'
                       }`}
                     >
                       <div className="aspect-[4/3] overflow-hidden relative">
@@ -217,7 +217,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
                       </div>
 
                       <div
-                        className={`p-6 sm:p-8 text-center flex flex-col justify-between flex-1 border-t ${
+                        className={`p-5 sm:p-6 text-center flex flex-col justify-between flex-1 border-t ${
                           isCenter
                             ? 'bg-gradient-to-b from-[#FFFFFF] to-[#FAF7F2] border-[#A38B68]/40'
                             : 'bg-[#EFECE6] border-[#A38B68]/20'
@@ -225,22 +225,22 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
                       >
                         <div>
                           <h3
-                            className={`font-serif tracking-wide text-[#23211E] mb-2 ${
-                              isCenter ? 'text-2xl font-semibold' : 'text-lg font-medium'
+                            className={`font-serif tracking-wide text-[#23211E] mb-1.5 ${
+                              isCenter ? 'text-xl sm:text-2xl font-semibold' : 'text-lg font-medium'
                             }`}
                           >
                             {room.title}
                           </h3>
-                          <p className="text-[12px] text-[#A38B68] uppercase tracking-widest font-semibold font-sans mb-3">
+                          <p className="text-[11px] text-[#A38B68] uppercase tracking-widest font-semibold font-sans mb-2">
                             {room.subtitle}
                           </p>
-                          <p className="text-[13px] text-[#6E6A63] font-light font-sans mb-6 leading-relaxed">
+                          <p className="text-[12px] text-[#6E6A63] font-light font-sans mb-5 leading-relaxed">
                             {room.desc}
                           </p>
                         </div>
 
-                        <div className="pt-4 border-t border-[#A38B68]/15 flex items-center justify-between gap-2">
-                          <span className="text-[11px] text-[#555047] uppercase font-medium font-sans">
+                        <div className="pt-3 border-t border-[#A38B68]/15 flex items-center justify-between gap-2">
+                          <span className="text-[10px] text-[#555047] uppercase font-medium font-sans">
                             {room.size} • {room.guests}
                           </span>
                           <button
@@ -248,10 +248,10 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
                               e.stopPropagation();
                               if (onOpenReservation) onOpenReservation();
                             }}
-                            className={`inline-block text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 rounded-full cursor-pointer ${
+                            className={`inline-block text-[10px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 rounded-full cursor-pointer ${
                               isCenter
-                                ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] hover:text-white px-6 py-2.5 shadow-md'
-                                : 'bg-[#DCD7CD] text-[#23211E] hover:bg-[#23211E] hover:text-white px-4 py-2'
+                                ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] hover:text-white px-5 py-2 shadow-md'
+                                : 'bg-[#DCD7CD] text-[#23211E] hover:bg-[#23211E] hover:text-white px-4 py-1.5'
                             }`}
                           >
                             EXPLORE SUITE
@@ -265,7 +265,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
             </AnimatePresence>
 
             {/* Pagination Dots & Counter */}
-            <div className="flex items-center justify-between max-w-xs mx-auto mt-12 pt-4">
+            <div className="flex items-center justify-between max-w-xs mx-auto mt-8 pt-2">
               <div className="flex items-center gap-2">
                 {rooms.map((_, idx) => (
                   <button
@@ -289,76 +289,76 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
       </section>
 
       {/* SECTION 3: Asymmetrical Gastronomy, Spa & Experiences Showcase */}
-      <section className="py-24 sm:py-32 bg-[#EFECE6] text-[#23211E] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
+      <section className="py-14 sm:py-20 bg-[#EFECE6] text-[#23211E] overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
 
-          {/* Block 1: Gastronomic Journey (Top Right Layout with L-Line) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6 lg:col-start-2 relative">
+          {/* Block 1: Culinary Realm (Top Split with L-Line) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+            <div className="lg:col-span-6 relative">
               {/* Thin L-shaped connecting line */}
-              <div className="hidden lg:block absolute -top-8 right-0 left-12 h-[1px] bg-[#A38B68]/30" />
-              <div className="hidden lg:block absolute -top-8 right-0 w-[1px] h-36 bg-[#A38B68]/30" />
+              <div className="hidden lg:block absolute -top-4 right-0 left-0 h-[1px] bg-[#23211E]/30" />
+              <div className="hidden lg:block absolute -top-4 right-0 w-[1px] h-28 bg-[#23211E]/30" />
 
-              <div className="max-w-md ml-auto pr-6">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold block mb-2 font-sans">
+              <div className="pt-2 lg:pt-4 pr-0 lg:pr-6">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold block mb-1.5 font-sans">
                   Gastronomy & Mixology
                 </span>
-                <h3 className="font-serif text-3xl sm:text-4xl text-[#23211E] font-light mb-4">
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#23211E] font-light mb-3">
                   Culinary Realm & <span className="italic text-gold-gradient font-serif">Late Night</span>
                 </h3>
-                <p className="text-[#555047] text-xs sm:text-sm leading-relaxed font-light font-sans mb-6">
+                <p className="text-[#555047] text-xs sm:text-sm leading-relaxed font-light font-sans mb-5">
                   Experience delicate Nikkei Japanese & Mediterranean fusion dishes by day, transitioning into our signature 10 PM - 2 AM Late Night Menu with midnight Wagyu sliders, truffle fries, craft cocktails, and starlit shisha lounge.
                 </p>
                 <button
                   onClick={() => onNavigate && onNavigate('menus')}
-                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer"
+                  className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer shadow-sm"
                 >
                   EXPLORE MENUS
                 </button>
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="relative aspect-square max-w-sm mx-auto overflow-hidden rounded-full border-4 border-white/80 shadow-xl">
+            <div className="lg:col-span-6">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl shadow-lg border border-[#A38B68]/20 group">
                 <img
                   src="/images/dining.png"
                   alt="Culinary Realm"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </div>
           </div>
 
-          {/* Block 2: Awaken Your Senses (Middle Left Layout) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-5 lg:col-start-2 order-2 lg:order-1">
-              <div className="aspect-[3/4] max-w-sm mx-auto overflow-hidden rounded-2xl shadow-lg border border-[#A38B68]/20">
+          {/* Block 2: Wellness & Spa (Asymmetrical Dual Image & Content Layout) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+            <div className="lg:col-span-5 relative order-2 lg:order-1">
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg border border-[#A38B68]/20 group">
                 <img
                   src="/images/spa.png"
                   alt="Wellness & Holistic Spa"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </div>
 
-            <div className="lg:col-span-5 order-1 lg:order-2 relative">
+            <div className="lg:col-span-7 order-1 lg:order-2 relative">
               {/* Thin L-shaped connecting line */}
-              <div className="hidden lg:block absolute -bottom-8 left-0 right-12 h-[1px] bg-[#A38B68]/30" />
-              <div className="hidden lg:block absolute -bottom-8 left-0 w-[1px] h-36 bg-[#A38B68]/30" />
+              <div className="hidden lg:block absolute -bottom-4 left-0 right-0 h-[1px] bg-[#23211E]/30" />
+              <div className="hidden lg:block absolute -bottom-4 left-0 w-[1px] h-28 bg-[#23211E]/30" />
 
-              <div className="max-w-md pl-4">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold block mb-2 font-sans">
+              <div className="pb-2 lg:pb-4 pl-0 lg:pl-6 max-w-lg">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold block mb-1.5 font-sans">
                   Body & Soul Sanctuary
                 </span>
-                <h3 className="font-serif text-3xl sm:text-4xl text-[#23211E] font-light mb-4">
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#23211E] font-light mb-3">
                   Wellness & <span className="italic text-gold-gradient font-serif">Holistic Spa</span>
                 </h3>
-                <p className="text-[#555047] text-xs sm:text-sm leading-relaxed font-light font-sans mb-6">
+                <p className="text-[#555047] text-xs sm:text-sm leading-relaxed font-light font-sans mb-5">
                   Restore your natural rhythm with beachfront massages, sound bath meditations, private sauna sessions, and organic Thai herbal rituals designed to soothe body and mind.
                 </p>
                 <button
                   onClick={() => onOpenReservation && onOpenReservation()}
-                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer"
+                  className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer shadow-sm"
                 >
                   DISCOVER SPA
                 </button>
@@ -366,35 +366,35 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
             </div>
           </div>
 
-          {/* Block 3: Bays, Beaches and Memorable Experiences (Bottom Layout with L-Line) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6 lg:col-start-2 relative order-2 lg:order-1">
-              <div className="aspect-[16/10] max-w-lg mx-auto overflow-hidden rounded-2xl shadow-lg border border-[#A38B68]/20">
+          {/* Block 3: Bespoke Experiences (Landscape & Content Split) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+            <div className="lg:col-span-7 relative order-2 lg:order-1">
+              <div className="aspect-[16/10] w-full overflow-hidden rounded-xl shadow-lg border border-[#A38B68]/20 group">
                 <img
                   src="/images/latenight.png"
                   alt="Phuket Bespoke Experiences"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </div>
 
             <div className="lg:col-span-5 order-1 lg:order-2 relative">
               {/* Thin L-shaped connecting line */}
-              <div className="hidden lg:block absolute -top-8 left-0 right-8 h-[1px] bg-[#A38B68]/30" />
+              <div className="hidden lg:block absolute -top-4 left-0 right-0 h-[1px] bg-[#23211E]/30" />
 
-              <div className="max-w-md pl-4">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold block mb-2 font-sans">
+              <div className="pt-2 lg:pt-4 pl-0 lg:pl-4">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold block mb-1.5 font-sans">
                   Land & Sea Journeys
                 </span>
-                <h3 className="font-serif text-3xl sm:text-4xl text-[#23211E] font-light mb-4">
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#23211E] font-light mb-3">
                   Phuket Bespoke <span className="italic text-gold-gradient font-serif">Experiences</span>
                 </h3>
-                <p className="text-[#555047] text-xs sm:text-sm leading-relaxed font-light font-sans mb-6">
+                <p className="text-[#555047] text-xs sm:text-sm leading-relaxed font-light font-sans mb-5">
                   Explore Phang Nga Bay by private catamaran, enjoy sunset beach lounge DJ sessions, or venture into nearby Boat Avenue markets with our 24/7 personal concierge.
                 </p>
                 <button
                   onClick={() => onNavigate && onNavigate('location')}
-                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer"
+                  className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer shadow-sm"
                 >
                   EXPLORE LOCATION
                 </button>

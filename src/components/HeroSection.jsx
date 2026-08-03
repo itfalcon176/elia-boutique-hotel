@@ -64,7 +64,7 @@ export default function HeroSection({
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/45 z-10" />
 
-      {/* OKU Earth Vignette Overlay */}
+      {/* Elia Earth Vignette Overlay */}
       <div className="absolute inset-0 bg-vignette z-20 pointer-events-none" />
 
       {/* Top Right Sound Toggle Button */}

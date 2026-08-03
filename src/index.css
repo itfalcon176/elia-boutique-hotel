@@ -6,12 +6,12 @@
   --color-gold: #A38B68;
   --color-gold-glow: rgba(163, 139, 104, 0.3);
   --color-gold-dark: #826C4B;
-  --color-oku-cream: #F7F4EF;
-  --color-oku-sand: #EFEAE2;
-  --color-oku-[#23211e]: #23211E;
+  --color-elia-cream: #F7F4EF;
+  --color-elia-sand: #EFEAE2;
+  --color-elia-[#23211e]: #23211E;
 }
 
-/* OKU Ibiza Natural Light Sand & Cream Luxury Theme */
+/* Elia Phuket Natural Light Sand & Cream Luxury Theme */
 html {
   scroll-behavior: smooth;
   color-scheme: light;
@@ -92,7 +92,7 @@ body,
   animation: eq-bar-3 0.9s ease-in-out infinite;
 }
 
-/* OKU Ibiza Style Light Cards & Surfaces */
+/* Elia Phuket Style Light Cards & Surfaces */
 .glass-card {
   background: #FFFFFF;
   border: 1px solid rgba(163, 139, 104, 0.2);
