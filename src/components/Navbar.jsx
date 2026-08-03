@@ -32,6 +32,8 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
     setMobileMenuOpen(false);
   };
 
+  const isLightHeader = scrolled || activePage !== 'home';
+
   return (
     <>
       <motion.header
@@ -39,7 +41,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
+          isLightHeader
             ? 'bg-[#F7F4EF]/95 backdrop-blur-xl border-b border-[#A38B68]/20 py-3.5 shadow-[0_4px_25px_rgba(35,33,30,0.08)]'
             : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-5'
         }`}
@@ -51,7 +53,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
             className="flex items-center gap-3 group focus:outline-none cursor-pointer py-1"
           >
             <img
-              src={scrolled ? "/Logos/logo with.png" : "/Logos/white-new.png"}
+              src={isLightHeader ? "/Logos/logo with.png" : "/Logos/white-new.png"}
               alt="Elia Boutique Hotel Logo"
               className="h-11 sm:h-14 lg:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               onError={(e) => {
@@ -71,7 +73,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
                   className={`relative text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 flex items-center gap-1.5 py-1 ${
-                    scrolled
+                    isLightHeader
                       ? isSelected
                         ? 'text-[#A38B68] font-bold'
                         : link.id === 'latenight'
@@ -84,7 +86,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                       : 'text-white/80 hover:text-white'
                   }`}
                 >
-                  {Icon && <Icon size={13} className={scrolled ? "text-[#A38B68]" : "text-amber-300"} />}
+                  {Icon && <Icon size={13} className={isLightHeader ? "text-[#A38B68]" : "text-amber-300"} />}
                   <span>{link.label}</span>
                   {isSelected && (
                     <motion.div
@@ -102,7 +104,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
             <button
               onClick={onOpenReservation}
               className={`flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-5 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 ${
-                scrolled
+                isLightHeader
                   ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] shadow-md'
                   : 'bg-gradient-to-r from-[#A38B68] to-[#826C4B] text-white hover:brightness-110 shadow-[0_0_20px_rgba(163,139,104,0.4)]'
               }`}
@@ -115,7 +117,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden p-2 focus:outline-none ${scrolled ? 'text-[#23211E]' : 'text-white'}`}
+            className={`md:hidden p-2 focus:outline-none ${isLightHeader ? 'text-[#23211E]' : 'text-white'}`}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={26} /> : <MenuIcon size={26} />}
