@@ -1,6 +1,81 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const rooms = [
+    {
+      id: 'deluxe-junior',
+      title: 'Deluxe Junior Suite',
+      subtitle: 'Overlooking Main Lagoon Pool',
+      size: '70 m²',
+      guests: '2-3 Guests',
+      desc: 'Spacious luxury suite with floor-to-ceiling glass windows framing our tranquil central pool and lush tropical garden views.',
+      image: '/images/dining.png',
+      tag: 'Lagoon View',
+    },
+    {
+      id: 'elia-signature',
+      title: 'Elia Signature Suite',
+      subtitle: 'Ultimate Phuket Luxury Residence',
+      size: '120 m²',
+      guests: '2 Adults',
+      desc: 'Our flagship sanctuary featuring a private cocktail bar, outdoor sun lounge deck, freestanding stone tub, and dedicated butler.',
+      image: '/images/cocktail.png',
+      tag: 'VIP Signature',
+    },
+    {
+      id: 'superior-room',
+      title: 'Superior Room',
+      subtitle: 'Bohemian Earthy Elegance',
+      size: '55 m²',
+      guests: '2 Guests',
+      desc: 'Designed with minimalist teak wood, natural earth textures, organic linen, and a cozy private terrace for slow morning coffee.',
+      image: '/images/latenight.png',
+      tag: 'Teak Terrace',
+    },
+    {
+      id: 'rooftop-room',
+      title: 'Rooftop Room',
+      subtitle: 'Starlit Horizon & Plunge Pool',
+      size: '95 m²',
+      guests: '2 Guests',
+      desc: 'Perched high above Bang Tao Beach with a private rooftop infinity plunge pool and unobstructed views of the golden horizon.',
+      image: '/images/spa.png',
+      tag: 'Private Plunge Pool',
+    },
+    {
+      id: 'swim-up',
+      title: 'Swim Up Room',
+      subtitle: 'Direct Step-In Lagoon Pool Access',
+      size: '65 m²',
+      guests: '2 Guests',
+      desc: 'Step straight from your private teak deck into the crystalline lagoon pool surrounded by serene tropical greenery.',
+      image: '/images/suite.png',
+      tag: 'Direct Pool Access',
+    },
+  ];
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % rooms.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + rooms.length) % rooms.length);
+  };
+
+  // Position selected room in CENTER (index 1)
+  const prevIdx = (currentIndex - 1 + rooms.length) % rooms.length;
+  const nextIdx = (currentIndex + 1) % rooms.length;
+
+  const visibleRooms = [
+    { ...rooms[prevIdx], targetIndex: prevIdx, isCenter: false },
+    { ...rooms[currentIndex], targetIndex: currentIndex, isCenter: true },
+    { ...rooms[nextIdx], targetIndex: nextIdx, isCenter: false },
+  ];
+
   return (
     <div className="w-full">
       {/* SECTION 1: Bohemian Minimalism Intro Text Block */}
@@ -43,114 +118,171 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
         </div>
       </section>
 
-      {/* SECTION 2: Rooms - Natural Earthy Tones Grid */}
-      <section className="py-20 sm:py-28 bg-[#FFFFFF] text-[#23211E]">
+      {/* SECTION 2: Modern Interactive Rooms & Suites Carousel */}
+      <section className="py-20 sm:py-28 bg-[#FFFFFF] text-[#23211E] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          {/* Header */}
+          <div className="text-center mb-10">
             <span className="text-xs uppercase tracking-[0.4em] text-[#A38B68] font-semibold mb-3 block font-sans">
               Sanctuary & Living
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-light tracking-wide text-[#23211E]">
               Rooms & <span className="italic text-gold-gradient font-serif">Suites</span>
             </h2>
-            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-4" />
+            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-4 mb-8" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
-            {/* Room 1 */}
-            <div className="flex flex-col group">
-              <div className="aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img
-                  src="/images/suite.png"
-                  alt="Swim-Up Junior Suite"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="bg-[#EFECE6] p-8 text-center flex flex-col justify-between flex-1 rounded-b-xl border-t border-[#A38B68]/20">
-                <div>
-                  <h3 className="font-serif text-xl font-medium tracking-wide text-[#23211E] mb-2">
-                    Swim-Up Junior Suite
-                  </h3>
-                  <p className="text-[12px] text-[#A38B68] uppercase tracking-widest font-semibold font-sans mb-3">
-                    Direct Access to Lagoon Pool
-                  </p>
-                  <p className="text-[13px] text-[#6E6A63] font-light font-sans mb-6 leading-relaxed">
-                    Step straight from your private teak terrace into the crystalline lagoon pool, crafted with minimalist Japanese oak and natural stone.
-                  </p>
-                </div>
-                <div>
-                  <button
-                    onClick={() => onOpenReservation && onOpenReservation()}
-                    className="inline-block text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full"
-                  >
-                    EXPLORE SUITE
-                  </button>
-                </div>
-              </div>
+          {/* Quick Room Selection Pills / Tabs */}
+          <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-12">
+            {rooms.map((room, idx) => (
+              <button
+                key={room.id}
+                onClick={() => setCurrentIndex(idx)}
+                className={`px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold font-sans transition-all duration-300 cursor-pointer ${
+                  currentIndex === idx
+                    ? 'bg-[#23211E] text-[#F7F4EF] shadow-lg scale-105 border border-[#A38B68]'
+                    : 'bg-[#EFECE6] text-[#555047] hover:bg-[#A38B68]/20 hover:text-[#23211E]'
+                }`}
+              >
+                {idx + 1}. {room.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Carousel Slider Display */}
+          <div className="relative py-4">
+            {/* Left / Right Arrow Controls */}
+            <div className="flex items-center justify-between absolute top-1/2 -translate-y-1/2 -left-3 -right-3 sm:-left-5 sm:-right-5 z-30 pointer-events-none">
+              <button
+                onClick={handlePrev}
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/95 shadow-xl border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all duration-300 pointer-events-auto cursor-pointer"
+                aria-label="Previous Room"
+              >
+                <ChevronLeft size={22} />
+              </button>
+              <button
+                onClick={handleNext}
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/95 shadow-xl border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all duration-300 pointer-events-auto cursor-pointer"
+                aria-label="Next Room"
+              >
+                <ChevronRight size={22} />
+              </button>
             </div>
 
-            {/* Room 2 */}
-            <div className="flex flex-col group">
-              <div className="aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img
-                  src="/images/dining.png"
-                  alt="Deluxe Ocean View Suite"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="bg-[#EFECE6] p-8 text-center flex flex-col justify-between flex-1 rounded-b-xl border-t border-[#A38B68]/20">
-                <div>
-                  <h3 className="font-serif text-xl font-medium tracking-wide text-[#23211E] mb-2">
-                    Deluxe Ocean View Suite
-                  </h3>
-                  <p className="text-[12px] text-[#A38B68] uppercase tracking-widest font-semibold font-sans mb-3">
-                    Panoramic Andaman Horizons
-                  </p>
-                  <p className="text-[13px] text-[#6E6A63] font-light font-sans mb-6 leading-relaxed">
-                    Perched on upper levels with floor-to-ceiling glass windows framing breathtaking Andaman sunsets and outdoor lounge daybeds.
-                  </p>
-                </div>
-                <div>
-                  <button
-                    onClick={() => onOpenReservation && onOpenReservation()}
-                    className="inline-block text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full"
-                  >
-                    EXPLORE SUITE
-                  </button>
-                </div>
-              </div>
-            </div>
+            {/* Carousel Cards Grid */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.4 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center"
+              >
+                {visibleRooms.map((room, i) => {
+                  const isCenter = room.isCenter;
+                  return (
+                    <div
+                      key={`${room.id}-${i}`}
+                      onClick={() => !isCenter && setCurrentIndex(room.targetIndex)}
+                      className={`flex flex-col transition-all duration-500 rounded-xl overflow-hidden ${
+                        isCenter
+                          ? 'scale-105 sm:scale-105 z-20 shadow-[0_20px_50px_rgba(35,33,30,0.18)] border-2 border-[#A38B68] ring-4 ring-[#A38B68]/15 bg-white'
+                          : 'scale-95 z-0 opacity-65 hover:opacity-90 cursor-pointer border border-[#A38B68]/20 bg-[#EFECE6]'
+                      }`}
+                    >
+                      <div className="aspect-[4/3] overflow-hidden relative">
+                        <img
+                          src={room.image}
+                          alt={room.title}
+                          className={`w-full h-full object-cover transition-transform duration-700 ${
+                            isCenter ? 'scale-105' : 'group-hover:scale-105'
+                          }`}
+                        />
+                        <span
+                          className={`absolute top-4 right-4 text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-sans font-semibold backdrop-blur-md shadow-md ${
+                            isCenter
+                              ? 'bg-[#A38B68] text-white border border-white/30'
+                              : 'bg-[#23211E]/80 text-[#F7F4EF] border border-white/20'
+                          }`}
+                        >
+                          {room.tag}
+                        </span>
 
-            {/* Room 3 */}
-            <div className="flex flex-col group">
-              <div className="aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img
-                  src="/images/cocktail.png"
-                  alt="Rooftop Sunset Pool Suite"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="bg-[#EFECE6] p-8 text-center flex flex-col justify-between flex-1 rounded-b-xl border-t border-[#A38B68]/20">
-                <div>
-                  <h3 className="font-serif text-xl font-medium tracking-wide text-[#23211E] mb-2">
-                    Rooftop Sunset Pool Suite
-                  </h3>
-                  <p className="text-[12px] text-[#A38B68] uppercase tracking-widest font-semibold font-sans mb-3">
-                    Private Infinity Plunge Pool
-                  </p>
-                  <p className="text-[13px] text-[#6E6A63] font-light font-sans mb-6 leading-relaxed">
-                    The pinnacle of barefoot luxury. Features a private rooftop infinity plunge pool, open-air sun deck, and full cocktail cabinet.
-                  </p>
-                </div>
-                <div>
+                        {isCenter && (
+                          <div className="absolute top-4 left-4 bg-[#23211E] text-[#A38B68] text-[9px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full font-bold shadow-md">
+                            ★ Selected
+                          </div>
+                        )}
+                      </div>
+
+                      <div
+                        className={`p-6 sm:p-8 text-center flex flex-col justify-between flex-1 border-t ${
+                          isCenter
+                            ? 'bg-gradient-to-b from-[#FFFFFF] to-[#FAF7F2] border-[#A38B68]/40'
+                            : 'bg-[#EFECE6] border-[#A38B68]/20'
+                        }`}
+                      >
+                        <div>
+                          <h3
+                            className={`font-serif tracking-wide text-[#23211E] mb-2 ${
+                              isCenter ? 'text-2xl font-semibold' : 'text-lg font-medium'
+                            }`}
+                          >
+                            {room.title}
+                          </h3>
+                          <p className="text-[12px] text-[#A38B68] uppercase tracking-widest font-semibold font-sans mb-3">
+                            {room.subtitle}
+                          </p>
+                          <p className="text-[13px] text-[#6E6A63] font-light font-sans mb-6 leading-relaxed">
+                            {room.desc}
+                          </p>
+                        </div>
+
+                        <div className="pt-4 border-t border-[#A38B68]/15 flex items-center justify-between gap-2">
+                          <span className="text-[11px] text-[#555047] uppercase font-medium font-sans">
+                            {room.size} • {room.guests}
+                          </span>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onOpenReservation) onOpenReservation();
+                            }}
+                            className={`inline-block text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 rounded-full cursor-pointer ${
+                              isCenter
+                                ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] hover:text-white px-6 py-2.5 shadow-md'
+                                : 'bg-[#DCD7CD] text-[#23211E] hover:bg-[#23211E] hover:text-white px-4 py-2'
+                            }`}
+                          >
+                            EXPLORE SUITE
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Pagination Dots & Counter */}
+            <div className="flex items-center justify-between max-w-xs mx-auto mt-12 pt-4">
+              <div className="flex items-center gap-2">
+                {rooms.map((_, idx) => (
                   <button
-                    onClick={() => onOpenReservation && onOpenReservation()}
-                    className="inline-block text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full"
-                  >
-                    EXPLORE SUITE
-                  </button>
-                </div>
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      currentIndex === idx
+                        ? 'w-8 bg-[#23211E]'
+                        : 'w-2 bg-[#A38B68]/30 hover:bg-[#A38B68]'
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
               </div>
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#A38B68] font-sans">
+                0{currentIndex + 1} / 0{rooms.length}
+              </span>
             </div>
           </div>
         </div>
@@ -179,7 +311,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
                 </p>
                 <button
                   onClick={() => onNavigate && onNavigate('menus')}
-                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full"
+                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer"
                 >
                   EXPLORE MENUS
                 </button>
@@ -226,7 +358,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
                 </p>
                 <button
                   onClick={() => onOpenReservation && onOpenReservation()}
-                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full"
+                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer"
                 >
                   DISCOVER SPA
                 </button>
@@ -262,7 +394,7 @@ export default function OkuShowcaseSection({ onNavigate, onOpenReservation }) {
                 </p>
                 <button
                   onClick={() => onNavigate && onNavigate('location')}
-                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full"
+                  className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#23211E] bg-[#DCD7CD] hover:bg-[#23211E] hover:text-white px-6 py-2.5 transition-all duration-300 rounded-full cursor-pointer"
                 >
                   EXPLORE LOCATION
                 </button>
