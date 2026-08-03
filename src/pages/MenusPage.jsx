@@ -488,9 +488,18 @@ export default function MenusPage({ onNavigate }) {
     },
   ];
 
+  // Food sections shown by default on first load (when activeCategory === 'all')
+  const foodSectionIds = ['starters', 'salads', 'mains', 'thai', 'desserts'];
+
   // Filter sections based on active category & search query
   const filteredSections = menuSections
-    .filter(section => activeCategory === 'all' || section.id === activeCategory)
+    .filter(section => {
+      if (activeCategory === 'all') {
+        // Hide drink categories starting from Champagne & Prosecco by default on initial page load
+        return foodSectionIds.includes(section.id);
+      }
+      return section.id === activeCategory;
+    })
     .map(section => {
       const matchingItems = section.items.filter(item =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
