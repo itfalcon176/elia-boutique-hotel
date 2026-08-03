@@ -133,12 +133,12 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
           </div>
 
           {/* Quick Room Selection Pills / Tabs */}
-          <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-10">
+          <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar py-2 mb-8 px-1 sm:px-0">
             {rooms.map((room, idx) => (
               <button
                 key={room.id}
                 onClick={() => setCurrentIndex(idx)}
-                className={`px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold font-sans transition-all duration-300 cursor-pointer ${
+                className={`whitespace-nowrap px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[11px] sm:text-xs uppercase tracking-widest font-semibold font-sans transition-all duration-300 cursor-pointer shrink-0 ${
                   currentIndex === idx
                     ? 'bg-[#23211E] text-[#F7F4EF] shadow-lg scale-105 border border-[#A38B68]'
                     : 'bg-[#EFECE6] text-[#555047] hover:bg-[#A38B68]/20 hover:text-[#23211E]'
@@ -150,22 +150,22 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
           </div>
 
           {/* Carousel Slider Display */}
-          <div className="relative py-2">
+          <div className="relative py-2 max-w-md md:max-w-none mx-auto">
             {/* Left / Right Arrow Controls */}
-            <div className="flex items-center justify-between absolute top-1/2 -translate-y-1/2 -left-3 -right-3 sm:-left-5 sm:-right-5 z-30 pointer-events-none">
+            <div className="flex items-center justify-between absolute top-1/2 -translate-y-1/2 -left-3 -right-3 sm:-left-6 sm:-right-6 z-30 pointer-events-none">
               <button
                 onClick={handlePrev}
-                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/95 shadow-xl border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all duration-300 pointer-events-auto cursor-pointer"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 shadow-xl border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all duration-300 pointer-events-auto cursor-pointer"
                 aria-label="Previous Room"
               >
-                <ChevronLeft size={22} />
+                <ChevronLeft size={20} />
               </button>
               <button
                 onClick={handleNext}
-                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/95 shadow-xl border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all duration-300 pointer-events-auto cursor-pointer"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 shadow-xl border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all duration-300 pointer-events-auto cursor-pointer"
                 aria-label="Next Room"
               >
-                <ChevronRight size={22} />
+                <ChevronRight size={20} />
               </button>
             </div>
 
@@ -173,10 +173,10 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.4 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
                 className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center"
               >
                 {visibleRooms.map((room, i) => {
@@ -185,10 +185,10 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
                     <div
                       key={`${room.id}-${i}`}
                       onClick={() => !isCenter && setCurrentIndex(room.targetIndex)}
-                      className={`flex flex-col transition-all duration-500 rounded-xl overflow-hidden ${
-                        isCenter
-                          ? 'scale-105 sm:scale-105 z-20 shadow-[0_20px_50px_rgba(35,33,30,0.18)] border-2 border-[#A38B68] ring-4 ring-[#A38B68]/15 bg-white'
-                          : 'scale-95 z-0 opacity-100 cursor-pointer border border-[#A38B68]/20 bg-[#EFECE6] hover:border-[#A38B68]/40'
+                      className={`flex-col transition-all duration-500 rounded-xl overflow-hidden ${
+                        !isCenter
+                          ? 'hidden md:flex scale-95 z-0 opacity-100 cursor-pointer border border-[#A38B68]/20 bg-[#EFECE6] hover:border-[#A38B68]/40'
+                          : 'flex scale-100 sm:scale-105 z-20 shadow-[0_20px_50px_rgba(35,33,30,0.18)] border-2 border-[#A38B68] ring-4 ring-[#A38B68]/15 bg-white'
                       }`}
                     >
                       <div className="aspect-[4/3] overflow-hidden relative">

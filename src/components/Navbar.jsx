@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu as MenuIcon, X, Calendar, Moon } from 'lucide-react';
+import { Menu as MenuIcon, X, Calendar, Moon, MapPin, Phone } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, onOpenReservation }) {
   const [scrolled, setScrolled] = useState(false);
@@ -55,7 +55,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               alt="Elia Boutique Hotel Logo"
               className="h-8 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               onError={(e) => {
-                // Fallback if logo with.png transparent issue occurs
+                // Fallback if logo transparent issue occurs
                 e.target.src = "/Logos/white-new.png";
               }}
             />
@@ -127,48 +127,102 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#F7F4EF]/98 backdrop-blur-2xl md:hidden flex flex-col justify-between px-6 pt-24 pb-8"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="fixed inset-0 z-50 bg-[#F7F4EF] text-[#23211E] md:hidden flex flex-col justify-between px-5 pt-5 pb-6 overflow-y-auto"
           >
-            <div className="flex flex-col gap-6 text-center my-auto">
-              <img
-                src="/Logos/logo with.png"
-                alt="Elia Logo"
-                className="w-36 mx-auto mb-4 opacity-90"
-                onError={(e) => { e.target.src = "/Logos/white-new.png"; }}
-              />
-              {navLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <button
-                    key={link.id}
-                    onClick={() => handleNavClick(link.id)}
-                    className={`text-sm uppercase tracking-[0.25em] py-2 flex items-center justify-center gap-2 transition-colors ${
-                      activePage === link.id
-                        ? 'text-[#A38B68] font-bold'
-                        : 'text-[#23211E]/80 hover:text-[#A38B68]'
-                    }`}
-                  >
-                    {Icon && <Icon size={16} className="text-[#A38B68]" />}
-                    <span>{link.label}</span>
-                  </button>
-                );
-              })}
+            {/* Top Close Header */}
+            <div>
+              <div className="flex items-center justify-between pb-4 border-b border-[#A38B68]/20">
+                <button
+                  onClick={() => handleNavClick('home')}
+                  className="focus:outline-none cursor-pointer"
+                >
+                  <img
+                    src="/Logos/logo with.png"
+                    alt="Elia Boutique Hotel Logo"
+                    className="h-7 w-auto object-contain"
+                    onError={(e) => { e.target.src = "/Logos/white-new.png"; }}
+                  />
+                </button>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-9 h-9 rounded-full bg-[#EFECE6] border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all cursor-pointer"
+                  aria-label="Close menu"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Sub-label */}
+              <div className="pt-3 pb-1 flex items-center justify-between text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold font-sans">
+                <span>NAVIGATION</span>
+                <span>ELIA PHUKET</span>
+              </div>
+
+              {/* Menu Links Stack (Compact Cards) */}
+              <div className="py-2 flex flex-col gap-2.5">
+                {navLinks.map((link, idx) => {
+                  const Icon = link.icon;
+                  const isSelected = activePage === link.id;
+                  return (
+                    <motion.button
+                      key={link.id}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.04 + 0.05, duration: 0.25 }}
+                      onClick={() => handleNavClick(link.id)}
+                      className={`flex items-center justify-between px-4 py-3 rounded-xl border transition-all text-left cursor-pointer ${
+                        isSelected
+                          ? 'bg-[#23211E] text-[#F7F4EF] border-[#23211E] shadow-md'
+                          : 'bg-[#FFFFFF]/80 hover:bg-[#FFFFFF] text-[#23211E] border-[#A38B68]/20'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3.5">
+                        <span className={`font-serif italic text-xs ${isSelected ? 'text-[#A38B68]' : 'text-[#A38B68]'}`}>
+                          0{idx + 1}
+                        </span>
+                        <span className="text-xs uppercase tracking-[0.2em] font-semibold font-sans">
+                          {link.label}
+                        </span>
+                      </div>
+
+                      {Icon ? (
+                        <Icon size={15} className={isSelected ? 'text-[#A38B68]' : 'text-[#A38B68]'} />
+                      ) : (
+                        <div className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#A38B68]' : 'bg-[#A38B68]/40'}`} />
+                      )}
+                    </motion.button>
+                  );
+                })}
+              </div>
             </div>
 
-            <div className="flex flex-col gap-3 pt-6 border-t border-[#23211E]/10">
+            {/* Bottom Quick Info & CTA Footer */}
+            <div className="space-y-3 pt-4 border-t border-[#A38B68]/20">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenReservation();
                 }}
-                className="w-full py-3.5 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold uppercase tracking-[0.2em] text-xs shadow-lg"
+                className="w-full py-3.5 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2.5 shadow-xl hover:bg-[#A38B68] transition-all cursor-pointer"
               >
-                Reserve Stay or Table
+                <Calendar size={15} className="text-[#A38B68]" />
+                <span>RESERVE STAY OR TABLE</span>
               </button>
+
+              <div className="flex items-center justify-between text-[11px] text-[#6E6A63] font-sans font-light px-1">
+                <div className="flex items-center gap-1.5">
+                  <MapPin size={13} className="text-[#A38B68]" />
+                  <span>Bang Tao Beach, Phuket</span>
+                </div>
+                <a href="tel:+66824899371" className="flex items-center gap-1.5 hover:text-[#A38B68] transition-colors">
+                  <Phone size={13} className="text-[#A38B68]" />
+                  <span>+66 82 489 9371</span>
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
