@@ -42,20 +42,20 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isLightHeader
-            ? 'bg-[#F7F4EF]/95 backdrop-blur-xl border-b border-[#A38B68]/20 py-3.5 shadow-[0_4px_25px_rgba(35,33,30,0.08)]'
-            : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-5'
+            ? 'bg-[#F7F4EF]/95 backdrop-blur-xl border-b border-[#A38B68]/20 py-2 sm:py-2.5 shadow-[0_4px_25px_rgba(35,33,30,0.08)]'
+            : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-3 sm:py-3.5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 group focus:outline-none cursor-pointer py-1"
+            className="flex items-center gap-3 group focus:outline-none cursor-pointer"
           >
             <img
               src={isLightHeader ? "/Logos/logo with.png" : "/Logos/white-new.png"}
               alt="Elia Boutique Hotel Logo"
-              className="h-11 sm:h-14 lg:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-8 sm:h-10 lg:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               onError={(e) => {
                 // Fallback if logo transparent issue occurs
                 e.target.src = "/Logos/white-new.png";

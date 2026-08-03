@@ -26,7 +26,7 @@ export default function AboutPage({ onNavigate }) {
   ];
 
   return (
-    <div className="pt-28 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-20 bg-[#F7F4EF] text-[#23211E] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
