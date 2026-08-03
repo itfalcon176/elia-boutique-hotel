@@ -21,7 +21,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   const navLinks = [
     { id: 'menus', label: 'Menus' },
     { id: 'about', label: 'About' },
-    { id: 'latenight', label: 'Late Night', icon: Moon },
+    { id: 'latenight', label: 'Late Night Menu', icon: Moon },
     { id: 'location', label: 'Location' },
     { id: 'faqs', label: 'FAQs' },
     { id: 'contact', label: 'Contact' },
