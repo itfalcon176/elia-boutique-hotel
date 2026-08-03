@@ -674,15 +674,6 @@ export default function MenusPage({ onNavigate }) {
         )}
       </div>
 
-      {/* Bottom Tropical Palm Beach Banner */}
-      <div className="mt-16 w-full h-48 sm:h-64 overflow-hidden relative">
-        <img
-          src="/images/location.png"
-          alt="Elia Phuket Beachfront Palms"
-          className="w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F5EFE6] via-transparent to-transparent opacity-80" />
-      </div>
     </div>
   );
 }
