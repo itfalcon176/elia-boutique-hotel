@@ -123,19 +123,7 @@ export default function HeroSection({
 
           <motion.div
             variants={itemVariants}
-            className="w-16 sm:w-24 h-[1px] bg-gradient-to-r from-transparent via-[#C5A880] to-transparent mb-6"
-          />
-
-          <motion.p
-            variants={itemVariants}
-            className="font-sans text-xs sm:text-sm md:text-base font-light tracking-[0.3em] sm:tracking-[0.45em] uppercase text-[#FAF7F2]/95 text-shadow-lux mb-8"
-          >
-            Opening November 2026
-          </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center gap-4 bg-[#141312]/60 backdrop-blur-xl border border-[#FAF7F2]/15 p-2 sm:p-2.5 rounded-2xl sm:rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
+            className="flex flex-col sm:flex-row items-center gap-4 bg-[#141312]/60 backdrop-blur-xl border border-[#FAF7F2]/15 p-2 sm:p-2.5 rounded-2xl sm:rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.6)] mb-6"
           >
             <button
               onClick={onOpenReservation}
