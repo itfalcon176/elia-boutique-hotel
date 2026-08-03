@@ -586,17 +586,7 @@ export default function MenusPage({ onNavigate }) {
           </button>
         </div>
 
-        {/* Search Bar */}
-        <div className="max-w-md mx-auto mb-10 relative">
-          <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#A38B68]" />
-          <input
-            type="text"
-            placeholder="Search food or beverage items..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-full bg-white border border-[#DDD5C5] text-[#23211E] text-xs placeholder-[#99948B] focus:outline-none focus:border-[#23211E] transition-all shadow-xs font-sans"
-          />
-        </div>
+
 
         {/* Menu Sections Grid (Exact Nomad 5-column layout) */}
         {filteredSections.length === 0 ? (
