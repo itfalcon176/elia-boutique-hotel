@@ -1,9 +1,5 @@
 import HeroSection from '../components/HeroSection';
-import AboutSection from '../components/AboutSection';
-import SuitesSection from '../components/SuitesSection';
-import DiningSection from '../components/DiningSection';
-import SpaWellnessSection from '../components/SpaWellnessSection';
-import ExperiencesSection from '../components/ExperiencesSection';
+import OkuShowcaseSection from '../components/OkuShowcaseSection';
 import FaqsSection from '../components/FaqsSection';
 
 export default function HomePage({
@@ -20,28 +16,18 @@ export default function HomePage({
         toggleSound={toggleSound}
         onOpenReservation={onOpenReservation}
         onExploreClick={() => {
-          const el = document.getElementById('about');
+          const el = document.getElementById('oku-showcase');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }}
       />
 
-      {/* About / Essence Preview */}
-      <AboutSection />
-
-      {/* Suites & Sanctuary */}
-      <SuitesSection onOpenReservation={onOpenReservation} />
-
-      {/* Culinary Realm Preview */}
-      <DiningSection
-        onOpenMenu={() => onNavigate('menus')}
-        onSelectLateNight={() => onNavigate('latenight')}
-      />
-
-      {/* Wellness & Spa */}
-      <SpaWellnessSection onOpenReservation={onOpenReservation} />
-
-      {/* Experiences */}
-      <ExperiencesSection onOpenReservation={onOpenReservation} />
+      {/* OKU Ibiza Style Inspired Home Page Sections */}
+      <div id="oku-showcase">
+        <OkuShowcaseSection
+          onNavigate={onNavigate}
+          onOpenReservation={onOpenReservation}
+        />
+      </div>
 
       {/* FAQs */}
       <FaqsSection />
