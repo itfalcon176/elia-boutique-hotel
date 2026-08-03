@@ -110,13 +110,6 @@ export default function HeroSection({
           animate="visible"
           className="flex flex-col items-center max-w-4xl"
         >
-          <motion.span
-            variants={itemVariants}
-            className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-[#E2C08D] font-medium px-4 py-1.5 rounded-full bg-[#141312]/60 border border-[#C5A880]/30 backdrop-blur-md mb-6"
-          >
-            Phuket, Thailand • Barefoot Luxury
-          </motion.span>
-
           <motion.div
             variants={itemVariants}
             className="w-48 sm:w-64 md:w-80 lg:w-96 flex items-center justify-center mb-6"
