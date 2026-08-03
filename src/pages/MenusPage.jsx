@@ -134,54 +134,61 @@ export default function MenusPage({ onNavigate }) {
     {
       id: 'mains',
       title: 'Mains, Pasta & Steak',
+      subtitle: 'All steak dishes are served with a single side and sauce (Truffle Demi-Glaze / Chimichurri / Peppercorn / Nam Jim Jeaw)',
       items: [
         {
-          name: 'Wagyu Beef Cheeseburger',
-          desc: 'Grilled Australian Wagyu patty, aged cheddar, caramelized onions, truffle mayo, and French fries.',
-          price: '฿450',
+          name: 'Elia Beef Burger with French Fries',
+          desc: 'Juicy beef stacked with toppings, served with crispy golden fries.',
+          price: '฿590',
           image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
         },
         {
-          name: 'Mini Slider Trio',
-          desc: 'Trio of mini burgers: Wagyu beef, crispy buttermilk chicken, and slow-cooked pulled pork.',
-          price: '฿380',
+          name: 'Beef Sliders and French Fries',
+          desc: 'A trio of Beef Sliders, featuring seasoned Beef patties in a golden bun, accompanied by a side of fries.',
+          price: '฿590',
           image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80',
         },
         {
-          name: 'Grilled Australian Sirloin (250g)',
-          desc: 'Charcoal-grilled sirloin steak served with garlic herb butter, roasted baby potatoes, and red wine jus.',
-          price: '฿890',
-          image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop&q=80',
-        },
-        {
-          name: 'BBQ Pork Baby Back Ribs',
-          desc: 'Slow-cooked tender pork ribs glazed with signature BBQ sauce, served with coleslaw and fries.',
-          price: '฿580',
+          name: 'Sliced Angus Steak with Ponzu Dressing',
+          desc: 'Tender slices of aged Angus beef drizzled with citrusy ponzu.',
+          price: '฿1290',
           image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80',
         },
         {
-          name: 'Spaghetti Carbonara',
-          desc: 'Classic Italian spaghetti with crispy guanciale, egg yolk cream, black pepper, and pecorino romano.',
-          price: '฿380',
-          image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&auto=format&fit=crop&q=80',
+          name: 'Angus 270-Day Grain-Fed Australian Ribeye (300g)',
+          desc: 'Rich, marbled ribeye steak with deep flavor, paired with your choice of side and signature sauce.',
+          price: '฿2590',
+          image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop&q=80',
         },
         {
-          name: 'Seafood Linguine',
-          desc: 'Linguine pasta tossed with tiger prawns, squid, mussels, cherry tomatoes, and garlic white wine sauce.',
-          price: '฿480',
+          name: 'Spaghetti alle Vongole',
+          desc: 'Classic Italian spaghetti with fresh clams, garlic, white wine, and a hint of chili.',
+          price: '฿590',
           image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80',
         },
         {
-          name: 'Truffle Mushroom Risotto',
-          desc: 'Creamy arborio rice cooked with porcini mushrooms, black truffle oil, and shaved parmesan.',
-          price: '฿420',
+          name: 'Spaghetti Aglio e Olio (v)',
+          desc: 'Classic Italian pasta tossed with garlic, extra-virgin olive oil, chili, and parsley. Add shrimp.',
+          price: '฿590',
+          image: 'https://images.unsplash.com/photo-1621996346565-e3d5d628830f?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Truffle Linguini (v)',
+          desc: 'Silky linguine tossed in a rich, creamy truffle sauce for an indulgent vegetarian treat.',
+          price: '฿790',
           image: 'https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?w=600&auto=format&fit=crop&q=80',
         },
         {
-          name: 'Penne Arrabbiata',
-          desc: 'Penne pasta in a spicy tomato basil sauce with garlic, chili flakes, and fresh parmesan.',
-          price: '฿320',
+          name: 'Traditional Bolognese',
+          desc: 'Slow-cooked Italian beef ragù with tomato, herbs, and parmesan, served over perfectly al dente pasta of choice.',
+          price: '฿590',
           image: 'https://images.unsplash.com/photo-1621996346565-e3d5d628830f?w=600&auto=format&fit=crop&q=80',
+        },
+        {
+          name: 'Traditional Carbonara (p)',
+          desc: 'Creamy Roman-style spaghetti with crispy pancetta, egg yolk, pecorino, and cracked black pepper.',
+          price: '฿590',
+          image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&auto=format&fit=crop&q=80',
         },
       ],
     },
@@ -610,6 +617,11 @@ export default function MenusPage({ onNavigate }) {
                     <span>{section.title}</span>
                     <span className="text-[#A38B68]">—</span>
                   </h2>
+                  {section.subtitle && (
+                    <p className="text-[11px] sm:text-xs text-[#7A756C] font-light font-sans mt-2 max-w-2xl mx-auto leading-relaxed">
+                      {section.subtitle}
+                    </p>
+                  )}
                 </div>
 
                 {/* 5-Column Grid (Exact Nomad Style) */}
