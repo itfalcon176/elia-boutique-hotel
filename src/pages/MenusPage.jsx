@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Search, ArrowRight, Moon } from 'lucide-react';
 
@@ -34,6 +34,46 @@ export default function MenusPage({ onNavigate }) {
     ...row3Categories,
   ];
 
+  const handleCategorySelect = (pillId, pillLabel) => {
+    setActiveCategory(pillId);
+    if (pillId === 'all') {
+      window.history.pushState(null, '', '/menus');
+    } else {
+      const label = pillLabel || allCategoryPills.find((p) => p.id === pillId)?.label || pillId;
+      window.history.pushState(null, '', `/menus#${label}`);
+    }
+  };
+
+  useEffect(() => {
+    const syncFromHash = () => {
+      const rawHash = window.location.hash ? window.location.hash.substring(1) : '';
+      if (!rawHash) return;
+
+      const decodedHash = decodeURIComponent(rawHash).trim().toLowerCase();
+
+      const matchedPill = allCategoryPills.find(
+        (pill) =>
+          pill.label.toLowerCase() === decodedHash ||
+          pill.id.toLowerCase() === decodedHash ||
+          encodeURIComponent(pill.label).toLowerCase() === decodedHash
+      );
+
+      if (matchedPill) {
+        setActiveCategory(matchedPill.id);
+      }
+    };
+
+    syncFromHash();
+
+    window.addEventListener('hashchange', syncFromHash);
+    window.addEventListener('popstate', syncFromHash);
+
+    return () => {
+      window.removeEventListener('hashchange', syncFromHash);
+      window.removeEventListener('popstate', syncFromHash);
+    };
+  }, []);
+
   const menuSections = [
     {
       id: 'starters',
@@ -43,61 +83,61 @@ export default function MenusPage({ onNavigate }) {
           name: 'Shrimp Dynamite',
           desc: 'Crispy shrimp tossed in a creamy, spicy sauce with a touch of sweetness and heat.',
           price: '฿400',
-          image: '/images/dining.png',
+          image: '/menus-images/shrimp_dynamite.jpg',
         },
         {
           name: 'Fried Calamari and Garlic Aioli',
           desc: 'Golden-fried calamari served with a zesty house-made garlic aioli.',
           price: '฿450',
-          image: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Fried+Calamari+and+Garlic+Aioli.jpg',
         },
         {
           name: 'Korean BBQ Wings with Sesame-Cucumber Salad',
           desc: 'Sticky, smoky-sweet wings paired with a refreshing sesame-cucumber side salad.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Korean+Style+BBQ+Wings.jpg',
         },
         {
           name: 'BBQ Corn Ribs',
           desc: 'Char-grilled corn ribs brushed with smoky BBQ sauce—crunchy, juicy, and made for snacking.',
           price: '฿320',
-          image: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/corn_ribs.png',
         },
         {
           name: 'Steamed Edamame with Salt',
           desc: 'Lightly steamed edamame pods sprinkled with sea salt—simple, healthy, and addictive.',
           price: '฿290',
-          image: 'https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/edamame.png',
         },
         {
           name: 'Japanese Fried Chicken (Karaage Chicken)',
           desc: 'Crispy, golden-brown bite-sized chicken—served with a side of tangy dipping sauce.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/karaage.png',
         },
         {
           name: 'Spicy Salmon Tartare with Rice Nori',
           desc: 'Diced salmon in spicy dressing, served on crispy rice and wrapped in crunchy seaweed.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Spicy+Salmon+Tartare.jpg',
         },
         {
           name: 'French Fries (v)',
           desc: 'Classic crispy fries, golden and salted—perfectly snackable on the side.',
           price: '฿290',
-          image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/French+Fries.jpg',
         },
         {
           name: 'Chicken Tacos',
           desc: 'Two soft tacos with spiced chicken, topped with slaw and sauce.',
           price: '฿480',
-          image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/tacos.png',
         },
         {
           name: 'Pulled Beef Tacos',
           desc: 'Two soft tortillas filled with tender pulled beef, tangy slaw, and chipotle mayo for a bold, flavorful bite.',
           price: '฿690',
-          image: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Tacos.jpg',
         },
       ],
     },
@@ -109,25 +149,25 @@ export default function MenusPage({ onNavigate }) {
           name: 'Greek Salad (v)',
           desc: 'A mix of cucumber, tomatoes, olives, and feta cheese. Add chicken for extra protein.',
           price: '฿420 / 470',
-          image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Greek+Salad.jpg',
         },
         {
           name: 'Grilled Chicken Caesar Salad',
           desc: 'Grilled chicken over romaine lettuce with Caesar dressing, croutons, and parmesan.',
           price: '฿530',
-          image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Fried+Chicken+Caesar+Salad.jpg',
         },
         {
           name: 'Watermelon and Feta Salad (v)',
           desc: 'Juicy watermelon cubes tossed with creamy feta, fresh mint, and a splash of lime for a refreshing summer bite.',
           price: '฿490',
-          image: 'https://images.unsplash.com/photo-1592417817098-8f3d6ef23a85?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Watermelon+and+Feta+Salad+%28v%29.jpg.jpeg',
         },
         {
           name: 'Elia Crab Salad with Miso Mayonnaise',
           desc: 'Fresh crab meat tossed with miso mayonnaise, served on a bed of crisp greens.',
           price: '฿720',
-          image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Nomad+Crab+Salad.jpg',
         },
       ],
     },
@@ -140,55 +180,55 @@ export default function MenusPage({ onNavigate }) {
           name: 'Nomad Beef Burger with French Fries',
           desc: 'Juicy beef stacked with toppings, served with crispy golden fries.',
           price: '฿590',
-          image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/beef_burger.png',
         },
         {
           name: 'Beef Sliders and French Fries',
           desc: 'A trio of Beef Sliders, featuring seasoned Beef patties in a golden bun, accompanied by a side of fries.',
           price: '฿590',
-          image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Beef+Sliders+and+Fries.jpg',
         },
         {
           name: 'Sliced Angus Steak with Ponzu Dressing',
           desc: 'Tender slices of aged Angus beef drizzled with citrusy ponzu.',
           price: '฿1290',
-          image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Sliced+Angus+Steak.jpg',
         },
         {
           name: 'Angus 270-Day Grain-Fed Australian Ribeye (300g)',
           desc: 'Rich, marbled ribeye steak with deep flavor, paired with your choice of side and signature sauce.',
           price: '฿2590',
-          image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/ribeye.png',
         },
         {
           name: 'Spaghetti alle Vongole',
           desc: 'Classic Italian spaghetti with fresh clams, garlic, white wine, and a hint of chili.',
           price: '฿590',
-          image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Spaghetti+alle+Vongole.jpg',
         },
         {
           name: 'Spaghetti Aglio e Olio (v)',
           desc: 'Classic Italian pasta tossed with garlic, extra-virgin olive oil, chili, and parsley. Add shrimp.',
           price: '฿590',
-          image: 'https://images.unsplash.com/photo-1621996346565-e3d5d628830f?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Spaghetti+Aglio+e+Olio.jpg.jpeg',
         },
         {
           name: 'Truffle Linguini (v)',
           desc: 'Silky linguine tossed in a rich, creamy truffle sauce for an indulgent vegetarian treat.',
           price: '฿790',
-          image: 'https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Truffle+Linguini.jpg',
         },
         {
           name: 'Traditional Bolognese',
           desc: 'Slow-cooked Italian beef ragù with tomato, herbs, and parmesan, served over perfectly al dente pasta of choice.',
           price: '฿590',
-          image: 'https://images.unsplash.com/photo-1621996346565-e3d5d628830f?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Bolognese.jpg',
         },
         {
           name: 'Traditional Carbonara (p)',
           desc: 'Creamy Roman-style spaghetti with crispy pancetta, egg yolk, pecorino, and cracked black pepper.',
           price: '฿590',
-          image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Traditional+Carbonara.jpg',
         },
       ],
     },
@@ -200,49 +240,49 @@ export default function MenusPage({ onNavigate }) {
           name: 'Tom Yum Goong (Shrimp)',
           desc: 'A spicy and sour soup with shrimp, bursting with lemongrass and kaffir lime flavors.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Tom+Yum+Goong.jpg',
         },
         {
           name: 'Tom Kha (Chicken)',
           desc: 'A Thai soup featuring tender chicken, galangal, lemongrass, and coconut milk, harmoniously blended with aromatic herbs and spices.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Tom+Yum+Kha.jpg',
         },
         {
           name: 'Pineapple Fried Rice',
           desc: 'A Thailand favorite, with a choice of succulent seafood, tender chicken, or fresh vegetables, that contains nuts.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Pineapple+Fried+Rice.jpg',
         },
         {
           name: 'Pad Thai',
           desc: 'Stir-fried rice noodles with vegetables, chicken, shrimp, or seafood, garnished with crushed peanuts and lime, and contains nuts.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Pad+Thai.jpg',
         },
         {
           name: 'Thai Green Chicken Curry with Rice',
           desc: 'Creamy green curry with tender chicken, Thai eggplant, and basil, served with steamed rice.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Thai+Green+Chicken+Curry.jpg',
         },
         {
           name: 'Glass Noodle Salad with Shrimp',
           desc: 'A refreshing and spicy Thai salad with glass noodles, shrimp, herbs, and lime-chili dressing, and contain nuts.',
           price: '฿420',
-          image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Glass+Noodle+Salad.jpg',
         },
         {
           name: 'Thai Fried Rice',
           desc: 'Classic Thai fried rice with your choice of protein (Chicken, Pork, Shrimp, Seafood) and crisp vegetables.',
           price: '฿330',
-          image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Thai+Fried+Rice.jpg',
         },
         {
           name: 'Pad Kra Pao',
           desc: 'Spicy Thai stir-fry with holy basil, garlic, and chili, served with rice and your choice of meat (Pork, Chicken, Beef).',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Pad+Kra+Pao.jpg',
         },
       ],
     },
@@ -254,25 +294,25 @@ export default function MenusPage({ onNavigate }) {
           name: 'Nutella & Hazelnut Brownie (add Ice Cream) (v)(n)',
           desc: 'Rich chocolate brownie with a Nutella swirl, served with ice cream for a decadent treat.',
           price: '฿320 / 480',
-          image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Brownie.jpg',
         },
         {
           name: 'Tiramisu (v)',
           desc: 'A classic Italian dessert layered with mascarpone and espresso-soaked ladyfingers.',
           price: '฿390',
-          image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Tiramisu.jpg',
         },
         {
           name: 'Ice Cream (v)',
           desc: 'Select from Madagascar Vanilla Bean, Salted Caramel, Dark Belgian Chocolate (72%), or Dark Chocolate & Peanut Butter',
           price: '฿160',
-          image: 'https://images.unsplash.com/photo-1567206563064-6f60f4078b57?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Ice+Cream.jpg.jpeg',
         },
         {
           name: 'Mango Sticky Rice',
           desc: 'A Thai classic featuring sweet mango slices paired with sticky rice and coconut cream.',
           price: '฿350',
-          image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+          image: '/menus-images/Mango+Sticky+Rice.jpg',
         },
       ],
     },
@@ -529,7 +569,7 @@ export default function MenusPage({ onNavigate }) {
             {row1Categories.map((pill, idx) => (
               <div key={pill.id} className="flex items-center gap-3">
                 <button
-                  onClick={() => setActiveCategory(pill.id)}
+                  onClick={() => handleCategorySelect(pill.id, pill.label)}
                   className={`transition-colors cursor-pointer border-b ${
                     activeCategory === pill.id
                       ? 'text-[#23211E] font-semibold border-[#23211E]'
@@ -548,7 +588,7 @@ export default function MenusPage({ onNavigate }) {
             {row2Categories.map((pill, idx) => (
               <div key={pill.id} className="flex items-center gap-3">
                 <button
-                  onClick={() => setActiveCategory(pill.id)}
+                  onClick={() => handleCategorySelect(pill.id, pill.label)}
                   className={`transition-colors cursor-pointer border-b ${
                     activeCategory === pill.id
                       ? 'text-[#23211E] font-semibold border-[#23211E]'
@@ -567,7 +607,7 @@ export default function MenusPage({ onNavigate }) {
             {row3Categories.map((pill) => (
               <button
                 key={pill.id}
-                onClick={() => setActiveCategory(pill.id)}
+                onClick={() => handleCategorySelect(pill.id, pill.label)}
                 className={`transition-colors cursor-pointer border-b ${
                   activeCategory === pill.id
                     ? 'text-[#23211E] font-semibold border-[#23211E]'
@@ -582,7 +622,7 @@ export default function MenusPage({ onNavigate }) {
           {/* View All Button */}
           {activeCategory !== 'all' && (
             <button
-              onClick={() => setActiveCategory('all')}
+              onClick={() => handleCategorySelect('all')}
               className="mt-1 text-[11px] uppercase tracking-wider text-[#A38B68] font-semibold hover:underline cursor-pointer"
             >
               Show All Menu Categories
@@ -677,6 +717,14 @@ export default function MenusPage({ onNavigate }) {
                     </motion.div>
                   ))}
                 </div>
+
+                {section.id === 'desserts' && (
+                  <div className="text-center max-w-3xl mx-auto pt-4 mb-[10px] px-4">
+                    <p className="text-[#7A756C] font-light text-xs sm:text-sm font-sans leading-relaxed">
+                      Please be aware that our food may contain or come into contact with common allergens, such as dairy, eggs, wheat, soybeans, tree nuts, peanuts, fish, shellfish or wheat. While we take steps to minimize risk and safely handle the foods that contain potential allergens, please be advised that cross contamination may occur.
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
