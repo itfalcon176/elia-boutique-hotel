@@ -321,58 +321,430 @@ export default function MenusPage({ onNavigate }) {
       title: 'Champagne & Prosecco',
       items: [
         {
+          name: 'Château de Bligny Grande Réserve Brut',
+          desc: '',
+          price: '฿3,280',
+        },
+        {
+          name: 'Nicolas Feuillatte Brut Réserve',
+          desc: '',
+          price: '฿3,790',
+        },
+        {
+          name: 'Nicolas Feuillatte Brut Rosé',
+          desc: '',
+          price: '฿4,390',
+        },
+        {
+          name: 'Frerejean Frères Brut Premier Cru',
+          desc: '',
+          price: '฿4,590',
+        },
+        {
           name: 'Moët & Chandon Impérial Brut',
-          desc: 'Iconic French champagne with vibrant green apple, citrus notes, and crisp minerality.',
-          price: '฿5,800',
-          image: 'https://images.unsplash.com/photo-1594488669399-bfb7e2894562?w=600&auto=format&fit=crop&q=80',
+          desc: '',
+          price: '฿4,650',
         },
         {
-          name: 'Veuve Clicquot Yellow Label Brut',
-          desc: 'Pinot Noir dominant champagne with aromas of peach, plum, and subtle vanilla brioche.',
-          price: '฿6,500',
-          image: 'https://images.unsplash.com/photo-1569919659476-f0852f6834b7?w=600&auto=format&fit=crop&q=80',
+          name: 'Veuve Clicquot Brut (Carte Jaune)',
+          desc: '',
+          price: '฿4,820',
         },
         {
-          name: 'Prosecco Superiore DOCG',
-          desc: 'Crisp Italian sparkling wine with delicate persistent bubbles and refreshing green apple notes.',
-          price: '฿2,400',
-          image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&auto=format&fit=crop&q=80',
+          name: 'Nicolas Feuillatte Blanc de Blancs Millésimé',
+          desc: '',
+          price: '฿5,080',
         },
         {
-          name: 'Dom Pérignon Vintage',
-          desc: 'Prestige champagne with complex aromas of candied fruit, brioche, roasted almonds, and citrus.',
-          price: '฿18,500',
-          image: 'https://images.unsplash.com/photo-1594488669399-bfb7e2894562?w=600&auto=format&fit=crop&q=80',
+          name: 'Moët & Chandon Impérial Brut Rosé',
+          desc: '',
+          price: '฿6,020',
+        },
+        {
+          name: 'Frerejean Frères Rosé Premier Cru',
+          desc: '',
+          price: '฿7,370',
+        },
+        {
+          name: 'Fleur de Miraval Petite Fleur Rosé',
+          desc: '',
+          price: '฿8,170',
+        },
+        {
+          name: 'Moët & Chandon Impérial Brut (Magnum)',
+          desc: '',
+          price: '฿10,290',
+        },
+        {
+          name: 'Ruinart Blanc de Blancs Brut',
+          desc: '',
+          price: '฿10,290',
+        },
+        {
+          name: 'Ruinart Brut Rosé',
+          desc: '',
+          price: '฿10,600',
+        },
+        {
+          name: 'Veuve Clicquot Brut (Magnum)',
+          desc: '',
+          price: '฿11,340',
+        },
+        {
+          name: 'Nicolas Feuillatte Palmes d’Or',
+          desc: '',
+          price: '฿13,380',
+        },
+        {
+          name: 'Dom Pérignon Brut',
+          desc: '',
+          price: '฿19,950',
+        },
+        {
+          name: 'Louis Roederer Cristal Brut (Millésimé)',
+          desc: '',
+          price: '฿30,450',
+        },
+        {
+          name: 'Fleur de Miraval Petite Fleur Rosé Exclusive',
+          desc: '',
+          price: '฿33,440',
+        },
+        {
+          name: 'Dom Pérignon Brut Rosé',
+          desc: '',
+          price: '฿35,590',
+        },
+        {
+          name: 'Veuve Clicquot Brut (Double Magnum)',
+          desc: '',
+          price: '฿36,750',
+        },
+        {
+          name: 'Villa Sandi Il Fresco Prosecco DOC Rosé Millesimato Brut, 2023, 11%, Italy',
+          desc: '',
+          price: '฿280 / ฿1,240',
+        },
+        {
+          name: 'Villa Sandi Il Fresco Prosecco Biologico DOC – Organic, NV, 11%, Italy',
+          desc: '',
+          price: '฿280 / ฿1,240',
         },
       ],
     },
     {
       id: 'wine',
       title: 'Red, White & Rosé Wine',
-      items: [
+      subcategories: [
         {
-          name: 'Whispering Angel Rosé (Provence)',
-          desc: 'Premium French rosé with delicate aromas of red berries, fresh peach, and floral elegance.',
-          price: '฿3,200',
-          image: 'https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?w=600&auto=format&fit=crop&q=80',
+          title: 'Red Wine',
+          items: [
+            {
+              name: 'Monte Antico Toscana Rosso IGT, 2019, 13%, Italy',
+              desc: 'Rich, red fruit and oaky',
+              price: '฿300 / ฿1,130',
+            },
+            {
+              name: 'Zuccardi Serie A Malbec (Valle de Uco), 2023, 13.5%, Argentina',
+              desc: 'Bold, black fruit and coffee',
+              price: '฿310 / ฿1,330',
+            },
+            {
+              name: 'Sileni Estates Pinot Noir (Hawke’s Bay), 2022, 12%, New Zealand',
+              desc: 'Smooth, strawberry and earthy',
+              price: '฿320 / ฿1,380',
+            },
+            {
+              name: 'Vintae Clea Ribera del Duero Crianza, 2021, 14%, Spain',
+              desc: 'Round, vanilla and blackberry',
+              price: '฿380 / ฿1,720',
+            },
+            {
+              name: 'Marqués de Riscal Reserva (Rioja DOCa), 2019, 14%, Spain',
+              desc: 'Spicy, cedar and earthy',
+              price: '฿2,110',
+            },
+            {
+              name: 'San Marzano Collezione Cinquanta, NV, 14.5%, Italy',
+              desc: 'Intense, chocolate and blackcurrant',
+              price: '฿2,300',
+            },
+            {
+              name: 'Bannock Brae Pinot Noir ‘Crawford’s Block’, 2019, 12%, New Zealand',
+              desc: 'Fresh, cherry and earthy',
+              price: '฿2,390',
+            },
+            {
+              name: 'J. de Villebois Sancerre Rouge, 2022, 12.8%, France',
+              desc: 'Subtle, raspberry and mineral',
+              price: '฿2,430',
+            },
+            {
+              name: 'Grattamacco Bolgheri Rosso DOC, 2021, 13.5%, Italy',
+              desc: 'Smooth, black fruit and oaky',
+              price: '฿2,840',
+            },
+            {
+              name: 'Soprasasso Amarone della Valpolicella DOCG, 2020, 15%, Italy',
+              desc: 'Well-balanced, chocolate and blackcurrant',
+              price: '฿2,950',
+            },
+            {
+              name: 'Louis Jadot Santenay ‘Clos de Malte’, 2017, 13.5%, France',
+              desc: 'Complex, cherry and earthy',
+              price: '฿3,000',
+            },
+            {
+              name: 'Le Seuil de Mazeyres Pomerol AOC, 2019, 12.5%, France',
+              desc: 'Opulent, vanilla and raspberry',
+              price: '฿3,250',
+            },
+            {
+              name: 'Enzo Bartoli Barolo ‘Bussia’ DOCG, 2016, 14%, Italy',
+              desc: 'Smooth, cherry and earthy',
+              price: '฿3,880',
+            },
+            {
+              name: 'LV Pinot Noir (Marlborough), 2019, 13.5%, New Zealand',
+              desc: 'Bright and silky, red cherry and raspberry',
+              price: '฿4,290',
+            },
+            {
+              name: 'Henschke ‘Keyneton Euphonium’ (Barossa Valley), 2019, 14%, Australia',
+              desc: 'Rich, cassis and oaky',
+              price: '฿4,690',
+            },
+            {
+              name: 'San Giorgio Brunello di Montalcino DOCG ‘Ugolforte’, 2019, 13.5%, Italy',
+              desc: 'Fleshy, cherry and smoky',
+              price: '฿5,070',
+            },
+            {
+              name: 'Domaine François Merlin Côte-Rôtie, 2020, 14%, France',
+              desc: 'Textured, blackberry and earthy',
+              price: '฿5,090',
+            },
+            {
+              name: 'Louis Jadot Pommard, 2021, 13%, France',
+              desc: 'Refined, earthy and strawberry',
+              price: '฿6,160',
+            },
+            {
+              name: 'Rockford ‘Basket Press’ Shiraz, NV, 13.5%, Australia',
+              desc: 'Complex, oak and plum',
+              price: '฿6,510',
+            },
+            {
+              name: 'DBR (Lafite) Blason de L’Évangile Pomerol AOC, NV, 14%, France',
+              desc: 'Refined, blueberry and cedar',
+              price: '฿7,990',
+            },
+            {
+              name: 'Château Durfort-Vivens Margaux 2ème Grand Cru Classé, 2015, France',
+              desc: 'Complex, black fruit and earthy',
+              price: '฿8,400',
+            },
+            {
+              name: 'Don Maximiano Cabernet Sauvignon, 2012, 14%, Chile',
+              desc: 'Generous, red berry and chocolate',
+              price: '฿8,500',
+            },
+            {
+              name: 'Marqués de Riscal ‘Barón de Chirel’ (Rioja DOCa), NV, 14%, Spain',
+              desc: 'Delicate, black cherry and floral',
+              price: '฿8,960',
+            },
+            {
+              name: 'Yalumba ‘The Octavius’ Old Vine Shiraz (Barossa Valley), 2016, 14%, Australia',
+              desc: 'Spicy, fruity and oaky',
+              price: '฿10,230',
+            },
+            {
+              name: 'Bertinga ‘Volta di Bertinga’ Toscana IGT, 2016, 14%, Italy',
+              desc: 'Captivating, black olive and leather',
+              price: '฿10,530',
+            },
+            {
+              name: 'Luis Pato ‘Quinta do Ribeirinho Pé Franco’ Bairrada DOC, 2019, 13.5%, Portugal',
+              desc: 'Bold, violet and pine',
+              price: '฿12,450',
+            },
+            {
+              name: 'Château Belair (Dubois-Challon) Saint-Émilion 1er Grand Cru Classé, 2005, 14.5%, France',
+              desc: 'Tannic, blackcurrant and coffee',
+              price: '฿12,650',
+            },
+            {
+              name: 'Château de Beaucastel Châteauneuf-du-Pape Rouge, 2021, 14%, France',
+              desc: 'Mellow, leather and blackberry',
+              price: '฿15,120',
+            },
+            {
+              name: 'Poggio di Sotto Brunello di Montalcino DOCG, 2019, 14%, Italy',
+              desc: 'Elegant, earthy and vanilla',
+              price: '฿22,680',
+            },
+            {
+              name: 'ADAMVS ‘DÁMVS’ Cabernet Sauvignon (Howell Mountain AVA), 2019, 14%, USA',
+              desc: 'Velvety, dark fruit and oaky',
+              price: '฿36,290',
+            },
+          ],
         },
         {
-          name: 'Marlborough Sauvignon Blanc (New Zealand)',
-          desc: 'Vibrant white wine with intense tropical passionfruit, grapefruit, and fresh lime notes.',
-          price: '฿2,600',
-          image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80',
+          title: 'White Wine',
+          items: [
+            {
+              name: 'Sileni Estates Sauvignon Blanc (Marlborough), 2023, 13%, New Zealand',
+              desc: 'Refreshing, tropical fruit',
+              price: '฿300 / ฿1,280',
+            },
+            {
+              name: 'Zuccardi Serie A Chardonnay–Viognier (Tupungato, Uco Valley), 2023, 14%, Argentina',
+              desc: 'Full-flavored, tropical and floral',
+              price: '฿320 / ฿1,330',
+            },
+            {
+              name: 'Peter Zemmer Pinot Grigio (Alto Adige DOC), 2022, 13.5%, Italy',
+              desc: 'Harmonious, pear and citrus',
+              price: '฿1,520',
+            },
+            {
+              name: 'Marquis de Pennautier ‘Terroirs d’Altitude’ Chardonnay, 2022, 13%, France',
+              desc: 'Exotic fruits, vanilla and honey; mineral and fresh',
+              price: '฿1,720',
+            },
+            {
+              name: 'J. de Villebois Sancerre, 2023, 12.5%, France',
+              desc: 'Delicate, green apple and citrus',
+              price: '฿2,430',
+            },
+            {
+              name: 'Louis Jadot Pouilly-Fuissé, 2023, 13%, France',
+              desc: 'Powerful, orchard fruit and vanilla',
+              price: '฿3,300',
+            },
+            {
+              name: 'Cloudy Bay Sauvignon Blanc (Marlborough), 2024, 13%, New Zealand',
+              desc: 'Vibrant, tropical and herbal',
+              price: '฿3,320',
+            },
+            {
+              name: 'LV Chardonnay (Mendoza Clone, Marlborough), 2023, 13.5%, New Zealand',
+              desc: 'Structured, nutty and creamy',
+              price: '฿3,480',
+            },
+            {
+              name: 'Château de Beaucastel ‘Coudoulet’ Côtes-du-Rhône Blanc, 2022, 14%, France',
+              desc: 'Textured, peach and honey',
+              price: '฿3,590',
+            },
+            {
+              name: 'La Chablisienne Chablis 1er Cru ‘Montmains’, 2020, 12.5%, France',
+              desc: 'Smooth, green apple and minerality',
+              price: '฿3,750',
+            },
+            {
+              name: 'Grattamacco Bianco (Bolgheri DOC) Vermentino, 2022, 14%, Italy',
+              desc: 'Citrus, mineral, floral',
+              price: '฿3,880',
+            },
+            {
+              name: 'Quintodecimo ‘Giallo d’Arles’ Greco di Tufo DOCG, 2019, 13.5%, Italy',
+              desc: 'Tannic, fruity and earthy',
+              price: '฿4,160',
+            },
+            {
+              name: 'Domaine François Merlin Condrieu ‘Les Terroirs’, 2020, 13.5%, France',
+              desc: 'Smooth-textured, apricot and earthy',
+              price: '฿4,270',
+            },
+            {
+              name: 'Quintodecimo ‘Exultet’ Fiano di Avellino DOCG, 2019, 13.5%, Italy',
+              desc: 'Complex, mineral and pear',
+              price: '฿4,480',
+            },
+            {
+              name: 'Vasse Felix ‘Heytesbury’ Chardonnay (Margaret River), 2022, 13%, Australia',
+              desc: 'Refined, oaky and grapefruit',
+              price: '฿5,440',
+            },
+            {
+              name: 'Domaine du Colombier Hermitage Blanc, 2021, 13%, France',
+              desc: 'Elegant, exotic and earthy',
+              price: '฿7,500',
+            },
+            {
+              name: 'Louis Jadot Meursault, 2022, 13%, France',
+              desc: 'Rounded, apple and citrus',
+              price: '฿7,690',
+            },
+            {
+              name: 'Château Lagrézette ‘Le Pigeonnier White Vision’ Viognier, 2018, 13%, France',
+              desc: 'Velvety, oaky and coconut',
+              price: '฿7,770',
+            },
+            {
+              name: 'La Chablisienne Chablis Grand Cru ‘Château Grenouilles’, 2020, 13%, France',
+              desc: 'Fleshy, earthy and oaky',
+              price: '฿8,900',
+            },
+            {
+              name: 'Querciabella ‘Batàr’ Toscana IGT, 2019, 14%, Italy',
+              desc: 'Intense, oak and peach',
+              price: '฿10,770',
+            },
+            {
+              name: 'Bachelet-Monnot Puligny-Montrachet 1er Cru ‘Les Folatières’, 2021, 13%, France',
+              desc: 'Creamy, hazelnut and vanilla',
+              price: '฿18,490',
+            },
+          ],
         },
         {
-          name: 'Chianti Classico DOCG (Tuscany)',
-          desc: 'Refined Italian red with ripe cherry, wild rosemary, and toasted oak complexities.',
-          price: '฿2,800',
-          image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&auto=format&fit=crop&q=80',
-        },
-        {
-          name: 'Barossa Valley Shiraz (Australia)',
-          desc: 'Full-bodied red wine packed with ripe blackberry, dark chocolate, and spicy oak character.',
-          price: '฿3,100',
-          image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=600&auto=format&fit=crop&q=80',
+          title: 'Rosé Wine',
+          items: [
+            {
+              name: 'J. de Villebois Pinot Noir Rosé (Val de Loire), NV, 12%, France',
+              desc: 'Floral and citrusy',
+              price: '฿300 / ฿1,250',
+            },
+            {
+              name: 'Château d\'Esclans The Pale Rosé by Sacha Lichine, 2023, 12.5%, France',
+              desc: 'Crisp and refreshing',
+              price: '฿340 / ฿1,280',
+            },
+            {
+              name: 'Monfort Pinot Grigio Ramato Vigneti delle Dolomiti IGT, NV, 12.5%, Italy',
+              desc: 'Intense, fruity and spicy',
+              price: '฿1,480',
+            },
+            {
+              name: 'Château d\'Esclans Whispering Angel Rosé (Côtes de Provence), NV, 13.5%, France',
+              desc: 'Raspberry and citrus',
+              price: '฿1,650',
+            },
+            {
+              name: 'Château d\'Esclans Rock Angel Rosé (Côtes de Provence), NV, 13.5%, France',
+              desc: 'Peach and mineral',
+              price: '฿2,430',
+            },
+            {
+              name: 'Domaines Ott Clos Mireille Rosé (Côtes de Provence), NV, 13.5%, France',
+              desc: 'Tropical and herbal',
+              price: '฿2,950',
+            },
+            {
+              name: 'Château d\'Esclans Whispering Angel Rosé (Côtes de Provence), NV, 13.5%, France (Magnum)',
+              desc: 'Raspberry and citrus',
+              price: '฿3,520',
+            },
+            {
+              name: 'Château d\'Esclans Garrus Rosé (Côtes de Provence), NV, 14.5%, France',
+              desc: 'White peach and subtle spice',
+              price: '฿12,250',
+            },
+          ],
         },
       ],
     },
@@ -381,88 +753,796 @@ export default function MenusPage({ onNavigate }) {
       title: 'Signature Cocktails',
       items: [
         {
-          name: 'Elia Sunset Breeze (Signature)',
-          desc: 'Chalong Bay Thai Rum, fresh passionfruit, coconut cream, lime, and roasted pineapple rim.',
-          price: '฿380',
-          image: '/images/cocktail.png',
+          name: 'Pinky Promise',
+          desc: 'Bael-fruit gin, Campari, and pineapple weave a bittersweet, tropical refresher.',
+          price: '฿450',
         },
         {
-          name: 'Smoked Mezcalita',
-          desc: 'Montelobos Mezcal, Cointreau, fresh lime juice, agave nectar, and black volcanic salt rim.',
-          price: '฿420',
-          image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80',
+          name: 'Skinny Bitch',
+          desc: 'Blanco tequila, fresh watermelon, agave, and chili deliver a light, lively heat.',
+          price: '฿450',
         },
         {
-          name: 'Phuket Passion Spritz',
-          desc: 'Aperol, Prosecco, fresh passionfruit, soda water, and fresh mint leaf.',
-          price: '฿360',
-          image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
+          name: 'Island Passion',
+          desc: 'London Dry Gin, Thai basil, and banana-passion cordial craft lush island aromatics.',
+          price: '฿450',
         },
         {
-          name: 'Coconut Lychee Martini',
-          desc: 'Tanqueray Gin, lychee liqueur, fresh coconut water, and a dash of rose blossom.',
-          price: '฿360',
-          image: 'https://images.unsplash.com/photo-1536935338788-846bb9981813?w=600&auto=format&fit=crop&q=80',
+          name: 'Killer Beach Zombie',
+          desc: 'Gin, blue curaçao, Campari, and pineapple collide in a vivid, bittersweet splash.',
+          price: '฿450',
+        },
+        {
+          name: 'Mango Tree Punch',
+          desc: 'Vodka, amaretto, mango purée, and coconut milk blend into creamy tropical comfort.',
+          price: '฿450',
+        },
+        {
+          name: 'Monsoon Mule',
+          desc: 'Bourbon, Kahlúa, amaro, ginger beer, orange, and lime storm with depth.',
+          price: '฿450',
+        },
+        {
+          name: 'Nomad Tiki Puka Puka',
+          desc: 'Five rums and tropical juices fuel a classic, potent tiki voyage.',
+          price: '฿450',
         },
       ],
     },
     {
       id: 'classic-cocktails',
       title: 'Classic Cocktails',
-      items: [
+      subcategories: [
         {
-          name: 'Classic Mojito',
-          desc: 'White rum, fresh muddled mint leaves, fresh lime juice, cane sugar, and chilled soda water.',
-          price: '฿340',
-          image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
+          title: 'Vodka',
+          items: [
+            {
+              name: 'Watermelon Martini',
+              desc: 'Tito’s Vodka, watermelon, sweet & sour',
+              price: '฿380',
+            },
+            {
+              name: 'Espresso Martini',
+              desc: 'Vodka, Kahlúa, white crème de cacao, espresso',
+              price: '฿380',
+            },
+            {
+              name: 'Porn Star Martini',
+              desc: 'Vanilla Vodka, vanilla liqueur, passion fruit, pineapple juice',
+              price: '฿380',
+            },
+          ],
         },
         {
-          name: 'Aperol Spritz',
-          desc: 'Aperol, Prosecco, soda water, and fresh orange slice.',
-          price: '฿360',
-          image: 'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=600&auto=format&fit=crop&q=80',
+          title: 'Gin',
+          items: [
+            {
+              name: 'Classic Martini',
+              desc: 'Beefeater Gin, dry vermouth, green olive',
+              price: '฿380',
+            },
+            {
+              name: 'Negroni',
+              desc: 'Beefeater Gin, sweet vermouth, Campari',
+              price: '฿500',
+            },
+          ],
         },
         {
-          name: 'Espresso Martini',
-          desc: 'Premium vodka, freshly brewed espresso, Kahlúa coffee liqueur, and vanilla bean syrup.',
-          price: '฿380',
-          image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80',
+          title: 'Tequila',
+          items: [
+            {
+              name: 'Classic Margarita',
+              desc: 'Tequila Blanco, Cointreau, lime juice, agave syrup',
+              price: '฿350',
+            },
+            {
+              name: 'Coconut Margarita',
+              desc: 'Coconut-infused Tequila, Cointreau, coconut milk, sweet & sour',
+              price: '฿350',
+            },
+          ],
         },
         {
-          name: 'Negroni',
-          desc: 'Campari, sweet vermouth, Tanqueray London Dry Gin, and charred orange wheel.',
-          price: '฿380',
-          image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
+          title: 'Rum',
+          items: [
+            {
+              name: 'Jungle Bird',
+              desc: 'White Rum, Campari, pineapple juice, sweet & sour',
+              price: '฿320',
+            },
+            {
+              name: 'Classic Mai Tai',
+              desc: 'Diplomático Rum, White & Dark Rum, orange liqueur, lime juice',
+              price: '฿320',
+            },
+            {
+              name: 'Piña Colada',
+              desc: 'White Rum, Coconut Rum, pineapple juice, coconut milk',
+              price: '฿320',
+            },
+            {
+              name: 'Mojito',
+              desc: 'Havana Club 3 Year Rum, lime juice, sugar, mint leaves, soda',
+              price: '฿380',
+            },
+            {
+              name: 'Dark & Stormy',
+              desc: 'White Rum, lemon juice, ginger beer',
+              price: '฿420',
+            },
+          ],
+        },
+        {
+          title: 'Whisky',
+          items: [
+            {
+              name: 'Old Fashioned',
+              desc: 'Bourbon, Angostura bitters, brown sugar',
+              price: '฿320',
+            },
+            {
+              name: 'Whiskey Sour',
+              desc: 'Bourbon, Angostura bitters, lemon juice, egg white',
+              price: '฿320',
+            },
+          ],
+        },
+        {
+          title: 'Prosecco Cocktails',
+          items: [
+            {
+              name: 'Hugo Spritz',
+              desc: 'Prosecco, elderflower liqueur, mint leaves, soda',
+              price: '฿320',
+            },
+            {
+              name: 'Aperol Spritz',
+              desc: 'Aperol, Prosecco, soda',
+              price: '฿420',
+            },
+          ],
+        },
+        {
+          title: 'Other Classics',
+          items: [
+            {
+              name: 'Americano',
+              desc: 'Campari, sweet vermouth, soda, orange slice',
+              price: '฿420',
+            },
+            {
+              name: 'Long Island Iced Tea',
+              desc: 'Rum, Vodka, Gin, Tequila, Coca-Cola, sweet & sour',
+              price: '฿420',
+            },
+            {
+              name: 'Nomad Sangria (500 ml)',
+              desc: 'Red wine, brandy, orange, apple, seasonal fruit, citrus',
+              price: '฿900',
+            },
+            {
+              name: 'Nomad Sangria (1 L)',
+              desc: 'Red wine, brandy, orange, apple, seasonal fruit, citrus',
+              price: '฿1,800',
+            },
+          ],
         },
       ],
     },
     {
       id: 'spirits',
       title: 'Spirits, Aperitifs & Liqueurs',
-      items: [
+      subcategories: [
         {
-          name: 'Macallan 12 Years Double Cask',
-          desc: 'Single malt Scotch whisky with balanced honeyed wood, citrus, and ginger character.',
-          price: '฿480',
-          image: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=600&auto=format&fit=crop&q=80',
+          title: 'Vodka',
+          items: [
+            {
+              name: 'Smirnoff No. 21 Vodka',
+              desc: '',
+              price: '฿170 / ฿2,700',
+            },
+            {
+              name: 'Russian Standard Original',
+              desc: '',
+              price: '฿170 / ฿2,700',
+            },
+            {
+              name: 'Absolut Vodka',
+              desc: '',
+              price: '฿210 / ฿3,300',
+            },
+            {
+              name: 'Tito’s Handmade Vodka',
+              desc: '',
+              price: '฿200 / ฿3,300',
+            },
+            {
+              name: 'CÎROC Premium Vodka',
+              desc: '',
+              price: '฿450 / ฿7,500',
+            },
+            {
+              name: 'Beluga Noble Russian Vodka',
+              desc: '',
+              price: '฿500 / ฿7,700',
+            },
+            {
+              name: 'Belvedere Vodka (Poland)',
+              desc: '',
+              price: '฿500 / ฿7,900',
+            },
+            {
+              name: 'Grey Goose Vodka',
+              desc: '',
+              price: '฿500 / ฿8,000',
+            },
+          ],
         },
         {
-          name: 'Hennessy VSOP Cognac',
-          desc: 'Smooth French cognac with harmonious aromas of candied fruit and subtle vanilla.',
-          price: '฿520',
-          image: 'https://images.unsplash.com/photo-1569919659476-f0852f6834b7?w=600&auto=format&fit=crop&q=80',
+          title: 'Gin',
+          items: [
+            {
+              name: 'Gordon’s London Dry Gin',
+              desc: '',
+              price: '฿210 / ฿3,300',
+            },
+            {
+              name: 'Beefeater London Dry Gin',
+              desc: '',
+              price: '฿210 / ฿3,500',
+            },
+            {
+              name: 'Whitley Neill Rhubarb & Ginger Gin',
+              desc: '',
+              price: '฿230 / ฿3,900',
+            },
+            {
+              name: 'Whitley Neill Lemongrass & Ginger Gin',
+              desc: '',
+              price: '฿260 / ฿3,900',
+            },
+            {
+              name: 'Tanqueray London Dry Gin',
+              desc: '',
+              price: '฿280 / ฿4,500',
+            },
+            {
+              name: 'Beefeater Pink Strawberry Gin',
+              desc: '',
+              price: '฿290 / ฿4,800',
+            },
+            {
+              name: 'Bombay Sapphire Gin',
+              desc: '',
+              price: '฿290 / ฿4,800',
+            },
+            {
+              name: 'Roku Japanese Gin',
+              desc: '',
+              price: '฿320 / ฿5,000',
+            },
+            {
+              name: 'Bulldog London Dry Gin',
+              desc: '',
+              price: '฿380 / ฿6,400',
+            },
+            {
+              name: 'Hendrick’s Gin',
+              desc: '',
+              price: '฿500 / ฿7,600',
+            },
+            {
+              name: 'Drumshanbo Gunpowder Irish Gin',
+              desc: '',
+              price: '฿500 / ฿8,000',
+            },
+            {
+              name: 'Monkey 47 Schwarzwald Dry Gin',
+              desc: '',
+              price: '฿800 / ฿8,400',
+            },
+            {
+              name: 'Hendrick’s Flora Adora Gin',
+              desc: '',
+              price: '฿600 / ฿9,200',
+            },
+            {
+              name: 'Hendrick’s Neptunia Gin',
+              desc: '',
+              price: '฿600 / ฿9,200',
+            },
+            {
+              name: 'Dictador Colombian Ortodoxy Gin',
+              desc: '',
+              price: '฿600 / ฿9,400',
+            },
+            {
+              name: 'Gin Mare Mediterranean Gin',
+              desc: '',
+              price: '฿620 / ฿10,000',
+            },
+            {
+              name: 'Forty Spotted Wild Rose Gin',
+              desc: '',
+              price: '฿680 / ฿11,000',
+            },
+          ],
         },
         {
-          name: 'Tanqueray No. TEN Gin',
-          desc: 'Small batch premium gin distilled with whole fresh citrus fruits and hand-selected botanicals.',
-          price: '฿380',
-          image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80',
+          title: 'Tequila',
+          items: [
+            {
+              name: 'Jose Cuervo Especial Reposado',
+              desc: '',
+              price: '฿200 / ฿3,000',
+            },
+            {
+              name: 'Jose Cuervo Especial Silver',
+              desc: '',
+              price: '฿200 / ฿3,000',
+            },
+            {
+              name: 'Olmeca Reposado Tequila',
+              desc: '',
+              price: '฿200 / ฿3,000',
+            },
+            {
+              name: 'Olmeca Altos Plata 100% Agave',
+              desc: '',
+              price: '฿470 / ฿7,300',
+            },
+            {
+              name: 'Olmeca Altos Reposado 100% Agave',
+              desc: '',
+              price: '฿500 / ฿7,800',
+            },
+            {
+              name: 'Espolòn Reposado Tequila',
+              desc: '',
+              price: '฿530 / ฿8,800',
+            },
+            {
+              name: 'Patrón Silver Tequila',
+              desc: '',
+              price: '฿650 / ฿10,800',
+            },
+            {
+              name: '1800 Añejo Tequila',
+              desc: '',
+              price: '฿700 / ฿11,800',
+            },
+            {
+              name: 'Herradura Reposado Tequila',
+              desc: '',
+              price: '฿770 / ฿12,000',
+            },
+            {
+              name: '1800 Cristalino Añejo Tequila',
+              desc: '',
+              price: '฿930 / ฿15,400',
+            },
+            {
+              name: 'Don Julio 1942 Tequila',
+              desc: '',
+              price: '฿2,500 / ฿26,000',
+            },
+            {
+              name: 'Clase Azul Reposado Tequila',
+              desc: '',
+              price: '฿32,000',
+            },
+          ],
         },
         {
-          name: 'Patrón Añejo Tequila',
-          desc: 'Delicate blend of uniquely aged tequilas with warm notes of oak, vanilla, and roasted agave.',
-          price: '฿450',
-          image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&auto=format&fit=crop&q=80',
+          title: 'Mezcal',
+          items: [
+            {
+              name: 'Creyente Mezcal Joven',
+              desc: '',
+              price: '฿500 / ฿8,200',
+            },
+          ],
+        },
+        {
+          title: 'Rum',
+          items: [
+            {
+              name: 'SangSom (Thailand)',
+              desc: '',
+              price: '฿100 / ฿1,260',
+            },
+            {
+              name: 'Captain Morgan Gold',
+              desc: '',
+              price: '฿120 / ฿1,750',
+            },
+            {
+              name: 'Bacardi Carta Blanca',
+              desc: '',
+              price: '฿140 / ฿2,950',
+            },
+            {
+              name: 'Captain Morgan Dark Rum',
+              desc: '',
+              price: '฿180 / ฿3,000',
+            },
+            {
+              name: 'Havana Club Añejo 3 Años',
+              desc: '',
+              price: '฿220 / ฿3,300',
+            },
+            {
+              name: 'Malibu Coconut Rum',
+              desc: '',
+              price: '฿220 / ฿3,400',
+            },
+            {
+              name: 'Sailor Jerry Spiced Rum',
+              desc: '',
+              price: '฿220 / ฿3,400',
+            },
+            {
+              name: 'Havana Club Añejo 7 Años',
+              desc: '',
+              price: '฿370 / ฿5,700',
+            },
+            {
+              name: 'Bumbu The Original Rum',
+              desc: '',
+              price: '฿540 / ฿8,300',
+            },
+            {
+              name: 'Diplomático Reserva Exclusiva',
+              desc: '',
+              price: '฿540 / ฿8,300',
+            },
+            {
+              name: 'Bumbu XO Rum',
+              desc: '',
+              price: '฿640 / ฿10,000',
+            },
+            {
+              name: 'Mount Gay XO (Extra Old)',
+              desc: '',
+              price: '฿840 / ฿13,000',
+            },
+            {
+              name: 'Flor de Caña 25 Year Old Rum',
+              desc: '',
+              price: '฿1,000 / ฿16,000',
+            },
+          ],
+        },
+        {
+          title: 'Brandy',
+          items: [
+            {
+              name: 'Hennessy V.S.O.P',
+              desc: '',
+              price: '฿740 / ฿11,400',
+            },
+            {
+              name: 'Martell V.S.O.P',
+              desc: '',
+              price: '฿740 / ฿11,600',
+            },
+            {
+              name: 'Rémy Martin V.S.O.P',
+              desc: '',
+              price: '฿780 / ฿12,000',
+            },
+            {
+              name: 'Hennessy X.O',
+              desc: '',
+              price: '฿1,800 / ฿28,000',
+            },
+          ],
+        },
+        {
+          title: 'Whisky',
+          items: [
+            {
+              name: 'Mekhong (Thailand)',
+              desc: '',
+              price: '฿100 / ฿1,300',
+            },
+            {
+              name: 'Jim Beam Bourbon',
+              desc: '',
+              price: '฿140 / ฿2,000',
+            },
+            {
+              name: 'Ballantine’s Finest Blended Scotch',
+              desc: '',
+              price: '฿140 / ฿2,200',
+            },
+            {
+              name: 'Jameson Irish Whiskey',
+              desc: '',
+              price: '฿260 / ฿4,000',
+            },
+            {
+              name: 'Jack Daniel’s Tennessee Whiskey',
+              desc: '',
+              price: '฿320 / ฿4,900',
+            },
+            {
+              name: 'Chivas Regal 12 Year Old Blended Scotch',
+              desc: '',
+              price: '฿360 / ฿5,500',
+            },
+            {
+              name: 'Johnnie Walker Black Label 12 Year Old Blended Scotch',
+              desc: '',
+              price: '฿360 / ฿5,500',
+            },
+            {
+              name: 'Monkey Shoulder Blended Malt Scotch Whisky',
+              desc: '',
+              price: '฿380 / ฿6,000',
+            },
+            {
+              name: 'Maker’s Mark Bourbon',
+              desc: '',
+              price: '฿360 / ฿6,000',
+            },
+            {
+              name: 'Bulleit 95 Rye Whiskey',
+              desc: '',
+              price: '฿500 / ฿7,700',
+            },
+            {
+              name: 'The Deacon Blended Scotch',
+              desc: '',
+              price: '฿500 / ฿7,800',
+            },
+            {
+              name: 'Woodford Reserve Rye Whiskey',
+              desc: '',
+              price: '฿560 / ฿8,800',
+            },
+            {
+              name: 'Chivas Regal 15 Year Old Blended Scotch',
+              desc: '',
+              price: '฿580 / ฿9,000',
+            },
+            {
+              name: 'Jack Daniel’s Single Barrel Select Tennessee Whiskey',
+              desc: '',
+              price: '฿720 / ฿11,200',
+            },
+            {
+              name: 'Chivas Regal 18 Year Old Blended Scotch',
+              desc: '',
+              price: '฿800 / ฿12,500',
+            },
+            {
+              name: 'Johnnie Walker Blue Label Blended Scotch',
+              desc: '',
+              price: '฿1,900 / ฿29,500',
+            },
+          ],
+        },
+        {
+          title: 'Whisky Single Malt',
+          items: [
+            {
+              name: 'Arran 10 Year Old Single Malt Scotch Whisky',
+              desc: '',
+              price: '฿530 / ฿8,200',
+            },
+            {
+              name: 'The Glenlivet Founder’s Reserve',
+              desc: '',
+              price: '฿530 / ฿8,400',
+            },
+            {
+              name: 'Glenfiddich 12 Year Old Single Malt Scotch Whisky',
+              desc: '',
+              price: '฿580 / ฿9,000',
+            },
+            {
+              name: 'The Glenlivet 12 Year Old',
+              desc: '',
+              price: '฿700 / ฿10,800',
+            },
+            {
+              name: 'The Singleton of Dufftown 18 Year Old Single Malt',
+              desc: '',
+              price: '฿800 / ฿12,300',
+            },
+            {
+              name: 'Lagavulin 16 Year Old Islay Single Malt Scotch Whisky',
+              desc: '',
+              price: '฿960 / ฿15,000',
+            },
+            {
+              name: 'Glenfiddich 18 Year Old Single Malt Scotch Whisky',
+              desc: '',
+              price: '฿1,030 / ฿16,000',
+            },
+            {
+              name: 'The Glenlivet 18 Year Old',
+              desc: '',
+              price: '฿1,160 / ฿18,000',
+            },
+            {
+              name: 'Bushmills 16 Year Old Single Malt Irish Whiskey',
+              desc: '',
+              price: '฿1,180 / ฿18,400',
+            },
+            {
+              name: 'Highland Park 15 Year Old Single Malt Scotch Whisky',
+              desc: '',
+              price: '฿1,390 / ฿21,500',
+            },
+            {
+              name: 'The Macallan Rare Cask',
+              desc: '',
+              price: '฿52,800',
+            },
+          ],
+        },
+        {
+          title: 'Whisky Japanese',
+          items: [
+            {
+              name: 'The Chita Single Grain Japanese Whisky',
+              desc: '',
+              price: '฿450 / ฿7,400',
+            },
+            {
+              name: 'Hibiki Japanese Harmony',
+              desc: '',
+              price: '฿950 / ฿14,700',
+            },
+            {
+              name: 'Hakushu 12 Year Old Single Malt Japanese Whisky',
+              desc: '',
+              price: '฿1,600 / ฿25,900',
+            },
+            {
+              name: 'Hibiki Blossom Harmony (Limited Edition)',
+              desc: '',
+              price: '฿36,250',
+            },
+          ],
+        },
+        {
+          title: 'Moutai',
+          items: [
+            {
+              name: 'Kweichow Moutai',
+              desc: '',
+              price: '฿33,200',
+            },
+          ],
+        },
+        {
+          title: 'Aperitif',
+          items: [
+            {
+              name: 'Sambuca Matti Italiano',
+              desc: '',
+              price: '฿170 / ฿2,600',
+            },
+            {
+              name: 'Southern Comfort Lime',
+              desc: '',
+              price: '฿230 / ฿3,800',
+            },
+            {
+              name: 'Aperol',
+              desc: '',
+              price: '฿250 / ฿3,900',
+            },
+            {
+              name: 'Jagermeister',
+              desc: '',
+              price: '฿250 / ฿3,900',
+            },
+            {
+              name: 'Martini Blanco',
+              desc: '',
+              price: '฿200 / ฿4,400',
+            },
+            {
+              name: 'Martini Extra Dry',
+              desc: '',
+              price: '฿200 / ฿4,400',
+            },
+            {
+              name: 'Martini Rosso',
+              desc: '',
+              price: '฿200 / ฿4,400',
+            },
+            {
+              name: 'Branca Menta',
+              desc: '',
+              price: '฿300 / ฿4,800',
+            },
+            {
+              name: 'Amaro Averna Siciliano',
+              desc: '',
+              price: '฿320 / ฿5,200',
+            },
+            {
+              name: 'Campari',
+              desc: '',
+              price: '฿320 / ฿5,200',
+            },
+          ],
+        },
+        {
+          title: 'Liqueur',
+          items: [
+            {
+              name: 'Amaretto',
+              desc: '',
+              price: '฿200 / ฿3,000',
+            },
+            {
+              name: 'Cacao White (Milk Chocolate)',
+              desc: '',
+              price: '฿200 / ฿3,000',
+            },
+            {
+              name: 'Creme De Casis',
+              desc: '',
+              price: '฿200 / ฿3,000',
+            },
+            {
+              name: 'Luxardo Limoncello',
+              desc: '',
+              price: '฿230 / ฿3,900',
+            },
+            {
+              name: 'Midori Melon',
+              desc: '',
+              price: '฿280 / ฿4,400',
+            },
+            {
+              name: 'Bailey Original Irish Cream',
+              desc: '',
+              price: '฿300 / ฿4,600',
+            },
+            {
+              name: 'Kahlua Coffee',
+              desc: '',
+              price: '฿300 / ฿4,600',
+            },
+            {
+              name: 'Cointreau',
+              desc: '',
+              price: '฿340 / ฿5,400',
+            },
+            {
+              name: 'Galliano Vanilla',
+              desc: '',
+              price: '฿400 / ฿6,200',
+            },
+            {
+              name: 'ST Germain Elderflower',
+              desc: '',
+              price: '฿420 / ฿6,400',
+            },
+            {
+              name: 'Mr Black Original Coffee',
+              desc: '',
+              price: '฿420 / ฿6,400',
+            },
+            {
+              name: 'Frangelico',
+              desc: '',
+              price: '฿420 / ฿6,600',
+            },
+            {
+              name: 'Grand Marnier',
+              desc: '',
+              price: '฿480 / ฿7,500',
+            },
+          ],
         },
       ],
     },
@@ -471,58 +1551,186 @@ export default function MenusPage({ onNavigate }) {
       title: 'Beers',
       items: [
         {
-          name: 'Singha Thai Premium Beer',
-          desc: 'Crisp 100% barley malt Thai lager with a light golden hue and clean bitter finish.',
-          price: '฿160',
-          image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&auto=format&fit=crop&q=80',
+          name: 'Chang / Singha / Leo',
+          desc: '',
+          price: '฿120',
         },
         {
-          name: 'Chang Cold Brew Lager',
-          desc: 'Smooth Thai lager brewed using sub-zero cold brew technology.',
-          price: '฿160',
-          image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&auto=format&fit=crop&q=80',
+          name: 'Tiger / Asahi / Heineken / San Miguel Light',
+          desc: '',
+          price: '฿150',
         },
         {
-          name: 'Corona Extra',
-          desc: 'Classic Mexican pale lager served chilled with a fresh lime wedge.',
+          name: 'Corona / Kirin',
+          desc: '',
           price: '฿220',
-          image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&auto=format&fit=crop&q=80',
         },
         {
-          name: 'Hoegaarden White Beer',
-          desc: 'Refreshing Belgian wheat beer with orange peel and coriander spice aromas.',
-          price: '฿260',
-          image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&auto=format&fit=crop&q=80',
+          name: 'Liefman’s Peach',
+          desc: '',
+          price: '฿330',
+        },
+        {
+          name: 'Vedette White',
+          desc: '',
+          price: '฿370',
+        },
+        {
+          name: 'La Chouffe',
+          desc: '',
+          price: '฿470',
+        },
+        {
+          name: 'Moose Cider',
+          desc: '',
+          price: '฿200',
+        },
+        {
+          name: 'Heineken Alcohol Free',
+          desc: '',
+          price: '฿150',
         },
       ],
     },
     {
       id: 'soft-drinks',
       title: 'Soft Drinks, Juices, Smoothies & Other Drinks',
-      items: [
+      subcategories: [
         {
-          name: 'Fresh Young Coconut',
-          desc: 'Chilled whole organic Thai coconut with sweet coconut water and tender meat.',
-          price: '฿180',
-          image: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=600&auto=format&fit=crop&q=80',
+          title: 'Soft Drinks',
+          items: [
+            {
+              name: 'Rock Soda Water',
+              desc: '',
+              price: '฿100',
+            },
+            {
+              name: 'Coca Cola / Diet Coke / Coke Zero / Sprite',
+              desc: '',
+              price: '฿100',
+            },
+            {
+              name: 'Schweppes Tonic Water / Ginger Ale',
+              desc: '',
+              price: '฿100',
+            },
+            {
+              name: 'Homemade Lemonade',
+              desc: '',
+              price: '฿150',
+            },
+            {
+              name: 'Fever Tree Mediterranean Tonic / Indian Tonic',
+              desc: '',
+              price: '฿240',
+            },
+            {
+              name: 'Fever Tree Elderflower / Ginger Beer',
+              desc: '',
+              price: '฿240',
+            },
+            {
+              name: 'Redbull (Europe)',
+              desc: '',
+              price: '฿280',
+            },
+          ],
         },
         {
-          name: 'Mango Passionfruit Smoothie',
-          desc: 'Blended sweet Thai mango, passionfruit, wild honey, and Greek yogurt.',
-          price: '฿220',
-          image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&auto=format&fit=crop&q=80',
+          title: 'Water',
+          items: [
+            {
+              name: 'Evian Still Water / Sparkling Water',
+              desc: '',
+              price: '฿250',
+            },
+          ],
         },
         {
-          name: 'Freshly Squeezed Orange Juice',
-          desc: 'Pure 100% natural orange juice served chilled over ice.',
-          price: '฿160',
-          image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop&q=80',
+          title: 'Fruit & Healthy Juices',
+          items: [
+            {
+              name: 'Fresh Coconut / Coconut Slushie',
+              desc: '',
+              price: '฿200',
+            },
+            {
+              name: 'Carton Mango / Pineapple / Cranberry / Orange / Apple Juice',
+              desc: '',
+              price: '฿150',
+            },
+            {
+              name: 'Pure Fruit (Choice of One Fruit)',
+              desc: '',
+              price: '฿250',
+            },
+          ],
         },
         {
-          name: 'San Pellegrino Sparkling Water (750ml)',
-          desc: 'Classic Italian sparkling mineral water.',
-          price: '฿240',
-          image: 'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=600&auto=format&fit=crop&q=80',
+          title: 'Coffees & Teas',
+          note: 'Milk options available: Almond, Oat, Coconut, or Regular Milk.',
+          items: [
+            {
+              name: 'Americano / Iced Americano / Espresso',
+              desc: '',
+              price: '฿120',
+            },
+            {
+              name: 'Caffè Latte / Cappuccino',
+              desc: '',
+              price: '฿150',
+            },
+            {
+              name: 'Double Americano / Double Espresso / Black Orange',
+              desc: '',
+              price: '฿150',
+            },
+            {
+              name: 'Coconut Coffee',
+              desc: '',
+              price: '฿230',
+            },
+            {
+              name: 'Affogato',
+              desc: '',
+              price: '฿250',
+            },
+            {
+              name: 'Earl Grey / English Breakfast / Chamomile Tea',
+              desc: '',
+              price: '฿120',
+            },
+            {
+              name: 'Jasmine Green Tea / Honey & Ginger',
+              desc: '',
+              price: '฿120',
+            },
+            {
+              name: 'Thai Lemon Tea / Thai Iced Milk Tea',
+              desc: '',
+              price: '฿150',
+            },
+          ],
+        },
+        {
+          title: 'Smoothies',
+          items: [
+            {
+              name: 'Beach Bum (Mango, Pineapple, Fresh Lime)',
+              desc: '',
+              price: '฿250',
+            },
+            {
+              name: 'Tropical Fruit (Watermelon, Mango, Pineapple, Orange)',
+              desc: '',
+              price: '฿250',
+            },
+            {
+              name: 'Triple Booster (Banana, Pineapple, Mint)',
+              desc: '',
+              price: '฿250',
+            },
+          ],
         },
       ],
     },
@@ -541,13 +1749,31 @@ export default function MenusPage({ onNavigate }) {
       return section.id === activeCategory;
     })
     .map(section => {
-      const matchingItems = section.items.filter(item =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.desc.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      return { ...section, items: matchingItems };
+      if (section.subcategories && section.subcategories.length > 0) {
+        const filteredSubs = section.subcategories.map(sub => {
+          const matchingItems = sub.items.filter(item =>
+            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (item.desc && item.desc.toLowerCase().includes(searchQuery.toLowerCase()))
+          );
+          return { ...sub, items: matchingItems };
+        }).filter(sub => sub.items.length > 0);
+        return { ...section, subcategories: filteredSubs };
+      } else {
+        const matchingItems = section.items.filter(item =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (item.desc && item.desc.toLowerCase().includes(searchQuery.toLowerCase()))
+        );
+        return { ...section, items: matchingItems };
+      }
     })
-    .filter(section => section.items.length > 0);
+    .filter(section => {
+      if (section.subcategories && section.subcategories.length > 0) {
+        return section.subcategories.length > 0;
+      }
+      return section.items && section.items.length > 0;
+    });
+
+    const drinkSectionIds = ['champagne', 'wine', 'signature-cocktails', 'classic-cocktails', 'spirits', 'beers', 'soft-drinks'];
 
   return (
     <div className="pt-20 sm:pt-24 pb-0 bg-[#F5EFE6] text-[#23211E] min-h-screen">
@@ -657,8 +1883,16 @@ export default function MenusPage({ onNavigate }) {
           </div>
         ) : (
           <div className="space-y-12">
+            {/* Drinks Disclaimer */}
+            {activeCategory !== 'all' && drinkSectionIds.includes(activeCategory) && (
+              <div className="text-center max-w-4xl mx-auto mt-6 mb-10 px-4">
+                <p className="text-[#A38B68] font-sans font-medium text-[11px] sm:text-[12px] uppercase tracking-widest leading-relaxed">
+                  All prices are in THB, inclusive of VAT and subject to a 10% service charge — Shot or Glass / Bottle prices.
+                </p>
+              </div>
+            )}
             {filteredSections.map((section) => (
-              <div key={section.id} className="space-y-6">
+              <div key={section.id} className="space-y-10">
                 {/* Dash Category Title: — Finger Bites & Starters — */}
                 <div className="text-center">
                   <h2 className="font-serif text-xl sm:text-2xl text-[#23211E] font-normal tracking-wide inline-flex items-center gap-3">
@@ -673,50 +1907,119 @@ export default function MenusPage({ onNavigate }) {
                   )}
                 </div>
 
-                {/* Centered Responsive Grid Layout */}
-                <div className="flex flex-wrap justify-center gap-3.5 sm:gap-4">
-                  {section.items.map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: (idx % 5) * 0.05 }}
-                      className="w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)] max-w-[260px] bg-white rounded-xl p-2.5 sm:p-3 border border-[#E5DEC9] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group text-center"
-                    >
-                      <div>
-                        {/* Food Photo Container */}
-                        <div className="aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#EFEAE2] mb-2.5">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            onError={(e) => {
-                              e.target.src = '/images/dining.png';
-                            }}
-                          />
+                {/* Conditionally render food card grid with images OR drink text-only menu list layout */}
+                {drinkSectionIds.includes(section.id) ? (
+                  <div className="max-w-4xl mx-auto space-y-10 pb-4">
+                    {section.subcategories && section.subcategories.length > 0 ? (
+                      <div className="space-y-10">
+                        {section.subcategories.map((sub, sIdx) => (
+                          <div key={sIdx} className="space-y-4">
+                            <h3 className="text-center font-sans text-base sm:text-lg font-semibold text-[#A38B68] tracking-widest uppercase mb-3">
+                              — {sub.title} —
+                            </h3>
+                            {sub.note && (
+                              <p className="text-center text-[10px] sm:text-xs text-[#7A756C] font-light italic font-sans mb-4 -mt-1">
+                                {sub.note}
+                              </p>
+                            )}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3.5">
+                              {sub.items.map((item, idx) => (
+                                <motion.div
+                                  key={idx}
+                                  initial={{ opacity: 0, y: 6 }}
+                                  whileInView={{ opacity: 1, y: 0 }}
+                                  viewport={{ once: true }}
+                                  transition={{ duration: 0.25 }}
+                                  className="flex flex-col py-1.5 border-b border-[#E5DEC9]/40"
+                                >
+                                  <div className="flex justify-between items-baseline">
+                                    <span className="font-sans text-[14px] sm:text-[16px] font-normal text-[#23211E]">
+                                      {item.name}
+                                    </span>
+                                    <span className="flex-grow mx-2 border-b border-dotted border-[#C5BEB2]/60 self-center"></span>
+                                    <span className="font-sans text-[13px] sm:text-[14px] font-normal text-[#A38B68] whitespace-nowrap">
+                                      {item.price}
+                                    </span>
+                                  </div>
+                                  {item.desc && (
+                                    <p className="text-[11px] sm:text-[12px] text-[#77736C] font-light mt-1 font-sans leading-relaxed">
+                                      {item.desc}
+                                    </p>
+                                  )}
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3.5">
+                        {section.items.map((item, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 6 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.25 }}
+                            className="flex flex-col py-1.5 border-b border-[#E5DEC9]/40"
+                          >
+                            <div className="flex justify-between items-baseline">
+                              <span className="font-sans text-[14px] sm:text-[16px] font-normal text-[#23211E]">
+                                {item.name}
+                              </span>
+                              <span className="flex-grow mx-2 border-b border-dotted border-[#C5BEB2]/60 self-center"></span>
+                              <span className="font-sans text-[13px] sm:text-[14px] font-normal text-[#A38B68] whitespace-nowrap">
+                                {item.price}
+                              </span>
+                            </div>
+                            {item.desc && (
+                              <p className="text-[11px] sm:text-[12px] text-[#77736C] font-light mt-1 font-sans leading-relaxed">
+                                {item.desc}
+                              </p>
+                            )}
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap justify-center gap-3.5 sm:gap-4">
+                    {section.items.map((item, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: (idx % 5) * 0.05 }}
+                        className="w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)] max-w-[260px] bg-white rounded-xl p-2.5 sm:p-3 border border-[#E5DEC9] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group text-center"
+                      >
+                        <div>
+                          <div className="aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#EFEAE2] mb-2.5">
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              onError={(e) => {
+                                e.target.src = '/images/dining.png';
+                              }}
+                            />
+                          </div>
+                          <h4 className="font-serif text-xs sm:text-sm font-semibold text-[#23211E] mb-1 group-hover:text-[#A38B68] transition-colors leading-tight">
+                            {item.name}
+                          </h4>
+                          <p className="text-[10px] sm:text-xs text-[#77736C] font-light leading-relaxed mb-2 font-sans">
+                            {item.desc}
+                          </p>
                         </div>
-
-                        {/* Item Title */}
-                        <h4 className="font-serif text-xs sm:text-sm font-semibold text-[#23211E] mb-1 group-hover:text-[#A38B68] transition-colors leading-tight">
-                          {item.name}
-                        </h4>
-
-                        {/* Description */}
-                        <p className="text-[10px] sm:text-xs text-[#77736C] font-light leading-relaxed mb-2 font-sans">
-                          {item.desc}
-                        </p>
-                      </div>
-
-                      {/* Price */}
-                      <div className="pt-2 border-t border-[#F0EBE1] flex items-center justify-center">
-                        <span className="text-[11px] font-sans font-semibold text-[#A38B68]">
-                          {item.price}
-                        </span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+                        <div className="pt-2 border-t border-[#F0EBE1] flex items-center justify-center">
+                          <span className="text-[11px] font-sans font-semibold text-[#A38B68]">
+                            {item.price}
+                          </span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
 
                 {section.id === 'desserts' && (
                   <div className="text-center max-w-3xl mx-auto pt-4 mb-[10px] px-4">
