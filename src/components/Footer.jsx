@@ -124,15 +124,15 @@ export default function Footer({ onNavClick }) {
             <div className="space-y-3 text-xs text-[#FAF7F2]/70 font-light">
               <div className="flex items-start gap-2.5">
                 <MapPin size={16} className="text-[#C5A880] shrink-0 mt-0.5" />
-                <span>Cherngtalay, Bang Tao Beach, Phuket 83110, Thailand</span>
+                <span>Bang Tao Beach, Thalang District, Phuket 83110, Thailand</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail size={16} className="text-[#C5A880] shrink-0" />
-                <span>concierge@eliaboutiquehotel.com</span>
+                <a href="mailto:info@eliaphuket.com" className="hover:text-[#C5A880] transition-colors">info@eliaphuket.com</a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone size={16} className="text-[#C5A880] shrink-0" />
-                <a href="tel:+66824899371" className="hover:text-[#C5A880] transition-colors">+66 82 489 9371</a>
+                <a href="tel:+66932719103" className="hover:text-[#C5A880] transition-colors">+66 93 271 9103</a>
               </div>
               <div className="pt-2 border-t border-white/5">
                 <span className="text-[10px] uppercase tracking-wider text-[#C5A880] font-medium block">

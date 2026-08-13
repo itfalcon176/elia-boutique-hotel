@@ -220,9 +220,9 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   <MapPin size={13} className="text-[#A38B68]" />
                   <span>Bang Tao Beach, Phuket</span>
                 </div>
-                <a href="tel:+66824899371" className="flex items-center gap-1.5 hover:text-[#A38B68] transition-colors">
+                <a href="tel:+66932719103" className="flex items-center gap-1.5 hover:text-[#A38B68] transition-colors">
                   <Phone size={13} className="text-[#A38B68]" />
-                  <span>+66 82 489 9371</span>
+                  <span>+66 93 271 9103</span>
                 </a>
               </div>
             </div>

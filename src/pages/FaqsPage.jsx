@@ -24,7 +24,7 @@ export default function FaqsPage() {
     },
     {
       question: 'How can I make a table or suite reservation?',
-      answer: 'You can reserve online using the "Reservations" button on our website, or contact our concierge directly via email at concierge@eliaboutiquehotel.com.',
+      answer: 'You can reserve online using the "Reservations" button on our website, or contact our concierge directly via email at info@eliaphuket.com.',
     },
     {
       question: 'What amenities are included in the Swim-Up and Rooftop Suites?',

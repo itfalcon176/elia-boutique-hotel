@@ -41,15 +41,15 @@ export default function LocationPage() {
               <div className="space-y-4 text-xs text-[#6E6A63] font-light font-sans mb-8">
                 <div className="flex items-start gap-3">
                   <MapPin size={18} className="text-[#A38B68] shrink-0 mt-0.5" />
-                  <span>323/13 M.2 Cherngtalay, Bang Tao Beach, Thalang, Phuket 83110, Thailand</span>
+                  <span>Bang Tao Beach, Thalang District, Phuket 83110, Thailand</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone size={18} className="text-[#A38B68] shrink-0" />
-                  <a href="tel:+66824899371" className="hover:text-[#A38B68] transition-colors">+66 82 489 9371</a>
+                  <a href="tel:+66932719103" className="hover:text-[#A38B68] transition-colors">+66 93 271 9103</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail size={18} className="text-[#A38B68] shrink-0" />
-                  <span>concierge@eliaboutiquehotel.com</span>
+                  <a href="mailto:info@eliaphuket.com" className="hover:text-[#A38B68] transition-colors">info@eliaphuket.com</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock size={18} className="text-[#A38B68] shrink-0" />

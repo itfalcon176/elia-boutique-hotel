@@ -49,7 +49,7 @@ export default function ContactPage() {
                 <MapPin size={20} className="text-[#A38B68] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-[#23211E] block">Location</span>
-                  <span>323/13 M.2 Cherngtalay, Bang Tao Beach, Phuket 83110, Thailand</span>
+                  <span>Bang Tao Beach, Thalang District, Phuket 83110, Thailand</span>
                 </div>
               </div>
 
@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <Phone size={20} className="text-[#A38B68] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-[#23211E] block">Direct Line</span>
-                  <a href="tel:+66824899371" className="hover:text-[#A38B68] transition-colors">+66 82 489 9371</a>
+                  <a href="tel:+66932719103" className="hover:text-[#A38B68] transition-colors">+66 93 271 9103</a>
                 </div>
               </div>
 
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 <Mail size={20} className="text-[#A38B68] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-[#23211E] block">Email Concierge</span>
-                  <span>concierge@eliaboutiquehotel.com</span>
+                  <a href="mailto:info@eliaphuket.com" className="hover:text-[#A38B68] transition-colors">info@eliaphuket.com</a>
                 </div>
               </div>
 
