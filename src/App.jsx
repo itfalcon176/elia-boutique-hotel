@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Facebook, Instagram, Volume2, VolumeX } from 'lucide-react';
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
+import EnquiryModal from './components/EnquiryModal';
 
 // Custom TikTok icon to match Lucide style (standard Feather path)
 const Tiktok = ({ size = 24, ...props }) => (
@@ -25,6 +26,7 @@ const Tiktok = ({ size = 24, ...props }) => (
 function App() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
 
   const removeListenersRef = useRef(() => { });
 
@@ -261,6 +263,39 @@ function App() {
           >
             Opening November 2026
           </motion.p>
+
+          {/* Enquire & WhatsApp Action Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-6 sm:mt-8 flex flex-col items-center gap-3 sm:gap-3.5"
+          >
+            {/* 1. Enquire Now Button */}
+            <button
+              onClick={() => setIsEnquiryOpen(true)}
+              className="group relative w-60 sm:w-68 py-3 sm:py-3.5 rounded-full bg-black/40 backdrop-blur-xl border border-gold/60 hover:border-gold hover:bg-black/60 text-white hover:text-gold text-[11px] sm:text-xs font-medium uppercase tracking-[0.25em] transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_35px_rgba(212,175,55,0.4)] hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-3"
+            >
+              <span>Enquire Now</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse group-hover:scale-125 transition-transform" />
+            </button>
+
+            {/* 2. WhatsApp Enquiry Button */}
+            <a
+              href="https://wa.me/66932719103?text=Hello%20Elia%20Boutique%20Hotel%2C%20I%20would%20like%20to%20enquire%20about%20the%20hotel."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative w-60 sm:w-68 py-3 sm:py-3.5 rounded-full bg-black/40 backdrop-blur-xl border border-gold/40 hover:border-[#25D366] hover:bg-black/60 text-white/90 hover:text-white text-[11px] sm:text-xs font-medium uppercase tracking-[0.25em] transition-all duration-500 shadow-[0_0_15px_rgba(0,0,0,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.3)] hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-2.5"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-4 h-4 text-gold group-hover:text-[#25D366] transition-colors duration-300"
+              >
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.35C9.34 7.35 9.04 7.42 8.78 7.7C8.53 7.98 7.81 8.65 7.81 10.02C7.81 11.39 8.81 12.71 8.95 12.9C9.09 13.09 10.99 16.02 13.89 17.27C14.58 17.57 15.12 17.75 15.54 17.88C16.23 18.1 16.87 18.07 17.37 18C17.93 17.91 19.08 17.3 19.32 16.63C19.56 15.96 19.56 15.38 19.49 15.26C19.42 15.14 19.23 15.07 18.95 14.93C18.67 14.79 17.3 14.11 17.04 14.02C16.78 13.93 16.59 13.88 16.41 14.16C16.22 14.44 15.69 15.07 15.53 15.26C15.37 15.44 15.21 15.47 14.93 15.33C14.65 15.19 13.76 14.9 12.71 13.96C11.89 13.23 11.33 12.33 11.19 12.05C11.05 11.77 11.17 11.62 11.31 11.48C11.44 11.35 11.6 11.14 11.74 10.98C11.88 10.82 11.93 10.7 12.02 10.51C12.11 10.33 12.07 10.17 12 10.03C11.93 9.89 11.37 8.51 11.14 7.96C10.91 7.42 10.68 7.5 10.51 7.49C10.35 7.48 10.16 7.48 9.97 7.48L9.53 7.35Z" />
+              </svg>
+              <span>WhatsApp Enquiry</span>
+            </a>
+          </motion.div>
         </motion.div>
 
         {/* Bottom Social Icons */}
@@ -299,6 +334,12 @@ function App() {
           </a>
         </motion.div>
       </div>
+
+      {/* Enquiry Popup Modal */}
+      <EnquiryModal
+        isOpen={isEnquiryOpen}
+        onClose={() => setIsEnquiryOpen(false)}
+      />
     </div>
   );
 }
