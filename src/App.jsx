@@ -233,10 +233,10 @@ function App() {
           {/* Logo Container */}
           <motion.div
             variants={itemVariants}
-            className="w-44 sm:w-56 md:w-64 lg:w-72 flex items-center justify-center mb-5 sm:mb-8"
+            className="w-56 sm:w-64 md:w-72 lg:w-80 flex items-center justify-center mb-5 sm:mb-8"
           >
             <img
-              src="/Logos/white-new.png"
+              src="/Logos/logo-3.png"
               alt="Elia Boutique Hotel Logo"
               className="w-full h-auto object-contain filter drop-shadow-[0_0_25px_rgba(212,175,55,0.25)]"
               onError={(e) => {
