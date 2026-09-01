@@ -102,9 +102,11 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
           {/* Right CTA Button */}
           <div className="hidden sm:flex items-center gap-3">
             <button
-              onClick={onOpenReservation}
-              className={`flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-5 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 ${
-                isLightHeader
+              onClick={() => handleNavClick('booking')}
+              className={`flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-5 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                activePage === 'booking'
+                  ? 'bg-[#A38B68] text-white shadow-[0_0_20px_rgba(163,139,104,0.4)] ring-2 ring-[#A38B68]/40'
+                  : isLightHeader
                   ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] shadow-md'
                   : 'bg-gradient-to-r from-[#A38B68] to-[#826C4B] text-white hover:brightness-110 shadow-[0_0_20px_rgba(163,139,104,0.4)]'
               }`}
@@ -207,11 +209,15 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenReservation();
+                  handleNavClick('booking');
                 }}
-                className="w-full py-3.5 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2.5 shadow-xl hover:bg-[#A38B68] transition-all cursor-pointer"
+                className={`w-full py-3.5 rounded-full font-semibold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2.5 shadow-xl transition-all cursor-pointer ${
+                  activePage === 'booking'
+                    ? 'bg-[#A38B68] text-white shadow-[0_0_20px_rgba(163,139,104,0.4)]'
+                    : 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
+                }`}
               >
-                <Calendar size={15} className="text-[#A38B68]" />
+                <Calendar size={15} className={activePage === 'booking' ? 'text-white' : 'text-[#A38B68]'} />
                 <span>RESERVE STAY OR TABLE</span>
               </button>
 

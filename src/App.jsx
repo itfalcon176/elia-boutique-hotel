@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ReservationModal from './components/ReservationModal';
 
 // Dedicated Separate Pages
 import HomePage from './pages/HomePage';
@@ -11,6 +10,7 @@ import LocationPage from './pages/LocationPage';
 import FaqsPage from './pages/FaqsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import BookingPage from './pages/BookingPage';
 
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
@@ -23,6 +23,7 @@ const pageToPath = {
   location: '/location',
   faqs: '/faqs',
   contact: '/contact',
+  booking: '/book',
 };
 
 const getPageFromPath = (pathname) => {
@@ -33,6 +34,7 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/location') return 'location';
   if (cleanPath === '/faqs' || cleanPath === '/faq') return 'faqs';
   if (cleanPath === '/contact') return 'contact';
+  if (cleanPath === '/book' || cleanPath === '/booking' || cleanPath === '/reservations' || cleanPath === '/reservation') return 'booking';
   return 'home';
 };
 
@@ -40,7 +42,6 @@ function App() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [activePage, setActivePage] = useState(() => getPageFromPath(window.location.pathname));
-  const [isReservationOpen, setIsReservationOpen] = useState(false);
 
   const removeListenersRef = useRef(() => {});
 
@@ -151,7 +152,7 @@ function App() {
       <Navbar
         activePage={activePage}
         setActivePage={handleNavClick}
-        onOpenReservation={() => setIsReservationOpen(true)}
+        onOpenReservation={() => handleNavClick('booking')}
       />
 
       {/* Page Content Rendering */}
@@ -160,7 +161,7 @@ function App() {
           <HomePage
             isPlaying={isPlaying}
             toggleSound={toggleSound}
-            onOpenReservation={() => setIsReservationOpen(true)}
+            onOpenReservation={() => handleNavClick('booking')}
             onNavigate={handleNavClick}
           />
         )}
@@ -168,7 +169,7 @@ function App() {
           <MenusPage onNavigate={handleNavClick} />
         )}
         {activePage === 'latenight' && (
-          <LateNightPage onOpenReservation={() => setIsReservationOpen(true)} />
+          <LateNightPage onOpenReservation={() => handleNavClick('booking')} />
         )}
         {activePage === 'location' && (
           <LocationPage />
@@ -182,16 +183,13 @@ function App() {
         {activePage === 'contact' && (
           <ContactPage />
         )}
+        {activePage === 'booking' && (
+          <BookingPage />
+        )}
       </main>
 
       {/* Footer Navigation */}
       <Footer onNavClick={handleNavClick} />
-
-      {/* Reservation & Booking Dialog Modal */}
-      <ReservationModal
-        isOpen={isReservationOpen}
-        onClose={() => setIsReservationOpen(false)}
-      />
     </div>
   );
 }
