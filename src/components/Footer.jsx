@@ -84,6 +84,11 @@ export default function Footer({ onNavClick }) {
             </h4>
             <ul className="space-y-2.5 text-xs text-[#FAF7F2]/70 font-light">
               <li>
+                <button onClick={() => onNavClick('booking')} className="text-[#C5A880] font-medium hover:underline transition-all">
+                  Direct Reservations
+                </button>
+              </li>
+              <li>
                 <button onClick={() => onNavClick('about')} className="hover:text-[#C5A880] transition-colors">
                   The Essence
                 </button>
