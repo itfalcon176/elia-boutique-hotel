@@ -79,12 +79,12 @@ export default function HeroSection({
         {/* H1 for Homepage SEO matching Section 2 */}
         <h1 className="sr-only">Boutique Beachfront Hotel on Bang Tao Beach, Phuket</h1>
 
-        {/* Hero Visual Title: Modern High-Fashion Editorial Luxury Typography */}
+        {/* Hero Visual Title: Modern High-Fashion Editorial Luxury Typography with Richer Weight */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[78px] font-light text-white uppercase tracking-[0.04em] sm:tracking-[0.06em] md:tracking-[0.08em] leading-tight mb-5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] max-w-full px-2 sm:whitespace-nowrap"
+          className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[76px] font-medium md:font-semibold text-white uppercase tracking-[0.03em] sm:tracking-[0.05em] md:tracking-[0.07em] leading-tight mb-5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)] max-w-full px-2 sm:whitespace-nowrap"
         >
           THE BEACH. AT YOUR DOOR.
         </motion.div>
