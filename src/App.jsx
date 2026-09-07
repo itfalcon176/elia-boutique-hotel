@@ -5,34 +5,69 @@ import ReservationModal from './components/ReservationModal';
 
 // Dedicated Separate Pages
 import HomePage from './pages/HomePage';
-import MenusPage from './pages/MenusPage';
-import LateNightPage from './pages/LateNightPage';
-import LocationPage from './pages/LocationPage';
-import FaqsPage from './pages/FaqsPage';
+import RoomsPage from './pages/RoomsPage';
+import RoomDetailPage from './pages/RoomDetailPage';
+import EatDrinkPage from './pages/EatDrinkPage';
+import WellnessPage from './pages/WellnessPage';
+import ExperiencesPage from './pages/ExperiencesPage';
+import GalleryPage from './pages/GalleryPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import SpecialOffersPage from './pages/SpecialOffersPage';
+import LegalAndPolicyPages from './pages/LegalAndPolicyPages';
+import FaqsPage from './pages/FaqsPage';
 
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
 
 const pageToPath = {
   home: '/',
-  menus: '/menus',
+  rooms: '/rooms',
+  'rooms/garden-beach-rooms': '/rooms/garden-beach-rooms',
+  'rooms/garden-family-suites': '/rooms/garden-family-suites',
+  'rooms/loft-apartments': '/rooms/loft-apartments',
+  'rooms/one-bedroom-loft-suite': '/rooms/one-bedroom-loft-suite',
+  'eat-drink': '/eat-drink',
+  menus: '/eat-drink',
+  wellness: '/wellness',
+  spa: '/wellness',
+  experiences: '/experiences',
+  gallery: '/gallery',
   about: '/about',
-  latenight: '/latenight',
-  location: '/location',
-  faqs: '/faqs',
   contact: '/contact',
+  'special-offers': '/special-offers',
+  faqs: '/faqs',
+  policies: '/policies',
+  cancellation: '/cancellation',
+  privacy: '/privacy',
+  terms: '/terms',
+  cookies: '/cookies',
+  directions: '/directions',
 };
 
 const getPageFromPath = (pathname) => {
   const cleanPath = pathname.toLowerCase().replace(/\/$/, '') || '/';
-  if (cleanPath === '/menus') return 'menus';
+  
+  if (cleanPath === '/rooms/garden-beach-rooms') return 'rooms/garden-beach-rooms';
+  if (cleanPath === '/rooms/garden-family-suites') return 'rooms/garden-family-suites';
+  if (cleanPath === '/rooms/loft-apartments') return 'rooms/loft-apartments';
+  if (cleanPath === '/rooms/one-bedroom-loft-suite') return 'rooms/one-bedroom-loft-suite';
+  if (cleanPath === '/rooms' || cleanPath === '/suites') return 'rooms';
+  if (cleanPath === '/eat-drink' || cleanPath === '/menus' || cleanPath === '/dining') return 'eat-drink';
+  if (cleanPath === '/wellness' || cleanPath === '/spa') return 'wellness';
+  if (cleanPath === '/experiences' || cleanPath === '/location') return 'experiences';
+  if (cleanPath === '/gallery') return 'gallery';
   if (cleanPath === '/about') return 'about';
-  if (cleanPath === '/latenight' || cleanPath === '/late-night') return 'latenight';
-  if (cleanPath === '/location') return 'location';
-  if (cleanPath === '/faqs' || cleanPath === '/faq') return 'faqs';
   if (cleanPath === '/contact') return 'contact';
+  if (cleanPath === '/special-offers' || cleanPath === '/offers') return 'special-offers';
+  if (cleanPath === '/faqs' || cleanPath === '/faq') return 'faqs';
+  if (cleanPath === '/policies' || cleanPath === '/hotel-policies') return 'policies';
+  if (cleanPath === '/cancellation') return 'cancellation';
+  if (cleanPath === '/privacy') return 'privacy';
+  if (cleanPath === '/terms') return 'terms';
+  if (cleanPath === '/cookies') return 'cookies';
+  if (cleanPath === '/directions') return 'directions';
+  
   return 'home';
 };
 
@@ -126,7 +161,7 @@ function App() {
 
   const handleNavClick = (id) => {
     setActivePage(id);
-    const targetPath = pageToPath[id] || '/';
+    const targetPath = pageToPath[id] || `/${id}`;
     if (window.location.pathname !== targetPath) {
       window.history.pushState(null, '', targetPath);
     }
@@ -164,23 +199,60 @@ function App() {
             onNavigate={handleNavClick}
           />
         )}
-        {activePage === 'menus' && (
-          <MenusPage onNavigate={handleNavClick} />
+        {activePage === 'rooms' && (
+          <RoomsPage
+            onNavigate={handleNavClick}
+            onOpenReservation={() => setIsReservationOpen(true)}
+          />
         )}
-        {activePage === 'latenight' && (
-          <LateNightPage onOpenReservation={() => setIsReservationOpen(true)} />
+        {activePage.startsWith('rooms/') && (
+          <RoomDetailPage
+            roomSlug={activePage.replace('rooms/', '')}
+            onNavigate={handleNavClick}
+            onOpenReservation={() => setIsReservationOpen(true)}
+          />
         )}
-        {activePage === 'location' && (
-          <LocationPage />
+        {activePage === 'eat-drink' && (
+          <EatDrinkPage
+            onNavigate={handleNavClick}
+            onOpenReservation={() => setIsReservationOpen(true)}
+          />
+        )}
+        {activePage === 'wellness' && (
+          <WellnessPage
+            onOpenReservation={() => setIsReservationOpen(true)}
+          />
+        )}
+        {activePage === 'experiences' && (
+          <ExperiencesPage
+            onOpenReservation={() => setIsReservationOpen(true)}
+          />
+        )}
+        {activePage === 'gallery' && (
+          <GalleryPage />
+        )}
+        {activePage === 'about' && (
+          <AboutPage
+            onNavigate={handleNavClick}
+            onOpenReservation={() => setIsReservationOpen(true)}
+          />
+        )}
+        {activePage === 'contact' && (
+          <ContactPage />
+        )}
+        {activePage === 'special-offers' && (
+          <SpecialOffersPage
+            onOpenReservation={() => setIsReservationOpen(true)}
+          />
         )}
         {activePage === 'faqs' && (
           <FaqsPage />
         )}
-        {activePage === 'about' && (
-          <AboutPage onNavigate={handleNavClick} />
-        )}
-        {activePage === 'contact' && (
-          <ContactPage />
+        {['policies', 'cancellation', 'privacy', 'terms', 'cookies', 'directions'].includes(activePage) && (
+          <LegalAndPolicyPages
+            pageType={activePage}
+            onNavigate={handleNavClick}
+          />
         )}
       </main>
 

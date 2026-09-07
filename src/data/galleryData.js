@@ -1,0 +1,88 @@
+export const galleryData = [
+  {
+    id: 1,
+    title: 'Garden Beach Room Master Bedroom',
+    category: 'Rooms',
+    image: '/images/suite.png',
+    caption: 'Intimate bohemian-minimalist design with natural teak finishes and direct garden views.',
+  },
+  {
+    id: 2,
+    title: 'Golden Sunset at Bang Tao Beach',
+    category: 'Beach',
+    image: '/images/cocktail.png',
+    caption: 'Sun dipping below the Andaman Sea right outside Elia Phuket.',
+  },
+  {
+    id: 3,
+    title: 'Mediterranean & Nikkei Gastronomy',
+    category: 'Food',
+    image: '/images/dining.png',
+    caption: 'Fresh Andaman wild seafood, truffle hamachi tiradito, and artisanal plating at GOAT.',
+  },
+  {
+    id: 4,
+    title: 'Holistic Outdoor Spa Pavilion',
+    category: 'Wellness',
+    image: '/images/spa.png',
+    caption: 'Open-air body therapies and traditional Thai herbal compress massage under tropical canopy.',
+  },
+  {
+    id: 5,
+    title: 'Loft Suite Mezzanine Living',
+    category: 'Rooms',
+    image: '/images/latenight.png',
+    caption: 'Double-height architectural ceilings with curated vinyl records and sunset terrace.',
+  },
+  {
+    id: 6,
+    title: 'Lagoon Plunge Pool & Daybeds',
+    category: 'Wellness',
+    image: '/images/suite.png',
+    caption: 'Crystalline freshwater swimming pool surrounded by mature tropical flora.',
+  },
+  {
+    id: 7,
+    title: 'Signature Sunset Cocktails at GOAT',
+    category: 'Food',
+    image: '/images/cocktail.png',
+    caption: 'Handcrafted botanical mixology and crisp Provence rosé during golden hour.',
+  },
+  {
+    id: 8,
+    title: 'Powdery Sands & Turquoise Waves',
+    category: 'Beach',
+    image: '/images/dining.png',
+    caption: '6 kilometers of pristine Bang Tao coastline steps from your bed.',
+  },
+  {
+    id: 9,
+    title: 'Finnish Sauna & Thermal Hydrotherapy',
+    category: 'Wellness',
+    image: '/images/spa.png',
+    caption: 'Contrast therapy featuring cedarwood dry sauna and ice cold plunge bath.',
+  },
+  {
+    id: 10,
+    title: 'Slow Living & Beachfront Mornings',
+    category: 'Elia Life',
+    image: '/images/suite.png',
+    caption: 'Barefoot morning coffee, sound of ocean waves, and uninterrupted tranquility.',
+  },
+  {
+    id: 11,
+    title: 'Late Night Dining & Shisha Lounge',
+    category: 'Elia Life',
+    image: '/images/latenight.png',
+    caption: 'Starlit vibes with our signature 10 PM – 2 AM Late Night Menu.',
+  },
+  {
+    id: 12,
+    title: 'Private Catamaran Island Charters',
+    category: 'Elia Life',
+    image: '/images/cocktail.png',
+    caption: 'Bespoke day trips through the towering limestone karsts of Phang Nga Bay.',
+  },
+];
+
+export const galleryCategories = ['All', 'Rooms', 'Beach', 'Food', 'Wellness', 'Elia Life'];

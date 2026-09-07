@@ -10,18 +10,19 @@ export default function HomePage({
 }) {
   return (
     <div>
-      {/* Hero Header Section (100vh Full Screen Video) */}
+      {/* Hero Header Section (100vh Full Screen Video with Beachfront copy & immediate Book Now) */}
       <HeroSection
         isPlaying={isPlaying}
         toggleSound={toggleSound}
         onOpenReservation={onOpenReservation}
+        onNavigateRooms={() => onNavigate('rooms')}
         onExploreClick={() => {
           const el = document.getElementById('elia-showcase');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }}
       />
 
-      {/* Elia Phuket Home Page Sections */}
+      {/* Elia Phuket Home Page Sections: Philosophy, 4 Room Highlights, Facilities, GOAT Club, Wellness, Location */}
       <div id="elia-showcase">
         <EliaShowcaseSection
           onNavigate={onNavigate}
@@ -29,7 +30,7 @@ export default function HomePage({
         />
       </div>
 
-      {/* FAQs */}
+      {/* FAQs Section */}
       <FaqsSection />
     </div>
   );

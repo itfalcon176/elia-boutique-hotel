@@ -1,0 +1,97 @@
+export const wellnessData = {
+  hero: {
+    title: 'Wellness & Thermal Sanctuary',
+    subtitle: 'Slow Living, Ocean Air & Restorative Rituals',
+    description: 'Nourish body and soul in our intimate tropical wellness sanctuary. Crafted around the principles of contrast hydrotherapy, ancient Thai botanical healing, and serene Phuket nature, our wellness spaces invite you to disconnect from noise and return to equilibrium.',
+  },
+  facilities: [
+    {
+      id: 'massage-treatments',
+      title: 'Massage Treatments & Body Rituals',
+      tagline: 'Ancient Thai Healing & Modern Aromatherapy',
+      description: 'Our licensed master therapists weave traditional Thai pressure point techniques with warm organic coconut oils, herbal steam compresses, and gentle sound vibration. Every session begins with a soothing floral foot bath and ends with restorative lemongrass tea.',
+      details: [
+        'Signature Elia Warm Herbal Compress (90 mins)',
+        'Traditional Royal Thai Acupressure (60 / 90 mins)',
+        'Deep Tissue Andaman Sports Therapy (60 / 90 mins)',
+        'Organic Coconut Beachfront Sun-Soothing Ritual (60 mins)',
+        'Couple’s Harmony & Sound Healing Journey (120 mins)',
+      ],
+      image: '/images/spa.png',
+    },
+    {
+      id: 'outdoor-spa',
+      title: 'Outdoor Spa Pavilion',
+      tagline: 'Open-Air Treatment Cabanas in Lush Greenery',
+      description: 'Breathe in the ocean breeze while receiving your therapy in our open-air bamboo and teak treatment cabanas. Surrounded by fragrant frangipani blossoms and shaded by swaying palms, it is the quintessential tropical spa immersion.',
+      details: [
+        'Dual couple’s treatment cabanas with sheer linen curtains',
+        'Ambient sound of ocean waves and soft nature harmonics',
+        'Private outdoor botanical foot bath stations',
+        'Post-treatment relaxation daybed terrace',
+      ],
+      image: '/images/suite.png',
+    },
+    {
+      id: 'sauna',
+      title: 'Finnish Cedarwood Sauna',
+      tagline: 'Deep Heat Detoxification & Muscle Relaxation',
+      description: 'Crafted from aromatic Nordic cedar, our custom dry sauna operates at optimal temperatures (80°C - 90°C). The therapeutic heat improves circulation, releases deep muscle tension from travel, and initiates deep relaxation before contrast cooling.',
+      details: [
+        'Natural volcanic stone heater with essential oil infusion',
+        'Panoramic bronze glass viewing window into garden greenery',
+        'Chromotherapy ambient mood lighting for nervous system calming',
+        'Optimal 15-minute contrast therapy cycles',
+      ],
+      image: '/images/latenight.png',
+    },
+    {
+      id: 'cold-plunge',
+      title: 'Ice Cold Plunge Bath',
+      tagline: '8°C - 10°C Biohacking Vitality Reset',
+      description: 'Step into our chilled stainless-steel and stone cold immersion bath immediately after the sauna. Cold water immersion triggers dopamine release, reduces inflammation, accelerates muscle recovery, and creates an invigorating surge of mental clarity.',
+      details: [
+        'Constantly filtered and temperature-controlled (8°C - 10°C)',
+        'Ergonomic deep step-in seating design',
+        'Breathwork guide and timer station provided',
+        'Ideal 2-3 minute immersion for peak vitality',
+      ],
+      image: '/images/dining.png',
+    },
+    {
+      id: 'jacuzzi',
+      title: 'Hydrotherapy Jacuzzi',
+      tagline: 'Magnesium Thermal Jet Pool Under the Sky',
+      description: 'Sink into our heated, mineral-rich magnesium thermal jacuzzi. Powerful hydrotherapy massage jets target lumbar and shoulder pressure points, while the magnesium-infused waters soften skin and calm the mind under the open Phuket sky.',
+      details: [
+        'Therapeutic 38°C mineral magnesium water',
+        'Targeted hydro-massage posture jets for spine and legs',
+        'Starlit evening relaxation sessions',
+        'Submerged ergonomic seating for up to 6 guests',
+      ],
+      image: '/images/cocktail.png',
+    },
+    {
+      id: 'plunge-pool',
+      title: 'Freshwater Lagoon Plunge Pool',
+      tagline: 'Crystalline Tropical Refreshment',
+      description: 'Our central freshwater plunge pool offers a refreshing, shaded oasis surrounded by natural stone sunbeds. Designed for mindful slow swims, quiet reading on submerged ledge loungers, and effortless midday cooling.',
+      details: [
+        'Gentle low-chlorine mineral filtration system',
+        'Shallow sun-shelf with semi-submerged loungers',
+        'Lush tropical garden landscaping and private poolside bar service',
+        'Open daily from sunrise to 10:00 PM',
+      ],
+      image: '/images/suite.png',
+    },
+  ],
+  contrastTherapyGuide: {
+    title: 'The Elia Contrast Circuit',
+    steps: [
+      { step: '01', name: 'Cedar Sauna', time: '12-15 Mins', note: 'Deep tissue warming and circulation boost' },
+      { step: '02', name: 'Cold Plunge', time: '2-3 Mins', note: 'Immune spike, adrenaline reset, dopamine rush' },
+      { step: '03', name: 'Thermal Jacuzzi', time: '10 Mins', note: 'Magnesium absorption and full muscle soothing' },
+      { step: '04', name: 'Garden Rest & Tea', time: '10 Mins', note: 'Restorative Thai herbal tea on shaded daybed' },
+    ],
+  },
+};
