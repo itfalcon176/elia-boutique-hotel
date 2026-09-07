@@ -56,17 +56,19 @@ export default function HeroSection({
         Your browser does not support the video tag.
       </video>
 
-      {/* Subtle Gentle Overlay for Text Contrast while Keeping Video Bright */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/45 z-10 pointer-events-none" />
+      {/* Subtle Natural Multi-Layer Contrast Overlay (Seamless & Invisible to visitors) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/60 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0.25)_55%,rgba(0,0,0,0.65)_100%)] z-10 pointer-events-none" />
 
       {/* Center Hero Content */}
       <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto flex flex-col items-center justify-center">
+        
         {/* Top Highlight Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-[#C5A880]/50 mb-6 text-[#F7F4EF] shadow-lg"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#C5A880]/60 mb-5 text-[#F7F4EF] shadow-xl"
         >
           <Sparkles size={13} className="text-[#C5A880]" />
           <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-sans font-semibold">
@@ -77,12 +79,12 @@ export default function HeroSection({
         {/* H1 for Homepage SEO matching Section 2 */}
         <h1 className="sr-only">Boutique Beachfront Hotel on Bang Tao Beach, Phuket</h1>
 
-        {/* Hero Visual Title (Clean Non-Italic, Single Line, High-Impact Luxury Serif) */}
+        {/* Hero Visual Title: Larger, Single Line, Non-Italic, High-Impact Luxury Serif */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[90px] font-normal text-white uppercase tracking-[0.05em] sm:tracking-[0.1em] md:tracking-[0.14em] leading-none mb-6 text-shadow-hero sm:whitespace-nowrap"
+          className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px] 2xl:text-[110px] font-normal text-white uppercase tracking-[0.06em] sm:tracking-[0.08em] md:tracking-[0.12em] leading-none mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] sm:whitespace-nowrap"
         >
           THE BEACH. AT YOUR DOOR.
         </motion.div>
@@ -97,10 +99,10 @@ export default function HeroSection({
           <p className="text-[#F3DFBF] text-sm sm:text-base font-medium tracking-wide">
             Just 13 rooms. One beautiful corner of Phuket.
           </p>
-          <p className="text-white/90 text-xs sm:text-sm md:text-base font-light leading-relaxed">
+          <p className="text-white/95 text-xs sm:text-sm md:text-base font-light leading-relaxed">
             Elia is an intimate boutique hotel on Bang Tao Beach, created for guests who want to stay closer to the sea, closer to the good life and a little further from everything else.
           </p>
-          <p className="text-white/80 text-xs sm:text-sm font-light hidden sm:block">
+          <p className="text-white/85 text-xs sm:text-sm font-light hidden sm:block">
             Wake up moments from the beach. Spend the day between your private terrace, the water, our outdoor wellness spaces and GOAT Beach Club next door.
           </p>
         </motion.div>
@@ -122,7 +124,7 @@ export default function HeroSection({
 
           <button
             onClick={onNavigateRooms}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-black/50 hover:bg-white/20 backdrop-blur-xl border border-white/40 text-white hover:border-[#C5A880] text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap shadow-lg"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-black/60 hover:bg-white/20 backdrop-blur-xl border border-white/40 text-white hover:border-[#C5A880] text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap shadow-xl"
           >
             <span className="whitespace-nowrap">EXPLORE OUR ROOMS</span>
             <ArrowRight size={15} className="shrink-0 text-[#C5A880]" />
@@ -136,19 +138,19 @@ export default function HeroSection({
           transition={{ duration: 0.8, delay: 0.75 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 w-full max-w-3xl pt-4 border-t border-white/20 text-left"
         >
-          <div className="bg-black/45 backdrop-blur-md rounded-2xl p-3 border border-white/15 shadow-md">
+          <div className="bg-black/55 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 shadow-xl">
             <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Scale</span>
             <span className="text-xs text-white font-medium">13 Intimate Rooms</span>
           </div>
-          <div className="bg-black/45 backdrop-blur-md rounded-2xl p-3 border border-white/15 shadow-md">
+          <div className="bg-black/55 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 shadow-xl">
             <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Location</span>
             <span className="text-xs text-white font-medium">Bang Tao Beach</span>
           </div>
-          <div className="bg-black/45 backdrop-blur-md rounded-2xl p-3 border border-white/15 shadow-md">
+          <div className="bg-black/55 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 shadow-xl">
             <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Beach Club</span>
             <span className="text-xs text-white font-medium">GOAT Club Access</span>
           </div>
-          <div className="bg-black/45 backdrop-blur-md rounded-2xl p-3 border border-white/15 shadow-md">
+          <div className="bg-black/55 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 shadow-xl">
             <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Wellness</span>
             <span className="text-xs text-white font-medium">Sauna & Cold Plunge</span>
           </div>
@@ -168,7 +170,7 @@ export default function HeroSection({
             href="https://wa.me/66824899371"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/80 hover:text-[#25D366] hover:scale-110 transition-all p-1.5"
+            className="text-[#FAF7F2]/90 hover:text-[#25D366] hover:scale-110 transition-all p-1.5 drop-shadow"
             aria-label="WhatsApp"
             title="Chat on WhatsApp (+66 82 489 9371)"
           >
@@ -178,7 +180,7 @@ export default function HeroSection({
             href="https://www.instagram.com/eliaboutiquehotel/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/80 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
+            className="text-[#FAF7F2]/90 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5 drop-shadow"
             aria-label="Instagram"
           >
             <Instagram size={18} />
@@ -187,7 +189,7 @@ export default function HeroSection({
             href="https://www.facebook.com/profile.php?id=61590545618953"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/80 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
+            className="text-[#FAF7F2]/90 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5 drop-shadow"
             aria-label="Facebook"
           >
             <Facebook size={18} />
@@ -196,7 +198,7 @@ export default function HeroSection({
             href="https://www.tiktok.com/@elia.boutique.hote"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/80 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
+            className="text-[#FAF7F2]/90 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5 drop-shadow"
             aria-label="TikTok"
           >
             <TiktokIcon size={18} />
@@ -209,9 +211,9 @@ export default function HeroSection({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
           onClick={onExploreClick}
-          className="flex flex-col items-center gap-1 text-[#FAF7F2]/80 hover:text-[#C5A880] transition-colors cursor-pointer group"
+          className="flex flex-col items-center gap-1 text-[#FAF7F2]/90 hover:text-[#C5A880] transition-colors cursor-pointer group"
         >
-          <span className="text-[9px] uppercase tracking-[0.3em] font-medium text-shadow-lux">Explore Elia</span>
+          <span className="text-[9px] uppercase tracking-[0.3em] font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Explore Elia</span>
           <ChevronDown size={16} className="animate-bounce text-[#C5A880]" />
         </motion.button>
 
@@ -220,7 +222,7 @@ export default function HeroSection({
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="hidden sm:flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-[#FAF7F2]/80 font-medium text-shadow-lux"
+          className="hidden sm:flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-[#FAF7F2]/90 font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
         >
           <MapPin size={13} className="text-[#C5A880]" />
           <span>Bang Tao Beach, Phuket</span>
