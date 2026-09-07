@@ -60,7 +60,7 @@ export default function HeroSection({
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/45 z-10 pointer-events-none" />
 
       {/* Center Hero Content */}
-      <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto flex flex-col items-center justify-center">
+      <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto flex flex-col items-center justify-center">
         {/* Top Highlight Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,14 +77,14 @@ export default function HeroSection({
         {/* H1 for Homepage SEO matching Section 2 */}
         <h1 className="sr-only">Boutique Beachfront Hotel on Bang Tao Beach, Phuket</h1>
 
-        {/* Hero Visual Title */}
+        {/* Hero Visual Title (Clean Non-Italic, Single Line, High-Impact Luxury Serif) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.08] mb-5 text-shadow-hero uppercase"
+          className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[90px] font-normal text-white uppercase tracking-[0.05em] sm:tracking-[0.1em] md:tracking-[0.14em] leading-none mb-6 text-shadow-hero sm:whitespace-nowrap"
         >
-          THE BEACH. <span className="italic font-serif text-[#F3DFBF] font-normal normal-case">AT YOUR DOOR.</span>
+          THE BEACH. AT YOUR DOOR.
         </motion.div>
 
         {/* Hero Narrative Copy */}
