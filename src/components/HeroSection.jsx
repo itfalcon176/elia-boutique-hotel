@@ -63,15 +63,15 @@ export default function HeroSection({
       {/* Center Hero Content */}
       <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto flex flex-col items-center justify-center">
         
-        {/* Top Highlight Badge */}
+        {/* Top Highlight Badge - Modern Glassmorphic Pill */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#C5A880]/60 mb-5 text-[#F7F4EF] shadow-xl"
+          className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/[0.08] backdrop-blur-xl border border-white/20 shadow-2xl mb-6 hover:border-[#C5A880]/60 transition-all duration-300"
         >
-          <Sparkles size={13} className="text-[#C5A880]" />
-          <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-sans font-semibold">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" />
+          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-white/95 font-medium font-sans">
             13 rooms by the sea • Bang Tao Beach, Phuket
           </span>
         </motion.div>
@@ -79,80 +79,77 @@ export default function HeroSection({
         {/* H1 for Homepage SEO matching Section 2 */}
         <h1 className="sr-only">Boutique Beachfront Hotel on Bang Tao Beach, Phuket</h1>
 
-        {/* Hero Visual Title: Larger, Single Line, Non-Italic, High-Impact Luxury Serif */}
+        {/* Hero Visual Title: Modern High-Fashion Editorial Luxury Typography */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px] 2xl:text-[110px] font-normal text-white uppercase tracking-[0.06em] sm:tracking-[0.08em] md:tracking-[0.12em] leading-none mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] sm:whitespace-nowrap"
+          className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[78px] font-light text-white uppercase tracking-[0.04em] sm:tracking-[0.06em] md:tracking-[0.08em] leading-tight mb-5 drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] max-w-full px-2 sm:whitespace-nowrap"
         >
           THE BEACH. AT YOUR DOOR.
         </motion.div>
 
         {/* Hero Narrative Copy */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.45 }}
           className="space-y-2 max-w-2xl mx-auto mb-8 font-sans text-shadow-lux"
         >
-          <p className="text-[#F3DFBF] text-sm sm:text-base font-medium tracking-wide">
+          <p className="text-[#F3DFBF] text-sm sm:text-base md:text-lg font-light tracking-[0.05em]">
             Just 13 rooms. One beautiful corner of Phuket.
           </p>
-          <p className="text-white/95 text-xs sm:text-sm md:text-base font-light leading-relaxed">
+          <p className="text-white/90 text-xs sm:text-sm md:text-base font-light leading-relaxed max-w-xl mx-auto">
             Elia is an intimate boutique hotel on Bang Tao Beach, created for guests who want to stay closer to the sea, closer to the good life and a little further from everything else.
-          </p>
-          <p className="text-white/85 text-xs sm:text-sm font-light hidden sm:block">
-            Wake up moments from the beach. Spend the day between your private terrace, the water, our outdoor wellness spaces and GOAT Beach Club next door.
           </p>
         </motion.div>
 
-        {/* Action Buttons: BOOK YOUR STAY & EXPLORE OUR ROOMS */}
+        {/* Action Buttons: Modern Luxury Glassmorphism & Gold Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full max-w-xl mx-auto mb-8 px-2"
         >
           <button
             onClick={onOpenReservation}
-            className="w-full sm:w-auto px-9 py-4 rounded-full bg-gradient-to-r from-[#C5A880] via-[#D5B992] to-[#B89A70] hover:from-[#D5B992] hover:to-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] shadow-[0_4px_25px_rgba(197,168,128,0.45)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap"
+            className="w-full sm:w-auto px-9 py-4 rounded-full bg-gradient-to-r from-[#C5A880] via-[#E2C79F] to-[#B89A70] hover:from-[#E2C79F] hover:to-[#C5A880] text-[#141312] font-semibold text-xs uppercase tracking-[0.22em] shadow-[0_10px_35px_rgba(197,168,128,0.4)] hover:shadow-[0_12px_45px_rgba(197,168,128,0.6)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap"
           >
-            <Calendar size={16} className="shrink-0 text-[#141312]" />
+            <Calendar size={15} className="shrink-0 text-[#141312]" />
             <span className="whitespace-nowrap font-bold">BOOK YOUR STAY</span>
           </button>
 
           <button
             onClick={onNavigateRooms}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-black/60 hover:bg-white/20 backdrop-blur-xl border border-white/40 text-white hover:border-[#C5A880] text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap shadow-xl"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/[0.08] hover:bg-white/[0.18] backdrop-blur-xl border border-white/30 hover:border-white/60 text-white font-medium text-xs uppercase tracking-[0.22em] shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap"
           >
             <span className="whitespace-nowrap">EXPLORE OUR ROOMS</span>
-            <ArrowRight size={15} className="shrink-0 text-[#C5A880]" />
+            <ArrowRight size={14} className="shrink-0 text-[#C5A880]" />
           </button>
         </motion.div>
 
-        {/* 4 Quick Highlights */}
+        {/* 4 Quick Highlights - Modern Sleek Glass Cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.75 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 w-full max-w-3xl pt-4 border-t border-white/20 text-left"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full max-w-3xl pt-5 border-t border-white/15 text-left"
         >
-          <div className="bg-black/55 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 shadow-xl">
-            <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Scale</span>
-            <span className="text-xs text-white font-medium">13 Intimate Rooms</span>
+          <div className="bg-white/[0.07] hover:bg-white/[0.12] backdrop-blur-xl rounded-2xl p-3.5 sm:p-4 border border-white/15 hover:border-[#C5A880]/40 transition-all duration-300 shadow-xl">
+            <span className="text-[10px] text-[#C5A880] uppercase tracking-[0.22em] block font-semibold mb-0.5">Scale</span>
+            <span className="text-xs sm:text-sm text-white font-light">13 Intimate Rooms</span>
           </div>
-          <div className="bg-black/55 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 shadow-xl">
-            <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Location</span>
-            <span className="text-xs text-white font-medium">Bang Tao Beach</span>
+          <div className="bg-white/[0.07] hover:bg-white/[0.12] backdrop-blur-xl rounded-2xl p-3.5 sm:p-4 border border-white/15 hover:border-[#C5A880]/40 transition-all duration-300 shadow-xl">
+            <span className="text-[10px] text-[#C5A880] uppercase tracking-[0.22em] block font-semibold mb-0.5">Location</span>
+            <span className="text-xs sm:text-sm text-white font-light">Bang Tao Beach</span>
           </div>
-          <div className="bg-black/55 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 shadow-xl">
-            <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Beach Club</span>
-            <span className="text-xs text-white font-medium">GOAT Club Access</span>
+          <div className="bg-white/[0.07] hover:bg-white/[0.12] backdrop-blur-xl rounded-2xl p-3.5 sm:p-4 border border-white/15 hover:border-[#C5A880]/40 transition-all duration-300 shadow-xl">
+            <span className="text-[10px] text-[#C5A880] uppercase tracking-[0.22em] block font-semibold mb-0.5">Beach Club</span>
+            <span className="text-xs sm:text-sm text-white font-light">GOAT Club Access</span>
           </div>
-          <div className="bg-black/55 backdrop-blur-md rounded-2xl p-3.5 border border-white/15 shadow-xl">
-            <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Wellness</span>
-            <span className="text-xs text-white font-medium">Sauna & Cold Plunge</span>
+          <div className="bg-white/[0.07] hover:bg-white/[0.12] backdrop-blur-xl rounded-2xl p-3.5 sm:p-4 border border-white/15 hover:border-[#C5A880]/40 transition-all duration-300 shadow-xl">
+            <span className="text-[10px] text-[#C5A880] uppercase tracking-[0.22em] block font-semibold mb-0.5">Wellness</span>
+            <span className="text-xs sm:text-sm text-white font-light">Sauna & Cold Plunge</span>
           </div>
         </motion.div>
       </div>
