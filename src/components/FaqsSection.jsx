@@ -1,81 +1,135 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle, Sparkles, Wifi, Clock, Waves, Utensils, Heart, Shield, Phone } from 'lucide-react';
 
-export const officialFaqs = [
+export const top10GuestFaqs = [
   {
-    question: 'Where is Elia Boutique Hotel?',
-    answer: 'Elia is located beside Bang Tao Beach in Choeng Thale on Phuket\'s west coast.',
+    id: 1,
+    category: 'Top 10 Essentials',
+    question: 'What time is check-in and check-out?',
+    answer: 'Check-in is from 3:00 PM and check-out is by 11:00 AM. Late checkout may be available on request, subject to availability.',
   },
   {
-    question: 'Is Elia directly on Bang Tao Beach?',
-    answer: 'Elia is positioned just moments from Bang Tao Beach, with the beachfront and GOAT Beach Club immediately beside the hotel.',
+    id: 2,
+    category: 'Top 10 Essentials',
+    question: 'Is Elia Hotel directly on the beach?',
+    answer: 'Yes. Elia is located directly on Bang Tao Beach, with the rooms only a short walk from the sand. Guests also receive complimentary access to GOAT Beach Club.',
   },
   {
-    question: 'How many rooms does Elia have?',
-    answer: 'Elia is an intimate boutique hotel with only 13 rooms and suites.',
+    id: 3,
+    category: 'Top 10 Essentials',
+    question: 'Is breakfast included?',
+    answer: 'Breakfast is served at GOAT Beach Club next to the hotel.',
   },
   {
-    question: 'What room types does Elia have?',
-    answer: 'Elia has eight Garden Beach Rooms, two Garden Family Suites, two Loft Apartments and one One-Bedroom Loft Suite.',
+    id: 4,
+    category: 'Top 10 Essentials',
+    question: 'Does Elia have a swimming pool and spa facilities?',
+    answer: 'Yes. Elia has a plunge pool, outdoor spa area with sauna, cold plunge and jacuzzi, plus in-house massage facilities.',
   },
   {
-    question: 'Is Elia suitable for families?',
-    answer: 'Yes. Elia offers family suites, a kids club, a plunge pool and easy access to Bang Tao Beach. Cots can also be provided free of charge when booked in advance.',
+    id: 5,
+    category: 'Top 10 Essentials',
+    question: 'Can I book massages through the hotel?',
+    answer: 'Yes. Massages can be booked directly through the Elia Concierge App or via reception.',
   },
   {
-    question: 'What is the maximum room occupancy?',
-    answer: 'Garden Beach Rooms and Loft Apartments accommodate up to two adults and one child. Garden Family Suites and the One-Bedroom Loft Suite accommodate up to three adults and one child or two adults and two children.',
+    id: 6,
+    category: 'Top 10 Essentials',
+    question: 'Does Elia arrange airport transfers and taxis?',
+    answer: 'Yes. Airport transfers, taxis and private transport can be arranged through the Elia Concierge App or reception.',
   },
   {
-    question: 'Does Elia have a swimming pool?',
-    answer: 'Elia has a plunge pool as part of its guest facilities.',
+    id: 7,
+    category: 'Top 10 Essentials',
+    question: 'Can Elia help arrange tours and excursions in Phuket?',
+    answer: 'Yes. Our concierge can assist with island trips, boat tours, activities, restaurants and other Phuket experiences.',
   },
   {
-    question: 'Does Elia have a spa?',
-    answer: 'Elia has an outdoor wellness area featuring a sauna, cold plunge and jacuzzi, together with massage treatments.',
+    id: 8,
+    category: 'Top 10 Essentials',
+    question: 'Is Elia suitable for families and children?',
+    answer: 'Yes. Elia is family-friendly and has a Kids Club. Cots are available free of charge when booked in advance, and extra beds are available on request.',
   },
   {
-    question: 'Do Elia guests have access to GOAT Beach Club?',
-    answer: 'Yes. Elia guests receive complimentary access to GOAT Beach Club. Food, beverages, reserved seating and paid experiences are additional unless specifically included in your booking.',
+    id: 9,
+    category: 'Top 10 Essentials',
+    question: 'Is Wi-Fi free, and is it available throughout the hotel?',
+    answer: 'Yes. Complimentary Wi-Fi is available for hotel guests throughout the property. Network: Elia | Password: Elia',
+    wifiNote: { network: 'Elia', password: 'Elia' },
   },
   {
-    question: 'Does Elia serve breakfast?',
-    answer: 'Breakfast is available through GOAT Beach Club, located immediately beside Elia.',
-  },
-  {
-    question: 'Can I order food to my room?',
-    answer: 'Yes. Room service is available from GOAT Beach Club.',
-  },
-  {
-    question: 'Does Elia have a minibar?',
-    answer: 'Yes. Guest rooms feature a minibar with selected drinks and snacks. Complimentary tea and coffee are also provided.',
-  },
-  {
-    question: 'Does Elia provide Wi-Fi?',
-    answer: 'Yes. Wi-Fi is available to Elia guests.',
-  },
-  {
-    question: 'What time is check-in?',
-    answer: 'Check-in is from 3:00 PM.',
-  },
-  {
-    question: 'What time is check-out?',
-    answer: 'Check-out is at 11:00 AM. Late checkout may be available on request and is subject to availability.',
-  },
-  {
-    question: 'Can Elia arrange an airport transfer?',
-    answer: 'Yes. Airport transfers and private transport can be arranged through Elia.',
-  },
-  {
-    question: 'Can Elia arrange Phuket tours and activities?',
-    answer: 'Yes. The concierge can assist with excursions, boat trips and other Phuket experiences.',
-  },
-  {
-    question: 'How do I contact Elia?',
-    answer: 'You can contact Elia by WhatsApp (+66 82 489 9371), telephone (+66 93 271 9103) or email at info@eliaphuket.com.',
+    id: 10,
+    category: 'Top 10 Essentials',
+    question: 'How can I contact reception during my stay?',
+    answer: 'Guests can contact reception through the Elia Concierge App, by WhatsApp (+66 82 489 9371), or by telephone (+66 93 271 9103 / in-room phone).',
   },
 ];
+
+export const additionalGuestFaqs = [
+  {
+    id: 11,
+    category: 'Booking & Policies',
+    question: 'What is the payment policy for direct bookings?',
+    answer: 'For standard direct reservations, 50% of the accommodation total is payable when booking. The remaining balance is payable before arrival in accordance with your booking confirmation.',
+  },
+  {
+    id: 12,
+    category: 'Booking & Policies',
+    question: 'What is the cancellation policy?',
+    answer: 'Cancellations made in accordance with your confirmed rate plan are eligible for refund or date modifications. Payment and cancellation terms displayed during checkout are synchronised with Cloudbeds.',
+  },
+  {
+    id: 13,
+    category: 'Family & Children',
+    question: 'How do children charges and extra beds work?',
+    answer: 'Children staying within standard room occupancy are welcomed. Cots are provided free of charge when requested in advance. Additional fold-up beds can be arranged for family suites upon request.',
+  },
+  {
+    id: 14,
+    category: 'Property Rules',
+    question: 'Are pets allowed at Elia?',
+    answer: 'To preserve the peaceful, tranquil atmosphere for all resident guests, pets are generally not permitted on the property unless special advance arrangements have been confirmed with hotel management.',
+  },
+  {
+    id: 15,
+    category: 'Property Rules',
+    question: 'Is parking available on site?',
+    answer: 'Yes. Complimentary private parking is available for resident guests. Please notify our concierge in advance if you require parking or private driver staging.',
+  },
+  {
+    id: 16,
+    category: 'Property Rules',
+    question: 'What is the smoking policy?',
+    answer: 'All indoor guest suites and enclosed facilities are strictly non-smoking. Designated outdoor smoking areas are available on private terraces and open-air garden zones.',
+  },
+  {
+    id: 17,
+    category: 'Dining & Services',
+    question: 'Can I order room service?',
+    answer: 'Yes. Room service is available courtesy of GOAT Beach Club. Enjoy restaurant-quality food and drinks delivered directly to your room or private terrace.',
+  },
+  {
+    id: 18,
+    category: 'Dining & Services',
+    question: 'What is in the minibar, and is tea/coffee free?',
+    answer: 'Each room includes a carefully selected minibar with chilled drinks, beers, wines and quality snacks. Premium tea and coffee are complimentary in every room.',
+  },
+  {
+    id: 19,
+    category: 'Housekeeping & Comfort',
+    question: 'What housekeeping services are provided?',
+    answer: 'Daily housekeeping and evening turndown service are provided for all suites. Fresh bath towels, eco-linen changes, and beach towels are refreshed daily.',
+  },
+  {
+    id: 20,
+    category: 'Beach & Loungers',
+    question: 'How do beach loungers work at Elia and GOAT Beach Club?',
+    answer: 'Ground-floor Garden Beach Rooms and Suites feature private loungers and umbrellas on their own terraces. In addition, all Elia guests receive complimentary access to GOAT Beach Club loungers right on Bang Tao Beach.',
+  },
+];
+
+export const allFaqs = [...top10GuestFaqs, ...additionalGuestFaqs];
 
 export default function FaqsSection() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -86,24 +140,24 @@ export default function FaqsSection() {
         {/* Section Header */}
         <div className="text-center mb-14">
           <span className="text-xs uppercase tracking-[0.4em] text-[#A38B68] font-semibold mb-3 block font-sans">
-            Information & Questions
+            Top Guest FAQs
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl font-light tracking-wide text-[#23211E] mb-4">
-            Elia Frequently Asked <span className="italic text-gold-gradient font-serif">Questions</span>
+            Frequently Asked <span className="italic text-gold-gradient font-serif">Questions</span>
           </h2>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           <p className="text-[#6E6A63] font-light text-sm sm:text-base font-sans">
-            Everything you need to know about Elia Boutique Hotel, location, beach access, family stays, dining, wellness and GOAT Beach Club.
+            Key information for your stay at Elia Boutique Hotel Phuket, dining at GOAT Beach Club, wellness facilities, and concierge services.
           </p>
         </div>
 
-        {/* Accordion List */}
-        <div className="space-y-3.5">
-          {officialFaqs.map((faq, idx) => {
+        {/* Top 10 Accordion List */}
+        <div className="space-y-3.5 mb-10">
+          {top10GuestFaqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
-                key={idx}
+                key={faq.id}
                 className="bg-white rounded-2xl border border-[#A38B68]/20 overflow-hidden shadow-sm transition-all duration-300 hover:border-[#A38B68]/40"
               >
                 <button
@@ -111,7 +165,9 @@ export default function FaqsSection() {
                   className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-serif text-base sm:text-lg font-medium text-[#23211E] hover:text-[#A38B68] transition-colors cursor-pointer"
                 >
                   <span className="flex items-center gap-3">
-                    <HelpCircle size={18} className="text-[#A38B68] shrink-0" />
+                    <span className="w-6 h-6 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] text-xs font-sans font-semibold flex items-center justify-center shrink-0">
+                      {idx + 1}
+                    </span>
                     <span>{faq.question}</span>
                   </span>
                   <ChevronDown
@@ -134,12 +190,32 @@ export default function FaqsSection() {
                       <p className="text-[#6E6A63] text-xs sm:text-sm font-light leading-relaxed font-sans mt-3.5">
                         {faq.answer}
                       </p>
+
+                      {faq.wifiNote && (
+                        <div className="mt-3 p-3 rounded-xl bg-[#FAF7F2] border border-[#A38B68]/25 inline-flex items-center gap-4 text-xs font-sans">
+                          <div className="flex items-center gap-1.5 text-[#23211E]">
+                            <Wifi size={14} className="text-[#A38B68]" />
+                            <span><strong>Network:</strong> {faq.wifiNote.network}</span>
+                          </div>
+                          <div className="h-3 w-[1px] bg-[#A38B68]/30" />
+                          <div className="text-[#23211E]">
+                            <span><strong>Password:</strong> {faq.wifiNote.password}</span>
+                          </div>
+                        </div>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
             );
           })}
+        </div>
+
+        {/* View All FAQs Link */}
+        <div className="text-center pt-2">
+          <p className="text-xs text-[#6E6A63] font-light mb-3">
+            Looking for cancellation, payment, pets, parking, or housekeeping information?
+          </p>
         </div>
       </div>
     </section>
