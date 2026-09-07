@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, Sparkles } from 'lucide-react';
+import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, Sparkles, ArrowRight } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
 export default function Navbar({ activePage, setActivePage, onOpenReservation }) {
@@ -43,145 +43,163 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   return (
     <>
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isLightHeader
-            ? 'bg-[#F7F4EF]/95 backdrop-blur-xl border-b border-[#A38B68]/20 py-2.5 sm:py-3 shadow-[0_4px_25px_rgba(35,33,30,0.08)]'
-            : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-3.5 sm:py-4'
+            ? 'bg-[#FAF7F2]/95 backdrop-blur-md shadow-sm border-b border-[#A38B68]/20 py-3.5'
+            : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
-          <button
-            onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 group focus:outline-none cursor-pointer shrink-0"
-            aria-label="Elia Phuket Home"
-          >
-            <img
-              src={isLightHeader ? '/Logos/logo with.png' : '/Logos/white-new.png'}
-              alt="Elia Boutique Hotel Phuket Logo"
-              className="h-8 sm:h-10 lg:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              onError={(e) => {
-                e.target.src = '/Logos/white-new.png';
-              }}
-            />
-          </button>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Brand Logo */}
+            <button
+              onClick={() => handleNavClick('home')}
+              className="flex items-center gap-3 cursor-pointer group text-left"
+            >
+              <img
+                src={isLightHeader ? '/Logos/logo with.png' : '/Logos/white-new.png'}
+                alt="Elia Boutique Hotel Phuket Logo"
+                className="h-9 sm:h-11 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                onError={(e) => {
+                  e.target.src = '/Logos/white-new.png';
+                }}
+              />
+            </button>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
-            {navLinks.map((link) => {
-              const isSelected = activePage === link.id || (link.id === 'rooms' && activePage.startsWith('rooms'));
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-7 xl:gap-8">
+              {navLinks.map((link) => {
+                const isSelected = activePage === link.id || (link.id === 'rooms' && activePage.startsWith('rooms'));
 
-              if (link.hasDropdown) {
-                return (
-                  <div
-                    key={link.id}
-                    className="relative"
-                    onMouseEnter={() => setRoomsDropdownOpen(true)}
-                    onMouseLeave={() => setRoomsDropdownOpen(false)}
-                  >
-                    <button
-                      onClick={() => handleNavClick('rooms')}
-                      className={`text-[11px] xl:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center gap-1 py-1 cursor-pointer ${
-                        isLightHeader
-                          ? isSelected
-                            ? 'text-[#A38B68] font-bold'
-                            : 'text-[#23211E]/80 hover:text-[#23211E]'
-                          : isSelected
-                          ? 'text-[#C5A880] font-bold'
-                          : 'text-white/85 hover:text-white'
-                      }`}
+                if (link.hasDropdown) {
+                  return (
+                    <div
+                      key={link.id}
+                      className="relative"
+                      onMouseEnter={() => setRoomsDropdownOpen(true)}
+                      onMouseLeave={() => setRoomsDropdownOpen(false)}
                     >
-                      <span>{link.label}</span>
-                      <ChevronDown size={13} className={`transition-transform duration-200 ${roomsDropdownOpen ? 'rotate-180' : ''}`} />
-                      {isSelected && (
-                        <motion.div
-                          layoutId="activeNavIndicator"
-                          className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent"
-                        />
-                      )}
-                    </button>
+                      <button
+                        onClick={() => handleNavClick(link.id)}
+                        className={`relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center gap-1.5 py-1 cursor-pointer ${
+                          isLightHeader
+                            ? isSelected
+                              ? 'text-[#A38B68] font-bold'
+                              : 'text-[#23211E]/80 hover:text-[#23211E]'
+                            : isSelected
+                            ? 'text-[#C5A880] font-bold'
+                            : 'text-white/85 hover:text-white'
+                        }`}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronDown size={13} className={`transition-transform duration-200 ${roomsDropdownOpen ? 'rotate-180' : ''}`} />
+                        {isSelected && (
+                          <motion.div
+                            layoutId="activeNavIndicator"
+                            className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent"
+                          />
+                        )}
+                      </button>
 
-                    {/* Rooms Dropdown Menu */}
-                    <AnimatePresence>
-                      {roomsDropdownOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-72 bg-[#FAF7F2] text-[#23211E] rounded-2xl shadow-2xl border border-[#A38B68]/30 p-2.5 z-50 backdrop-blur-xl"
-                        >
-                          <div className="p-2 border-b border-[#A38B68]/15 mb-1.5 flex items-center justify-between">
-                            <span className="text-[10px] uppercase tracking-widest text-[#A38B68] font-semibold">
-                              All 4 Room Categories
-                            </span>
-                            <button
-                              onClick={() => handleNavClick('rooms')}
-                              className="text-[10px] font-semibold uppercase text-[#23211E] hover:text-[#A38B68] underline"
-                            >
-                              View All
-                            </button>
-                          </div>
-                          <div className="space-y-1">
-                            {roomsData.map((room) => (
+                      {/* Rooms Dropdown Menu - Large, Spacious, Luxury Card Layout */}
+                      <AnimatePresence>
+                        {roomsDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-0 mt-3 w-[420px] sm:w-[460px] bg-[#FAF7F2] text-[#23211E] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-[#A38B68]/30 p-3 sm:p-4 z-50 backdrop-blur-2xl"
+                          >
+                            <div className="px-2 py-1.5 border-b border-[#A38B68]/20 mb-2 flex items-center justify-between">
+                              <span className="text-xs uppercase tracking-[0.2em] text-[#A38B68] font-bold">
+                                All 4 Room Categories
+                              </span>
                               <button
-                                key={room.id}
-                                onClick={() => handleNavClick(`rooms/${room.slug}`)}
-                                className={`w-full text-left px-3 py-2 rounded-xl text-xs flex items-center justify-between transition-colors cursor-pointer group ${
-                                  activePage === `rooms/${room.slug}`
-                                    ? 'bg-[#23211E] text-white'
-                                    : 'hover:bg-[#EFECE6] text-[#23211E]'
-                                }`}
+                                onClick={() => handleNavClick('rooms')}
+                                className="text-xs font-semibold uppercase text-[#23211E] hover:text-[#A38B68] flex items-center gap-1 transition-colors group cursor-pointer"
                               >
-                                <div>
-                                  <div className="font-serif font-medium text-xs group-hover:text-[#A38B68]">
-                                    {room.title}
-                                  </div>
-                                  <div className="text-[10px] text-[#6E6A63] font-light">
-                                    {room.countLabel} • {room.maxOccupancyText}
-                                  </div>
-                                </div>
-                                <span className="text-[9px] uppercase tracking-wider text-[#A38B68] font-semibold">
-                                  View →
-                                </span>
+                                <span>Overview</span>
+                                <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
                               </button>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              }
+                            </div>
 
-              return (
-                <button
-                  key={link.id}
-                  onClick={() => handleNavClick(link.id)}
-                  className={`relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center gap-1.5 py-1 cursor-pointer ${
-                    isLightHeader
-                      ? isSelected
-                        ? 'text-[#A38B68] font-bold'
-                        : 'text-[#23211E]/80 hover:text-[#23211E]'
-                      : isSelected
-                      ? 'text-[#C5A880] font-bold'
-                      : 'text-white/85 hover:text-white'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  {isSelected && (
-                    <motion.div
-                      layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent"
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </nav>
+                            <div className="space-y-1.5">
+                              {roomsData.map((room) => (
+                                <button
+                                  key={room.id}
+                                  onClick={() => handleNavClick(`rooms/${room.slug}`)}
+                                  className={`w-full text-left p-2.5 rounded-xl flex items-center gap-3.5 transition-all cursor-pointer group ${
+                                    activePage === `rooms/${room.slug}`
+                                      ? 'bg-[#23211E] text-white shadow-md'
+                                      : 'hover:bg-[#EFECE6] text-[#23211E]'
+                                  }`}
+                                >
+                                  {/* Thumbnail Image */}
+                                  <div className="w-14 h-12 rounded-lg overflow-hidden shrink-0 border border-[#A38B68]/25 bg-stone-200">
+                                    <img
+                                      src={room.mainImage}
+                                      alt={room.title}
+                                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                    />
+                                  </div>
+
+                                  {/* Content */}
+                                  <div className="flex-1 min-w-0">
+                                    <div className="font-serif font-medium text-sm sm:text-base leading-snug group-hover:text-[#A38B68] transition-colors truncate">
+                                      {room.title}
+                                    </div>
+                                    <div className={`text-xs mt-0.5 font-light truncate ${
+                                      activePage === `rooms/${room.slug}` ? 'text-white/80' : 'text-[#6E6A63]'
+                                    }`}>
+                                      {room.countLabel} • {room.size} • {room.maxOccupancyText}
+                                    </div>
+                                  </div>
+
+                                  {/* Action Arrow */}
+                                  <div className="shrink-0 pl-1">
+                                    <span className="text-xs font-semibold uppercase tracking-wider text-[#A38B68] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                      View →
+                                    </span>
+                                  </div>
+                                </button>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
+                return (
+                  <button
+                    key={link.id}
+                    onClick={() => handleNavClick(link.id)}
+                    className={`relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center gap-1.5 py-1 cursor-pointer ${
+                      isLightHeader
+                        ? isSelected
+                          ? 'text-[#A38B68] font-bold'
+                          : 'text-[#23211E]/80 hover:text-[#23211E]'
+                        : isSelected
+                        ? 'text-[#C5A880] font-bold'
+                        : 'text-white/85 hover:text-white'
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    {isSelected && (
+                      <motion.div
+                        layoutId="activeNavIndicator"
+                        className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent"
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </nav>
 
           {/* Right CTA Button: BOOK NOW */}
           <div className="hidden sm:flex items-center gap-3">
@@ -198,14 +216,15 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
             </button>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 focus:outline-none cursor-pointer ${isLightHeader ? 'text-[#23211E]' : 'text-white'}`}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={26} /> : <MenuIcon size={26} />}
-          </button>
+            {/* Mobile Hamburger Toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`lg:hidden p-2 focus:outline-none cursor-pointer ${isLightHeader ? 'text-[#23211E]' : 'text-white'}`}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={26} /> : <MenuIcon size={26} />}
+            </button>
+          </div>
         </div>
       </motion.header>
 
