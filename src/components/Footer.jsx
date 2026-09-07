@@ -35,7 +35,7 @@ const WhatsAppIcon = ({ size = 18, ...props }) => (
   </svg>
 );
 
-export default function Footer({ onNavClick }) {
+export default function Footer({ onNavClick, onOpenReservation }) {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -51,28 +51,42 @@ export default function Footer({ onNavClick }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-[#FAF7F2]/10">
           
-          {/* Col 1: Brand & Identity (4 cols) */}
+          {/* Col 1: Brand & Identity (4 cols) matching Section 20 */}
           <div className="lg:col-span-4 space-y-4">
             <button onClick={() => onNavClick('home')} className="focus:outline-none cursor-pointer block text-left">
               <img
                 src="/Logos/white-new.png"
-                alt="Elia Boutique Hotel"
+                alt="Elia Boutique Hotel Phuket"
                 className="h-12 sm:h-14 w-auto object-contain mb-3 transition-transform duration-300 hover:scale-105"
               />
             </button>
-            <p className="text-[#FAF7F2]/75 text-xs font-light leading-relaxed max-w-sm font-sans">
-              An intimate beachfront sanctuary of only 13 bespoke suites along the golden shores of Bang Tao Beach, Phuket. Relaxed luxury, slow tropical living, and direct access to GOAT Beach Club.
+            <h3 className="font-serif text-sm text-white font-medium uppercase tracking-widest">
+              ELIA BOUTIQUE HOTEL PHUKET
+            </h3>
+            <p className="text-[#FAF7F2]/80 text-xs font-light leading-relaxed max-w-sm font-sans">
+              13 rooms by the sea on Bang Tao Beach, Phuket.
             </p>
+            <p className="text-[#C5A880] text-xs font-serif italic">
+              The beach. At your door.
+            </p>
+            <div className="pt-2 text-xs text-[#FAF7F2]/70 font-light leading-relaxed">
+              <p>82/9 Moo 3, Bang Tao Beach</p>
+              <p>Choeng Thale, Thalang District</p>
+              <p>Phuket 83110, Thailand</p>
+              <a href="mailto:info@eliaphuket.com" className="hover:text-[#C5A880] underline block pt-1">
+                info@eliaphuket.com
+              </a>
+            </div>
 
             {/* Social Links */}
             <div className="pt-3 flex items-center gap-3 text-[#FAF7F2]/80">
               <a
-                href="https://wa.me/66932719103"
+                href="https://wa.me/66824899371"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#25D366] hover:border-[#25D366] hover:bg-white/10 transition-all"
                 aria-label="WhatsApp"
-                title="Chat on WhatsApp"
+                title="Chat on WhatsApp (+66 82 489 9371)"
               >
                 <WhatsAppIcon size={16} />
               </a>
@@ -114,38 +128,47 @@ export default function Footer({ onNavClick }) {
             <ul className="space-y-2 text-xs text-[#FAF7F2]/70 font-light">
               <li>
                 <button onClick={() => onNavClick('rooms')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Rooms & Suites (All 4 Types)
+                  Rooms & Suites
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavClick('eat-drink')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Eat & Drink (GOAT Beach Club)
+                  Eat & Drink
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavClick('wellness')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Wellness, Spa & Thermal Circuit
+                  Wellness
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavClick('family-hotel-phuket')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                  Families
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavClick('experiences')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Phuket Experiences & Boat Trips
+                  Experiences
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavClick('goat-beach-club')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                  GOAT Beach Club
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavClick('bang-tao-beach-phuket')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                  Bang Tao Beach
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavClick('gallery')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Photo Gallery
+                  Gallery
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavClick('about')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  About the 13-Room Sanctuary
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavClick('special-offers')} className="text-[#C5A880] font-medium hover:text-white transition-colors cursor-pointer flex items-center gap-1">
-                  <span>Special Offers & Packages</span>
-                  <ArrowUpRight size={12} />
+                  About Elia
                 </button>
               </li>
             </ul>
@@ -154,17 +177,36 @@ export default function Footer({ onNavClick }) {
           {/* Col 3: Direct Contact (WhatsApp / Phone / Email ONLY) (2 cols) */}
           <div className="lg:col-span-2">
             <h4 className="font-serif text-sm text-[#C5A880] font-medium uppercase tracking-widest mb-4">
-              Contact Concierge
+              Contact & Links
             </h4>
-            <div className="space-y-3 text-xs text-[#FAF7F2]/75 font-light">
+            <ul className="space-y-2 text-xs text-[#FAF7F2]/70 font-light mb-6">
+              <li>
+                <button onClick={() => onNavClick('faq')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                  FAQ
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavClick('contact')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                  Contact
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavClick('offers')} className="text-[#C5A880] font-medium hover:text-white transition-colors cursor-pointer flex items-center gap-1">
+                  <span>Special Offers</span>
+                  <ArrowUpRight size={12} />
+                </button>
+              </li>
+            </ul>
+
+            <div className="space-y-3 text-xs text-[#FAF7F2]/75 font-light pt-2 border-t border-white/10">
               <a
-                href="https://wa.me/66932719103"
+                href="https://wa.me/66824899371"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-[#25D366] transition-colors font-medium text-white"
               >
                 <WhatsAppIcon size={15} className="text-[#25D366] shrink-0" />
-                <span>WhatsApp Concierge</span>
+                <span>WhatsApp: +66 82 489 9371</span>
               </a>
               <div className="flex items-center gap-2">
                 <Phone size={15} className="text-[#C5A880] shrink-0" />
@@ -174,20 +216,16 @@ export default function Footer({ onNavClick }) {
                 <Mail size={15} className="text-[#C5A880] shrink-0" />
                 <a href="mailto:info@eliaphuket.com" className="hover:text-[#C5A880] transition-colors">info@eliaphuket.com</a>
               </div>
-              <div className="flex items-start gap-2 pt-1 text-[11px] text-[#FAF7F2]/60">
-                <MapPin size={15} className="text-[#C5A880] shrink-0 mt-0.5" />
-                <span>Bang Tao Beach, Thalang, Phuket 83110</span>
-              </div>
             </div>
           </div>
 
-          {/* Col 4: Newsletter (3 cols) */}
+          {/* Col 4: Direct Privileges (3 cols) */}
           <div className="lg:col-span-3">
             <h4 className="font-serif text-sm text-[#C5A880] font-medium uppercase tracking-widest mb-4">
               Direct Stay Privileges
             </h4>
             <p className="text-xs text-[#FAF7F2]/70 font-light leading-relaxed mb-4">
-              Join our private guest circle for direct booking rates, early previews, and complimentary sunset cocktails.
+              Join our private guest circle for direct booking rates, early previews, and complimentary GOAT Beach Club access.
             </p>
 
             {subscribed ? (
@@ -216,37 +254,28 @@ export default function Footer({ onNavClick }) {
           </div>
         </div>
 
-        {/* Footer Sub-Links (FAQ, Policies, Privacy, Terms, Cookies, Directions, etc.) */}
+        {/* Footer Sub-Links matching Section 20 */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-[#FAF7F2]/60 font-light">
-          <p>© {new Date().getFullYear()} Elia Boutique Hotel Phuket. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Elia Boutique Hotel Phuket. 13 rooms by the sea.</p>
           
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px]">
-            <button onClick={() => onNavClick('faqs')} className="hover:text-white transition-colors cursor-pointer">
-              FAQ
-            </button>
-            <button onClick={() => onNavClick('policies')} className="hover:text-white transition-colors cursor-pointer">
-              Hotel Policies
-            </button>
-            <button onClick={() => onNavClick('cancellation')} className="hover:text-white transition-colors cursor-pointer">
-              Cancellation Policy
-            </button>
             <button onClick={() => onNavClick('privacy')} className="hover:text-white transition-colors cursor-pointer">
               Privacy Policy
             </button>
             <button onClick={() => onNavClick('terms')} className="hover:text-white transition-colors cursor-pointer">
               Terms & Conditions
             </button>
-            <button onClick={() => onNavClick('cookies')} className="hover:text-white transition-colors cursor-pointer">
-              Cookies
+            <button onClick={() => onNavClick('policies')} className="hover:text-white transition-colors cursor-pointer">
+              Booking Conditions
             </button>
-            <button onClick={() => onNavClick('directions')} className="hover:text-white transition-colors cursor-pointer">
-              Directions
+            <button onClick={() => onNavClick('cancellation')} className="hover:text-white transition-colors cursor-pointer">
+              Cancellation Policy
+            </button>
+            <button onClick={() => onNavClick('faq')} className="hover:text-white transition-colors cursor-pointer">
+              FAQ
             </button>
             <button onClick={() => onNavClick('contact')} className="hover:text-white transition-colors cursor-pointer">
               Contact
-            </button>
-            <button onClick={() => onNavClick('special-offers')} className="text-[#C5A880] font-medium hover:text-white transition-colors cursor-pointer">
-              Special Offers
             </button>
           </div>
         </div>

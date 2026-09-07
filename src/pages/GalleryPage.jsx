@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Image as ImageIcon, X, ChevronLeft, ChevronRight, Maximize2, Sparkles } from 'lucide-react';
 import { galleryData, galleryCategories } from '../data/galleryData';
 
-export default function GalleryPage() {
+export default function GalleryPage({ onNavigate }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
@@ -37,6 +37,21 @@ export default function GalleryPage() {
     <div className="pt-28 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Breadcrumbs for SEO */}
+        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-[#6E6A63] font-sans">
+          <ol className="flex items-center gap-2">
+            <li>
+              <button onClick={() => onNavigate('home')} className="hover:text-[#A38B68] transition-colors cursor-pointer">
+                Home
+              </button>
+            </li>
+            <li>/</li>
+            <li className="text-[#23211E] font-medium" aria-current="page">
+              Gallery
+            </li>
+          </ol>
+        </nav>
+
         {/* Header Hero Banner */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A38B68]/15 border border-[#A38B68]/30 mb-4 text-[#8B6E3F]">
@@ -47,23 +62,25 @@ export default function GalleryPage() {
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-wide text-[#23211E] mb-4">
-            Visual <span className="italic text-gold-gradient font-serif">Gallery</span>
+            A Look Around <span className="italic text-gold-gradient font-serif">Elia</span>
           </h1>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           
-          <p className="text-[#6E6A63] font-light text-sm sm:text-base font-sans leading-relaxed max-w-2xl mx-auto">
-            Glimpse life at Elia Phuket — where bohemian teak design, turquoise Andaman swells, restorative thermal rituals, and vibrant beach club moments meet.
+          <p className="text-[#555047] font-light text-sm sm:text-base font-sans leading-relaxed max-w-2xl mx-auto">
+            Thirteen rooms. Tropical gardens. Good food. Warm water. Cold water. And the Andaman Sea almost outside the door.
+          </p>
+          <p className="text-[#8B6E3F] font-serif italic text-base mt-1">
+            Take a look around.
           </p>
         </div>
 
-        {/* Category Filters Pill Tabs */}
-        {/* Categories: Rooms / Beach / Food / Wellness / Elia Life */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar py-2 mb-12 px-1 sm:px-0">
+        {/* Category Filters Pill Tabs matching Section 15 of SEO Pack */}
+        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-2 mb-12 px-1 sm:px-0">
           {galleryCategories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`whitespace-nowrap px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 cursor-pointer shrink-0 ${
+              className={`whitespace-nowrap px-4 sm:px-5 py-2 rounded-full text-xs uppercase tracking-[0.18em] font-semibold transition-all duration-300 cursor-pointer shrink-0 ${
                 selectedCategory === category
                   ? 'bg-[#23211E] text-[#F7F4EF] shadow-lg border border-[#A38B68] scale-105'
                   : 'bg-white text-[#555047] border border-[#A38B68]/20 hover:bg-[#EFECE6] hover:text-[#23211E]'
@@ -93,7 +110,7 @@ export default function GalleryPage() {
               >
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={item.alt || item.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:opacity-90"
                 />
                 
@@ -169,7 +186,7 @@ export default function GalleryPage() {
                 <motion.img
                   key={lightboxIndex}
                   src={filteredImages[lightboxIndex].image}
-                  alt={filteredImages[lightboxIndex].title}
+                  alt={filteredImages[lightboxIndex].alt || filteredImages[lightboxIndex].title}
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3 }}

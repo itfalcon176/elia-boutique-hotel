@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Sparkles, Utensils, Waves, Flame, Droplets, Check } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Sparkles, Utensils, Waves, Flame, Droplets, Check, ArrowRight, Sun, Bath, Heart, Palmtree, Compass, Phone } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
-export default function EliaShowcaseSection({ onNavigate }) {
+export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -23,9 +23,23 @@ export default function EliaShowcaseSection({ onNavigate }) {
     { ...roomsData[nextIdx], targetIndex: nextIdx, isCenter: false },
   ];
 
+  const facilities = [
+    'Plunge pool',
+    'Outdoor sauna',
+    'Cold plunge',
+    'Jacuzzi',
+    'Massage',
+    'Kids club',
+    'Beach access',
+    'GOAT Beach Club access',
+    'Concierge',
+    'Airport transfers',
+    'Phuket experiences',
+  ];
+
   return (
     <div className="w-full">
-      {/* SECTION 1: Boutique 13-Room Sanctuary Philosophy */}
+      {/* SECTION 1: 13 Rooms. One Very Special Place. */}
       <section className="py-16 sm:py-24 bg-[#EFECE6] text-[#23211E]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.span
@@ -35,7 +49,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
             transition={{ duration: 0.8 }}
             className="text-xs uppercase tracking-[0.4em] text-[#A38B68] font-semibold mb-3 block font-sans"
           >
-            Intimate 13-Room Boutique Hotel
+            Intimate Boutique Hotel
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -44,7 +58,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light tracking-wide text-[#23211E] leading-tight mb-6"
           >
-            The Essence of <span className="italic text-gold-gradient font-serif">Elia Phuket</span>
+            13 Rooms. <span className="italic text-gold-gradient font-serif">One Very Special Place.</span>
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -53,19 +67,39 @@ export default function EliaShowcaseSection({ onNavigate }) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6"
           />
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[#555047] text-sm sm:text-base leading-[1.8] font-sans font-light max-w-3xl mx-auto"
+            className="space-y-4 text-[#555047] text-sm sm:text-base leading-[1.8] font-sans font-light max-w-3xl mx-auto"
           >
-            Elia Phuket is an intimate boutique haven of just 13 bespoke suites situated directly on the golden sands of Bang Tao Beach. Crafted for slow living, sensory rejuvenation, and authentic island connection, guests enjoy personal 24/7 concierge service, restorative thermal hydrotherapy, and privileged VIP access to the renowned GOAT Beach Club next door.
-          </motion.p>
+            <p>
+              Elia is deliberately small. With just 13 rooms and suites, our approach is more personal, more relaxed and a world away from the scale of a traditional Phuket resort.
+            </p>
+            <p>
+              Choose from ground-floor Garden Beach Rooms and Family Suites or our spacious upstairs Loft Apartments and Loft Suite. Beautiful spaces, thoughtful details and Bang Tao Beach almost outside your door.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="pt-6"
+          >
+            <button
+              onClick={() => onNavigate('rooms')}
+              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
+            >
+              EXPLORE ROOMS & SUITES
+            </button>
+          </motion.div>
         </div>
       </section>
 
-      {/* SECTION 2: Room Highlights Carousel (Linking to All 4 Individual Room Pages) */}
+      {/* SECTION 2: Room Highlights Carousel */}
       <section className="py-16 sm:py-24 bg-[#FFFFFF] text-[#23211E] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -91,7 +125,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
                     : 'bg-[#EFECE6] text-[#555047] hover:bg-[#A38B68]/20 hover:text-[#23211E]'
                 }`}
               >
-                {idx + 1}. {room.title}
+                {room.countLabel ? `${room.title} (${room.countLabel})` : room.title}
               </button>
             ))}
           </div>
@@ -228,98 +262,33 @@ export default function EliaShowcaseSection({ onNavigate }) {
         </div>
       </section>
 
-      {/* SECTION 3: Facilities Overview (Intimate, Peaceful Beachfront) */}
-      <section className="py-16 sm:py-24 bg-[#FAF7F2] text-[#23211E]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs uppercase tracking-[0.3em] text-[#A38B68] font-semibold mb-2 block font-sans">
-              Intimate Facilities
-            </span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#23211E]">
-              Crafted for Serene Phuket Living
-            </h2>
-            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3 mb-6" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-3xl bg-white border border-[#A38B68]/20 shadow-md">
-              <div className="w-10 h-10 rounded-full bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center mb-4">
-                <Waves size={20} />
-              </div>
-              <h3 className="font-serif text-xl font-medium text-[#23211E] mb-2">Direct Beach Path</h3>
-              <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
-                Step straight from your private room onto Bang Tao Beach in under 30 seconds.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-white border border-[#A38B68]/20 shadow-md">
-              <div className="w-10 h-10 rounded-full bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center mb-4">
-                <Droplets size={20} />
-              </div>
-              <h3 className="font-serif text-xl font-medium text-[#23211E] mb-2">Lagoon Plunge Pool</h3>
-              <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
-                Shaded freshwater swimming oasis with semi-submerged sun loungers and garden daybeds.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-white border border-[#A38B68]/20 shadow-md">
-              <div className="w-10 h-10 rounded-full bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center mb-4">
-                <Flame size={20} />
-              </div>
-              <h3 className="font-serif text-xl font-medium text-[#23211E] mb-2">Thermal Spa & Sauna</h3>
-              <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
-                Finnish cedarwood sauna, 8°C cold plunge, and outdoor massage cabanas.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-white border border-[#A38B68]/20 shadow-md">
-              <div className="w-10 h-10 rounded-full bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center mb-4">
-                <Sparkles size={20} />
-              </div>
-              <h3 className="font-serif text-xl font-medium text-[#23211E] mb-2">24/7 Digital Concierge</h3>
-              <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
-                Instant personal assistance via WhatsApp for dining, boat charters, and island transfers.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: GOAT Beach Club Integration Highlight */}
+      {/* SECTION 3: Your Room. Your Beach Club. */}
       <section className="py-16 sm:py-24 bg-[#181715] text-[#FAF7F2] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A880]/20 text-[#C5A880] text-[10px] uppercase tracking-widest font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C5A880]/20 text-[#C5A880] text-[10px] uppercase tracking-widest font-semibold">
                 <Utensils size={12} />
-                <span>Culinary & Beach Club Partner</span>
+                <span>Complimentary Access</span>
               </div>
               <h2 className="font-serif text-3xl sm:text-5xl font-light text-white leading-tight">
-                Privileged Access to <span className="italic text-gold-gradient font-serif">GOAT Beach Club</span>
+                Your Room. <span className="italic text-gold-gradient font-serif">Your Beach Club.</span>
               </h2>
               <p className="text-[#FAF7F2]/80 text-xs sm:text-sm font-light leading-relaxed font-sans">
-                Elia guests enjoy direct access to GOAT Beach Club right at your doorstep. From beachfront breakfast and daybeds to sunset Nikkei dining and 10 PM – 2 AM Late Night craft cocktails, charging directly to your room folio.
+                Staying at Elia includes complimentary access to GOAT Beach Club Phuket, located right beside the hotel on Bang Tao Beach.
               </p>
-              <div className="space-y-2.5 pt-2 text-xs text-[#FAF7F2]/85">
-                <div className="flex items-center gap-2.5">
-                  <Check size={15} className="text-[#C5A880]" />
-                  <span>Complimentary VIP sunbed reservations with no minimum spend</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Check size={15} className="text-[#C5A880]" />
-                  <span>Daily artisanal breakfast on the sand or delivered to your suite</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Check size={15} className="text-[#C5A880]" />
-                  <span>Signature 10 PM – 2 AM Late Night Menu and Shisha Lounge</span>
-                </div>
+              <p className="text-[#FAF7F2]/80 text-xs sm:text-sm font-light leading-relaxed font-sans">
+                Start with breakfast and barista coffee, drift into a day on the beach, stop for lunch, stay for sunset cocktails and return for dinner.
+              </p>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs text-[#FAF7F2]/75 font-light">
+                There is no shuttle. No taxi. No planning. It's simply there when you want it.
               </div>
-              <div className="pt-4 flex items-center gap-4">
+              <div className="pt-2">
                 <button
-                  onClick={() => onNavigate('eat-drink')}
-                  className="px-7 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg"
+                  onClick={() => onNavigate('goat-beach-club')}
+                  className="px-8 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg"
                 >
-                  DISCOVER EAT & DRINK
+                  DISCOVER GOAT BEACH CLUB
                 </button>
               </div>
             </div>
@@ -327,7 +296,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
             <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-[#A38B68]/30">
               <img
                 src="/images/dining.png"
-                alt="GOAT Beach Club Dining"
+                alt="GOAT Beach Club beside Elia Boutique Hotel"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -336,52 +305,81 @@ export default function EliaShowcaseSection({ onNavigate }) {
         </div>
       </section>
 
-      {/* SECTION 5: Wellness Thermal Circuit Teaser */}
+      {/* SECTION 4: A Stay With Something Extra */}
+      <section className="py-16 sm:py-24 bg-[#FAF7F2] text-[#23211E]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs uppercase tracking-[0.3em] text-[#A38B68] font-semibold mb-2 block font-sans">
+              Boutique Scale, Generous Experience
+            </span>
+            <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#23211E]">
+              A Stay With Something Extra
+            </h2>
+            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3 mb-6" />
+            <p className="text-xs sm:text-sm text-[#6E6A63] font-light leading-relaxed">
+              A small hotel doesn't have to mean a small experience. At Elia you'll find an outdoor spa with sauna, cold plunge and jacuzzi, a plunge pool, massage treatments, a kids club and personalised concierge services. And beyond the hotel, Phuket is waiting.
+            </p>
+          </div>
+
+          {/* 11 Facilities Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
+            {facilities.map((fac, idx) => (
+              <div
+                key={idx}
+                className="p-5 rounded-2xl bg-white border border-[#A38B68]/20 shadow-sm flex items-center gap-3"
+              >
+                <div className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
+                <span className="text-xs sm:text-sm font-medium text-[#23211E] font-sans">
+                  {fac}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={() => onNavigate('about')}
+              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
+            >
+              EXPLORE ELIA
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: Wake Up This Close to the Beach */}
       <section className="py-16 sm:py-24 bg-[#EFECE6] text-[#23211E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-[#A38B68]/20 order-2 lg:order-1">
               <img
-                src="/images/spa.png"
-                alt="Elia Wellness & Spa"
+                src="/images/suite.png"
+                alt="Garden Beach Room at Elia Boutique Hotel Phuket"
                 className="w-full h-full object-cover"
               />
             </div>
 
             <div className="lg:col-span-6 space-y-5 order-1 lg:order-2">
               <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-bold block font-sans">
-                Thermal & Body Sanctuary
+                Ground Floor Living
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#23211E]">
-                Restorative <span className="italic text-gold-gradient font-serif">Wellness</span>
+                Wake Up This Close to the Beach
               </h2>
-              <p className="text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans">
-                Restore your natural balance with our contrast hydrotherapy circuit: Nordic cedarwood sauna, 8°C ice cold plunge, warm magnesium jacuzzi, and beachfront Thai massage cabanas.
-              </p>
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <div className="p-3 rounded-xl bg-white border border-[#A38B68]/20">
-                  <span className="text-xs font-semibold text-[#23211E] block">Cedar Sauna</span>
-                  <span className="text-[11px] text-[#6E6A63]">Deep heat detox</span>
-                </div>
-                <div className="p-3 rounded-xl bg-white border border-[#A38B68]/20">
-                  <span className="text-xs font-semibold text-[#23211E] block">Cold Plunge</span>
-                  <span className="text-[11px] text-[#6E6A63]">8°C vitality reset</span>
-                </div>
-                <div className="p-3 rounded-xl bg-white border border-[#A38B68]/20">
-                  <span className="text-xs font-semibold text-[#23211E] block">Hydro Jacuzzi</span>
-                  <span className="text-[11px] text-[#6E6A63]">Magnesium jet bath</span>
-                </div>
-                <div className="p-3 rounded-xl bg-white border border-[#A38B68]/20">
-                  <span className="text-xs font-semibold text-[#23211E] block">Outdoor Spa</span>
-                  <span className="text-[11px] text-[#6E6A63]">Herbal compress rituals</span>
-                </div>
+              <div className="space-y-3 text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans">
+                <p>
+                  Our Garden Beach Rooms and Garden Family Suites open onto their own terrace and garden area with loungers and an umbrella.
+                </p>
+                <p>Morning coffee outside.</p>
+                <p>A few steps to the beach.</p>
+                <p>And absolutely no reason to rush.</p>
               </div>
               <div className="pt-2">
                 <button
-                  onClick={() => onNavigate('wellness')}
-                  className="px-7 py-3 rounded-full bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer shadow-md"
+                  onClick={() => onNavigate('rooms/garden-beach-room')}
+                  className="px-8 py-3.5 rounded-full bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer shadow-md"
                 >
-                  EXPLORE WELLNESS OFFERINGS →
+                  VIEW GARDEN BEACH ROOMS
                 </button>
               </div>
             </div>
@@ -389,37 +387,105 @@ export default function EliaShowcaseSection({ onNavigate }) {
         </div>
       </section>
 
-      {/* SECTION 6: Location & Experiences Teaser */}
+      {/* SECTION 6: Eat. Drink. Stay Awhile. */}
       <section className="py-16 sm:py-24 bg-[#FFFFFF] text-[#23211E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-5">
               <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-bold block font-sans">
-                Location & Curations
+                Food & Beverage
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#23211E]">
-                Bang Tao Beach & <span className="italic text-gold-gradient font-serif">Island Curations</span>
+                Eat. Drink. <span className="italic text-gold-gradient font-serif">Stay Awhile.</span>
               </h2>
               <p className="text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans">
-                Located 25 minutes from Phuket International Airport on Phuket’s most coveted 6 km coastline. Explore Phang Nga Bay via private catamaran, discover Old Phuket Town, or unwind with paddleboards on calm morning waters.
+                Food at Elia comes courtesy of GOAT Beach Club.
+              </p>
+              <p className="text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans">
+                Enjoy breakfast, proper restaurant-quality food throughout the day, fresh coffee, cocktails, sunset drinks and beachfront dining — with room service available when you'd rather stay exactly where you are.
               </p>
               <div className="pt-2">
                 <button
-                  onClick={() => onNavigate('experiences')}
-                  className="px-7 py-3 rounded-full bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer shadow-md"
+                  onClick={() => onNavigate('eat-drink')}
+                  className="px-8 py-3.5 rounded-full bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer shadow-md"
                 >
-                  DISCOVER EXPERIENCES →
+                  EAT & DRINK
                 </button>
               </div>
             </div>
 
             <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-[#A38B68]/20">
               <img
-                src="/images/cocktail.png"
-                alt="Phuket Island Excursions"
+                src="/images/dining.png"
+                alt="Beachfront dining at GOAT Beach Club Bang Tao"
                 className="w-full h-full object-cover"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: Bang Tao, Phuket */}
+      <section className="py-16 sm:py-24 bg-[#FAF7F2] text-[#23211E]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-[#A38B68]/20 order-2 lg:order-1">
+              <img
+                src="/images/cocktail.png"
+                alt="Bang Tao Beach beside Elia Boutique Hotel Phuket"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="lg:col-span-6 space-y-5 order-1 lg:order-2">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-bold block font-sans">
+                West Coast Phuket
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#23211E]">
+                Bang Tao, <span className="italic text-gold-gradient font-serif">Phuket</span>
+              </h2>
+              <p className="text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans">
+                Elia sits directly beside Bang Tao Beach in Choeng Thale on Phuket's west coast.
+              </p>
+              <p className="text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans">
+                It's an area known for its long sandy beach, restaurants, beach clubs, relaxed atmosphere and easy access to some of Phuket's best experiences.
+              </p>
+              <p className="text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans">
+                At Elia, you're right in it — while still having your own little corner to disappear into.
+              </p>
+              <div className="pt-2">
+                <button
+                  onClick={() => onNavigate('bang-tao-beach-phuket')}
+                  className="px-8 py-3.5 rounded-full bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer shadow-md"
+                >
+                  DISCOVER BANG TAO
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: HOME PAGE FINAL CTA */}
+      <section className="py-20 sm:py-28 bg-[#181715] text-[#FAF7F2] text-center relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-6">
+          <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-semibold block font-sans">
+            Elia Boutique Hotel Phuket
+          </span>
+          <h2 className="font-serif text-4xl sm:text-6xl font-light text-white leading-tight">
+            Stay a little closer.
+          </h2>
+          <div className="space-y-1 text-lg sm:text-xl text-[#FAF7F2]/80 font-serif italic">
+            <p>To the sea.</p>
+            <p>To the good life.</p>
+          </div>
+          <div className="pt-4">
+            <button
+              onClick={onOpenReservation}
+              className="px-10 py-4 rounded-full bg-gradient-to-r from-[#C5A880] via-[#D5B992] to-[#B89A70] hover:from-[#D5B992] hover:to-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] shadow-[0_4px_25px_rgba(197,168,128,0.45)] hover:scale-105 transition-all duration-300 cursor-pointer"
+            >
+              BOOK YOUR STAY
+            </button>
           </div>
         </div>
       </section>

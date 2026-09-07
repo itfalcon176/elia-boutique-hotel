@@ -110,8 +110,8 @@ export const experiencesData = {
   conciergeAppNote: {
     title: 'Elia Digital Concierge',
     subtitle: 'Instant Booking & Assistance via WhatsApp',
-    description: 'Every booking made with Elia Phuket is connected directly to our 24/7 WhatsApp Concierge. Whether you need a midnight buggy, a last-minute catamaran charter, or a dinner table reservation, our concierge team is always just a message away.',
     phone: '+66 93 271 9103',
-    whatsappUrl: 'https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20experiences%20and%20curations.',
+    whatsapp: '+66 82 489 9371',
+    whatsappUrl: 'https://wa.me/66824899371?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20experiences%20and%20curations.',
   },
 };

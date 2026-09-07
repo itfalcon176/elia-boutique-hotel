@@ -204,12 +204,12 @@ export default function LegalAndPolicyPages({ pageType, onNavigate }) {
             Have questions regarding our policies, transport, or special requests?
           </p>
           <a
-            href="https://wa.me/66932719103"
+            href="https://wa.me/66824899371"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#8B6E3F] hover:text-[#23211E] underline"
           >
-            Contact 24/7 WhatsApp Concierge (+66 93 271 9103) →
+            Contact 24/7 WhatsApp Concierge (+66 82 489 9371) →
           </a>
         </div>
 

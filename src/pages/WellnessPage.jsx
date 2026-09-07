@@ -1,179 +1,231 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Waves, Flame, Snowflake, Bath, Droplets, Check, Calendar, ArrowRight } from 'lucide-react';
-import { wellnessData } from '../data/wellnessData';
+import { Sparkles, Flame, Snowflake, Bath, Droplets, Check, ArrowRight, Heart, Calendar } from 'lucide-react';
 
-export default function WellnessPage({ onOpenReservation }) {
-  const getIcon = (id) => {
-    switch (id) {
-      case 'massage-treatments':
-        return <Sparkles size={20} className="text-[#A38B68]" />;
-      case 'outdoor-spa':
-        return <Waves size={20} className="text-[#A38B68]" />;
-      case 'sauna':
-        return <Flame size={20} className="text-[#A38B68]" />;
-      case 'cold-plunge':
-        return <Snowflake size={20} className="text-[#A38B68]" />;
-      case 'jacuzzi':
-        return <Bath size={20} className="text-[#A38B68]" />;
-      case 'plunge-pool':
-        return <Droplets size={20} className="text-[#A38B68]" />;
-      default:
-        return <Sparkles size={20} className="text-[#A38B68]" />;
-    }
-  };
+export default function WellnessPage({ onNavigate, onOpenReservation }) {
+  const spaFacilities = [
+    {
+      title: 'Sauna',
+      desc: 'Slow down, switch off and enjoy the warmth of our outdoor sauna.',
+      icon: Flame,
+      image: '/images/spa.png',
+      tag: 'Heat Therapy',
+    },
+    {
+      title: 'Cold Plunge',
+      desc: 'Cool down after the sauna or start the morning with something significantly less gentle.',
+      icon: Snowflake,
+      image: '/images/suite.png',
+      tag: 'Cold Therapy',
+    },
+    {
+      title: 'Jacuzzi',
+      desc: 'Warm water, bubbles and nowhere else you need to be.',
+      icon: Bath,
+      image: '/images/cocktail.png',
+      tag: 'Hydrotherapy',
+    },
+    {
+      title: 'Plunge Pool',
+      desc: 'A refreshing place to cool off between the gardens and the beach.',
+      icon: Droplets,
+      image: '/images/dining.png',
+      tag: 'Freshwater Pool',
+    },
+  ];
 
   return (
     <div className="pt-28 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Breadcrumbs for SEO */}
+        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-[#6E6A63] font-sans">
+          <ol className="flex items-center gap-2">
+            <li>
+              <button onClick={() => onNavigate('home')} className="hover:text-[#A38B68] transition-colors cursor-pointer">
+                Home
+              </button>
+            </li>
+            <li>/</li>
+            <li className="text-[#23211E] font-medium" aria-current="page">
+              Wellness
+            </li>
+          </ol>
+        </nav>
+
         {/* Header Hero Banner */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A38B68]/15 border border-[#A38B68]/30 mb-4 text-[#8B6E3F]">
             <Sparkles size={13} />
             <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-sans font-semibold">
-              Holistic Body & Thermal Circuit
+              Restorative Sanctuary
             </span>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-wide text-[#23211E] mb-4">
-            Wellness & <span className="italic text-gold-gradient font-serif">Sanctuary</span>
+            Wellness at <span className="italic text-gold-gradient font-serif">Elia Phuket</span>
           </h1>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           
-          <p className="text-[#6E6A63] font-light text-sm sm:text-base font-sans leading-relaxed max-w-2xl mx-auto">
-            {wellnessData.hero.description}
+          <h2 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E] mb-4">
+            Hot. Cold. Massage. Repeat.
+          </h2>
+
+          <p className="text-[#555047] font-light text-sm sm:text-base font-sans leading-relaxed max-w-2xl mx-auto">
+            Wellness at Elia isn't about schedules, programmes or taking things too seriously. It's simply there when you want it.
+          </p>
+          <p className="text-[#555047] font-light text-xs sm:text-sm font-sans leading-relaxed max-w-xl mx-auto mt-2">
+            Step into the sauna. Cool down in the cold plunge. Ease into the jacuzzi. Book a massage. Swim. Read. Do absolutely nothing.
+          </p>
+          <p className="text-[#8B6E3F] font-serif italic text-sm mt-2">
+            You're on holiday.
           </p>
         </div>
 
-        {/* Contrast Therapy Circuit Explainer Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#23211E] to-[#181715] text-[#FAF7F2] border border-[#A38B68]/40 shadow-2xl mb-20"
-        >
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-[#C5A880] font-bold block mb-2">
-              Contrast Hydrotherapy Journey
+        {/* H2: Outdoor Spa Section */}
+        <div className="mb-20">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs uppercase tracking-[0.3em] text-[#A38B68] font-semibold mb-2 block font-sans">
+              Thermal Circuit & Water
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-light text-white mb-3">
-              The Elia Thermal Reset Circuit
+            <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#23211E]">
+              Outdoor Spa
             </h2>
-            <p className="text-[#FAF7F2]/75 text-xs sm:text-sm font-light leading-relaxed">
-              Alternating between Finnish cedar dry heat and ice cold plunge stimulates blood flow, spikes dopamine, releases muscle tension, and enhances deep sleep.
+            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3 mb-6" />
+            <p className="text-xs sm:text-sm text-[#6E6A63] font-light leading-relaxed">
+              Our outdoor wellness area brings together heat, cold and water in a relaxed tropical setting.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {wellnessData.contrastTherapyGuide.steps.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-between"
-              >
-                <div>
-                  <span className="font-serif italic text-xl text-[#C5A880] font-medium block mb-1">
-                    {item.step}
-                  </span>
-                  <h4 className="font-serif text-lg text-white font-medium mb-1">
-                    {item.name}
-                  </h4>
-                  <span className="text-[10px] uppercase tracking-wider text-[#C5A880] font-semibold block mb-2">
-                    {item.time}
-                  </span>
-                  <p className="text-xs text-[#FAF7F2]/70 font-light leading-relaxed">
-                    {item.note}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {spaFacilities.map((facility, idx) => {
+              const Icon = facility.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className="bg-white rounded-3xl overflow-hidden border border-[#A38B68]/25 shadow-lg flex flex-col justify-between group hover:shadow-2xl transition-all duration-300"
+                >
+                  <div>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img
+                        src={facility.image}
+                        alt={`${facility.title} at Elia Boutique Hotel Phuket`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#23211E]/80 backdrop-blur-md flex items-center justify-center border border-white/20 text-[#A38B68]">
+                        <Icon size={20} />
+                      </div>
+                      <span className="absolute top-4 right-4 bg-[#23211E]/80 backdrop-blur-md text-[#FAF7F2] text-[9px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full border border-white/20">
+                        {facility.tag}
+                      </span>
+                    </div>
 
-        {/* The 6 Wellness Offerings Grid */}
-        <div className="space-y-16">
-          <div className="text-center">
-            <span className="text-xs uppercase tracking-[0.3em] text-[#A38B68] font-semibold mb-2 block font-sans">
-              Our 6 Sanctuaries
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-light text-[#23211E]">
-              Restorative Rituals & Facilities
-            </h2>
-            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3 mb-12" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {wellnessData.facilities.map((item, idx) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-white rounded-3xl overflow-hidden border border-[#A38B68]/25 shadow-lg flex flex-col justify-between group hover:shadow-2xl transition-all duration-300"
-              >
-                <div>
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#23211E]/80 backdrop-blur-md flex items-center justify-center border border-white/20">
-                      {getIcon(item.id)}
+                    <div className="p-6">
+                      <h3 className="font-serif text-2xl font-light text-[#23211E] mb-2">
+                        {facility.title}
+                      </h3>
+                      <p className="text-xs text-[#6E6A63] font-light leading-relaxed font-sans">
+                        {facility.desc}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="p-6 sm:p-7">
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-[#A38B68] font-bold block mb-1">
-                      {item.tagline}
+                  <div className="p-6 pt-0 border-t border-[#A38B68]/15 mt-2">
+                    <span className="text-[11px] text-[#A38B68] font-semibold uppercase tracking-wider">
+                      Complimentary for guests
                     </span>
-                    <h3 className="font-serif text-xl sm:text-2xl font-light text-[#23211E] mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-[#6E6A63] font-light leading-relaxed mb-5 font-sans">
-                      {item.description}
-                    </p>
-
-                    <div className="space-y-2 pt-3 border-t border-[#A38B68]/15">
-                      {item.details.map((detail, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs text-[#555047] font-light">
-                          <Check size={14} className="text-[#A38B68] shrink-0 mt-0.5" />
-                          <span>{detail}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
-                </div>
-
-                <div className="p-6 pt-0">
-                  <button
-                    onClick={onOpenReservation}
-                    className="w-full py-2.5 rounded-full bg-[#FAF7F2] hover:bg-[#23211E] hover:text-white text-[#23211E] text-[11px] uppercase tracking-[0.2em] font-semibold border border-[#A38B68]/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <span>Inquire / Book Ritual</span>
-                    <ArrowRight size={13} />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Bottom Spa Booking Callout */}
-        <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-[#FAF7F2] border border-[#A38B68]/30 text-center">
+        {/* H2: Massage at Elia Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="bg-gradient-to-br from-[#23211E] to-[#181715] text-[#FAF7F2] rounded-3xl overflow-hidden border border-[#A38B68]/40 shadow-2xl mb-16"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div className="lg:col-span-6 p-8 sm:p-12 lg:p-14 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C5A880]/20 text-[#C5A880] text-[10px] uppercase tracking-widest font-semibold">
+                <Heart size={12} />
+                <span>Relaxation & Bodywork</span>
+              </div>
+
+              <h2 className="font-serif text-3xl sm:text-5xl font-light text-white leading-tight">
+                Massage at <span className="italic text-gold-gradient font-serif">Elia</span>
+              </h2>
+
+              <p className="text-[#FAF7F2]/80 text-sm font-light leading-relaxed font-sans">
+                Make time for a massage without having to leave the hotel.
+              </p>
+
+              <p className="text-[#FAF7F2]/80 text-sm font-light leading-relaxed font-sans">
+                Our massage treatments are designed to be easy to book and easy to fit into your day.
+              </p>
+
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs text-[#FAF7F2]/75 font-light">
+                Ask reception or arrange your treatment through the Elia concierge.
+              </div>
+
+              <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
+                <button
+                  onClick={onOpenReservation}
+                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg"
+                >
+                  BOOK YOUR STAY
+                </button>
+                <a
+                  href="https://wa.me/66824899371?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20massage%20treatment."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer text-center"
+                >
+                  WHATSAPP CONCIERGE
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 relative aspect-[4/3] lg:h-full min-h-[380px] overflow-hidden">
+              <img
+                src="/images/spa.png"
+                alt="Massage at Elia Boutique Hotel Phuket"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Bottom CTA Callout */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#FAF7F2] border border-[#A38B68]/30 text-center">
           <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E] mb-3">
-            Custom Wellness Journeys for Residents
+            Your Wellness Sanctuary on Bang Tao Beach
           </h3>
           <p className="text-xs sm:text-sm text-[#6E6A63] font-light max-w-xl mx-auto leading-relaxed mb-6">
-            Complimentary access to the Sauna, Cold Plunge, Jacuzzi, and Plunge Pool is included with every suite reservation. Private massage therapies can be scheduled directly with your host.
+            13 intimate rooms with outdoor sauna, cold plunge, jacuzzi, plunge pool, and massage treatments steps from the Andaman Sea.
           </p>
-          <button
-            onClick={onOpenReservation}
-            className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
-          >
-            SCHEDULE SPA APPOINTMENT
-          </button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={onOpenReservation}
+              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
+            >
+              BOOK YOUR STAY
+            </button>
+            <button
+              onClick={() => onNavigate('rooms')}
+              className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"
+            >
+              EXPLORE OUR ROOMS
+            </button>
+          </div>
         </div>
 
       </div>

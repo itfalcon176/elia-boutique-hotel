@@ -1,181 +1,236 @@
 import { motion } from 'framer-motion';
-import { Utensils, Sparkles, Clock, Check, Calendar, ArrowRight, Wine, Coffee, Moon } from 'lucide-react';
-import { eatDrinkData } from '../data/eatDrinkData';
+import { Utensils, Sparkles, Coffee, Sun, Moon, GlassWater, Bell, Check, ArrowRight, BedDouble } from 'lucide-react';
 
 export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
   return (
     <div className="pt-28 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Breadcrumbs for SEO */}
+        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-[#6E6A63] font-sans">
+          <ol className="flex items-center gap-2">
+            <li>
+              <button onClick={() => onNavigate('home')} className="hover:text-[#A38B68] transition-colors cursor-pointer">
+                Home
+              </button>
+            </li>
+            <li>/</li>
+            <li className="text-[#23211E] font-medium" aria-current="page">
+              Eat & Drink
+            </li>
+          </ol>
+        </nav>
+
         {/* Header Hero Banner */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A38B68]/15 border border-[#A38B68]/30 mb-4 text-[#8B6E3F]">
             <Utensils size={13} />
             <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-sans font-semibold">
-              Beachfront Gastronomy & Mixology
+              Beachfront Dining & Bar
             </span>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-wide text-[#23211E] mb-4">
-            Eat & <span className="italic text-gold-gradient font-serif">Drink</span>
+            Eat & Drink at <span className="italic text-gold-gradient font-serif">Elia</span>
           </h1>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           
-          <p className="text-[#6E6A63] font-light text-sm sm:text-base font-sans leading-relaxed max-w-2xl mx-auto">
-            {eatDrinkData.hero.description}
+          <h2 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E] mb-4">
+            Your table is just next door.
+          </h2>
+
+          <p className="text-[#555047] font-light text-sm sm:text-base font-sans leading-relaxed max-w-2xl mx-auto">
+            Elia's food and drink experience comes courtesy of GOAT Beach Club, our beachfront neighbour and an integral part of staying with us.
+          </p>
+          <p className="text-[#6E6A63] font-light text-xs sm:text-sm font-sans leading-relaxed max-w-xl mx-auto mt-2">
+            From the first coffee of the morning to the final drink of the evening, everything happens just a few steps from your room.
           </p>
         </div>
 
-        {/* Feature 1: GOAT Beach Club Flagship Feature Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-gradient-to-br from-[#23211E] to-[#181715] text-[#FAF7F2] rounded-3xl overflow-hidden border border-[#A38B68]/40 shadow-2xl mb-16"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-            <div className="lg:col-span-6 p-8 sm:p-12 lg:p-14 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C5A880]/20 text-[#C5A880] text-[10px] uppercase tracking-widest font-semibold">
-                <Sparkles size={12} />
-                <span>Seamless Guest Access</span>
+        {/* 5 Core Pillars Grid matching Section 8 of SEO Pack */}
+        <div className="space-y-12 mb-16">
+          
+          {/* 1. Breakfast by the Beach */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="p-8 sm:p-12 rounded-3xl bg-white border border-[#A38B68]/25 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
+            <div className="lg:col-span-6 space-y-4">
+              <div className="flex items-center gap-2 text-[#8B6E3F]">
+                <Coffee size={18} />
+                <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Morning Rituals</span>
               </div>
-
-              <h2 className="font-serif text-3xl sm:text-5xl font-light text-white leading-tight">
-                Direct Access to <span className="italic text-gold-gradient font-serif">GOAT Beach Club</span>
+              <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#23211E]">
+                Breakfast by the Beach
               </h2>
-
-              <p className="text-[#FAF7F2]/80 text-sm font-light leading-relaxed font-sans">
-                {eatDrinkData.goatClub.description}
+              <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
+                No enormous hotel buffet.
               </p>
-
-              <div className="space-y-3 pt-2">
-                {eatDrinkData.goatClub.perks.map((perk, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <Check size={16} className="text-[#C5A880] shrink-0 mt-0.5" />
-                    <span className="text-xs text-[#FAF7F2]/90 font-light">{perk}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
-                <button
-                  onClick={onOpenReservation}
-                  className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg"
-                >
-                  Reserve Table / Sunbed
-                </button>
-                <div className="flex items-center gap-2 text-xs text-[#FAF7F2]/60">
-                  <Clock size={14} className="text-[#C5A880]" />
-                  <span>{eatDrinkData.goatClub.hours}</span>
-                </div>
-              </div>
+              <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
+                Start your morning at GOAT with freshly prepared breakfast, proper coffee and the sea in front of you.
+              </p>
+              <p className="text-xs sm:text-sm text-[#8B6E3F] font-serif italic">
+                Take your time. You're already where you need to be.
+              </p>
             </div>
-
-            <div className="lg:col-span-6 relative aspect-[4/3] lg:h-full min-h-[380px] overflow-hidden">
+            <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <img
-                src={eatDrinkData.goatClub.image}
-                alt="GOAT Beach Club"
+                src="/images/suite.png"
+                alt="Beachfront breakfast at GOAT Beach Club Bang Tao"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Pillars Grid: Breakfast, Beachfront Dining, In-Room Dining & Minibar */}
-        <div className="space-y-12">
-          <div className="text-center">
-            <span className="text-xs uppercase tracking-[0.3em] text-[#A38B68] font-semibold mb-2 block font-sans">
-              Culinary Curation
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-light text-[#23211E]">
-              From Sunrise to Late Night
-            </h2>
-            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3 mb-10" />
-          </div>
+          {/* 2. Lunch Without Leaving the Beach */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="p-8 sm:p-12 rounded-3xl bg-white border border-[#A38B68]/25 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
+            <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md order-2 lg:order-1">
+              <img
+                src="/images/dining.png"
+                alt="Barefoot lunch at GOAT Beach Club Bang Tao"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="lg:col-span-6 space-y-4 order-1 lg:order-2">
+              <div className="flex items-center gap-2 text-[#8B6E3F]">
+                <Sun size={18} />
+                <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Midday Flavours</span>
+              </div>
+              <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#23211E]">
+                Lunch Without Leaving the Beach
+              </h2>
+              <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
+                Barefoot lunches, Mediterranean-inspired dishes, fresh flavours and long afternoons by Bang Tao Beach.
+              </p>
+              <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
+                Staying at Elia means the restaurant isn't somewhere you have to travel to. It's part of the experience.
+              </p>
+            </div>
+          </motion.div>
 
+          {/* 3. Sunset Drinks & Dinner */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="p-8 sm:p-12 rounded-3xl bg-white border border-[#A38B68]/25 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
+            <div className="lg:col-span-6 space-y-4">
+              <div className="flex items-center gap-2 text-[#8B6E3F]">
+                <GlassWater size={18} />
+                <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Golden Hour & Evening</span>
+              </div>
+              <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#23211E]">
+                Sunset Drinks & Dinner
+              </h2>
+              <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
+                As afternoon turns into evening, stay for cocktails, dinner and the atmosphere of Bang Tao after sunset.
+              </p>
+              <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
+                Then walk home. Your room is only moments away.
+              </p>
+            </div>
+            <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
+              <img
+                src="/images/cocktail.png"
+                alt="Sunset drinks and cocktails at GOAT Beach Club Bang Tao"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* 4. Room Service & 5. The Elia Minibar */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {eatDrinkData.pillars.map((pillar, idx) => (
-              <motion.div
-                key={pillar.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: idx * 0.1 }}
-                className="bg-white rounded-3xl overflow-hidden border border-[#A38B68]/25 shadow-lg flex flex-col justify-between"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden group">
-                  <img
-                    src={pillar.image}
-                    alt={pillar.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 right-4 bg-[#23211E]/80 backdrop-blur-md text-[#FAF7F2] text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full border border-white/20">
-                    {pillar.timing}
-                  </div>
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="p-8 rounded-3xl bg-white border border-[#A38B68]/25 shadow-lg flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-[#8B6E3F]">
+                  <Bell size={18} />
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">In-Suite Convenience</span>
                 </div>
+                <h2 className="font-serif text-2xl font-light text-[#23211E]">
+                  Room Service
+                </h2>
+                <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
+                  Some days, staying in wins. Order from GOAT and enjoy restaurant-quality food from the comfort of your Elia room or terrace.
+                </p>
+              </div>
+              <div className="pt-6 mt-6 border-t border-[#A38B68]/15">
+                <span className="text-xs text-[#A38B68] font-semibold uppercase tracking-wider">
+                  Available direct to your room or terrace
+                </span>
+              </div>
+            </motion.div>
 
-                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-[#A38B68] font-bold block mb-1">
-                      {pillar.subtitle}
-                    </span>
-                    <h3 className="font-serif text-2xl font-light text-[#23211E] mb-3">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#6E6A63] font-light leading-relaxed mb-6 font-sans">
-                      {pillar.description}
-                    </p>
-
-                    <div className="space-y-2 mb-6 pt-2 border-t border-[#A38B68]/15">
-                      {pillar.features.map((feature, i) => (
-                        <div key={i} className="flex items-center gap-2.5 text-xs text-[#555047] font-light">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#A38B68]" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-[#A38B68]/15 flex items-center justify-between">
-                    <button
-                      onClick={onOpenReservation}
-                      className="text-xs uppercase tracking-[0.2em] font-semibold text-[#8B6E3F] hover:text-[#23211E] transition-colors flex items-center gap-1 cursor-pointer"
-                    >
-                      <span>Inquire / Reserve Table</span>
-                      <ArrowRight size={13} />
-                    </button>
-                  </div>
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="p-8 rounded-3xl bg-white border border-[#A38B68]/25 shadow-lg flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-[#8B6E3F]">
+                  <Sparkles size={18} />
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">In-Room Amenities</span>
                 </div>
-              </motion.div>
-            ))}
+                <h2 className="font-serif text-2xl font-light text-[#23211E]">
+                  The Elia Minibar
+                </h2>
+                <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
+                  Each room includes a carefully selected minibar with chilled drinks, beers, wines and quality snacks.
+                </p>
+                <p className="text-xs sm:text-sm text-[#8B6E3F] font-medium">
+                  Tea and coffee are complimentary.
+                </p>
+              </div>
+              <div className="pt-6 mt-6 border-t border-[#A38B68]/15">
+                <span className="text-xs text-[#A38B68] font-semibold uppercase tracking-wider">
+                  Complimentary tea & coffee in every room
+                </span>
+              </div>
+            </motion.div>
           </div>
+
         </div>
 
-        {/* Late Night Highlight */}
-        <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-[#FAF7F2] border border-[#A38B68]/30 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 max-w-xl">
-            <div className="flex items-center gap-2 text-[#8B6E3F]">
-              <Moon size={16} />
-              <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">
-                Signature 10 PM – 2 AM
-              </span>
-            </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E]">
-              Starlit Late Night Dining & Shisha
-            </h3>
-            <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
-              Craving gourmet bites under the stars? Enjoy midnight Wagyu sliders, truffle fries, artisanal shisha, and craft cocktails directly at GOAT or delivered in-suite.
-            </p>
+        {/* Bottom CTA Callout */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#FAF7F2] border border-[#A38B68]/30 text-center">
+          <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E] mb-3">
+            Experience Beachfront Dining at Elia & GOAT
+          </h3>
+          <p className="text-xs sm:text-sm text-[#6E6A63] font-light max-w-xl mx-auto leading-relaxed mb-6">
+            Complimentary access to GOAT Beach Club is included for all Elia guests throughout their stay on Bang Tao Beach.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={onOpenReservation}
+              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
+            >
+              BOOK YOUR STAY
+            </button>
+            <button
+              onClick={() => onNavigate('goat-beach-club')}
+              className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"
+            >
+              DISCOVER GOAT BEACH CLUB
+            </button>
           </div>
-
-          <button
-            onClick={onOpenReservation}
-            className="px-7 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shrink-0 shadow-md"
-          >
-            RESERVE LATE NIGHT TABLE
-          </button>
         </div>
 
       </div>

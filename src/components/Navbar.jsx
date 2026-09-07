@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown } from 'lucide-react';
+import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, Sparkles } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
 export default function Navbar({ activePage, setActivePage, onOpenReservation }) {
@@ -20,8 +20,8 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Header items matching user prompt:
-  // ELIA logo | Rooms & Suites | Eat & Drink | Wellness | Experiences | Gallery | About | Contact | BOOK NOW
+  // Header items matching Section 22 of SEO Pack:
+  // ROOMS & SUITES | EAT & DRINK | WELLNESS | EXPERIENCES | GALLERY | ABOUT | CONTACT | BOOK NOW
   const navLinks = [
     { id: 'rooms', label: 'Rooms & Suites', hasDropdown: true },
     { id: 'eat-drink', label: 'Eat & Drink' },
@@ -61,7 +61,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
           >
             <img
               src={isLightHeader ? '/Logos/logo with.png' : '/Logos/white-new.png'}
-              alt="Elia Boutique Hotel Logo"
+              alt="Elia Boutique Hotel Phuket Logo"
               className="h-8 sm:h-10 lg:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               onError={(e) => {
                 e.target.src = '/Logos/white-new.png';
@@ -141,11 +141,11 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                                     {room.title}
                                   </div>
                                   <div className="text-[10px] text-[#6E6A63] font-light">
-                                    {room.size} • {room.occupancy}
+                                    {room.countLabel} • {room.maxOccupancyText}
                                   </div>
                                 </div>
                                 <span className="text-[9px] uppercase tracking-wider text-[#A38B68] font-semibold">
-                                  Explore →
+                                  View →
                                 </span>
                               </button>
                             ))}
@@ -228,7 +228,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                 >
                   <img
                     src="/Logos/logo with.png"
-                    alt="Elia Boutique Hotel Logo"
+                    alt="Elia Boutique Hotel Phuket Logo"
                     className="h-9 w-auto object-contain"
                     onError={(e) => {
                       e.target.src = '/Logos/white-new.png';
@@ -251,14 +251,14 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               </div>
 
               {/* Menu Links Stack */}
-              <div className="py-2 flex flex-col gap-2">
+              <div className="py-2 flex flex-col gap-1.5">
                 {navLinks.map((link, idx) => {
                   const isSelected = activePage === link.id || (link.id === 'rooms' && activePage.startsWith('rooms'));
                   return (
                     <div key={link.id} className="flex flex-col gap-1">
                       <button
                         onClick={() => handleNavClick(link.id)}
-                        className={`flex items-center justify-between px-4 py-3 rounded-xl border transition-all text-left cursor-pointer ${
+                        className={`flex items-center justify-between px-4 py-2.5 rounded-xl border transition-all text-left cursor-pointer ${
                           isSelected
                             ? 'bg-[#23211E] text-[#F7F4EF] border-[#23211E] shadow-md'
                             : 'bg-[#FFFFFF]/80 hover:bg-[#FFFFFF] text-[#23211E] border-[#A38B68]/20'
@@ -277,7 +277,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
 
                       {/* If rooms, show quick links in mobile */}
                       {link.id === 'rooms' && (
-                        <div className="pl-6 pr-2 py-1 space-y-1.5 bg-[#FAF7F2]/60 rounded-xl border border-[#A38B68]/15 mb-1">
+                        <div className="pl-6 pr-2 py-1 space-y-1 bg-[#FAF7F2]/60 rounded-xl border border-[#A38B68]/15 mb-1">
                           {roomsData.map((room) => (
                             <button
                               key={room.id}
@@ -290,7 +290,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                             >
                               <span>{room.title}</span>
                               <span className="text-[9px] uppercase tracking-wider text-[#A38B68]">
-                                {room.size}
+                                {room.countLabel}
                               </span>
                             </button>
                           ))}
@@ -300,19 +300,33 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   );
                 })}
 
-                {/* Special Offers link */}
-                <button
-                  onClick={() => handleNavClick('special-offers')}
-                  className="flex items-center justify-between px-4 py-2.5 rounded-xl border border-[#A38B68]/40 bg-gradient-to-r from-[#A38B68]/15 to-transparent text-[#23211E] text-left cursor-pointer"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs">✨</span>
-                    <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#8B6E3F]">
-                      Special Offers & Packages
-                    </span>
-                  </div>
-                  <span className="text-[10px] uppercase font-bold text-[#8B6E3F]">25% Off</span>
-                </button>
+                {/* Secondary SEO Pages Quick Links */}
+                <div className="pt-2 grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => handleNavClick('family-hotel-phuket')}
+                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
+                  >
+                    Family Stays
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('goat-beach-club')}
+                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
+                  >
+                    GOAT Beach Club
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('bang-tao-beach-phuket')}
+                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
+                  >
+                    Bang Tao Beach
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('offers')}
+                    className="p-2.5 rounded-xl border border-[#A38B68]/40 bg-[#A38B68]/10 text-left text-xs font-semibold text-[#8B6E3F] hover:bg-[#A38B68]/20 cursor-pointer"
+                  >
+                    Special Offers
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -335,12 +349,12 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   <span>Bang Tao Beach, Phuket</span>
                 </div>
                 <a
-                  href="https://wa.me/66932719103"
+                  href="https://wa.me/66824899371"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 hover:text-[#A38B68] transition-colors font-medium text-[#23211E]"
                 >
-                  <span>WhatsApp: +66 93 271 9103</span>
+                  <span>WhatsApp: +66 82 489 9371</span>
                 </a>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, VolumeX, ChevronDown, Calendar, ArrowRight, Sparkles, MapPin } from 'lucide-react';
+import { Facebook, Instagram, ChevronDown, Calendar, ArrowRight, Sparkles, MapPin } from 'lucide-react';
 
 const TiktokIcon = ({ size = 18, ...props }) => (
   <svg
@@ -36,14 +36,12 @@ const WhatsAppIcon = ({ size = 18, ...props }) => (
 );
 
 export default function HeroSection({
-  isPlaying,
-  toggleSound,
   onOpenReservation,
   onExploreClick,
   onNavigateRooms,
 }) {
   return (
-    <section id="home" className="relative w-full min-h-screen lg:h-[100vh] min-h-[700px] overflow-hidden bg-[#141312] select-none flex flex-col justify-between pt-24 pb-8">
+    <section id="home" className="relative w-full min-h-screen lg:h-[100vh] min-h-[720px] overflow-hidden bg-[#141312] select-none flex flex-col justify-between pt-24 pb-8">
       {/* Background Hero Video */}
       <video
         autoPlay
@@ -58,124 +56,107 @@ export default function HeroSection({
         Your browser does not support the video tag.
       </video>
 
-      {/* Cinematic Dark Gradation Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/80 z-10" />
-      <div className="absolute inset-0 bg-vignette z-20 pointer-events-none" />
-
-      {/* Top Right Sound Toggle */}
-      <div className="absolute top-20 right-5 sm:top-24 sm:right-10 z-40">
-        <motion.button
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          onClick={toggleSound}
-          className="flex items-center gap-2.5 bg-[#141312]/65 backdrop-blur-xl border border-[#C5A880]/40 hover:border-[#C5A880] hover:bg-[#141312]/85 rounded-full px-3.5 py-2 shadow-[0_0_25px_rgba(197,168,128,0.2)] transition-all duration-300 group cursor-pointer"
-          aria-label={isPlaying ? 'Pause Music' : 'Play Music'}
-        >
-          <div className="flex items-end justify-center gap-0.5 h-3.5 w-3.5">
-            {isPlaying ? (
-              <>
-                <span className="w-[2px] bg-[#C5A880] rounded-full animate-eq-1"></span>
-                <span className="w-[2px] bg-[#C5A880] rounded-full animate-eq-2"></span>
-                <span className="w-[2px] bg-[#C5A880] rounded-full animate-eq-3"></span>
-              </>
-            ) : (
-              <VolumeX size={15} className="text-[#FAF7F2]/60 group-hover:text-[#C5A880]" />
-            )}
-          </div>
-          <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#C5A880]">
-            {isPlaying ? 'SOUND ON' : 'PLAY SOUND'}
-          </span>
-        </motion.button>
-      </div>
+      {/* Subtle Gentle Overlay for Text Contrast while Keeping Video Bright */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/45 z-10 pointer-events-none" />
 
       {/* Center Hero Content */}
       <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto flex flex-col items-center justify-center">
-        {/* Top Highlight Pill */}
+        {/* Top Highlight Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-[#C5A880]/40 mb-6 text-[#EAE4D9]"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-[#C5A880]/50 mb-6 text-[#F7F4EF] shadow-lg"
         >
           <Sparkles size={13} className="text-[#C5A880]" />
-          <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-sans font-medium">
-            13 Curated Suites • Bang Tao Beach, Phuket
+          <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-sans font-semibold">
+            13 rooms by the sea • Bang Tao Beach, Phuket
           </span>
         </motion.div>
 
-        {/* Headline: The beach at your door */}
-        <motion.h1
+        {/* H1 for Homepage SEO matching Section 2 */}
+        <h1 className="sr-only">Boutique Beachfront Hotel on Bang Tao Beach, Phuket</h1>
+
+        {/* Hero Visual Title */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white tracking-tight leading-[1.08] mb-6 drop-shadow-lg"
+          className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.08] mb-5 text-shadow-hero uppercase"
         >
-          The beach at <span className="italic font-serif text-gold-gradient font-light">your door.</span>
-        </motion.h1>
+          THE BEACH. <span className="italic font-serif text-[#F3DFBF] font-normal normal-case">AT YOUR DOOR.</span>
+        </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
+        {/* Hero Narrative Copy */}
+        <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.45 }}
-          className="text-[#FAF7F2]/85 text-sm sm:text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed mb-8 font-sans"
+          className="space-y-2 max-w-2xl mx-auto mb-8 font-sans text-shadow-lux"
         >
-          Boutique beachfront slow living with only 13 bespoke rooms, holistic thermal wellness, and direct VIP access to GOAT Beach Club.
-        </motion.p>
+          <p className="text-[#F3DFBF] text-sm sm:text-base font-medium tracking-wide">
+            Just 13 rooms. One beautiful corner of Phuket.
+          </p>
+          <p className="text-white/90 text-xs sm:text-sm md:text-base font-light leading-relaxed">
+            Elia is an intimate boutique hotel on Bang Tao Beach, created for guests who want to stay closer to the sea, closer to the good life and a little further from everything else.
+          </p>
+          <p className="text-white/80 text-xs sm:text-sm font-light hidden sm:block">
+            Wake up moments from the beach. Spend the day between your private terrace, the water, our outdoor wellness spaces and GOAT Beach Club next door.
+          </p>
+        </motion.div>
 
-        {/* Action Buttons: Immediate Book Now & Explore Rooms */}
+        {/* Action Buttons: BOOK YOUR STAY & EXPLORE OUR ROOMS */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto mb-10"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full max-w-xl mx-auto mb-8 px-2"
         >
           <button
             onClick={onOpenReservation}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#C5A880] via-[#D5B992] to-[#B89A70] text-[#141312] font-bold text-xs uppercase tracking-[0.22em] shadow-[0_0_35px_rgba(197,168,128,0.45)] hover:brightness-110 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer"
+            className="w-full sm:w-auto px-9 py-4 rounded-full bg-gradient-to-r from-[#C5A880] via-[#D5B992] to-[#B89A70] hover:from-[#D5B992] hover:to-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] shadow-[0_4px_25px_rgba(197,168,128,0.45)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap"
           >
-            <Calendar size={15} />
-            <span>BOOK NOW</span>
+            <Calendar size={16} className="shrink-0 text-[#141312]" />
+            <span className="whitespace-nowrap font-bold">BOOK YOUR STAY</span>
           </button>
 
           <button
             onClick={onNavigateRooms}
-            className="w-full sm:w-auto px-7 py-4 rounded-full bg-black/40 backdrop-blur-xl border border-white/30 text-white hover:bg-white/15 hover:border-[#C5A880] text-xs uppercase tracking-[0.22em] font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-black/50 hover:bg-white/20 backdrop-blur-xl border border-white/40 text-white hover:border-[#C5A880] text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap shadow-lg"
           >
-            <span>VIEW ROOMS & SUITES</span>
-            <ArrowRight size={14} />
+            <span className="whitespace-nowrap">EXPLORE OUR ROOMS</span>
+            <ArrowRight size={15} className="shrink-0 text-[#C5A880]" />
           </button>
         </motion.div>
 
-        {/* 4 Feature Highlights Micro-Bar */}
+        {/* 4 Quick Highlights */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.75 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 w-full max-w-3xl pt-4 border-t border-white/15 text-left"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 w-full max-w-3xl pt-4 border-t border-white/20 text-left"
         >
-          <div className="bg-black/30 backdrop-blur-md rounded-xl p-2.5 border border-white/10">
-            <span className="text-[10px] text-[#C5A880] uppercase tracking-wider block font-semibold">Scale</span>
-            <span className="text-xs text-white/90 font-light">Only 13 Rooms</span>
+          <div className="bg-black/45 backdrop-blur-md rounded-2xl p-3 border border-white/15 shadow-md">
+            <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Scale</span>
+            <span className="text-xs text-white font-medium">13 Intimate Rooms</span>
           </div>
-          <div className="bg-black/30 backdrop-blur-md rounded-xl p-2.5 border border-white/10">
-            <span className="text-[10px] text-[#C5A880] uppercase tracking-wider block font-semibold">Location</span>
-            <span className="text-xs text-white/90 font-light">Direct Beachfront</span>
+          <div className="bg-black/45 backdrop-blur-md rounded-2xl p-3 border border-white/15 shadow-md">
+            <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Location</span>
+            <span className="text-xs text-white font-medium">Bang Tao Beach</span>
           </div>
-          <div className="bg-black/30 backdrop-blur-md rounded-xl p-2.5 border border-white/10">
-            <span className="text-[10px] text-[#C5A880] uppercase tracking-wider block font-semibold">Lifestyle</span>
-            <span className="text-xs text-white/90 font-light">GOAT Beach Club VIP</span>
+          <div className="bg-black/45 backdrop-blur-md rounded-2xl p-3 border border-white/15 shadow-md">
+            <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Beach Club</span>
+            <span className="text-xs text-white font-medium">GOAT Club Access</span>
           </div>
-          <div className="bg-black/30 backdrop-blur-md rounded-xl p-2.5 border border-white/10">
-            <span className="text-[10px] text-[#C5A880] uppercase tracking-wider block font-semibold">Thermal Spa</span>
-            <span className="text-xs text-white/90 font-light">Sauna & Cold Plunge</span>
+          <div className="bg-black/45 backdrop-blur-md rounded-2xl p-3 border border-white/15 shadow-md">
+            <span className="text-[10px] text-[#F3DFBF] uppercase tracking-wider block font-bold">Wellness</span>
+            <span className="text-xs text-white font-medium">Sauna & Cold Plunge</span>
           </div>
         </motion.div>
       </div>
 
       {/* Hero Bottom Bar */}
-      <div className="relative z-30 px-6 pt-4 flex items-center justify-between max-w-7xl mx-auto w-full">
+      <div className="relative z-30 px-6 pt-3 flex items-center justify-between max-w-7xl mx-auto w-full">
         {/* Social / WhatsApp icons */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -184,12 +165,12 @@ export default function HeroSection({
           className="flex items-center gap-3"
         >
           <a
-            href="https://wa.me/66932719103"
+            href="https://wa.me/66824899371"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/70 hover:text-[#25D366] hover:scale-110 transition-all p-1.5"
+            className="text-[#FAF7F2]/80 hover:text-[#25D366] hover:scale-110 transition-all p-1.5"
             aria-label="WhatsApp"
-            title="Chat on WhatsApp"
+            title="Chat on WhatsApp (+66 82 489 9371)"
           >
             <WhatsAppIcon size={18} />
           </a>
@@ -197,7 +178,7 @@ export default function HeroSection({
             href="https://www.instagram.com/eliaboutiquehotel/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/70 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
+            className="text-[#FAF7F2]/80 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
             aria-label="Instagram"
           >
             <Instagram size={18} />
@@ -206,7 +187,7 @@ export default function HeroSection({
             href="https://www.facebook.com/profile.php?id=61590545618953"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/70 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
+            className="text-[#FAF7F2]/80 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
             aria-label="Facebook"
           >
             <Facebook size={18} />
@@ -215,7 +196,7 @@ export default function HeroSection({
             href="https://www.tiktok.com/@elia.boutique.hote"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/70 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
+            className="text-[#FAF7F2]/80 hover:text-[#C5A880] hover:scale-110 transition-all p-1.5"
             aria-label="TikTok"
           >
             <TiktokIcon size={18} />
@@ -228,9 +209,9 @@ export default function HeroSection({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
           onClick={onExploreClick}
-          className="flex flex-col items-center gap-1 text-[#FAF7F2]/70 hover:text-[#C5A880] transition-colors cursor-pointer group"
+          className="flex flex-col items-center gap-1 text-[#FAF7F2]/80 hover:text-[#C5A880] transition-colors cursor-pointer group"
         >
-          <span className="text-[9px] uppercase tracking-[0.3em] font-light">Explore Elia</span>
+          <span className="text-[9px] uppercase tracking-[0.3em] font-medium text-shadow-lux">Explore Elia</span>
           <ChevronDown size={16} className="animate-bounce text-[#C5A880]" />
         </motion.button>
 
@@ -239,7 +220,7 @@ export default function HeroSection({
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="hidden sm:flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-[#FAF7F2]/70"
+          className="hidden sm:flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-[#FAF7F2]/80 font-medium text-shadow-lux"
         >
           <MapPin size={13} className="text-[#C5A880]" />
           <span>Bang Tao Beach, Phuket</span>
