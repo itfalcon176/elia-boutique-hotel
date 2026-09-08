@@ -42,27 +42,20 @@ export default function HeroSection({
 }) {
   return (
     <section id="home" className="relative w-full min-h-screen lg:h-[100vh] min-h-[720px] overflow-hidden bg-[#141312] select-none flex flex-col justify-between pt-24 pb-8">
-      {/* Background Hero Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
+      {/* Background Hero Image */}
+      <img
+        src="/banner/banner.jpeg"
+        alt="Elia Boutique Hotel Bang Tao Beach Phuket"
         className="absolute inset-0 w-full h-full object-cover z-0 scale-105 origin-center"
-      >
-        <source src="/hero-banner-video.mp4" type="video/mp4" />
-        <source src="/hero banner video.MOV" type="video/quicktime" />
-        <source src="/Elia-boutique-hotel.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      />
 
       {/* Subtle Natural Multi-Layer Contrast Overlay (Seamless & Invisible to visitors) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/60 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/10 z-10 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0.25)_55%,rgba(0,0,0,0.65)_100%)] z-10 pointer-events-none" />
 
       {/* Center Hero Content */}
       <div className="relative z-30 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 text-center my-auto flex flex-col items-center justify-center pt-2 sm:pt-0">
-        
+
         {/* Top Highlight Badge - Modern Glassmorphic Pill (Mobile Optimized Single-Line) */}
         <motion.div
           initial={{ opacity: 0, y: -15 }}
