@@ -47,7 +47,7 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-xs uppercase tracking-[0.4em] text-[#A38B68] font-semibold mb-3 block font-sans"
+            className="text-xs uppercase tracking-[0.4em] text-gold font-semibold mb-3 block font-sans"
           >
             Intimate Boutique Hotel
           </motion.span>

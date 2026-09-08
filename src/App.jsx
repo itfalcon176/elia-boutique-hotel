@@ -232,7 +232,7 @@ function App() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#F7F4EF] text-[#23211E]">
+    <div className="relative w-full min-h-screen bg-elia-cream text-[#23211E]">
       {/* Main Header Navigation Bar */}
       <Navbar
         activePage={activePage}

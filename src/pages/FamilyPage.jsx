@@ -199,7 +199,7 @@ export default function FamilyPage({ onNavigate, onOpenReservation }) {
 
             <div className="lg:col-span-6 relative aspect-[4/3] overflow-hidden">
               <img
-                src="/images/dining.png"
+                src="/accommodation/Garden Family Suite 2.webp"
                 alt="Elia Garden Family Suite in Phuket"
                 className="w-full h-full object-cover"
               />
