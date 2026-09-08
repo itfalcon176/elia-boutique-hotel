@@ -184,10 +184,10 @@ export default function BangTaoPage({ onNavigate, onOpenReservation }) {
             </div>
 
             {/* Map Embed */}
-            <div className="lg:col-span-6 rounded-2xl overflow-hidden aspect-[4/3] border border-[#A38B68]/30 shadow-inner">
+            <div className="lg:col-span-6 rounded-2xl overflow-hidden aspect-[4/3] min-h-[260px] sm:min-h-[340px] border border-[#A38B68]/30 shadow-inner">
               <iframe
                 title="Elia Boutique Hotel Bang Tao Beach Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15804.821360555353!2d98.2831!3d7.9942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050307c87c716e9%3A0x7ce087f8aa982cf1!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7901.831828779644!2d98.2935!3d7.9925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050307c87c716e9%3A0x7ce087f8aa982cf1!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

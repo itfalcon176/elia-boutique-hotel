@@ -313,8 +313,8 @@ export default function ContactPage({ onNavigate }) {
         </div>
 
         {/* Dedicated Full Width Map Section */}
-        <div id="hotel-map" className="mb-20 scroll-mt-28">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#A38B68]/30 shadow-xl space-y-6">
+        <div id="hotel-map" className="mb-16 sm:mb-20 scroll-mt-28">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#A38B68]/30 shadow-xl space-y-4 sm:space-y-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#A38B68]/20">
               <div>
                 <div className="inline-flex items-center gap-2 text-[#A38B68] mb-1">
@@ -323,7 +323,7 @@ export default function ContactPage({ onNavigate }) {
                     Interactive Location Map
                   </span>
                 </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E]">
+                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-light text-[#23211E]">
                   Elia Phuket on Bang Tao Beach
                 </h3>
                 <p className="text-xs text-[#6E6A63] font-light mt-0.5">
@@ -331,20 +331,20 @@ export default function ContactPage({ onNavigate }) {
                 </p>
               </div>
               <a
-                href="https://maps.google.com/?q=Bang+Tao+Beach,+Phuket,+Thailand"
+                href="https://maps.google.com/?q=Bang+Tao+Beach,+Choeng+Thale,+Phuket,+Thailand"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#F7F4EF] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-md group shrink-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#F7F4EF] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-md group shrink-0"
               >
                 <Navigation size={14} className="text-[#C5A880] group-hover:text-white transition-colors" />
                 <span>Open in Google Maps</span>
               </a>
             </div>
 
-            <div className="rounded-2xl overflow-hidden aspect-[21/9] min-h-[380px] sm:min-h-[460px] border border-[#A38B68]/20 shadow-inner">
+            <div className="rounded-xl sm:rounded-2xl overflow-hidden h-[300px] sm:h-[400px] md:h-[480px] w-full border border-[#A38B68]/20 shadow-inner">
               <iframe
                 title="Elia Boutique Hotel Phuket Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15804.821360555353!2d98.2831!3d7.9942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050307c87c716e9%3A0x7ce087f8aa982cf1!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7901.831828779644!2d98.2935!3d7.9925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050307c87c716e9%3A0x7ce087f8aa982cf1!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
