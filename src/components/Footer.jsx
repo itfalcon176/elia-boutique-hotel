@@ -55,7 +55,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
           <div className="lg:col-span-4 space-y-4">
             <button onClick={() => onNavClick('home')} className="focus:outline-none cursor-pointer block text-left">
               <img
-                src="/Logos/white-new.png"
+                src="/Logos/logo nwww.png"
                 alt="Elia Boutique Hotel Phuket"
                 className="h-12 sm:h-14 w-auto object-contain mb-3 transition-transform duration-300 hover:scale-105"
               />

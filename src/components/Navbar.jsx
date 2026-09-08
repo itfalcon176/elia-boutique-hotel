@@ -57,11 +57,11 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               className="flex items-center gap-3 cursor-pointer group text-left"
             >
               <img
-                src={isLightHeader ? '/Logos/logo with.png' : '/Logos/white-new.png'}
+                src={isLightHeader ? '/Logos/logo with.png' : '/Logos/logo nwww.png'}
                 alt="Elia Boutique Hotel Phuket Logo"
                 className="h-9 sm:h-11 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 onError={(e) => {
-                  e.target.src = '/Logos/white-new.png';
+                  e.target.src = '/Logos/logo nwww.png';
                 }}
               />
             </button>
