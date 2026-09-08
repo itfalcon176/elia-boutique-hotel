@@ -43,11 +43,10 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isLightHeader
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isLightHeader
             ? 'bg-[#FAF7F2]/95 backdrop-blur-md shadow-sm border-b border-[#A38B68]/20 py-3.5'
             : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -81,15 +80,14 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                     >
                       <button
                         onClick={() => handleNavClick(link.id)}
-                        className={`relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center gap-1.5 py-1 cursor-pointer ${
-                          isLightHeader
+                        className={`relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center gap-1.5 py-1 cursor-pointer ${isLightHeader
                             ? isSelected
                               ? 'text-[#A38B68] font-bold'
                               : 'text-[#23211E]/80 hover:text-[#23211E]'
                             : isSelected
-                            ? 'text-[#C5A880] font-bold'
-                            : 'text-white/85 hover:text-white'
-                        }`}
+                              ? 'text-[#C5A880] font-bold'
+                              : 'text-white/85 hover:text-white'
+                          }`}
                       >
                         <span>{link.label}</span>
                         <ChevronDown size={13} className={`transition-transform duration-200 ${roomsDropdownOpen ? 'rotate-180' : ''}`} />
@@ -129,11 +127,10 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                                 <button
                                   key={room.id}
                                   onClick={() => handleNavClick(`rooms/${room.slug}`)}
-                                  className={`w-full text-left p-2.5 rounded-xl flex items-center gap-3.5 transition-all cursor-pointer group ${
-                                    activePage === `rooms/${room.slug}`
+                                  className={`w-full text-left p-2.5 rounded-xl flex items-center gap-3.5 transition-all cursor-pointer group ${activePage === `rooms/${room.slug}`
                                       ? 'bg-[#23211E] text-white shadow-md'
                                       : 'hover:bg-[#EFECE6] text-[#23211E]'
-                                  }`}
+                                    }`}
                                 >
                                   {/* Thumbnail Image */}
                                   <div className="w-14 h-12 rounded-lg overflow-hidden shrink-0 border border-[#A38B68]/25 bg-stone-200">
@@ -149,9 +146,8 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                                     <div className="font-serif font-medium text-sm sm:text-base leading-snug group-hover:text-[#A38B68] transition-colors truncate">
                                       {room.title}
                                     </div>
-                                    <div className={`text-xs mt-0.5 font-light truncate ${
-                                      activePage === `rooms/${room.slug}` ? 'text-white/80' : 'text-[#6E6A63]'
-                                    }`}>
+                                    <div className={`text-xs mt-0.5 font-light truncate ${activePage === `rooms/${room.slug}` ? 'text-white/80' : 'text-[#6E6A63]'
+                                      }`}>
                                       {room.countLabel} • {room.size} • {room.maxOccupancyText}
                                     </div>
                                   </div>
@@ -176,15 +172,14 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   <button
                     key={link.id}
                     onClick={() => handleNavClick(link.id)}
-                    className={`relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center gap-1.5 py-1 cursor-pointer ${
-                      isLightHeader
+                    className={`relative text-[11px] xl:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center gap-1.5 py-1 cursor-pointer ${isLightHeader
                         ? isSelected
                           ? 'text-[#A38B68] font-bold'
                           : 'text-[#23211E]/80 hover:text-[#23211E]'
                         : isSelected
-                        ? 'text-[#C5A880] font-bold'
-                        : 'text-white/85 hover:text-white'
-                    }`}
+                          ? 'text-[#C5A880] font-bold'
+                          : 'text-white/85 hover:text-white'
+                      }`}
                   >
                     <span>{link.label}</span>
                     {isSelected && (
@@ -198,20 +193,20 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               })}
             </nav>
 
-          {/* Right CTA Button: BOOK NOW */}
-          <div className="hidden sm:flex items-center gap-3">
-            <button
-              onClick={onOpenReservation}
-              className={`flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md cursor-pointer ${
-                isLightHeader
-                  ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
-                  : 'bg-gradient-to-r from-[#C5A880] to-[#9E8259] text-[#141312] font-bold hover:brightness-110 shadow-[0_0_20px_rgba(197,168,128,0.4)]'
-              }`}
-            >
-              <Calendar size={14} />
-              <span>BOOK NOW</span>
-            </button>
-          </div>
+            {/* Right CTA Button: BOOK NOW */}
+            <div className="hidden sm:flex items-center gap-3">
+              <button
+                onClick={onOpenReservation}
+                className={`flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md cursor-pointer ${
+                  isLightHeader
+                    ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
+                    : 'bg-gradient-to-r from-[#C5A880] to-[#9E8259] text-[#141312] font-bold hover:brightness-110 shadow-[0_0_20px_rgba(197,168,128,0.4)]'
+                }`}
+              >
+                <Calendar size={14} />
+                <span>BOOK NOW</span>
+              </button>
+            </div>
 
             {/* Mobile Hamburger Toggle */}
             <button
@@ -274,11 +269,10 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                     <div key={link.id} className="flex flex-col gap-1">
                       <button
                         onClick={() => handleNavClick(link.id)}
-                        className={`flex items-center justify-between px-4 py-2.5 rounded-xl border transition-all text-left cursor-pointer ${
-                          isSelected
+                        className={`flex items-center justify-between px-4 py-2.5 rounded-xl border transition-all text-left cursor-pointer ${isSelected
                             ? 'bg-[#23211E] text-[#F7F4EF] border-[#23211E] shadow-md'
                             : 'bg-[#FFFFFF]/80 hover:bg-[#FFFFFF] text-[#23211E] border-[#A38B68]/20'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-3">
                           <span className="font-serif italic text-xs text-[#A38B68]">
@@ -298,11 +292,10 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                             <button
                               key={room.id}
                               onClick={() => handleNavClick(`rooms/${room.slug}`)}
-                              className={`w-full text-left py-1.5 px-2 text-[11px] font-sans flex items-center justify-between cursor-pointer rounded-lg ${
-                                activePage === `rooms/${room.slug}`
+                              className={`w-full text-left py-1.5 px-2 text-[11px] font-sans flex items-center justify-between cursor-pointer rounded-lg ${activePage === `rooms/${room.slug}`
                                   ? 'font-bold text-[#A38B68] bg-white'
                                   : 'text-[#6E6A63] hover:text-[#23211E]'
-                              }`}
+                                }`}
                             >
                               <span>{room.title}</span>
                               <span className="text-[9px] uppercase tracking-wider text-[#A38B68]">
@@ -351,12 +344,15 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenReservation();
+                  handleNavClick('booking');
                 }}
-                className="w-full py-3.5 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2.5 shadow-xl hover:bg-[#A38B68] transition-all cursor-pointer"
+                className={`w-full py-3.5 rounded-full font-semibold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2.5 shadow-xl transition-all cursor-pointer ${activePage === 'booking'
+                    ? 'bg-[#A38B68] text-white shadow-[0_0_20px_rgba(163,139,104,0.4)]'
+                    : 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
+                  }`}
               >
                 <Calendar size={15} className="text-[#A38B68]" />
-                <span>BOOK NOW</span>
+                <span>RESERVE STAY OR TABLE</span>
               </button>
 
               <div className="flex items-center justify-between text-[11px] text-[#6E6A63] font-sans font-light px-1">

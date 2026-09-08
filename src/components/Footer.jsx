@@ -50,7 +50,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
     <footer className="bg-[#181715] text-[#FAF7F2] pt-20 pb-12 border-t border-[#A38B68]/25 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-[#FAF7F2]/10">
-          
+
           {/* Col 1: Brand & Identity (4 cols) matching Section 20 */}
           <div className="lg:col-span-4 space-y-4">
             <button onClick={() => onNavClick('home')} className="focus:outline-none cursor-pointer block text-left">
@@ -126,6 +126,11 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               Explore Elia
             </h4>
             <ul className="space-y-2 text-xs text-[#FAF7F2]/70 font-light">
+              <li>
+                <button onClick={() => onNavClick('booking')} className="text-[#C5A880] font-medium hover:underline transition-all">
+                  Direct Reservations
+                </button>
+              </li>
               <li>
                 <button onClick={() => onNavClick('rooms')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
                   Accommodation
@@ -259,7 +264,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
         {/* Footer Sub-Links matching Section 20 */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-[#FAF7F2]/60 font-light">
           <p>© {new Date().getFullYear()} Elia Boutique Hotel Phuket. 13 rooms by the sea.</p>
-          
+
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px]">
             <button onClick={() => onNavClick('privacy')} className="hover:text-white transition-colors cursor-pointer">
               Privacy Policy
