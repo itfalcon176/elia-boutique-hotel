@@ -47,7 +47,7 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
             </li>
             <li>/</li>
             <li className="text-[#23211E] font-medium" aria-current="page">
-              Wellness
+              Facilities
             </li>
           </ol>
         </nav>

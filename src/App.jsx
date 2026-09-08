@@ -38,8 +38,9 @@ const pageToPath = {
   'rooms/loft-apartments': '/rooms/loft-apartment',
   'eat-drink': '/eat-drink',
   menus: '/eat-drink',
-  wellness: '/wellness',
-  spa: '/wellness',
+  wellness: '/facilities',
+  facilities: '/facilities',
+  spa: '/facilities',
   'goat-beach-club': '/goat-beach-club',
   'family-hotel-phuket': '/family-hotel-phuket',
   family: '/family-hotel-phuket',
@@ -91,8 +92,12 @@ const seoMetadata = {
     description: 'Enjoy breakfast, barista coffee, beachfront dining, room service, cocktails and sunset drinks at GOAT Beach Club when staying at Elia Phuket.',
   },
   wellness: {
-    title: 'Wellness, Sauna & Massage | Elia Boutique Hotel Phuket',
-    description: 'Relax at Elia Phuket with massage treatments, outdoor sauna, cold plunge, jacuzzi and plunge pool just steps from Bang Tao Beach.',
+    title: 'Hotel Facilities, Wellness & Sauna | Elia Boutique Hotel Phuket',
+    description: 'Explore the facilities at Elia Phuket, featuring massage treatments, outdoor sauna, cold plunge, jacuzzi and plunge pool just steps from Bang Tao Beach.',
+  },
+  facilities: {
+    title: 'Hotel Facilities, Wellness & Sauna | Elia Boutique Hotel Phuket',
+    description: 'Explore the facilities at Elia Phuket, featuring massage treatments, outdoor sauna, cold plunge, jacuzzi and plunge pool just steps from Bang Tao Beach.',
   },
   'goat-beach-club': {
     title: 'Hotel With Beach Club Access Phuket | Elia & GOAT Bang Tao',
@@ -141,7 +146,7 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/rooms/one-bedroom-loft-suite' || cleanPath === '/accommodation/one-bedroom-loft-suite' || cleanPath === '/accomodation/one-bedroom-loft-suite') return 'rooms/one-bedroom-loft-suite';
   if (cleanPath === '/accommodation' || cleanPath === '/accomodation' || cleanPath === '/rooms' || cleanPath === '/suites') return 'rooms';
   if (cleanPath === '/eat-drink' || cleanPath === '/menus' || cleanPath === '/dining') return 'eat-drink';
-  if (cleanPath === '/wellness' || cleanPath === '/spa') return 'wellness';
+  if (cleanPath === '/facilities' || cleanPath === '/facility' || cleanPath === '/wellness' || cleanPath === '/spa') return 'wellness';
   if (cleanPath === '/goat-beach-club' || cleanPath === '/goat') return 'goat-beach-club';
   if (cleanPath === '/family-hotel-phuket' || cleanPath === '/family' || cleanPath === '/families') return 'family-hotel-phuket';
   if (cleanPath === '/experiences') return 'experiences';

@@ -25,7 +25,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   const navLinks = [
     { id: 'rooms', label: 'Accommodation', hasDropdown: true },
     { id: 'eat-drink', label: 'Eat & Drink' },
-    { id: 'wellness', label: 'Wellness' },
+    { id: 'wellness', label: 'Facilities' },
     { id: 'experiences', label: 'Experiences' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'about', label: 'About' },
