@@ -36,8 +36,10 @@ const pageToPath = {
   'rooms/garden-beach-rooms': '/rooms/garden-beach-room',
   'rooms/garden-family-suites': '/rooms/garden-family-suite',
   'rooms/loft-apartments': '/rooms/loft-apartment',
-  'eat-drink': '/eat-drink',
-  menus: '/eat-drink',
+  'eat-drink': '/food-and-drinks',
+  'food-and-drinks': '/food-and-drinks',
+  'food-and-drink': '/food-and-drinks',
+  menus: '/food-and-drinks',
   wellness: '/facilities',
   facilities: '/facilities',
   spa: '/facilities',
@@ -65,7 +67,7 @@ const pageToPath = {
 const seoMetadata = {
   home: {
     title: 'Elia Boutique Hotel | Beachfront Hotel Bang Tao, Phuket',
-    description: 'Stay steps from Bang Tao Beach at Elia, an intimate 13-room boutique hotel in Phuket with beach club access, wellness, dining and family facilities.',
+    description: 'Stay steps from Bang Tao Beach at Elia, an intimate 13-room boutique hotel in Phuket with beach club access, facilities, dining and family amenities.',
   },
   rooms: {
     title: 'Accommodation | Elia Boutique Hotel Bang Tao Phuket',
@@ -88,16 +90,20 @@ const seoMetadata = {
     description: 'Our spacious One-Bedroom Loft Suite offers extra room for couples and families just moments from Bang Tao Beach in Phuket.',
   },
   'eat-drink': {
-    title: 'Beachfront Dining Bang Tao | Elia Phuket & GOAT Beach Club',
+    title: 'Food and Drinks Bang Tao | Elia Phuket & GOAT Beach Club',
+    description: 'Enjoy breakfast, barista coffee, beachfront dining, room service, cocktails and sunset drinks at GOAT Beach Club when staying at Elia Phuket.',
+  },
+  'food-and-drinks': {
+    title: 'Food and Drinks Bang Tao | Elia Phuket & GOAT Beach Club',
     description: 'Enjoy breakfast, barista coffee, beachfront dining, room service, cocktails and sunset drinks at GOAT Beach Club when staying at Elia Phuket.',
   },
   wellness: {
-    title: 'Hotel Facilities, Wellness & Sauna | Elia Boutique Hotel Phuket',
-    description: 'Explore the facilities at Elia Phuket, featuring massage treatments, outdoor sauna, cold plunge, jacuzzi and plunge pool just steps from Bang Tao Beach.',
+    title: 'Hotel Facilities | Elia Boutique Hotel Bang Tao Phuket',
+    description: 'Explore hotel facilities at Elia Phuket, including outdoor sauna, cold plunge, jacuzzi, plunge pool, and massage treatments steps from Bang Tao Beach.',
   },
   facilities: {
-    title: 'Hotel Facilities, Wellness & Sauna | Elia Boutique Hotel Phuket',
-    description: 'Explore the facilities at Elia Phuket, featuring massage treatments, outdoor sauna, cold plunge, jacuzzi and plunge pool just steps from Bang Tao Beach.',
+    title: 'Hotel Facilities | Elia Boutique Hotel Bang Tao Phuket',
+    description: 'Explore hotel facilities at Elia Phuket, including outdoor sauna, cold plunge, jacuzzi, plunge pool, and massage treatments steps from Bang Tao Beach.',
   },
   'goat-beach-club': {
     title: 'Hotel With Beach Club Access Phuket | Elia & GOAT Bang Tao',
@@ -121,7 +127,7 @@ const seoMetadata = {
   },
   gallery: {
     title: 'Elia Phuket Gallery | Boutique Hotel Bang Tao Beach',
-    description: 'Explore Elia Boutique Hotel Phuket through our gallery of rooms, gardens, wellness spaces, dining and life beside beautiful Bang Tao Beach.',
+    description: 'Explore Elia Boutique Hotel Phuket through our gallery of rooms, gardens, facilities, dining and life beside beautiful Bang Tao Beach.',
   },
   offers: {
     title: 'Elia Phuket Special Offers | Book Direct Bang Tao Hotel',
@@ -129,7 +135,7 @@ const seoMetadata = {
   },
   faq: {
     title: 'Elia Phuket FAQ | Bang Tao Hotel Information',
-    description: 'Find answers about Elia Boutique Hotel Phuket, including location, beach access, family stays, check-in, dining, wellness and GOAT Beach Club.',
+    description: 'Find answers about Elia Boutique Hotel Phuket, including location, beach access, family stays, check-in, dining, facilities and GOAT Beach Club.',
   },
   contact: {
     title: 'Contact Elia Boutique Hotel Phuket | Bang Tao Beach',
@@ -145,7 +151,7 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/rooms/loft-apartment' || cleanPath === '/rooms/loft-apartments' || cleanPath === '/accommodation/loft-apartment' || cleanPath === '/accomodation/loft-apartment') return 'rooms/loft-apartment';
   if (cleanPath === '/rooms/one-bedroom-loft-suite' || cleanPath === '/accommodation/one-bedroom-loft-suite' || cleanPath === '/accomodation/one-bedroom-loft-suite') return 'rooms/one-bedroom-loft-suite';
   if (cleanPath === '/accommodation' || cleanPath === '/accomodation' || cleanPath === '/rooms' || cleanPath === '/suites') return 'rooms';
-  if (cleanPath === '/eat-drink' || cleanPath === '/menus' || cleanPath === '/dining') return 'eat-drink';
+  if (cleanPath === '/food-and-drinks' || cleanPath === '/food-and-drink' || cleanPath === '/food-drinks' || cleanPath === '/eat-drink' || cleanPath === '/menus' || cleanPath === '/dining') return 'eat-drink';
   if (cleanPath === '/facilities' || cleanPath === '/facility' || cleanPath === '/wellness' || cleanPath === '/spa') return 'wellness';
   if (cleanPath === '/goat-beach-club' || cleanPath === '/goat') return 'goat-beach-club';
   if (cleanPath === '/family-hotel-phuket' || cleanPath === '/family' || cleanPath === '/families') return 'family-hotel-phuket';

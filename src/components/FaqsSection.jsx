@@ -146,8 +146,8 @@ export default function FaqsSection() {
             Frequently Asked <span className="italic text-gold-gradient font-serif">Questions</span>
           </h2>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
-          <p className="text-[#6E6A63] font-light text-sm sm:text-base font-sans">
-            Key information for your stay at Elia Boutique Hotel Phuket, dining at GOAT Beach Club, wellness facilities, and concierge services.
+          <p className="text-[#6E6A63] font-light text-base font-sans">
+            Key information for your stay at Elia Boutique Hotel Phuket, dining at GOAT Beach Club, hotel facilities, and concierge services.
           </p>
         </div>
 

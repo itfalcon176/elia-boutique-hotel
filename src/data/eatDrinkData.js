@@ -1,7 +1,7 @@
 export const eatDrinkData = {
   hero: {
-    title: 'Eat & Drink',
-    subtitle: 'GOAT Beach Club Direct Access & Beachfront Gastronomy',
+    title: 'Food and Drinks',
+    subtitle: 'Fresh Flavours, Ocean Views & Relaxed Beachfront Dining',
     description: 'At Elia Phuket, culinary indulgence is effortless. Guests enjoy privileged, direct access to the acclaimed GOAT Beach Club right at your doorstep — from sunrise floating breakfasts and oceanfront lunches to sunset Nikkei dinners and midnight craft cocktails.',
   },
   goatClub: {

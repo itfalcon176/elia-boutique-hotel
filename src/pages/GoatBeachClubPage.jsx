@@ -183,7 +183,7 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
             Stay a little closer. To the sea. To the good life.
           </h3>
           <p className="text-xs sm:text-sm text-[#6E6A63] font-light max-w-xl mx-auto leading-relaxed mb-6">
-            13 intimate rooms on Bang Tao Beach with complimentary GOAT Beach Club access and wellness amenities.
+            13 intimate rooms on Bang Tao Beach with complimentary GOAT Beach Club access and hotel facilities.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button

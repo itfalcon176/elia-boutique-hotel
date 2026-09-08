@@ -132,13 +132,13 @@ export default function Footer({ onNavClick, onOpenReservation }) {
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavClick('eat-drink')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Eat & Drink
+                <button onClick={() => onNavClick('wellness')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                  Facilities
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavClick('wellness')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Facilities
+                <button onClick={() => onNavClick('eat-drink')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                  Food and Drinks
                 </button>
               </li>
               <li>

@@ -24,8 +24,8 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   // ROOMS & SUITES | EAT & DRINK | WELLNESS | EXPERIENCES | GALLERY | ABOUT | CONTACT | BOOK NOW
   const navLinks = [
     { id: 'rooms', label: 'Accommodation', hasDropdown: true },
-    { id: 'eat-drink', label: 'Eat & Drink' },
     { id: 'wellness', label: 'Facilities' },
+    { id: 'eat-drink', label: 'Food and Drinks' },
     { id: 'experiences', label: 'Experiences' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'about', label: 'About' },

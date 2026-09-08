@@ -32,7 +32,7 @@ export default function SpaWellnessSection({ onOpenReservation }) {
             Inner Calm & Restoration
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl font-light tracking-wide text-[#23211E] mb-4">
-            Wellness & <span className="italic text-gold-gradient font-serif">Spa</span>
+            Facilities & <span className="italic text-gold-gradient font-serif">Spa</span>
           </h2>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           <p className="text-[#6E6A63] font-light text-base font-sans">

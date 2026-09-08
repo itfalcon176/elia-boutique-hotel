@@ -1,8 +1,8 @@
 export const wellnessData = {
   hero: {
-    title: 'Wellness & Thermal Sanctuary',
+    title: 'Facilities & Thermal Sanctuary',
     subtitle: 'Slow Living, Ocean Air & Restorative Rituals',
-    description: 'Nourish body and soul in our intimate tropical wellness sanctuary. Crafted around the principles of contrast hydrotherapy, ancient Thai botanical healing, and serene Phuket nature, our wellness spaces invite you to disconnect from noise and return to equilibrium.',
+    description: 'Nourish body and soul in our intimate tropical sanctuary. Crafted around the principles of contrast hydrotherapy, ancient Thai botanical healing, and serene Phuket nature, our guest facilities invite you to disconnect from noise and return to equilibrium.',
   },
   facilities: [
     {

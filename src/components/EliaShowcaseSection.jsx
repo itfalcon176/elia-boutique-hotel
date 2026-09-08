@@ -407,9 +407,9 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
               <div className="pt-2">
                 <button
                   onClick={() => onNavigate('eat-drink')}
-                  className="px-8 py-3.5 rounded-full bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer shadow-md"
+                  className="px-6 py-3 rounded-full border border-[#C5A880] text-[#C5A880] text-xs font-semibold uppercase tracking-widest hover:bg-[#C5A880] hover:text-[#141312] transition-all cursor-pointer"
                 >
-                  EAT & DRINK
+                  FOOD & DRINKS
                 </button>
               </div>
             </div>

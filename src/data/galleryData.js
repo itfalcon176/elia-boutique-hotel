@@ -4,8 +4,8 @@ export const galleryCategories = [
   'Rooms & Suites',
   'Bang Tao Beach',
   'GOAT Beach Club',
-  'Food & Drink',
-  'Wellness',
+  'Food and Drinks',
+  'Facilities',
   'Families',
 ];
 
@@ -36,8 +36,8 @@ export const galleryData = [
   },
   {
     id: 4,
-    title: 'Outdoor Sauna & Wellness',
-    category: 'Wellness',
+    title: 'Outdoor Sauna & Facilities',
+    category: 'Facilities',
     image: '/images/spa.png',
     alt: 'Outdoor sauna at Elia Boutique Hotel Phuket',
     caption: 'Warm cedarwood outdoor sauna surrounded by lush tropical greenery.',
@@ -53,9 +53,9 @@ export const galleryData = [
   {
     id: 6,
     title: 'Cold Plunge & Thermal Area',
-    category: 'Wellness',
+    category: 'Facilities',
     image: '/images/spa.png',
-    alt: 'Cold plunge and outdoor wellness area at Elia Phuket',
+    alt: 'Cold plunge and outdoor facilities at Elia Phuket',
     caption: '8°C ice cold plunge and thermal contrast hydrotherapy circuit.',
   },
   {
@@ -69,7 +69,7 @@ export const galleryData = [
   {
     id: 8,
     title: 'Fresh Gastronomy & Cocktails',
-    category: 'Food & Drink',
+    category: 'Food and Drinks',
     image: '/images/dining.png',
     alt: 'Food and drinks courtesy of GOAT Beach Club at Elia',
     caption: 'Fresh flavours, Mediterranean dishes, and handcrafted sunset cocktails.',
@@ -77,7 +77,7 @@ export const galleryData = [
   {
     id: 9,
     title: 'Plunge Pool by the Gardens',
-    category: 'Wellness',
+    category: 'Facilities',
     image: '/images/suite.png',
     alt: 'Plunge pool at Elia Boutique Hotel',
     caption: 'A refreshing place to cool off between the tropical gardens and the beach.',

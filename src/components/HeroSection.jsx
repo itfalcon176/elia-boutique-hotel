@@ -148,7 +148,7 @@ export default function HeroSection({
             <span className="text-[11px] sm:text-sm text-white font-light">GOAT Club Access</span>
           </div>
           <div className="bg-white/[0.07] hover:bg-white/[0.12] backdrop-blur-xl rounded-xl sm:rounded-2xl p-2.5 sm:p-4 border border-white/15 hover:border-[#C5A880]/40 transition-all duration-300 shadow-xl">
-            <span className="text-[9px] sm:text-[10px] text-[#C5A880] uppercase tracking-[0.18em] sm:tracking-[0.22em] block font-semibold mb-0.5">Wellness</span>
+            <span className="text-[9px] sm:text-[10px] text-[#C5A880] uppercase tracking-[0.18em] sm:tracking-[0.22em] block font-semibold mb-0.5">Facilities</span>
             <span className="text-[11px] sm:text-sm text-white font-light">Sauna & Cold Plunge</span>
           </div>
         </motion.div>

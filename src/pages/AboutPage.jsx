@@ -63,7 +63,7 @@ export default function AboutPage({ onNavigate, onOpenReservation }) {
               GOAT Beach Club sits next door, giving Elia guests beachfront food, drinks and atmosphere whenever they want it.
             </p>
             <p>
-              Back at the hotel, the gardens, wellness spaces, plunge pool and rooms provide somewhere quieter to retreat to.
+              Back at the hotel, the gardens, facilities, plunge pool and rooms provide somewhere quieter to retreat to.
             </p>
             <div className="pt-2 border-t border-[#A38B68]/20 space-y-1 font-serif text-lg text-[#23211E]">
               <p>Two places.</p>

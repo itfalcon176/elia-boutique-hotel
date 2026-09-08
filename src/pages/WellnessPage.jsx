@@ -62,7 +62,7 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-wide text-[#23211E] mb-4">
-            Wellness at <span className="italic text-gold-gradient font-serif">Elia Phuket</span>
+            Facilities at <span className="italic text-gold-gradient font-serif">Elia Phuket</span>
           </h1>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           
@@ -71,7 +71,7 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
           </h2>
 
           <p className="text-[#555047] font-light text-sm sm:text-base font-sans leading-relaxed max-w-2xl mx-auto">
-            Wellness at Elia isn't about schedules, programmes or taking things too seriously. It's simply there when you want it.
+            Facilities at Elia aren't about schedules, programmes or taking things too seriously. Everything is simply there when you want it.
           </p>
           <p className="text-[#555047] font-light text-xs sm:text-sm font-sans leading-relaxed max-w-xl mx-auto mt-2">
             Step into the sauna. Cool down in the cold plunge. Ease into the jacuzzi. Book a massage. Swim. Read. Do absolutely nothing.
@@ -88,11 +88,11 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
               Thermal Circuit & Water
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#23211E]">
-              Outdoor Spa
+              Outdoor Spa & Thermal Circuit
             </h2>
             <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3 mb-6" />
             <p className="text-xs sm:text-sm text-[#6E6A63] font-light leading-relaxed">
-              Our outdoor wellness area brings together heat, cold and water in a relaxed tropical setting.
+              Our outdoor facilities bring together heat, cold and water in a relaxed tropical setting.
             </p>
           </div>
 
@@ -207,7 +207,7 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
         {/* Bottom CTA Callout */}
         <div className="p-8 sm:p-12 rounded-3xl bg-[#FAF7F2] border border-[#A38B68]/30 text-center">
           <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E] mb-3">
-            Your Wellness Sanctuary on Bang Tao Beach
+            Your Facilities & Sanctuary on Bang Tao Beach
           </h3>
           <p className="text-xs sm:text-sm text-[#6E6A63] font-light max-w-xl mx-auto leading-relaxed mb-6">
             13 intimate rooms with outdoor sauna, cold plunge, jacuzzi, plunge pool, and massage treatments steps from the Andaman Sea.

@@ -16,7 +16,7 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
             </li>
             <li>/</li>
             <li className="text-[#23211E] font-medium" aria-current="page">
-              Eat & Drink
+              Food and Drinks
             </li>
           </ol>
         </nav>
@@ -31,7 +31,7 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-wide text-[#23211E] mb-4">
-            Eat & Drink at <span className="italic text-gold-gradient font-serif">Elia</span>
+            Food and Drinks at <span className="italic text-gold-gradient font-serif">Elia</span>
           </h1>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           

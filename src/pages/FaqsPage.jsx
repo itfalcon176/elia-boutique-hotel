@@ -63,8 +63,8 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
           </h1>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           
-          <p className="text-[#555047] font-light text-sm sm:text-base font-sans leading-relaxed max-w-2xl mx-auto">
-            Everything you need to know about Elia Boutique Hotel Phuket, including check-in/out, beach access, GOAT Beach Club, wellness, cancellation, family stays, and concierge services.
+          <p className="text-[#6E6A63] font-light text-sm sm:text-base font-sans max-w-2xl mx-auto leading-relaxed">
+            Everything you need to know about Elia Boutique Hotel Phuket, including check-in/out, beach access, GOAT Beach Club, facilities, cancellation, family stays, and concierge services.
           </p>
         </div>
 

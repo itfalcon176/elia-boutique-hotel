@@ -41,7 +41,7 @@ export const offersData = [
     tag: 'Extended Sanctuary',
     badge: 'Slow Living Package',
     subtitle: 'Immerse yourself in barefoot coastal living, creative focus, and peaceful rejuvenation.',
-    description: 'For guests seeking an extended pause by the Andaman Sea. Settle into our loft apartments or beachfront suites with curated wellness rituals, daily laundry care, and seamless workspaces.',
+    description: 'For guests seeking an extended pause by the Andaman Sea. Settle into our loft apartments or beachfront suites with curated relaxation rituals, daily laundry care, and seamless workspaces.',
     inclusions: [
       'Special extended stay privileges for reservations of 7 nights or longer',
       'Return private airport limousine service included',
