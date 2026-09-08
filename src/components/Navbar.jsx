@@ -113,7 +113,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                           >
                             <div className="px-2 py-1.5 border-b border-[#A38B68]/20 mb-2 flex items-center justify-between">
                               <span className="text-xs uppercase tracking-[0.2em] text-[#A38B68] font-bold">
-                                All 4 Room Categories
+                                Rooms & Suites
                               </span>
                               <button
                                 onClick={() => handleNavClick('rooms')}
