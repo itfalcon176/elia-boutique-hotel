@@ -26,9 +26,6 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
     { id: 'rooms', label: 'Accommodation', hasDropdown: true },
     { id: 'wellness', label: 'Facilities' },
     { id: 'eat-drink', label: 'Food and Drinks' },
-    { id: 'experiences', label: 'Experiences' },
-    { id: 'gallery', label: 'Gallery' },
-    { id: 'about', label: 'About' },
     { id: 'contact', label: 'Location' },
   ];
 
