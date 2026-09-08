@@ -34,7 +34,6 @@ const WhatsAppIcon = ({ size = 18, ...props }) => (
 
 export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation }) {
   const room = getRoomBySlug(roomSlug) || roomsData[0];
-  const [activePhoto, setActivePhoto] = useState(0);
 
   // Other room suggestions
   const otherRooms = roomsData.filter((r) => r.id !== room.id);
@@ -90,15 +89,15 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
           </div>
         </div>
 
-        {/* Hero Photo Gallery & Thumbnail Selector */}
+        {/* Hero Photo Gallery & Accommodation Category Selector */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
           
           {/* Main Photo Display (lg:col-span-9) */}
           <div className="lg:col-span-9 relative rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] shadow-2xl border border-[#A38B68]/30 group">
             <AnimatePresence mode="wait">
               <motion.img
-                key={activePhoto}
-                src={room.gallery[activePhoto] || room.mainImage}
+                key={room.id}
+                src={room.mainImage}
                 alt={`${room.title} at Elia Boutique Hotel Phuket`}
                 initial={{ opacity: 0, scale: 1.02 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -107,34 +106,56 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
                 className="w-full h-full object-cover"
               />
             </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs backdrop-blur-md bg-black/40 px-4 py-2 rounded-xl border border-white/20">
-              <span>{room.title} — Image {activePhoto + 1} of {room.gallery.length}</span>
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs backdrop-blur-md bg-black/40 px-4 py-2.5 rounded-xl border border-white/20">
+              <div>
+                <span className="font-serif text-sm sm:text-base font-normal tracking-wide block">{room.title}</span>
+                <span className="text-[10px] text-white/80">{room.countLabel} • {room.size}</span>
+              </div>
               <span className="text-[#C5A880] uppercase tracking-wider text-[10px] font-semibold">Bang Tao Beach, Phuket</span>
             </div>
           </div>
 
-          {/* Thumbnails Sidebar (lg:col-span-3) */}
+          {/* Thumbnails Sidebar - 4 Accommodations (lg:col-span-3) */}
           <div className="lg:col-span-3 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-visible no-scrollbar pb-2 lg:pb-0">
-            {room.gallery.map((img, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActivePhoto(idx)}
-                className={`relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-[105px] w-28 sm:w-36 lg:w-full shrink-0 border-2 transition-all cursor-pointer ${
-                  activePhoto === idx
-                    ? 'border-[#A38B68] ring-2 ring-[#A38B68]/30 scale-[1.02]'
-                    : 'border-transparent opacity-70 hover:opacity-100'
-                }`}
-              >
-                <img src={img} alt="Thumbnail" className="w-full h-full object-cover" />
-                {activePhoto === idx && (
-                  <div className="absolute inset-0 bg-[#A38B68]/20 flex items-center justify-center">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white drop-shadow">Active</span>
+            {roomsData.map((r) => {
+              const isActive = r.id === room.id;
+              return (
+                <button
+                  key={r.id}
+                  onClick={() => {
+                    onNavigate(`rooms/${r.slug}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={`relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-[105px] w-32 sm:w-40 lg:w-full shrink-0 border-2 transition-all cursor-pointer text-left group ${
+                    isActive
+                      ? 'border-[#A38B68] ring-2 ring-[#A38B68]/40 shadow-lg scale-[1.02]'
+                      : 'border-transparent opacity-75 hover:opacity-100 hover:border-[#A38B68]/40'
+                  }`}
+                  aria-label={`View ${r.title}`}
+                >
+                  <img
+                    src={r.mainImage}
+                    alt={r.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-2.5">
+                    <span className="text-[11px] font-medium text-white line-clamp-1 leading-tight">
+                      {r.title}
+                    </span>
+                    <span className="text-[9px] text-[#F3DFBF] uppercase tracking-wider">
+                      {r.countLabel}
+                    </span>
                   </div>
-                )}
-              </button>
-            ))}
+                  {isActive && (
+                    <div className="absolute top-2 right-2 bg-[#A38B68] text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full shadow">
+                      Active
+                    </div>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
         </div>
