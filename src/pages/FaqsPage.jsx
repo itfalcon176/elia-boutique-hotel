@@ -1,7 +1,19 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle, Sparkles, Wifi, MessageCircle, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { allFaqs, top10GuestFaqs, additionalGuestFaqs } from '../components/FaqsSection';
+import {
+  ChevronDown,
+  Sparkles,
+  Wifi,
+  Clock,
+  Waves,
+  Phone,
+  Check,
+  Copy,
+  CheckCheck,
+  Calendar,
+  ExternalLink,
+} from 'lucide-react';
+import { allFaqs } from '../data/faqsData';
 
 const WhatsAppIcon = ({ size = 18, ...props }) => (
   <svg
@@ -21,24 +33,45 @@ const WhatsAppIcon = ({ size = 18, ...props }) => (
 );
 
 export default function FaqsPage({ onNavigate, onOpenReservation }) {
-  const [selectedCategory, setSelectedCategory] = useState('All');
   const [openIndex, setOpenIndex] = useState(0);
+  const [copiedField, setCopiedField] = useState(null);
 
-  const categories = ['All', 'Top 10 Essentials', 'Booking & Policies', 'Dining & Services', 'Property Rules', 'Family & Children', 'Beach & Loungers'];
-
-  const filteredFaqs = selectedCategory === 'All'
-    ? allFaqs
-    : allFaqs.filter((item) => item.category === selectedCategory || (selectedCategory === 'Top 10 Essentials' && item.id <= 10));
+  const handleCopy = (text, field) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
 
   return (
     <div className="pt-28 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
+      {/* Schema.org FAQPage Structured Data for Google SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: allFaqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+      />
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Breadcrumbs for SEO */}
         <nav aria-label="Breadcrumb" className="mb-6 text-xs text-[#6E6A63] font-sans">
           <ol className="flex items-center gap-2">
             <li>
-              <button onClick={() => onNavigate('home')} className="hover:text-[#A38B68] transition-colors cursor-pointer">
+              <button
+                onClick={() => onNavigate('home')}
+                className="hover:text-[#A38B68] transition-colors cursor-pointer"
+              >
                 Home
               </button>
             </li>
@@ -49,8 +82,8 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
           </ol>
         </nav>
 
-        {/* Header Hero Banner */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        {/* Hero Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A38B68]/15 border border-[#A38B68]/30 mb-4 text-[#8B6E3F]">
             <Sparkles size={13} />
             <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-sans font-semibold">
@@ -58,86 +91,204 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
             </span>
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-wide text-[#23211E] mb-4">
-            Elia Frequently Asked <span className="italic text-gold-gradient font-serif">Questions</span>
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light tracking-wide text-[#23211E] mb-4">
+            Frequently Asked <span className="italic text-gold-gradient font-serif">Questions</span>
           </h1>
-          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
-          
+          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-5" />
+
           <p className="text-[#6E6A63] font-light text-sm sm:text-base font-sans max-w-2xl mx-auto leading-relaxed">
-            Everything you need to know about Elia Boutique Hotel Phuket, including check-in/out, beach access, GOAT Beach Club, facilities, cancellation, family stays, and concierge services.
+            Everything you need to know about staying at Elia Boutique Hotel Phuket — check-in, beach & GOAT Beach Club access, dining, wellness spa, transfers, and 24/7 concierge assistance.
           </p>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar py-2 mb-10 px-1 sm:px-0">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => {
-                setSelectedCategory(cat);
-                setOpenIndex(0);
-              }}
-              className={`whitespace-nowrap px-4 py-2 rounded-full text-xs uppercase tracking-[0.18em] font-semibold transition-all duration-300 cursor-pointer shrink-0 ${
-                selectedCategory === cat
-                  ? 'bg-[#23211E] text-[#F7F4EF] shadow-md scale-105 border border-[#A38B68]'
-                  : 'bg-white text-[#555047] border border-[#A38B68]/20 hover:bg-[#EFECE6] hover:text-[#23211E]'
-              }`}
+        {/* 4 Quick Key Essentials Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          {/* Card 1: Check-in / Out */}
+          <div className="p-4 rounded-2xl bg-white border border-[#A38B68]/25 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] flex items-center justify-center shrink-0">
+                <Clock size={16} />
+              </div>
+              <span className="text-xs uppercase tracking-wider font-semibold text-[#23211E]">Check-In / Out</span>
+            </div>
+            <div className="space-y-1 text-xs text-[#555047]">
+              <div>Check-in: <strong className="text-[#23211E]">3:00 PM</strong></div>
+              <div>Check-out: <strong className="text-[#23211E]">11:00 AM</strong></div>
+            </div>
+          </div>
+
+          {/* Card 2: Wi-Fi Access */}
+          <div className="p-4 rounded-2xl bg-white border border-[#A38B68]/25 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] flex items-center justify-center shrink-0">
+                <Wifi size={16} />
+              </div>
+              <span className="text-xs uppercase tracking-wider font-semibold text-[#23211E]">Free Fast Wi-Fi</span>
+            </div>
+            <div className="flex items-center justify-between text-xs text-[#555047]">
+              <span>Network / Pass: <strong className="text-[#23211E]">Elia</strong></span>
+              <button
+                onClick={() => handleCopy('Elia', 'quick-wifi')}
+                className="p-1.5 rounded-lg hover:bg-[#FAF7F2] text-[#A38B68] hover:text-[#8B6E3F] transition-all cursor-pointer"
+                title="Copy Password"
+              >
+                {copiedField === 'quick-wifi' ? <CheckCheck size={14} className="text-green-600" /> : <Copy size={14} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Card 3: Beach Access */}
+          <div className="p-4 rounded-2xl bg-white border border-[#A38B68]/25 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] flex items-center justify-center shrink-0">
+                <Waves size={16} />
+              </div>
+              <span className="text-xs uppercase tracking-wider font-semibold text-[#23211E]">Beach & GOAT Club</span>
+            </div>
+            <p className="text-xs text-[#555047]">
+              Direct Bang Tao Beach location with complimentary GOAT Club access.
+            </p>
+          </div>
+
+          {/* Card 4: 24/7 Concierge */}
+          <div className="p-4 rounded-2xl bg-white border border-[#A38B68]/25 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] flex items-center justify-center shrink-0">
+                <WhatsAppIcon size={16} className="text-[#25D366]" />
+              </div>
+              <span className="text-xs uppercase tracking-wider font-semibold text-[#23211E]">WhatsApp Host</span>
+            </div>
+            <a
+              href="https://wa.me/66824899371"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold text-[#8B6E3F] hover:text-[#23211E] flex items-center gap-1 transition-colors"
             >
-              {cat}
-            </button>
-          ))}
+              <span>+66 82 489 9371</span>
+              <ExternalLink size={11} />
+            </a>
+          </div>
         </div>
 
         {/* FAQ Accordion List */}
         <div className="space-y-3.5 mb-16">
-          {filteredFaqs.map((faq, idx) => {
+          {allFaqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={faq.id}
-                className="bg-white rounded-2xl border border-[#A38B68]/20 overflow-hidden shadow-sm transition-all duration-300 hover:border-[#A38B68]/40"
+                className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? 'border-[#A38B68] shadow-md ring-1 ring-[#A38B68]/20'
+                    : 'border-[#A38B68]/20 hover:border-[#A38B68]/40 shadow-sm'
+                }`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-serif text-base sm:text-lg font-medium text-[#23211E] hover:text-[#A38B68] transition-colors cursor-pointer"
+                  aria-expanded={isOpen}
                 >
-                  <span className="flex items-center gap-3">
-                    <span className="w-6 h-6 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] text-xs font-sans font-semibold flex items-center justify-center shrink-0">
+                  <span className="flex items-center gap-3.5">
+                    <span
+                      className={`w-7 h-7 rounded-full text-xs font-sans font-bold flex items-center justify-center shrink-0 transition-colors ${
+                        isOpen ? 'bg-[#23211E] text-[#F7F4EF]' : 'bg-[#A38B68]/15 text-[#8B6E3F]'
+                      }`}
+                    >
                       {faq.id}
                     </span>
-                    <span>{faq.question}</span>
+                    <span className="leading-snug">{faq.question}</span>
                   </span>
                   <ChevronDown
-                    size={18}
+                    size={20}
                     className={`text-[#A38B68] shrink-0 transition-transform duration-300 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.28, ease: 'easeOut' }}
                       className="px-5 sm:px-6 pb-6 pt-0 border-t border-[#A38B68]/10"
                     >
-                      <p className="text-[#6E6A63] text-xs sm:text-sm font-light leading-relaxed font-sans mt-3.5">
+                      <p className="text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans mt-3.5">
                         {faq.answer}
                       </p>
 
+                      {/* Interactive Highlights Badges */}
+                      {faq.highlights && faq.highlights.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-[#A38B68]/10">
+                          {faq.highlights.map((h, i) => (
+                            <span
+                              key={i}
+                              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#FAF7F2] border border-[#A38B68]/20 text-[11px] font-sans text-[#23211E]"
+                            >
+                              <Check size={12} className="text-[#A38B68]" />
+                              <span>{h}</span>
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Interactive Wi-Fi Card for Q9 */}
                       {faq.wifiNote && (
-                        <div className="mt-3 p-3.5 rounded-xl bg-[#FAF7F2] border border-[#A38B68]/25 inline-flex items-center gap-4 text-xs font-sans">
-                          <div className="flex items-center gap-1.5 text-[#23211E]">
-                            <Wifi size={14} className="text-[#A38B68]" />
-                            <span><strong>Network:</strong> {faq.wifiNote.network}</span>
+                        <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-[#FAF7F2] to-white border border-[#A38B68]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-sans">
+                          <div className="flex items-center gap-6">
+                            <div className="flex items-center gap-2 text-[#23211E]">
+                              <Wifi size={16} className="text-[#A38B68]" />
+                              <span>
+                                <strong>Network:</strong> {faq.wifiNote.network}
+                              </span>
+                            </div>
+                            <div className="h-4 w-[1px] bg-[#A38B68]/30 hidden sm:block" />
+                            <div className="text-[#23211E]">
+                              <span>
+                                <strong>Password:</strong> {faq.wifiNote.password}
+                              </span>
+                            </div>
                           </div>
-                          <div className="h-3 w-[1px] bg-[#A38B68]/30" />
-                          <div className="text-[#23211E]">
-                            <span><strong>Password:</strong> {faq.wifiNote.password}</span>
-                          </div>
+                          <button
+                            onClick={() => handleCopy(faq.wifiNote.password, `wifi-${faq.id}`)}
+                            className="px-3.5 py-1.5 rounded-lg bg-[#23211E] text-white hover:bg-[#A38B68] text-[11px] font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+                          >
+                            {copiedField === `wifi-${faq.id}` ? (
+                              <>
+                                <CheckCheck size={13} className="text-green-400" />
+                                <span>COPIED!</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy size={13} />
+                                <span>COPY PASSWORD</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      )}
+
+                      {/* Direct Action Links for key questions */}
+                      {faq.id === 10 && (
+                        <div className="mt-4 flex flex-wrap gap-2.5">
+                          <a
+                            href="https://wa.me/66824899371"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 rounded-full bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 hover:brightness-105 transition-all"
+                          >
+                            <WhatsAppIcon size={14} />
+                            <span>WhatsApp Host</span>
+                          </a>
+                          <a
+                            href="tel:+66932719103"
+                            className="px-4 py-2 rounded-full bg-[#23211E] text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 hover:bg-[#A38B68] transition-all"
+                          >
+                            <Phone size={13} />
+                            <span>Call Reception</span>
+                          </a>
                         </div>
                       )}
                     </motion.div>
@@ -148,36 +299,40 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
           })}
         </div>
 
-        {/* 24/7 Concierge Host Callout */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#23211E] to-[#181715] text-[#FAF7F2] border border-[#A38B68]/40 shadow-2xl text-center space-y-4">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-[#C5A880] font-bold block">
-            Elia Concierge App & Support
-          </span>
-          <h3 className="font-serif text-2xl sm:text-3xl font-light text-white">
-            Have a Specific Question or Request?
-          </h3>
-          <p className="text-xs sm:text-sm text-[#FAF7F2]/80 font-light max-w-md mx-auto font-sans leading-relaxed">
-            Our 24/7 host is available via WhatsApp, telephone, or email to assist with room preferences, boat charters, transfers, and dining reservations.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-            <a
-              href="https://wa.me/66824899371"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-full bg-[#25D366] text-white text-xs uppercase tracking-[0.2em] font-semibold hover:brightness-110 flex items-center gap-2 shadow-lg cursor-pointer"
-            >
-              <WhatsAppIcon size={15} />
-              <span>WhatsApp: +66 82 489 9371</span>
-            </a>
-            <button
-              onClick={onOpenReservation}
-              className="px-6 py-3.5 rounded-full bg-[#C5A880] text-[#141312] text-xs uppercase tracking-[0.2em] font-bold hover:brightness-110 shadow-md cursor-pointer transition-all"
-            >
-              BOOK YOUR STAY
-            </button>
+        {/* Bottom Concierge Assistance Card */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#23211E] text-[#FAF7F2] border border-[#A38B68]/40 shadow-2xl text-center relative overflow-hidden">
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[#C5A880] font-bold block mb-2 font-sans">
+              Elia Concierge App & Direct Support
+            </span>
+            <h3 className="font-serif text-2xl sm:text-4xl font-light mb-3">
+              Have a Specific Question or Custom Request?
+            </h3>
+            <p className="text-xs sm:text-sm text-[#FAF7F2]/75 font-light leading-relaxed mb-8">
+              Our 24/7 host team is available via WhatsApp, phone, or email to assist with room selection, dietary requirements, airport transfers, boat charters, and island experiences.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://wa.me/66824899371?text=Hello%20Elia%20Phuket%20Concierge%2C%20I%20have%20a%20question%20about%20staying%20at%20Elia."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#25D366] text-white font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+              >
+                <WhatsAppIcon size={16} />
+                <span>WHATSAPP: +66 82 489 9371</span>
+              </a>
+
+              <button
+                onClick={onOpenReservation}
+                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+              >
+                <Calendar size={15} />
+                <span>BOOK YOUR STAY</span>
+              </button>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   );
