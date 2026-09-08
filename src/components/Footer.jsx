@@ -84,7 +84,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
                 href="https://wa.me/66824899371"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#25D366] hover:border-[#25D366] hover:bg-white/10 transition-all"
+                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
                 aria-label="WhatsApp"
                 title="Chat on WhatsApp (+66 82 489 9371)"
               >
@@ -199,15 +199,17 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             </ul>
 
             <div className="space-y-3 text-xs text-[#FAF7F2]/75 font-light pt-2 border-t border-white/10">
-              <a
-                href="https://wa.me/66824899371"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-[#25D366] transition-colors font-medium text-white"
-              >
-                <WhatsAppIcon size={15} className="text-[#25D366] shrink-0" />
-                <span>WhatsApp: +66 82 489 9371</span>
-              </a>
+              <div className="flex items-center gap-2">
+                <WhatsAppIcon size={15} className="text-[#C5A880] shrink-0" />
+                <a
+                  href="https://wa.me/66824899371"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#C5A880] transition-colors"
+                >
+                  +66 82 489 9371
+                </a>
+              </div>
               <div className="flex items-center gap-2">
                 <Phone size={15} className="text-[#C5A880] shrink-0" />
                 <a href="tel:+66932719103" className="hover:text-[#C5A880] transition-colors">+66 93 271 9103</a>

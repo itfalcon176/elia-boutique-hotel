@@ -79,16 +79,16 @@ export default function ContactPage({ onNavigate }) {
             href="https://wa.me/66824899371"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-6 rounded-3xl bg-white border border-[#25D366]/40 shadow-md hover:shadow-xl hover:border-[#25D366] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
+            className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
           >
-            <div className="w-12 h-12 rounded-2xl bg-[#25D366]/15 text-[#25D366] flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-2xl bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center group-hover:scale-110 transition-transform">
               <WhatsAppIcon size={24} />
             </div>
             <div>
               <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#23211E] block mb-1">
                 WHATSAPP
               </span>
-              <span className="text-xs text-[#25D366] font-medium">+66 82 489 9371</span>
+              <span className="text-xs text-[#8B6E3F] font-medium">+66 82 489 9371</span>
             </div>
           </a>
 
@@ -162,10 +162,10 @@ export default function ContactPage({ onNavigate }) {
 
             <div className="space-y-3.5 text-xs text-[#555047] font-light">
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#25D366] shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
                 <p>
                   <strong className="text-[#23211E] font-medium">WhatsApp Concierge:</strong>{' '}
-                  <a href="https://wa.me/66824899371" target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-medium hover:underline">
+                  <a href="https://wa.me/66824899371" target="_blank" rel="noopener noreferrer" className="hover:text-[#A38B68] underline">
                     +66 82 489 9371
                   </a>
                 </p>
