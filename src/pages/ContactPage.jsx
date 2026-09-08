@@ -157,43 +157,51 @@ export default function ContactPage({ onNavigate }) {
               <p className="font-medium text-[#23211E] text-sm font-serif">82/9 Moo 3</p>
               <p>Bang Tao Beach</p>
               <p>Choeng Thale, Thalang District</p>
-              <p>Phuket 83110</p>
-              <p>Thailand</p>
+              <p>Phuket 83110, Thailand</p>
             </div>
 
-            <div className="space-y-3 text-xs text-[#555047] font-light">
-              <p>
-                <strong className="text-[#23211E] font-medium">WhatsApp:</strong>{' '}
-                <a href="https://wa.me/66824899371" target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-medium hover:underline">
-                  +66 82 489 9371
-                </a>
-              </p>
-              <p>
-                <strong className="text-[#23211E] font-medium">Telephone:</strong>{' '}
-                <a href="tel:+66932719103" className="hover:text-[#A38B68]">
-                  +66 93 271 9103
-                </a>
-              </p>
-              <p>
-                <strong className="text-[#23211E] font-medium">Email:</strong>{' '}
-                <a href="mailto:info@eliaphuket.com" className="hover:text-[#A38B68] underline">
-                  info@eliaphuket.com
-                </a>
-              </p>
+            <div className="space-y-3.5 text-xs text-[#555047] font-light">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-[#25D366] shrink-0" />
+                <p>
+                  <strong className="text-[#23211E] font-medium">WhatsApp Concierge:</strong>{' '}
+                  <a href="https://wa.me/66824899371" target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-medium hover:underline">
+                    +66 82 489 9371
+                  </a>
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
+                <p>
+                  <strong className="text-[#23211E] font-medium">Front Desk Telephone:</strong>{' '}
+                  <a href="tel:+66932719103" className="hover:text-[#A38B68]">
+                    +66 93 271 9103
+                  </a>
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
+                <p>
+                  <strong className="text-[#23211E] font-medium">Email Inquiries:</strong>{' '}
+                  <a href="mailto:info@eliaphuket.com" className="hover:text-[#A38B68] underline">
+                    info@eliaphuket.com
+                  </a>
+                </p>
+              </div>
+              <div className="flex items-center gap-3 pt-2 border-t border-[#A38B68]/15 text-[11px] text-[#8B6E3F]">
+                <Clock size={14} className="shrink-0" />
+                <span>Front Desk & Concierge: 24 Hours Daily</span>
+              </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-[#A38B68]/30">
-              <iframe
-                title="Elia Boutique Hotel Phuket Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15804.821360555353!2d98.2831!3d7.9942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050307c87c716e9%3A0x7ce087f8aa982cf1!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full"
-              />
+            <div className="pt-2">
+              <a
+                href="#hotel-map"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-[#FAF7F2] hover:bg-[#23211E] text-[#23211E] hover:text-[#F7F4EF] border border-[#A38B68]/40 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-sm group"
+              >
+                <Navigation size={14} className="text-[#A38B68] group-hover:text-[#F7F4EF] transition-colors" />
+                <span>View Map & Directions Below</span>
+              </a>
             </div>
           </div>
 
@@ -295,6 +303,51 @@ export default function ContactPage({ onNavigate }) {
                 </form>
               </div>
             )}
+          </div>
+        </div>
+
+        {/* Dedicated Full Width Map Section */}
+        <div id="hotel-map" className="mb-20 scroll-mt-28">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#A38B68]/30 shadow-xl space-y-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#A38B68]/20">
+              <div>
+                <div className="inline-flex items-center gap-2 text-[#A38B68] mb-1">
+                  <MapPin size={14} />
+                  <span className="text-[10px] uppercase tracking-[0.25em] font-bold">
+                    Interactive Location Map
+                  </span>
+                </div>
+                <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E]">
+                  Elia Phuket on Bang Tao Beach
+                </h3>
+                <p className="text-xs text-[#6E6A63] font-light mt-0.5">
+                  82/9 Moo 3, Bang Tao Beach, Choeng Thale, Thalang, Phuket 83110
+                </p>
+              </div>
+              <a
+                href="https://maps.google.com/?q=Bang+Tao+Beach,+Phuket,+Thailand"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#F7F4EF] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-md group shrink-0"
+              >
+                <Navigation size={14} className="text-[#C5A880] group-hover:text-white transition-colors" />
+                <span>Open in Google Maps</span>
+              </a>
+            </div>
+
+            <div className="rounded-2xl overflow-hidden aspect-[21/9] min-h-[380px] sm:min-h-[460px] border border-[#A38B68]/20 shadow-inner">
+              <iframe
+                title="Elia Boutique Hotel Phuket Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15804.821360555353!2d98.2831!3d7.9942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050307c87c716e9%3A0x7ce087f8aa982cf1!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              />
+            </div>
           </div>
         </div>
 
