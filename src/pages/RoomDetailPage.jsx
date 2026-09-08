@@ -59,7 +59,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
             <li>/</li>
             <li>
               <button onClick={() => onNavigate('rooms')} className="hover:text-[#A38B68] transition-colors cursor-pointer">
-                Rooms & Suites
+                Accommodation
               </button>
             </li>
             <li>/</li>

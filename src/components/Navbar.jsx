@@ -23,7 +23,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   // Header items matching Section 22 of SEO Pack:
   // ROOMS & SUITES | EAT & DRINK | WELLNESS | EXPERIENCES | GALLERY | ABOUT | CONTACT | BOOK NOW
   const navLinks = [
-    { id: 'rooms', label: 'Rooms & Suites', hasDropdown: true },
+    { id: 'rooms', label: 'Accommodation', hasDropdown: true },
     { id: 'eat-drink', label: 'Eat & Drink' },
     { id: 'wellness', label: 'Wellness' },
     { id: 'experiences', label: 'Experiences' },

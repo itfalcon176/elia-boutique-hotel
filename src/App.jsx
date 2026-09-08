@@ -25,7 +25,9 @@ import { initGA, trackPageView } from './utils/analytics';
 
 const pageToPath = {
   home: '/',
-  rooms: '/rooms',
+  rooms: '/accommodation',
+  accommodation: '/accommodation',
+  accomodation: '/accommodation',
   'rooms/garden-beach-room': '/rooms/garden-beach-room',
   'rooms/garden-family-suite': '/rooms/garden-family-suite',
   'rooms/loft-apartment': '/rooms/loft-apartment',
@@ -65,8 +67,8 @@ const seoMetadata = {
     description: 'Stay steps from Bang Tao Beach at Elia, an intimate 13-room boutique hotel in Phuket with beach club access, wellness, dining and family facilities.',
   },
   rooms: {
-    title: 'Rooms & Suites | Elia Boutique Hotel Bang Tao Phuket',
-    description: 'Discover 13 boutique rooms and suites at Elia Phuket, from private garden beach rooms to family suites and spacious loft accommodation in Bang Tao.',
+    title: 'Accommodation | Elia Boutique Hotel Bang Tao Phuket',
+    description: 'Discover boutique accommodation at Elia Phuket, featuring 13 intimate rooms and suites steps from Bang Tao Beach, Phuket.',
   },
   'rooms/garden-beach-room': {
     title: 'Garden Beach Room | Elia Hotel Bang Tao Beach Phuket',
@@ -133,11 +135,11 @@ const seoMetadata = {
 const getPageFromPath = (pathname) => {
   const cleanPath = pathname.toLowerCase().replace(/\/$/, '') || '/';
   
-  if (cleanPath === '/rooms/garden-beach-room' || cleanPath === '/rooms/garden-beach-rooms') return 'rooms/garden-beach-room';
-  if (cleanPath === '/rooms/garden-family-suite' || cleanPath === '/rooms/garden-family-suites') return 'rooms/garden-family-suite';
-  if (cleanPath === '/rooms/loft-apartment' || cleanPath === '/rooms/loft-apartments') return 'rooms/loft-apartment';
-  if (cleanPath === '/rooms/one-bedroom-loft-suite') return 'rooms/one-bedroom-loft-suite';
-  if (cleanPath === '/rooms' || cleanPath === '/suites') return 'rooms';
+  if (cleanPath === '/rooms/garden-beach-room' || cleanPath === '/rooms/garden-beach-rooms' || cleanPath === '/accommodation/garden-beach-room' || cleanPath === '/accomodation/garden-beach-room') return 'rooms/garden-beach-room';
+  if (cleanPath === '/rooms/garden-family-suite' || cleanPath === '/rooms/garden-family-suites' || cleanPath === '/accommodation/garden-family-suite' || cleanPath === '/accomodation/garden-family-suite') return 'rooms/garden-family-suite';
+  if (cleanPath === '/rooms/loft-apartment' || cleanPath === '/rooms/loft-apartments' || cleanPath === '/accommodation/loft-apartment' || cleanPath === '/accomodation/loft-apartment') return 'rooms/loft-apartment';
+  if (cleanPath === '/rooms/one-bedroom-loft-suite' || cleanPath === '/accommodation/one-bedroom-loft-suite' || cleanPath === '/accomodation/one-bedroom-loft-suite') return 'rooms/one-bedroom-loft-suite';
+  if (cleanPath === '/accommodation' || cleanPath === '/accomodation' || cleanPath === '/rooms' || cleanPath === '/suites') return 'rooms';
   if (cleanPath === '/eat-drink' || cleanPath === '/menus' || cleanPath === '/dining') return 'eat-drink';
   if (cleanPath === '/wellness' || cleanPath === '/spa') return 'wellness';
   if (cleanPath === '/goat-beach-club' || cleanPath === '/goat') return 'goat-beach-club';

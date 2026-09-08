@@ -32,7 +32,7 @@ export default function RoomsPage({ onNavigate, onOpenReservation }) {
             </li>
             <li>/</li>
             <li className="text-[#23211E] font-medium" aria-current="page">
-              Rooms & Suites
+              Accommodation
             </li>
           </ol>
         </nav>

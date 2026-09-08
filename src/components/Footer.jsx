@@ -128,7 +128,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             <ul className="space-y-2 text-xs text-[#FAF7F2]/70 font-light">
               <li>
                 <button onClick={() => onNavClick('rooms')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Rooms & Suites
+                  Accommodation
                 </button>
               </li>
               <li>
