@@ -29,7 +29,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
     { id: 'experiences', label: 'Experiences' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'contact', label: 'Location' },
   ];
 
   const handleNavClick = (id) => {

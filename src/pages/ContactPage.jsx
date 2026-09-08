@@ -46,7 +46,7 @@ export default function ContactPage({ onNavigate }) {
             </li>
             <li>/</li>
             <li className="text-[#23211E] font-medium" aria-current="page">
-              Contact
+              Location
             </li>
           </ol>
         </nav>
@@ -54,22 +54,22 @@ export default function ContactPage({ onNavigate }) {
         {/* Header Hero Banner */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A38B68]/15 border border-[#A38B68]/30 mb-4 text-[#8B6E3F]">
-            <Sparkles size={13} />
+            <MapPin size={13} />
             <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-sans font-semibold">
-              Get in Touch
+              Location & Contact
             </span>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-wide text-[#23211E] mb-4">
-            Contact <span className="italic text-gold-gradient font-serif">Elia</span>
+            Location & Contact at <span className="italic text-gold-gradient font-serif">Elia</span>
           </h1>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           
           <h2 className="font-serif text-2xl sm:text-3xl font-light text-[#23211E] mb-2">
-            Questions about your stay?
+            Bang Tao Beach, Phuket
           </h2>
           <p className="text-[#8B6E3F] font-serif italic text-lg">
-            We're here.
+            Directly by the sea. Always here to assist.
           </p>
         </div>
 

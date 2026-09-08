@@ -48,10 +48,11 @@ const pageToPath = {
   family: '/family-hotel-phuket',
   experiences: '/experiences',
   'bang-tao-beach-phuket': '/bang-tao-beach-phuket',
-  location: '/bang-tao-beach-phuket',
+  location: '/location',
   gallery: '/gallery',
   about: '/about',
-  contact: '/contact',
+  contact: '/location',
+  'contact-us': '/location',
   offers: '/offers',
   'special-offers': '/offers',
   faq: '/faq',
@@ -138,8 +139,12 @@ const seoMetadata = {
     description: 'Find answers about Elia Boutique Hotel Phuket, including location, beach access, family stays, check-in, dining, facilities and GOAT Beach Club.',
   },
   contact: {
-    title: 'Contact Elia Boutique Hotel Phuket | Bang Tao Beach',
-    description: 'Contact Elia Boutique Hotel on Bang Tao Beach, Phuket by WhatsApp, telephone or email, or find directions to the hotel.',
+    title: 'Location & Contact | Elia Boutique Hotel Bang Tao Phuket',
+    description: 'Find Elia Boutique Hotel on Bang Tao Beach, Phuket. Get location details, Google Maps directions, phone, WhatsApp concierge and contact information.',
+  },
+  location: {
+    title: 'Location & Contact | Elia Boutique Hotel Bang Tao Phuket',
+    description: 'Find Elia Boutique Hotel on Bang Tao Beach, Phuket. Get location details, Google Maps directions, phone, WhatsApp concierge and contact information.',
   },
 };
 
@@ -156,10 +161,10 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/goat-beach-club' || cleanPath === '/goat') return 'goat-beach-club';
   if (cleanPath === '/family-hotel-phuket' || cleanPath === '/family' || cleanPath === '/families') return 'family-hotel-phuket';
   if (cleanPath === '/experiences') return 'experiences';
-  if (cleanPath === '/bang-tao-beach-phuket' || cleanPath === '/location') return 'bang-tao-beach-phuket';
+  if (cleanPath === '/bang-tao-beach-phuket') return 'bang-tao-beach-phuket';
   if (cleanPath === '/gallery') return 'gallery';
   if (cleanPath === '/about') return 'about';
-  if (cleanPath === '/contact') return 'contact';
+  if (cleanPath === '/location' || cleanPath === '/contact' || cleanPath === '/contact-us' || cleanPath === '/directions' || cleanPath === '/getting-here') return 'contact';
   if (cleanPath === '/offers' || cleanPath === '/special-offers') return 'offers';
   if (cleanPath === '/faq' || cleanPath === '/faqs') return 'faq';
   if (cleanPath === '/policies' || cleanPath === '/hotel-policies') return 'policies';

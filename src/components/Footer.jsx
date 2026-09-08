@@ -187,7 +187,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               </li>
               <li>
                 <button onClick={() => onNavClick('contact')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
-                  Contact
+                  Location
                 </button>
               </li>
               <li>
@@ -275,7 +275,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               FAQ
             </button>
             <button onClick={() => onNavClick('contact')} className="hover:text-white transition-colors cursor-pointer">
-              Contact
+              Location
             </button>
           </div>
         </div>
