@@ -56,11 +56,11 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               className="flex items-center gap-3 cursor-pointer group text-left"
             >
               <img
-                src={isLightHeader ? '/Logos/logo with.png' : '/Logos/logo nwww.png'}
+                src={isLightHeader ? '/Logos/elia gold.png' : '/Logos/logo nwww.png'}
                 alt="Elia Boutique Hotel Phuket Logo"
                 className="h-9 sm:h-11 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 onError={(e) => {
-                  e.target.src = '/Logos/logo nwww.png';
+                  e.target.src = '/Logos/elia gold.png';
                 }}
               />
             </button>
@@ -238,11 +238,11 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   className="focus:outline-none cursor-pointer"
                 >
                   <img
-                    src="/Logos/logo with.png"
+                    src="/Logos/elia gold.png"
                     alt="Elia Boutique Hotel Phuket Logo"
                     className="h-9 w-auto object-contain"
                     onError={(e) => {
-                      e.target.src = '/Logos/white-new.png';
+                      e.target.src = '/Logos/logo nwww.png';
                     }}
                   />
                 </button>
