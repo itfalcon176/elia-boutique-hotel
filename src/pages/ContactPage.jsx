@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Calendar, CheckCircle, Navigation, Sparkles } from 'lucide-react';
 import FaqsSection from '../components/FaqsSection';
@@ -26,6 +26,12 @@ export default function ContactPage({ onNavigate }) {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

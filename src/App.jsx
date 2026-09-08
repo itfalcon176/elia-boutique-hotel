@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ReservationModal from './components/ReservationModal';
@@ -22,6 +22,19 @@ import LegalAndPolicyPages from './pages/LegalAndPolicyPages';
 
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
+
+export const scrollToTop = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  const root = document.getElementById('root');
+  if (root) root.scrollTop = 0;
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  });
+};
 
 const pageToPath = {
   home: '/',
@@ -181,6 +194,11 @@ function App() {
   const [activePage, setActivePage] = useState(() => getPageFromPath(window.location.pathname));
   const [isReservationOpen, setIsReservationOpen] = useState(false);
 
+  // Ensure page always starts at the very top on navigation
+  useLayoutEffect(() => {
+    scrollToTop();
+  }, [activePage]);
+
   // Update SEO Document Title and Meta Description on page change
   useEffect(() => {
     const meta = seoMetadata[activePage] || seoMetadata.home;
@@ -211,6 +229,7 @@ function App() {
     const handlePopState = () => {
       const page = getPageFromPath(window.location.pathname);
       setActivePage(page);
+      scrollToTop();
       setTimeout(trackPageView, 0);
     };
 
@@ -227,7 +246,9 @@ function App() {
     if (window.location.pathname !== targetPath) {
       window.history.pushState(null, '', targetPath);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTop();
+    setTimeout(scrollToTop, 10);
+    setTimeout(scrollToTop, 100);
     setTimeout(trackPageView, 0);
   };
 
