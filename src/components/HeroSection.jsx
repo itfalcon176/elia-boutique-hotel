@@ -44,9 +44,12 @@ export default function HeroSection({
     <section id="home" className="relative w-full min-h-screen lg:h-[100vh] min-h-[720px] overflow-hidden bg-[#141312] select-none flex flex-col justify-between pt-24 pb-8">
       {/* Background Hero Image */}
       <img
-        src="/banner/banner.jpeg"
+        src="/banner/Elia boutique hotel banner.jpeg"
         alt="Elia Boutique Hotel Bang Tao Beach Phuket"
         className="absolute inset-0 w-full h-full object-cover z-0 scale-105 origin-center"
+        onError={(e) => {
+          e.target.src = '/banner/banner.jpeg';
+        }}
       />
 
       {/* Subtle Natural Multi-Layer Contrast Overlay (Seamless & Invisible to visitors) */}
@@ -157,12 +160,12 @@ export default function HeroSection({
           className="flex items-center gap-3"
         >
           <a
-            href="https://wa.me/66824899371"
+            href="https://wa.me/66932719103"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#FAF7F2]/90 hover:text-[#25D366] hover:scale-110 transition-all p-1.5 drop-shadow"
             aria-label="WhatsApp"
-            title="Chat on WhatsApp (+66 82 489 9371)"
+            title="Chat on WhatsApp (+66 93 271 9103)"
           >
             <WhatsAppIcon size={18} />
           </a>

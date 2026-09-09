@@ -361,12 +361,12 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   <span>Bang Tao Beach, Phuket</span>
                 </div>
                 <a
-                  href="https://wa.me/66824899371"
+                  href="https://wa.me/66932719103"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 hover:text-[#A38B68] transition-colors font-medium text-[#23211E]"
                 >
-                  <span>WhatsApp: +66 82 489 9371</span>
+                  <span>WhatsApp: +66 93 271 9103</span>
                 </a>
               </div>
             </div>

@@ -70,7 +70,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               The beach. At your door.
             </p>
             <div className="pt-2 text-xs text-[#FAF7F2]/70 font-light leading-relaxed">
-              <p>82/9 Moo 3, Bang Tao Beach</p>
+              <p>82/9 หมู่ 3, Bang Tao Beach</p>
               <p>Choeng Thale, Thalang District</p>
               <p>Phuket 83110, Thailand</p>
               <a href="mailto:info@eliaphuket.com" className="hover:text-[#C5A880] underline block pt-1">
@@ -81,12 +81,12 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             {/* Social Links */}
             <div className="pt-3 flex items-center gap-3 text-[#FAF7F2]/80">
               <a
-                href="https://wa.me/66824899371"
+                href="https://wa.me/66932719103"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
                 aria-label="WhatsApp"
-                title="Chat on WhatsApp (+66 82 489 9371)"
+                title="Chat on WhatsApp (+66 93 271 9103)"
               >
                 <WhatsAppIcon size={16} />
               </a>
@@ -207,12 +207,12 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               <div className="flex items-center gap-2">
                 <WhatsAppIcon size={15} className="text-[#C5A880] shrink-0" />
                 <a
-                  href="https://wa.me/66824899371"
+                  href="https://wa.me/66932719103"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#C5A880] transition-colors"
                 >
-                  +66 82 489 9371
+                  +66 93 271 9103
                 </a>
               </div>
               <div className="flex items-center gap-2">

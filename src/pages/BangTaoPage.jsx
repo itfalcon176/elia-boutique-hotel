@@ -139,8 +139,8 @@ export default function BangTaoPage({ onNavigate, onOpenReservation }) {
                   </p>
                   <p>
                     <strong className="text-[#23211E] font-medium">WhatsApp:</strong>{' '}
-                    <a href="https://wa.me/66824899371" target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] font-medium">
-                      +66 82 489 9371
+                    <a href="https://wa.me/66932719103" target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] font-medium">
+                      +66 93 271 9103
                     </a>
                   </p>
                   <p>
@@ -165,7 +165,7 @@ export default function BangTaoPage({ onNavigate, onOpenReservation }) {
                 </a>
 
                 <a
-                  href="https://wa.me/66824899371?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20directions%20and%20location."
+                  href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20directions%20and%20location."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-[#25D366] text-white text-xs uppercase tracking-[0.2em] font-semibold hover:brightness-110 transition-all flex items-center gap-2 cursor-pointer shadow-md"

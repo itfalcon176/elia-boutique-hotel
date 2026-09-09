@@ -41,7 +41,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
   const whatsappMessage = encodeURIComponent(
     `Hello Elia Phuket Concierge, I would like to check availability for the ${room.title}.`
   );
-  const whatsappUrl = `https://wa.me/66824899371?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/66932719103?text=${whatsappMessage}`;
 
   return (
     <div className="pt-24 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">

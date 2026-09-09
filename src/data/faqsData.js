@@ -36,7 +36,7 @@ export const top10GuestFaqs = [
     category: 'Top 10 Essentials',
     categoryKey: 'facilities',
     question: 'Can I book massages through the hotel?',
-    answer: 'Yes. In-house traditional Thai, aromatherapy, and restorative wellness massages can be booked directly through the Elia Concierge App, via WhatsApp (+66 82 489 9371), or at reception.',
+    answer: 'Yes. In-house traditional Thai, aromatherapy, and restorative wellness massages can be booked directly through the Elia Concierge App, via WhatsApp (+66 93 271 9103), or at reception.',
     highlights: ['Book via Concierge App / WhatsApp', 'In-suite or spa cabana options', 'Traditional Thai & aromatherapy'],
   },
   {
@@ -77,8 +77,8 @@ export const top10GuestFaqs = [
     category: 'Top 10 Essentials',
     categoryKey: 'services',
     question: 'How can I contact reception during my stay?',
-    answer: 'Guests can reach our 24/7 team via the Elia Concierge App, directly through WhatsApp (+66 82 489 9371), by telephone (+66 93 271 9103), or using the in-room telephone.',
-    highlights: ['24/7 Concierge WhatsApp: +66 82 489 9371', 'Reception Phone: +66 93 271 9103', 'In-room direct dial'],
+    answer: 'Guests can reach our 24/7 team via the Elia Concierge App, directly through WhatsApp (+66 93 271 9103), by telephone (+66 93 271 9103), or using the in-room telephone.',
+    highlights: ['24/7 Concierge WhatsApp: +66 93 271 9103', 'Reception Phone: +66 93 271 9103', 'In-room direct dial'],
   },
 ];
 

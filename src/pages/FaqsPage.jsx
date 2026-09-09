@@ -159,12 +159,12 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
               <span className="text-xs uppercase tracking-wider font-semibold text-[#23211E]">WhatsApp Host</span>
             </div>
             <a
-              href="https://wa.me/66824899371"
+              href="https://wa.me/66932719103"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-semibold text-[#8B6E3F] hover:text-[#23211E] flex items-center gap-1 transition-colors"
             >
-              <span>+66 82 489 9371</span>
+              <span>+66 93 271 9103</span>
               <ExternalLink size={11} />
             </a>
           </div>
@@ -274,7 +274,7 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
                       {faq.id === 10 && (
                         <div className="mt-4 flex flex-wrap gap-2.5">
                           <a
-                            href="https://wa.me/66824899371"
+                            href="https://wa.me/66932719103"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-4 py-2 rounded-full bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 hover:brightness-105 transition-all"
@@ -314,13 +314,13 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/66824899371?text=Hello%20Elia%20Phuket%20Concierge%2C%20I%20have%20a%20question%20about%20staying%20at%20Elia."
+                href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%20Concierge%2C%20I%20have%20a%20question%20about%20staying%20at%20Elia."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#25D366] text-white font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
                 <WhatsAppIcon size={16} />
-                <span>WHATSAPP: +66 82 489 9371</span>
+                <span>WHATSAPP: +66 93 271 9103</span>
               </a>
 
               <button

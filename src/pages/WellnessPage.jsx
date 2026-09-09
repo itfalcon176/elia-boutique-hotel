@@ -183,7 +183,7 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
                   BOOK YOUR STAY
                 </button>
                 <a
-                  href="https://wa.me/66824899371?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20massage%20treatment."
+                  href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20massage%20treatment."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer text-center"

@@ -82,7 +82,7 @@ export default function ContactPage({ onNavigate }) {
         {/* 4 Core Action Buttons Row matching Section 16 of SEO Pack */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           <a
-            href="https://wa.me/66824899371"
+            href="https://wa.me/66932719103"
             target="_blank"
             rel="noopener noreferrer"
             className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
@@ -94,7 +94,7 @@ export default function ContactPage({ onNavigate }) {
               <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#23211E] block mb-1">
                 WHATSAPP
               </span>
-              <span className="text-xs text-[#8B6E3F] font-medium">+66 82 489 9371</span>
+              <span className="text-xs text-[#8B6E3F] font-medium">+66 93 271 9103</span>
             </div>
           </a>
 
@@ -160,7 +160,7 @@ export default function ContactPage({ onNavigate }) {
             </div>
 
             <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#A38B68]/20 space-y-2 text-xs text-[#555047] font-light leading-relaxed">
-              <p className="font-medium text-[#23211E] text-sm font-serif">82/9 Moo 3</p>
+              <p className="font-medium text-[#23211E] text-sm font-serif">82/9 หมู่ 3</p>
               <p>Bang Tao Beach</p>
               <p>Choeng Thale, Thalang District</p>
               <p>Phuket 83110, Thailand</p>
@@ -171,8 +171,8 @@ export default function ContactPage({ onNavigate }) {
                 <span className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
                 <p>
                   <strong className="text-[#23211E] font-medium">WhatsApp Concierge:</strong>{' '}
-                  <a href="https://wa.me/66824899371" target="_blank" rel="noopener noreferrer" className="hover:text-[#A38B68] underline">
-                    +66 82 489 9371
+                  <a href="https://wa.me/66932719103" target="_blank" rel="noopener noreferrer" className="hover:text-[#A38B68] underline">
+                    +66 93 271 9103
                   </a>
                 </p>
               </div>
@@ -327,7 +327,7 @@ export default function ContactPage({ onNavigate }) {
                   Elia Phuket on Bang Tao Beach
                 </h3>
                 <p className="text-xs text-[#6E6A63] font-light mt-0.5">
-                  82/9 Moo 3, Bang Tao Beach, Choeng Thale, Thalang, Phuket 83110
+                  82/9 หมู่ 3, Bang Tao Beach, Choeng Thale, Thalang District, Phuket 83110, Thailand
                 </p>
               </div>
               <a

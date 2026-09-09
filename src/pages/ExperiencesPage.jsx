@@ -144,7 +144,7 @@ export default function ExperiencesPage({ onNavigate, onOpenReservation }) {
                 <div className="p-6 sm:p-8 pt-0">
                   {item.isWhatsApp ? (
                     <a
-                      href={`https://wa.me/66824899371?text=${encodeURIComponent(`Hello Elia Phuket, I would like to inquire about: ${item.title}`)}`}
+                      href={`https://wa.me/66932719103?text=${encodeURIComponent(`Hello Elia Phuket, I would like to inquire about: ${item.title}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full py-3 rounded-full bg-[#FAF7F2] hover:bg-[#23211E] hover:text-white text-[#23211E] text-xs uppercase tracking-[0.2em] font-semibold border border-[#A38B68]/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
@@ -183,7 +183,7 @@ export default function ExperiencesPage({ onNavigate, onOpenReservation }) {
               BOOK YOUR STAY
             </button>
             <a
-              href="https://wa.me/66824899371?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20plan%20custom%20Phuket%20experiences."
+              href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20plan%20custom%20Phuket%20experiences."
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer flex items-center gap-2 justify-center"

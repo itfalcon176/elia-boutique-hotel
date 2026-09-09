@@ -223,7 +223,7 @@ export default function FamilyPage({ onNavigate, onOpenReservation }) {
               BOOK YOUR STAY
             </button>
             <a
-              href="https://wa.me/66824899371?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20family%20stay."
+              href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20family%20stay."
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"
