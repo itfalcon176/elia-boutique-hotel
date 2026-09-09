@@ -1,6 +1,24 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Sparkles, Utensils, Waves, Flame, Droplets, Check, ArrowRight, Sun, Bath, Heart, Palmtree, Compass, Phone } from 'lucide-react';
+import { 
+  ChevronLeft, 
+  ChevronRight, 
+  Sparkles, 
+  Utensils, 
+  Waves, 
+  Flame, 
+  Droplets, 
+  Check, 
+  ArrowRight, 
+  Sun, 
+  Bath, 
+  Heart, 
+  Palmtree, 
+  Compass, 
+  Phone,
+  Bell,
+  Car
+} from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
 export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
@@ -24,17 +42,83 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
   ];
 
   const facilities = [
-    'Plunge pool',
-    'Outdoor sauna',
-    'Cold plunge',
-    'Jacuzzi',
-    'Massage',
-    'Kids club',
-    'Beach access',
-    'GOAT Beach Club access',
-    'Concierge',
-    'Airport transfers',
-    'Phuket experiences',
+    {
+      title: 'Plunge Pool',
+      subtitle: 'Cool off & unwind under tropical palms',
+      category: 'Relaxation',
+      icon: Waves,
+      tag: 'Hydro',
+    },
+    {
+      title: 'Outdoor Sauna',
+      subtitle: 'Nordic heat & botanical detox rituals',
+      category: 'Wellness',
+      icon: Flame,
+      tag: 'Thermal',
+    },
+    {
+      title: 'Cold Plunge',
+      subtitle: 'Invigorating contrast therapy & recovery',
+      category: 'Recovery',
+      icon: Droplets,
+      tag: 'Vitality',
+    },
+    {
+      title: 'Jacuzzi',
+      subtitle: 'Warm bubbling open-air soak',
+      category: 'Hydrotherapy',
+      icon: Bath,
+      tag: 'Spa',
+    },
+    {
+      title: 'Massage Treatments',
+      subtitle: 'Traditional Thai & restorative bodywork',
+      category: 'Spa Rituals',
+      icon: Sparkles,
+      tag: 'Bespoke',
+    },
+    {
+      title: 'Kids Club',
+      subtitle: 'Creative play for younger guests',
+      category: 'Family Care',
+      icon: Heart,
+      tag: 'Family',
+    },
+    {
+      title: 'Beach Access',
+      subtitle: 'Direct footsteps to Bang Tao sandy shore',
+      category: 'Location',
+      icon: Palmtree,
+      tag: 'Beachfront',
+    },
+    {
+      title: 'GOAT Beach Club',
+      subtitle: 'Complimentary VIP access & beachfront dining',
+      category: 'Day-to-Night',
+      icon: Utensils,
+      tag: 'Exclusive',
+    },
+    {
+      title: 'Concierge Service',
+      subtitle: 'Personalised 24/7 island reservations',
+      category: 'Guest Care',
+      icon: Bell,
+      tag: '24/7 Care',
+    },
+    {
+      title: 'Airport Transfers',
+      subtitle: 'Seamless private chauffeur pickup',
+      category: 'Arrivals',
+      icon: Car,
+      tag: 'Transfer',
+    },
+    {
+      title: 'Phuket Experiences',
+      subtitle: 'Curated boat trips, excursions & culture',
+      category: 'Adventures',
+      icon: Compass,
+      tag: 'Curated',
+    },
   ];
 
   return (
@@ -306,42 +390,108 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
       </section>
 
       {/* SECTION 4: A Stay With Something Extra */}
-      <section className="py-16 sm:py-24 bg-[#FAF7F2] text-[#23211E]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs uppercase tracking-[0.3em] text-[#A38B68] font-semibold mb-2 block font-sans">
-              Boutique Scale, Generous Experience
-            </span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#23211E]">
-              A Stay With Something Extra
-            </h2>
-            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3 mb-6" />
-            <p className="text-xs sm:text-sm text-[#6E6A63] font-light leading-relaxed">
+      <section className="py-20 sm:py-28 bg-[#FAF7F2] text-[#23211E] relative overflow-hidden">
+        {/* Subtle Ambient Background Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-[#A38B68]/12 via-[#A38B68]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#A38B68]/30 shadow-sm text-[#8B6E3F] text-[10px] sm:text-xs uppercase tracking-[0.25em] font-sans font-semibold mb-4"
+            >
+              <Sparkles size={13} className="text-[#A38B68]" />
+              <span>Boutique Scale, Generous Experience</span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light text-[#23211E] tracking-tight leading-tight mb-4"
+            >
+              A Stay With <span className="italic text-gold-gradient font-serif">Something Extra</span>
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="w-20 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6"
+            />
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.25 }}
+              className="text-xs sm:text-base text-[#555047] font-light leading-relaxed font-sans max-w-2xl mx-auto"
+            >
               A small hotel doesn't have to mean a small experience. At Elia you'll find an outdoor spa with sauna, cold plunge and jacuzzi, a plunge pool, massage treatments, a kids club and personalised concierge services. And beyond the hotel, Phuket is waiting.
-            </p>
+            </motion.p>
           </div>
 
-          {/* 11 Facilities Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
-            {facilities.map((fac, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-2xl bg-white border border-[#A38B68]/20 shadow-sm flex items-center gap-3"
-              >
-                <div className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
-                <span className="text-xs sm:text-sm font-medium text-[#23211E] font-sans">
-                  {fac}
-                </span>
-              </div>
-            ))}
+          {/* 11 Modern Luxury Facility Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-14">
+            {facilities.map((fac, idx) => {
+              const Icon = fac.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.04 }}
+                  className="group relative bg-white/95 hover:bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-[#A38B68]/20 hover:border-[#A38B68]/60 shadow-[0_4px_20px_rgba(163,139,104,0.06)] hover:shadow-[0_16px_35px_rgba(163,139,104,0.18)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-default"
+                >
+                  {/* Subtle hover golden glow */}
+                  <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-gradient-to-br from-[#C5A880]/20 to-transparent blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+
+                  <div>
+                    {/* Header with Icon and Tag */}
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="w-11 h-11 rounded-2xl bg-[#A38B68]/10 text-[#8B6E3F] group-hover:bg-[#23211E] group-hover:text-[#C5A880] flex items-center justify-center transition-all duration-300 shadow-sm shrink-0">
+                        <Icon size={20} />
+                      </div>
+                      <span className="text-[9px] uppercase tracking-wider font-semibold font-sans px-2.5 py-1 rounded-full bg-[#FAF7F2] text-[#8B6E3F] border border-[#A38B68]/25 group-hover:border-[#A38B68]/50 transition-colors">
+                        {fac.tag}
+                      </span>
+                    </div>
+
+                    {/* Facility Title */}
+                    <h3 className="font-serif text-lg sm:text-xl font-medium text-[#23211E] group-hover:text-[#8B6E3F] transition-colors leading-snug mb-1.5">
+                      {fac.title}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p className="text-xs text-[#6E6A63] font-light leading-relaxed font-sans">
+                      {fac.subtitle}
+                    </p>
+                  </div>
+
+                  {/* Category Accent Footer */}
+                  <div className="pt-4 mt-4 border-t border-[#A38B68]/15 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-[#A38B68] font-semibold font-sans">
+                    <span>{fac.category}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#A38B68]/40 group-hover:bg-[#A38B68] group-hover:scale-125 transition-all" />
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
+          {/* Bottom Action */}
           <div className="text-center">
             <button
-              onClick={() => onNavigate('about')}
-              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
+              onClick={() => onNavigate('facilities')}
+              className="group inline-flex items-center gap-2.5 px-9 py-4 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#FAF7F2] font-semibold text-xs uppercase tracking-[0.22em] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 cursor-pointer"
             >
-              EXPLORE ELIA
+              <span>EXPLORE ALL FACILITIES</span>
+              <ArrowRight size={14} className="text-[#C5A880] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
