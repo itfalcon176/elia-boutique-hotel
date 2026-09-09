@@ -1,7 +1,6 @@
 import { useState, useEffect, useLayoutEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ReservationModal from './components/ReservationModal';
 
 // Dedicated Separate Pages
 import HomePage from './pages/HomePage';
@@ -192,7 +191,6 @@ const getPageFromPath = (pathname) => {
 
 function App() {
   const [activePage, setActivePage] = useState(() => getPageFromPath(window.location.pathname));
-  const [isReservationOpen, setIsReservationOpen] = useState(false);
 
   // Ensure page always starts at the very top on navigation
   useLayoutEffect(() => {
@@ -258,64 +256,54 @@ function App() {
       <Navbar
         activePage={activePage}
         setActivePage={handleNavClick}
-        onOpenReservation={() => setIsReservationOpen(true)}
       />
 
       {/* Page Content Rendering */}
       <main className="min-h-screen">
         {activePage === 'home' && (
           <HomePage
-            onOpenReservation={() => setIsReservationOpen(true)}
             onNavigate={handleNavClick}
           />
         )}
         {activePage === 'rooms' && (
           <RoomsPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage.startsWith('rooms/') && (
           <RoomDetailPage
             roomSlug={activePage.replace('rooms/', '')}
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'eat-drink' && (
           <EatDrinkPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'wellness' && (
           <WellnessPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'goat-beach-club' && (
           <GoatBeachClubPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'family-hotel-phuket' && (
           <FamilyPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'experiences' && (
           <ExperiencesPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'bang-tao-beach-phuket' && (
           <BangTaoPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'gallery' && (
@@ -326,7 +314,6 @@ function App() {
         {activePage === 'about' && (
           <AboutPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'contact' && (
@@ -337,13 +324,11 @@ function App() {
         {activePage === 'offers' && (
           <SpecialOffersPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {activePage === 'faq' && (
           <FaqsPage
             onNavigate={handleNavClick}
-            onOpenReservation={() => setIsReservationOpen(true)}
           />
         )}
         {['policies', 'cancellation', 'privacy', 'terms', 'cookies', 'directions'].includes(activePage) && (
@@ -355,13 +340,7 @@ function App() {
       </main>
 
       {/* Footer Navigation */}
-      <Footer onNavClick={handleNavClick} onOpenReservation={() => setIsReservationOpen(true)} />
-
-      {/* Reservation & Booking Dialog Modal */}
-      <ReservationModal
-        isOpen={isReservationOpen}
-        onClose={() => setIsReservationOpen(false)}
-      />
+      <Footer onNavClick={handleNavClick} />
     </div>
   );
 }
