@@ -389,20 +389,20 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
         </div>
       </section>
 
-      {/* SECTION 4: A Stay With Something Extra (Compact Single-Screen Modern Luxury Grid) */}
-      <section className="py-12 sm:py-16 bg-[#FAF7F2] text-[#23211E] relative overflow-hidden">
+      {/* SECTION 4: A Stay With Something Extra (All 11 Curated Facilities & Exact Copy) */}
+      <section className="py-14 sm:py-20 bg-[#FAF7F2] text-[#23211E] relative overflow-hidden">
         {/* Subtle Ambient Background Glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-[#A38B68]/10 via-[#A38B68]/3 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[350px] bg-gradient-to-b from-[#A38B68]/12 via-[#A38B68]/3 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Compact Header */}
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-[#A38B68]/30 shadow-sm text-[#8B6E3F] text-[10px] uppercase tracking-[0.25em] font-sans font-semibold mb-2.5"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-[#A38B68]/30 shadow-sm text-[#8B6E3F] text-[10px] uppercase tracking-[0.25em] font-sans font-semibold mb-3"
             >
               <Sparkles size={12} className="text-[#A38B68]" />
               <span>Boutique Scale, Generous Experience</span>
@@ -413,88 +413,128 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="font-serif text-2xl sm:text-4xl lg:text-5xl font-light text-[#23211E] tracking-tight leading-tight mb-2.5"
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#23211E] tracking-tight leading-tight mb-4"
             >
               A Stay With <span className="italic text-gold-gradient font-serif">Something Extra</span>
             </motion.h2>
 
-            <motion.p
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="w-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-4"
+            />
+
+            <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed font-sans max-w-2xl mx-auto"
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="space-y-2 text-xs sm:text-sm text-[#555047] font-light leading-relaxed font-sans max-w-2xl mx-auto"
             >
-              A small hotel doesn't have to mean a small experience. Outdoor spa, sauna, cold plunge, jacuzzi, plunge pool, kids club and personalised concierge services.
-            </motion.p>
+              <p className="font-medium text-[#23211E]">
+                A small hotel doesn't have to mean a small experience.
+              </p>
+              <p>
+                At Elia you'll find an outdoor spa with sauna, cold plunge and jacuzzi, a plunge pool, massage treatments, a kids club and personalised concierge services.
+              </p>
+              <p className="text-[#8B6E3F] font-serif italic text-sm pt-1">
+                And beyond the hotel, Phuket is waiting.
+              </p>
+            </motion.div>
           </div>
 
-          {/* All 8 Items in a Balanced 4-Column x 2-Row Single-Screen Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+          {/* All 11 Facilities Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 mb-10 sm:mb-12">
             {[
               {
                 idx: '01',
-                title: 'Outdoor Sauna',
-                desc: 'Nordic cedar dry heat & botanical detox rituals (85°C)',
-                tag: 'Thermal Heat',
-                icon: Flame,
-                route: 'facilities',
+                title: 'Plunge pool',
+                desc: 'Freshwater tropical lagoon pool with submerged sun loungers',
+                tag: 'Freshwater',
+                icon: Waves,
+                route: 'facilities/plunge-pool',
               },
               {
                 idx: '02',
-                title: 'Cold Plunge',
-                desc: '8°C - 10°C invigorating contrast therapy & recovery',
-                tag: 'Vitality Reset',
-                icon: Droplets,
-                route: 'facilities',
+                title: 'Outdoor sauna',
+                desc: 'Nordic cedar dry heat & botanical detox rituals (85°C)',
+                tag: 'Thermal Heat',
+                icon: Flame,
+                route: 'facilities/sauna',
               },
               {
                 idx: '03',
-                title: 'Jacuzzi Spa',
-                desc: 'Warm 38°C bubbling magnesium hydrotherapy soak',
-                tag: 'Hydro Jets',
-                icon: Bath,
-                route: 'facilities',
+                title: 'Cold plunge',
+                desc: '8°C - 10°C invigorating contrast biohacking recovery',
+                tag: 'Vitality Reset',
+                icon: Droplets,
+                route: 'facilities/cold-plunge',
               },
               {
                 idx: '04',
-                title: 'Lagoon Plunge Pool',
-                desc: 'Freshwater oasis with shaded loungers under palms',
-                tag: 'Relaxation',
-                icon: Waves,
-                route: 'facilities',
+                title: 'Jacuzzi',
+                desc: 'Warm 38°C bubbling magnesium hydrotherapy soak',
+                tag: 'Hydro Jets',
+                icon: Bath,
+                route: 'facilities/jacuzzi',
               },
               {
                 idx: '05',
-                title: 'Massage & Spa',
-                desc: 'Traditional Thai bodywork & warm organic herbal compresses',
+                title: 'Massage',
+                desc: 'Traditional Royal Thai bodywork & warm organic herbal compresses',
                 tag: 'Spa Rituals',
                 icon: Sparkles,
-                route: 'facilities',
+                route: 'facilities/massage',
               },
               {
                 idx: '06',
-                title: 'GOAT Beach Club',
-                desc: 'Complimentary VIP access, daybeds & beachfront dining',
-                tag: 'VIP Access',
-                icon: Utensils,
-                route: 'goat-beach-club',
-              },
-              {
-                idx: '07',
-                title: 'Kids Club & Family',
+                title: 'Kids club',
                 desc: 'Mindful creative play & curated amenities for children',
                 tag: 'Family Care',
                 icon: Heart,
-                route: 'family-hotel-phuket',
+                route: 'facilities/kids-club',
+              },
+              {
+                idx: '07',
+                title: 'Beach access',
+                desc: 'Direct footsteps onto the golden sands of Bang Tao Beach',
+                tag: 'Beachfront',
+                icon: Palmtree,
+                route: 'facilities/beach-access',
               },
               {
                 idx: '08',
-                title: '24/7 Concierge',
-                desc: 'Private airport chauffeur, boat charters & reservations',
-                tag: 'Bespoke Care',
+                title: 'GOAT Beach Club access',
+                desc: 'Complimentary VIP access, daybeds & beachfront dining next door',
+                tag: 'VIP Access',
+                icon: Utensils,
+                route: 'facilities/goat-beach-club',
+              },
+              {
+                idx: '09',
+                title: 'Concierge',
+                desc: 'Personalised 24/7 WhatsApp island assistance & reservations',
+                tag: '24/7 Care',
                 icon: Bell,
-                route: 'contact',
+                route: 'facilities/concierge',
+              },
+              {
+                idx: '10',
+                title: 'Airport transfers',
+                desc: 'Seamless private luxury chauffeur pickup to & from Phuket Airport',
+                tag: 'Chauffeur',
+                icon: Car,
+                route: 'facilities/airport-transfers',
+              },
+              {
+                idx: '11',
+                title: 'Phuket experiences',
+                desc: 'Curated private yacht charters, boat excursions & island adventures',
+                tag: 'Adventures',
+                icon: Compass,
+                route: 'facilities/phuket-experiences',
               },
             ].map((item, i) => {
               const Icon = item.icon;
@@ -504,7 +544,7 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.04 }}
+                  transition={{ duration: 0.35, delay: i * 0.03 }}
                   onClick={() => onNavigate(item.route)}
                   className="group relative bg-white/95 hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#A38B68]/25 hover:border-[#A38B68] shadow-[0_4px_15px_rgba(163,139,104,0.05)] hover:shadow-[0_12px_28px_rgba(163,139,104,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer overflow-hidden"
                 >
@@ -513,7 +553,7 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
 
                   <div>
                     {/* Top Row: Icon + Number & Tag */}
-                    <div className="flex items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center justify-between gap-2 mb-2.5">
                       <div className="w-9 h-9 rounded-xl bg-[#A38B68]/10 text-[#8B6E3F] group-hover:bg-[#23211E] group-hover:text-[#C5A880] flex items-center justify-center transition-all duration-300 shadow-sm shrink-0">
                         <Icon size={17} />
                       </div>
@@ -528,18 +568,18 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-serif text-base sm:text-[17px] font-medium text-[#23211E] group-hover:text-[#8B6E3F] transition-colors leading-snug mb-1.5">
+                    <h3 className="font-serif text-base sm:text-[17px] font-medium text-[#23211E] group-hover:text-[#8B6E3F] transition-colors leading-snug mb-1">
                       {item.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-[11px] sm:text-[12px] text-[#6E6A63] font-light leading-relaxed font-sans line-clamp-2">
+                    <p className="text-[11px] text-[#6E6A63] font-light leading-relaxed font-sans line-clamp-2">
                       {item.desc}
                     </p>
                   </div>
 
                   {/* Bottom Link Hover Micro-Indicator */}
-                  <div className="pt-3 mt-2 border-t border-[#A38B68]/15 flex items-center justify-between text-[10px] uppercase tracking-widest text-[#A38B68] font-semibold font-sans group-hover:text-[#23211E] transition-colors">
+                  <div className="pt-2.5 mt-2 border-t border-[#A38B68]/15 flex items-center justify-between text-[10px] uppercase tracking-widest text-[#A38B68] font-semibold font-sans group-hover:text-[#23211E] transition-colors">
                     <span>Explore</span>
                     <ArrowRight size={13} className="text-[#A38B68] group-hover:text-[#23211E] group-hover:translate-x-1 transition-all" />
                   </div>
@@ -548,13 +588,13 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
             })}
           </div>
 
-          {/* Bottom Action CTA */}
-          <div className="text-center mt-7 sm:mt-8">
+          {/* Bottom Action CTA: EXPLORE ELIA */}
+          <div className="text-center">
             <button
               onClick={() => onNavigate('facilities')}
-              className="group inline-flex items-center gap-2.5 px-8 py-3 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#FAF7F2] font-semibold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 cursor-pointer"
+              className="group inline-flex items-center gap-2.5 px-9 py-3.5 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#FAF7F2] font-semibold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 cursor-pointer"
             >
-              <span>EXPLORE ALL FACILITIES</span>
+              <span>EXPLORE ELIA</span>
               <ArrowRight size={14} className="text-[#C5A880] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

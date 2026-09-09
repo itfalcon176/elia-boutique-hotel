@@ -97,21 +97,17 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
               </div>
 
               <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
-                <a
-                  href="https://www.goatbeachclubphuket.com/food-menu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-7 py-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg inline-flex items-center justify-center gap-2"
-                >
-                  <Utensils size={14} />
-                  <span>VIEW FOOD MENU</span>
-                  <ExternalLink size={13} />
-                </a>
                 <button
                   onClick={() => onNavigate('eat-drink')}
+                  className="w-full sm:w-auto px-7 py-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg text-center"
+                >
+                  DISCOVER FOOD & DRINKS
+                </button>
+                <button
+                  onClick={onOpenReservation}
                   className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer text-center"
                 >
-                  VIEW EAT & DRINK
+                  BOOK YOUR STAY
                 </button>
               </div>
             </div>

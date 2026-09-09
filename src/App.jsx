@@ -18,6 +18,7 @@ import ContactPage from './pages/ContactPage';
 import SpecialOffersPage from './pages/SpecialOffersPage';
 import FaqsPage from './pages/FaqsPage';
 import LegalAndPolicyPages from './pages/LegalAndPolicyPages';
+import FacilityDetailPage from './pages/FacilityDetailPage';
 
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
@@ -55,6 +56,18 @@ const pageToPath = {
   wellness: '/facilities',
   facilities: '/facilities',
   spa: '/facilities',
+  'facilities/sauna': '/facilities/sauna',
+  'facilities/cold-plunge': '/facilities/cold-plunge',
+  'facilities/jacuzzi': '/facilities/jacuzzi',
+  'facilities/plunge-pool': '/facilities/plunge-pool',
+  'facilities/massage': '/facilities/massage',
+  'facilities/massage-treatments': '/facilities/massage',
+  'facilities/concierge': '/facilities/concierge',
+  'facilities/goat-beach-club': '/facilities/goat-beach-club',
+  'facilities/kids-club': '/facilities/kids-club',
+  'facilities/beach-access': '/facilities/beach-access',
+  'facilities/airport-transfers': '/facilities/airport-transfers',
+  'facilities/phuket-experiences': '/facilities/phuket-experiences',
   'goat-beach-club': '/goat-beach-club',
   'family-hotel-phuket': '/family-hotel-phuket',
   family: '/family-hotel-phuket',
@@ -118,6 +131,54 @@ const seoMetadata = {
     title: 'Hotel Facilities | Elia Boutique Hotel Bang Tao Phuket',
     description: 'Explore hotel facilities at Elia Phuket, including outdoor sauna, cold plunge, jacuzzi, plunge pool, and massage treatments steps from Bang Tao Beach.',
   },
+  'facilities/sauna': {
+    title: 'Outdoor Cedar Sauna Bang Tao Phuket | Elia Boutique Hotel',
+    description: 'Experience our Finnish cedarwood outdoor sauna in Bang Tao, Phuket. 85°C thermal heat, volcanic stones, and contrast therapy at Elia Boutique Hotel.',
+  },
+  'facilities/cold-plunge': {
+    title: 'Cold Plunge Bath Bang Tao Phuket | Contrast Therapy Elia Hotel',
+    description: 'Experience 8°C cold plunge ice immersion therapy at Elia Boutique Hotel Bang Tao, Phuket. Boost energy, reduce inflammation, and reset your body.',
+  },
+  'facilities/jacuzzi': {
+    title: 'Hydrotherapy Jacuzzi Spa Bang Tao Phuket | Elia Boutique Hotel',
+    description: 'Relax in our 38°C magnesium hydrotherapy jacuzzi under Phuket palms at Elia Boutique Hotel Bang Tao. Pure tropical relaxation steps from the beach.',
+  },
+  'facilities/plunge-pool': {
+    title: 'Freshwater Lagoon Plunge Pool Bang Tao Phuket | Elia Hotel',
+    description: 'Unwind at our freshwater lagoon plunge pool with submerged sun loungers in Bang Tao, Phuket. Intimate boutique hotel pool at Elia.',
+  },
+  'facilities/massage': {
+    title: 'Thai Massage & Spa Treatments Bang Tao Phuket | Elia Boutique Hotel',
+    description: 'Book traditional Thai massage, herbal compresses, and restorative spa rituals in Bang Tao Beach, Phuket at Elia Boutique Hotel.',
+  },
+  'facilities/massage-treatments': {
+    title: 'Thai Massage & Spa Treatments Bang Tao Phuket | Elia Boutique Hotel',
+    description: 'Book traditional Thai massage, herbal compresses, and restorative spa rituals in Bang Tao Beach, Phuket at Elia Boutique Hotel.',
+  },
+  'facilities/concierge': {
+    title: 'Concierge & Island Assistance Bang Tao Phuket | Elia Hotel',
+    description: 'Personalised 24/7 WhatsApp concierge and bespoke island care at Elia Boutique Hotel Bang Tao.',
+  },
+  'facilities/goat-beach-club': {
+    title: 'GOAT Beach Club Bang Tao Phuket | Complimentary Elia Hotel Access',
+    description: 'Enjoy complimentary VIP access to GOAT Beach Club on Bang Tao Beach when staying at Elia Boutique Hotel Phuket. Beachfront dining, daybeds, and sunset drinks.',
+  },
+  'facilities/kids-club': {
+    title: 'Family Hotel & Kids Club Bang Tao Phuket | Elia Boutique Hotel',
+    description: 'Discover family-friendly luxury at Elia Boutique Hotel Bang Tao Phuket. Kids club, family suites, baby amenities, and safe beach access steps away.',
+  },
+  'facilities/beach-access': {
+    title: 'Direct Beach Access Bang Tao Phuket | Elia Boutique Hotel',
+    description: 'Stay steps from the sand with direct Bang Tao Beach access at Elia Boutique Hotel Phuket. Beachfront living on Phuket’s west coast.',
+  },
+  'facilities/airport-transfers': {
+    title: 'Phuket Airport Transfers & Chauffeur | Elia Boutique Hotel Bang Tao',
+    description: 'Book private luxury airport transfers to Elia Boutique Hotel Bang Tao Phuket. 24/7 meet-and-greet chauffeur service from Phuket Airport (HKT).',
+  },
+  'facilities/phuket-experiences': {
+    title: 'Phuket Experiences & Island Tours | Elia Boutique Hotel Bang Tao',
+    description: 'Discover curated Phuket experiences, private yacht charters, elephant sanctuaries, and island adventures with Elia Boutique Hotel Bang Tao.',
+  },
   'goat-beach-club': {
     title: 'Hotel With Beach Club Access Phuket | Elia & GOAT Bang Tao',
     description: 'Elia guests enjoy complimentary access to GOAT Beach Club on Bang Tao Beach, with beachfront dining, sun, cocktails and sunset atmosphere next door.',
@@ -169,7 +230,21 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/rooms/one-bedroom-loft-suite' || cleanPath === '/accommodation/one-bedroom-loft-suite' || cleanPath === '/accomodation/one-bedroom-loft-suite') return 'rooms/one-bedroom-loft-suite';
   if (cleanPath === '/accommodation' || cleanPath === '/accomodation' || cleanPath === '/rooms' || cleanPath === '/suites') return 'rooms';
   if (cleanPath === '/food-and-drinks' || cleanPath === '/food-and-drink' || cleanPath === '/food-drinks' || cleanPath === '/eat-drink' || cleanPath === '/menus' || cleanPath === '/dining') return 'eat-drink';
-  if (cleanPath === '/facilities' || cleanPath === '/facility' || cleanPath === '/wellness' || cleanPath === '/spa') return 'wellness';
+  
+  // Dedicated Facilities Deep-Links
+  if (cleanPath === '/facilities/sauna' || cleanPath === '/facilities/outdoor-sauna' || cleanPath === '/sauna') return 'facilities/sauna';
+  if (cleanPath === '/facilities/cold-plunge' || cleanPath === '/facilities/ice-bath' || cleanPath === '/cold-plunge') return 'facilities/cold-plunge';
+  if (cleanPath === '/facilities/jacuzzi' || cleanPath === '/facilities/hydrotherapy' || cleanPath === '/jacuzzi') return 'facilities/jacuzzi';
+  if (cleanPath === '/facilities/plunge-pool' || cleanPath === '/facilities/pool' || cleanPath === '/pool') return 'facilities/plunge-pool';
+  if (cleanPath === '/facilities/massage' || cleanPath === '/facilities/massage-treatments' || cleanPath === '/facilities/spa' || cleanPath === '/massage' || cleanPath === '/spa') return 'facilities/massage';
+  if (cleanPath === '/facilities/concierge' || cleanPath === '/facilities/transfers' || cleanPath === '/concierge') return 'facilities/concierge';
+  if (cleanPath === '/facilities/goat-beach-club' || cleanPath === '/facilities/goat') return 'facilities/goat-beach-club';
+  if (cleanPath === '/facilities/kids-club' || cleanPath === '/facilities/family') return 'facilities/kids-club';
+  if (cleanPath === '/facilities/beach-access' || cleanPath === '/facilities/beach') return 'facilities/beach-access';
+  if (cleanPath === '/facilities/airport-transfers' || cleanPath === '/facilities/transfers' || cleanPath === '/airport-transfers') return 'facilities/airport-transfers';
+  if (cleanPath === '/facilities/phuket-experiences' || cleanPath === '/facilities/experiences' || cleanPath === '/phuket-experiences') return 'facilities/phuket-experiences';
+  
+  if (cleanPath === '/facilities' || cleanPath === '/facility' || cleanPath === '/wellness') return 'wellness';
   if (cleanPath === '/goat-beach-club' || cleanPath === '/goat') return 'goat-beach-club';
   if (cleanPath === '/family-hotel-phuket' || cleanPath === '/family' || cleanPath === '/families') return 'family-hotel-phuket';
   if (cleanPath === '/experiences') return 'experiences';
@@ -284,6 +359,13 @@ function App() {
         {activePage === 'wellness' && (
           <WellnessPage
             onNavigate={handleNavClick}
+          />
+        )}
+        {activePage.startsWith('facilities/') && (
+          <FacilityDetailPage
+            facilitySlug={activePage.replace('facilities/', '')}
+            onNavigate={handleNavClick}
+            onOpenReservation={() => handleNavClick('contact')}
           />
         )}
         {activePage === 'goat-beach-club' && (

@@ -218,20 +218,17 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
             Complimentary access to GOAT Beach Club is included for all Elia guests throughout their stay on Bang Tao Beach.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://www.goatbeachclubphuket.com/food-menu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md inline-flex items-center gap-2"
-            >
-              <span>VIEW GOAT FOOD MENU</span>
-              <ExternalLink size={13} />
-            </a>
             <button
               onClick={() => onNavigate('goat-beach-club')}
-              className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"
+              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
             >
               DISCOVER GOAT BEACH CLUB
+            </button>
+            <button
+              onClick={() => onNavigate('rooms')}
+              className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"
+            >
+              EXPLORE OUR ROOMS
             </button>
           </div>
         </div>

@@ -4,20 +4,23 @@ import { Sparkles, Flame, Snowflake, Bath, Droplets, Check, ArrowRight, Heart, C
 export default function WellnessPage({ onNavigate, onOpenReservation }) {
   const spaFacilities = [
     {
+      slug: 'sauna',
       title: 'Sauna',
       desc: 'Slow down, switch off and enjoy the warmth of our outdoor sauna.',
       icon: Flame,
-      image: '/images/spa.png',
+      image: '/images/latenight.png',
       tag: 'Heat Therapy',
     },
     {
+      slug: 'cold-plunge',
       title: 'Cold Plunge',
       desc: 'Cool down after the sauna or start the morning with something significantly less gentle.',
       icon: Snowflake,
-      image: '/images/suite.png',
+      image: '/images/dining.png',
       tag: 'Cold Therapy',
     },
     {
+      slug: 'jacuzzi',
       title: 'Jacuzzi',
       desc: 'Warm water, bubbles and nowhere else you need to be.',
       icon: Bath,
@@ -25,10 +28,11 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
       tag: 'Hydrotherapy',
     },
     {
+      slug: 'plunge-pool',
       title: 'Plunge Pool',
       desc: 'A refreshing place to cool off between the gardens and the beach.',
       icon: Droplets,
-      image: '/images/dining.png',
+      image: '/images/suite.png',
       tag: 'Freshwater Pool',
     },
   ];
@@ -106,7 +110,8 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  className="bg-white rounded-3xl overflow-hidden border border-[#A38B68]/25 shadow-lg flex flex-col justify-between group hover:shadow-2xl transition-all duration-300"
+                  onClick={() => onNavigate(`facilities/${facility.slug}`)}
+                  className="bg-white rounded-3xl overflow-hidden border border-[#A38B68]/25 shadow-lg flex flex-col justify-between group hover:shadow-2xl hover:border-[#A38B68] transition-all duration-300 cursor-pointer"
                 >
                   <div>
                     <div className="relative aspect-[4/3] overflow-hidden">
@@ -124,7 +129,7 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
                     </div>
 
                     <div className="p-6">
-                      <h3 className="font-serif text-2xl font-light text-[#23211E] mb-2">
+                      <h3 className="font-serif text-2xl font-light text-[#23211E] mb-2 group-hover:text-[#8B6E3F] transition-colors">
                         {facility.title}
                       </h3>
                       <p className="text-xs text-[#6E6A63] font-light leading-relaxed font-sans">
@@ -133,9 +138,12 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
                     </div>
                   </div>
 
-                  <div className="p-6 pt-0 border-t border-[#A38B68]/15 mt-2">
+                  <div className="p-6 pt-0 border-t border-[#A38B68]/15 mt-2 flex items-center justify-between">
                     <span className="text-[11px] text-[#A38B68] font-semibold uppercase tracking-wider">
                       Complimentary for guests
+                    </span>
+                    <span className="text-xs text-[#A38B68] font-bold group-hover:translate-x-1 transition-transform">
+                      →
                     </span>
                   </div>
                 </motion.div>
@@ -175,22 +183,20 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
                 Ask reception or arrange your treatment through the Elia concierge.
               </div>
 
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <button
+                  onClick={() => onNavigate('facilities/massage')}
+                  className="px-6 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.15em] whitespace-nowrap hover:brightness-110 transition-all cursor-pointer shadow-lg text-center"
+                >
+                  VIEW MASSAGE MENU & RITUALS
+                </button>
                 <a
                   href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20book%20a%20massage%20treatment."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.15em] whitespace-nowrap hover:brightness-110 transition-all cursor-pointer shadow-lg text-center"
+                  className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.15em] font-semibold whitespace-nowrap transition-all cursor-pointer text-center"
                 >
-                  BOOK YOUR MASSAGE
-                </a>
-                <a
-                  href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20massage%20treatment."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.15em] font-semibold whitespace-nowrap transition-all cursor-pointer text-center"
-                >
-                  WHATSAPP CONCIERGE
+                  WHATSAPP BOOKING
                 </a>
               </div>
             </div>
