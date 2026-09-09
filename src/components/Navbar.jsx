@@ -58,7 +58,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               <img
                 src={isLightHeader ? '/Logos/elia gold.png' : '/Logos/logo nwww.png'}
                 alt="Elia Boutique Hotel Phuket Logo"
-                className="h-9 sm:h-11 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-12 sm:h-12 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 onError={(e) => {
                   e.target.src = '/Logos/elia gold.png';
                 }}
@@ -240,7 +240,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   <img
                     src="/Logos/elia gold.png"
                     alt="Elia Boutique Hotel Phuket Logo"
-                    className="h-9 w-auto object-contain"
+                    className="h-11 sm:h-12 w-auto object-contain"
                     onError={(e) => {
                       e.target.src = '/Logos/logo nwww.png';
                     }}
