@@ -389,115 +389,175 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
         </div>
       </section>
 
-      {/* SECTION 4: A Stay With Something Extra (Compact Horizontal Auto-Moving Slider) */}
-      <section className="py-14 sm:py-20 bg-[#FAF7F2] text-[#23211E] relative overflow-hidden">
-        {/* Subtle Ambient Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-gradient-to-b from-[#A38B68]/12 via-[#A38B68]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      {/* SECTION 4: A Stay With Something Extra (Compact Single-Screen Modern Luxury Grid) */}
+      <section className="py-12 sm:py-16 bg-[#FAF7F2] text-[#23211E] relative overflow-hidden">
+        {/* Subtle Ambient Background Glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-[#A38B68]/10 via-[#A38B68]/3 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          {/* Compact Header */}
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white border border-[#A38B68]/30 shadow-sm text-[#8B6E3F] text-[10px] sm:text-xs uppercase tracking-[0.25em] font-sans font-semibold mb-3"
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-[#A38B68]/30 shadow-sm text-[#8B6E3F] text-[10px] uppercase tracking-[0.25em] font-sans font-semibold mb-2.5"
             >
-              <Sparkles size={13} className="text-[#A38B68]" />
+              <Sparkles size={12} className="text-[#A38B68]" />
               <span>Boutique Scale, Generous Experience</span>
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#23211E] tracking-tight leading-tight mb-3"
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="font-serif text-2xl sm:text-4xl lg:text-5xl font-light text-[#23211E] tracking-tight leading-tight mb-2.5"
             >
               A Stay With <span className="italic text-gold-gradient font-serif">Something Extra</span>
             </motion.h2>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="w-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-4"
-            />
-
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed font-sans max-w-2xl mx-auto"
             >
               A small hotel doesn't have to mean a small experience. Outdoor spa, sauna, cold plunge, jacuzzi, plunge pool, kids club and personalised concierge services.
             </motion.p>
           </div>
-        </div>
 
-        {/* Full-Width Smooth Infinite Auto-Moving Horizontal Cards Track */}
-        <div className="relative w-full overflow-hidden py-4">
-          {/* Left & Right Soft Fade Gradient Masks */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 md:w-36 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2]/90 to-transparent z-20" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 md:w-36 bg-gradient-to-l from-[#FAF7F2] via-[#FAF7F2]/90 to-transparent z-20" />
-
-          {/* Continuous Auto-Scrolling Marquee Loop */}
-          <div className="animate-marquee-smooth flex items-center gap-4 sm:gap-6 px-4">
-            {[...facilities, ...facilities].map((fac, idx) => {
-              const Icon = fac.icon;
+          {/* All 8 Items in a Balanced 4-Column x 2-Row Single-Screen Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+            {[
+              {
+                idx: '01',
+                title: 'Outdoor Sauna',
+                desc: 'Nordic cedar dry heat & botanical detox rituals (85°C)',
+                tag: 'Thermal Heat',
+                icon: Flame,
+                route: 'facilities',
+              },
+              {
+                idx: '02',
+                title: 'Cold Plunge',
+                desc: '8°C - 10°C invigorating contrast therapy & recovery',
+                tag: 'Vitality Reset',
+                icon: Droplets,
+                route: 'facilities',
+              },
+              {
+                idx: '03',
+                title: 'Jacuzzi Spa',
+                desc: 'Warm 38°C bubbling magnesium hydrotherapy soak',
+                tag: 'Hydro Jets',
+                icon: Bath,
+                route: 'facilities',
+              },
+              {
+                idx: '04',
+                title: 'Lagoon Plunge Pool',
+                desc: 'Freshwater oasis with shaded loungers under palms',
+                tag: 'Relaxation',
+                icon: Waves,
+                route: 'facilities',
+              },
+              {
+                idx: '05',
+                title: 'Massage & Spa',
+                desc: 'Traditional Thai bodywork & warm organic herbal compresses',
+                tag: 'Spa Rituals',
+                icon: Sparkles,
+                route: 'facilities',
+              },
+              {
+                idx: '06',
+                title: 'GOAT Beach Club',
+                desc: 'Complimentary VIP access, daybeds & beachfront dining',
+                tag: 'VIP Access',
+                icon: Utensils,
+                route: 'goat-beach-club',
+              },
+              {
+                idx: '07',
+                title: 'Kids Club & Family',
+                desc: 'Mindful creative play & curated amenities for children',
+                tag: 'Family Care',
+                icon: Heart,
+                route: 'family-hotel-phuket',
+              },
+              {
+                idx: '08',
+                title: '24/7 Concierge',
+                desc: 'Private airport chauffeur, boat charters & reservations',
+                tag: 'Bespoke Care',
+                icon: Bell,
+                route: 'contact',
+              },
+            ].map((item, i) => {
+              const Icon = item.icon;
               return (
-                <div
-                  key={idx}
-                  className="group relative w-[280px] sm:w-[320px] h-[180px] shrink-0 bg-white/95 hover:bg-white rounded-2xl sm:rounded-3xl p-5 border border-[#A38B68]/25 hover:border-[#A38B68]/70 shadow-[0_4px_20px_rgba(163,139,104,0.06)] hover:shadow-[0_16px_35px_rgba(163,139,104,0.18)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer select-none"
-                  onClick={() => onNavigate('facilities')}
+                <motion.div
+                  key={item.idx}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.04 }}
+                  onClick={() => onNavigate(item.route)}
+                  className="group relative bg-white/95 hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#A38B68]/25 hover:border-[#A38B68] shadow-[0_4px_15px_rgba(163,139,104,0.05)] hover:shadow-[0_12px_28px_rgba(163,139,104,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer overflow-hidden"
                 >
-                  {/* Subtle hover golden glow */}
-                  <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-gradient-to-br from-[#C5A880]/20 to-transparent blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+                  {/* Subtle golden corner light glow */}
+                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-[#C5A880]/15 to-transparent rounded-full blur-lg group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
                   <div>
-                    {/* Header with Icon and Tag */}
-                    <div className="flex items-center justify-between gap-3 mb-2.5">
-                      <div className="w-10 h-10 rounded-xl bg-[#A38B68]/10 text-[#8B6E3F] group-hover:bg-[#23211E] group-hover:text-[#C5A880] flex items-center justify-center transition-all duration-300 shadow-sm shrink-0">
-                        <Icon size={19} />
+                    {/* Top Row: Icon + Number & Tag */}
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="w-9 h-9 rounded-xl bg-[#A38B68]/10 text-[#8B6E3F] group-hover:bg-[#23211E] group-hover:text-[#C5A880] flex items-center justify-center transition-all duration-300 shadow-sm shrink-0">
+                        <Icon size={17} />
                       </div>
-                      <span className="text-[9px] uppercase tracking-wider font-semibold font-sans px-2.5 py-0.5 rounded-full bg-[#FAF7F2] text-[#8B6E3F] border border-[#A38B68]/25 group-hover:border-[#A38B68]/50 transition-colors">
-                        {fac.tag}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[9px] uppercase tracking-wider font-semibold font-sans px-2 py-0.5 rounded-full bg-[#FAF7F2] text-[#8B6E3F] border border-[#A38B68]/20 group-hover:border-[#A38B68]/40 transition-colors">
+                          {item.tag}
+                        </span>
+                        <span className="text-[10px] font-mono tracking-wider text-[#A38B68]/60 font-semibold">
+                          {item.idx}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Facility Title */}
-                    <h3 className="font-serif text-base sm:text-lg font-medium text-[#23211E] group-hover:text-[#8B6E3F] transition-colors leading-snug mb-1">
-                      {fac.title}
+                    {/* Title */}
+                    <h3 className="font-serif text-base sm:text-[17px] font-medium text-[#23211E] group-hover:text-[#8B6E3F] transition-colors leading-snug mb-1.5">
+                      {item.title}
                     </h3>
 
-                    {/* Short Description */}
-                    <p className="text-[11px] text-[#6E6A63] font-light leading-relaxed font-sans line-clamp-2">
-                      {fac.subtitle}
+                    {/* Description */}
+                    <p className="text-[11px] sm:text-[12px] text-[#6E6A63] font-light leading-relaxed font-sans line-clamp-2">
+                      {item.desc}
                     </p>
                   </div>
 
-                  {/* Category Accent Footer */}
-                  <div className="pt-2.5 border-t border-[#A38B68]/15 flex items-center justify-between text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-[#A38B68] font-semibold font-sans">
-                    <span>{fac.category}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#A38B68]/40 group-hover:bg-[#A38B68] group-hover:scale-125 transition-all" />
+                  {/* Bottom Link Hover Micro-Indicator */}
+                  <div className="pt-3 mt-2 border-t border-[#A38B68]/15 flex items-center justify-between text-[10px] uppercase tracking-widest text-[#A38B68] font-semibold font-sans group-hover:text-[#23211E] transition-colors">
+                    <span>Explore</span>
+                    <ArrowRight size={13} className="text-[#A38B68] group-hover:text-[#23211E] group-hover:translate-x-1 transition-all" />
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
-        </div>
 
-        {/* Bottom Action */}
-        <div className="text-center mt-8 relative z-10">
-          <button
-            onClick={() => onNavigate('facilities')}
-            className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#FAF7F2] font-semibold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 cursor-pointer"
-          >
-            <span>EXPLORE ALL FACILITIES</span>
-            <ArrowRight size={14} className="text-[#C5A880] group-hover:translate-x-1 transition-transform" />
-          </button>
+          {/* Bottom Action CTA */}
+          <div className="text-center mt-7 sm:mt-8">
+            <button
+              onClick={() => onNavigate('facilities')}
+              className="group inline-flex items-center gap-2.5 px-8 py-3 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#FAF7F2] font-semibold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 cursor-pointer"
+            >
+              <span>EXPLORE ALL FACILITIES</span>
+              <ArrowRight size={14} className="text-[#C5A880] group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
         </div>
       </section>
 
