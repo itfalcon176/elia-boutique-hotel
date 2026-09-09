@@ -155,7 +155,7 @@ export default function BangTaoPage({ onNavigate, onOpenReservation }) {
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
-                  href="https://maps.google.com/?q=Bang+Tao+Beach+Phuket"
+                  href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-[#23211E] text-white text-xs uppercase tracking-[0.2em] font-semibold hover:bg-[#A38B68] transition-all flex items-center gap-2 cursor-pointer shadow-md"
@@ -187,7 +187,7 @@ export default function BangTaoPage({ onNavigate, onOpenReservation }) {
             <div className="lg:col-span-6 rounded-2xl overflow-hidden aspect-[4/3] min-h-[260px] sm:min-h-[340px] border border-[#A38B68]/30 shadow-inner">
               <iframe
                 title="Elia Boutique Hotel Bang Tao Beach Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7901.831828779644!2d98.2935!3d7.9925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050307c87c716e9%3A0x7ce087f8aa982cf1!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.1335163944177!2d98.2837060761358!3d7.985144892040057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050392384ea56ab%3A0x121edcebcc33814c!2sELIA%20Boutique%20Hotel%20Phuket!5e0!3m2!1sen!2sth!4v1710000000000!5m2!1sen!2sth"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

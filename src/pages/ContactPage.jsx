@@ -129,7 +129,7 @@ export default function ContactPage({ onNavigate }) {
           </a>
 
           <a
-            href="https://maps.google.com/?q=Bang+Tao+Beach+Phuket"
+            href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
             target="_blank"
             rel="noopener noreferrer"
             className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
@@ -141,7 +141,7 @@ export default function ContactPage({ onNavigate }) {
               <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#23211E] block mb-1">
                 GET DIRECTIONS
               </span>
-              <span className="text-xs text-[#8B6E3F] font-medium">Bang Tao Beach</span>
+              <span className="text-xs text-[#8B6E3F] font-medium">82/9 หมู่ 3, Bang Tao Beach</span>
             </div>
           </a>
         </div>
@@ -331,7 +331,7 @@ export default function ContactPage({ onNavigate }) {
                 </p>
               </div>
               <a
-                href="https://maps.google.com/?q=Bang+Tao+Beach,+Choeng+Thale,+Phuket,+Thailand"
+                href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#F7F4EF] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-md group shrink-0"
@@ -344,7 +344,7 @@ export default function ContactPage({ onNavigate }) {
             <div className="rounded-xl sm:rounded-2xl overflow-hidden h-[300px] sm:h-[400px] md:h-[480px] w-full border border-[#A38B68]/20 shadow-inner">
               <iframe
                 title="Elia Boutique Hotel Phuket Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7901.831828779644!2d98.2935!3d7.9925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050307c87c716e9%3A0x7ce087f8aa982cf1!2sBang%20Tao%20Beach!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.1335163944177!2d98.2837060761358!3d7.985144892040057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050392384ea56ab%3A0x121edcebcc33814c!2sELIA%20Boutique%20Hotel%20Phuket!5e0!3m2!1sen!2sth!4v1710000000000!5m2!1sen!2sth"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

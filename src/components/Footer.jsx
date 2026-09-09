@@ -70,9 +70,17 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               The beach. At your door.
             </p>
             <div className="pt-2 text-xs text-[#FAF7F2]/70 font-light leading-relaxed">
-              <p>82/9 หมู่ 3, Bang Tao Beach</p>
-              <p>Choeng Thale, Thalang District</p>
-              <p>Phuket 83110, Thailand</p>
+              <a
+                href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#C5A880] transition-colors block"
+                title="View on Google Maps"
+              >
+                <p>82/9 หมู่ 3, Bang Tao Beach</p>
+                <p>Choeng Thale, Thalang District</p>
+                <p>Phuket 83110, Thailand</p>
+              </a>
               <a href="mailto:info@eliaphuket.com" className="hover:text-[#C5A880] underline block pt-1">
                 info@eliaphuket.com
               </a>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Utensils, Sparkles, Coffee, Sun, Moon, GlassWater, Bell, Check, ArrowRight, BedDouble } from 'lucide-react';
+import { Utensils, Sparkles, Coffee, Sun, Moon, GlassWater, Bell, Check, ArrowRight, BedDouble, ExternalLink } from 'lucide-react';
 
 export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
   return (
@@ -45,6 +45,19 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
           <p className="text-[#6E6A63] font-light text-xs sm:text-sm font-sans leading-relaxed max-w-xl mx-auto mt-2">
             From the first coffee of the morning to the final drink of the evening, everything happens just a few steps from your room.
           </p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://www.goatbeachclubphuket.com/food-menu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#23211E] text-[#FAF7F2] hover:bg-[#A38B68] text-xs font-semibold uppercase tracking-[0.15em] transition-all shadow-md cursor-pointer group"
+            >
+              <Utensils size={14} className="text-[#C5A880] group-hover:text-white transition-colors" />
+              <span>VIEW GOAT FOOD MENU</span>
+              <ExternalLink size={13} />
+            </a>
+          </div>
         </div>
 
         {/* 5 Core Pillars Grid matching Section 8 of SEO Pack */}
@@ -218,12 +231,15 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
             Complimentary access to GOAT Beach Club is included for all Elia guests throughout their stay on Bang Tao Beach.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={onOpenReservation}
-              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
+            <a
+              href="https://www.goatbeachclubphuket.com/food-menu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md inline-flex items-center gap-2"
             >
-              BOOK YOUR STAY
-            </button>
+              <span>VIEW GOAT FOOD MENU</span>
+              <ExternalLink size={13} />
+            </a>
             <button
               onClick={() => onNavigate('goat-beach-club')}
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"

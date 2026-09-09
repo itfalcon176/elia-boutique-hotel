@@ -77,7 +77,7 @@ export default function LocationPage() {
                 Conveniently accessible by private car, taxi, or airport transfer. 40 minutes south of Phuket International Airport (HKT).
               </p>
               <a
-                href="https://maps.google.com/?q=Bang+Tao+Beach+Phuket+Thailand"
+                href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold text-xs uppercase tracking-widest hover:bg-[#A38B68] transition-all shadow-md"
