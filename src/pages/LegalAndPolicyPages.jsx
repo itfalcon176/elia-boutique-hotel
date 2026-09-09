@@ -130,7 +130,7 @@ export default function LegalAndPolicyPages({ pageType, onNavigate }) {
           sections: [
             {
               heading: 'From Phuket International Airport (HKT)',
-              content: 'Elia Phuket is located approximately 18 km (25-30 minutes drive) south of Phuket International Airport. Take Route 4026 south, merge onto Route 402, and turn right toward Cherngtalay / Bang Tao Beach. Our private entrance is located directly along the Bang Tao beachfront road adjacent to GOAT Beach Club.',
+              content: 'Elia Phuket is located approximately 18 km (40 minutes drive) south of Phuket International Airport. Take Route 4026 south, merge onto Route 402, and turn right toward Cherngtalay / Bang Tao Beach. Our private entrance is located directly along the Bang Tao beachfront road adjacent to GOAT Beach Club.',
             },
             {
               heading: 'Complimentary VIP Limousine Transfer',

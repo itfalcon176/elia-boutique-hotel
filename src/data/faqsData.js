@@ -44,8 +44,8 @@ export const top10GuestFaqs = [
     category: 'Top 10 Essentials',
     categoryKey: 'services',
     question: 'Does Elia arrange airport transfers and taxis?',
-    answer: 'Yes. Private airport transfers to/from Phuket International Airport (HKT, approx. 25–30 mins), local taxis, and private chauffeured cars can be arranged seamlessly through our concierge team.',
-    highlights: ['25–30 mins from Phuket Airport (HKT)', 'Private air-conditioned fleet', 'Arranged via Concierge App / WhatsApp'],
+    answer: 'Yes. Private airport transfers to/from Phuket International Airport (HKT, approx. 40 mins), local taxis, and private chauffeured cars can be arranged seamlessly through our concierge team.',
+    highlights: ['40 mins from Phuket Airport (HKT)', 'Private air-conditioned fleet', 'Arranged via Concierge App / WhatsApp'],
   },
   {
     id: 7,

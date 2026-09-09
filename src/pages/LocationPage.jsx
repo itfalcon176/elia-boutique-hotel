@@ -3,7 +3,7 @@ import { MapPin, Navigation, Plane, Car, Compass, Clock, Phone, Mail } from 'luc
 
 export default function LocationPage() {
   const nearbyHighlights = [
-    { title: 'Phuket International Airport (HKT)', distance: '25 Minutes', desc: 'Direct luxury private airport limousine transfer available 24/7.' },
+    { title: 'Phuket International Airport (HKT)', distance: '40 Minutes', desc: 'Direct luxury private airport limousine transfer available 24/7.' },
     { title: 'Bang Tao Beach Promenade', distance: '0 Minutes (Direct Beach Access)', desc: 'Step directly onto 8 kilometers of white sand and sunset beach clubs.' },
     { title: 'Boat Avenue & Porto de Phuket', distance: '5 Minutes', desc: 'Vibrant dining hubs, boutique shopping, and organic night markets.' },
     { title: 'Phang Nga Bay Yacht Pier', distance: '30 Minutes', desc: 'Private catamaran departures to Phi Phi, Similan, and James Bond Islands.' },
@@ -41,7 +41,7 @@ export default function LocationPage() {
               <div className="space-y-4 text-xs text-[#6E6A63] font-light font-sans mb-8">
                 <div className="flex items-start gap-3">
                   <MapPin size={18} className="text-[#A38B68] shrink-0 mt-0.5" />
-                  <span>Bang Tao Beach, Thalang District, Phuket 83110, Thailand</span>
+                  <span>82/9 หมู่ 3, Bang Tao Beach, Choeng Thale, Thalang District, Phuket 83110, Thailand</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone size={18} className="text-[#A38B68] shrink-0" />
@@ -74,7 +74,7 @@ export default function LocationPage() {
                 Bang Tao Beach Frontline
               </h3>
               <p className="text-xs text-[#6E6A63] font-light mb-6 font-sans">
-                Conveniently accessible by private car, taxi, or airport transfer. 25 minutes south of Phuket International Airport (HKT).
+                Conveniently accessible by private car, taxi, or airport transfer. 40 minutes south of Phuket International Airport (HKT).
               </p>
               <a
                 href="https://maps.google.com/?q=Bang+Tao+Beach+Phuket+Thailand"

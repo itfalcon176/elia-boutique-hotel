@@ -68,9 +68,9 @@ export const experiencesData = {
       id: 'transfers-taxis',
       title: 'Airport Transfers & Private Taxis',
       tagline: 'Effortless VIP Travel from the Moment You Land',
-      description: 'Start your holiday smoothly. Located only 25 minutes from Phuket International Airport (HKT), our private Mercedes fleet and premium vans provide seamless airport pickups and on-demand island chauffeur service.',
+      description: 'Start your holiday smoothly. Located only 40 minutes from Phuket International Airport (HKT), our private Mercedes fleet and premium vans provide seamless airport pickups and on-demand island chauffeur service.',
       items: [
-        'Private Mercedes Benz / Executive Van airport transfers (25 mins from HKT)',
+        'Private Mercedes Benz / Executive Van airport transfers (40 mins from HKT)',
         'Airport VIP Fast-Track immigration service on arrival',
         'On-demand private chauffeur by the hour or full day',
         'Reliable local taxi booking via your WhatsApp concierge',
