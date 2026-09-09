@@ -148,3 +148,32 @@ body {
   animation-play-state: paused;
 }
 
+/* Seamless Multi-Language Translation Styles (Hide default Google banners & frames) */
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-te-banner-frame,
+.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-te-spinner-pos {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+font[color] {
+  color: inherit !important;
+}
+
+

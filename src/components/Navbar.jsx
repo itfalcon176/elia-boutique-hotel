@@ -80,6 +80,26 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const langDropdownRef = useRef(null);
 
+  // Restore selected language from storage/cookies on mount
+  useEffect(() => {
+    try {
+      const savedCode = localStorage.getItem('elia_preferred_lang');
+      if (savedCode) {
+        const match = languages.find((l) => l.code === savedCode);
+        if (match) setSelectedLang(match);
+      } else {
+        const matchCookie = document.cookie.match(/googtrans=\/en\/([^;]+)/);
+        if (matchCookie && matchCookie[1]) {
+          const mapping = { EN: 'en', TH: 'th', RU: 'ru', ZH: 'zh-CN', FR: 'fr', DE: 'de' };
+          const found = languages.find((l) => mapping[l.code] === matchCookie[1]);
+          if (found) setSelectedLang(found);
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (langDropdownRef.current && !langDropdownRef.current.contains(e.target)) {
@@ -101,6 +121,51 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleSelectLanguage = (lang) => {
+    setSelectedLang(lang);
+    setLangDropdownOpen(false);
+
+    try {
+      localStorage.setItem('elia_preferred_lang', lang.code);
+    } catch (e) {
+      // ignore
+    }
+
+    const langMapping = {
+      EN: 'en',
+      TH: 'th',
+      RU: 'ru',
+      ZH: 'zh-CN',
+      FR: 'fr',
+      DE: 'de',
+    };
+
+    const target = langMapping[lang.code] || 'en';
+    const host = window.location.hostname;
+
+    if (target === 'en') {
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${host};`;
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${host};`;
+      document.cookie = `googtrans=/en/en; path=/;`;
+      document.cookie = `googtrans=/en/en; path=/; domain=${host};`;
+    } else {
+      const cookieVal = `/en/${target}`;
+      document.cookie = `googtrans=${cookieVal}; path=/;`;
+      document.cookie = `googtrans=${cookieVal}; path=/; domain=${host};`;
+      document.cookie = `googtrans=${cookieVal}; path=/; domain=.${host};`;
+    }
+
+    // Trigger Google Translate Combo box or reload if needed
+    const select = document.querySelector('.goog-te-combo');
+    if (select) {
+      select.value = target;
+      select.dispatchEvent(new Event('change'));
+    } else {
+      window.location.reload();
+    }
+  };
 
   // Header items matching Section 22 of SEO Pack:
   // ROOMS & SUITES | EAT & DRINK | WELLNESS | EXPERIENCES | GALLERY | ABOUT | CONTACT | BOOK NOW
@@ -330,10 +395,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                             <button
                               key={lang.code}
                               type="button"
-                              onClick={() => {
-                                setSelectedLang(lang);
-                                setLangDropdownOpen(false);
-                              }}
+                              onClick={() => handleSelectLanguage(lang)}
                               className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all cursor-pointer ${
                                 isSelected
                                   ? 'bg-[#23211E] text-white shadow-sm'
@@ -507,7 +569,10 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                     <button
                       key={lang.code}
                       type="button"
-                      onClick={() => setSelectedLang(lang)}
+                      onClick={() => {
+                        handleSelectLanguage(lang);
+                        setMobileMenuOpen(false);
+                      }}
                       className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center gap-1.5 cursor-pointer ${
                         isSelected
                           ? 'bg-[#23211E] text-white border-[#23211E] shadow-sm'
