@@ -3,13 +3,73 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, Sparkles, ArrowRight, Globe, Check } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
+// Crisp Vector SVG Flag Components for 100% Consistent Cross-Platform Rendering (iOS, Android, Windows, Mac)
+const FlagGB = ({ className = 'w-5 h-3.5' }) => (
+  <svg viewBox="0 0 60 40" className={`inline-block shrink-0 rounded-xs shadow-[0_0_1px_rgba(0,0,0,0.4)] ${className}`} aria-hidden="true">
+    <clipPath id="uk-flag-clip">
+      <rect width="60" height="40" rx="1" />
+    </clipPath>
+    <g clipPath="url(#uk-flag-clip)">
+      <rect width="60" height="40" fill="#012169" />
+      <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" strokeWidth="6" />
+      <path d="M0,0 L60,40" stroke="#C8102E" strokeWidth="2.2" strokeDasharray="30,30" />
+      <path d="M60,0 L0,40" stroke="#C8102E" strokeWidth="2.2" strokeDasharray="30,30" strokeDashoffset="30" />
+      <path d="M30,0 v40 M0,20 h60" stroke="#fff" strokeWidth="10" />
+      <path d="M30,0 v40 M0,20 h60" stroke="#C8102E" strokeWidth="6" />
+    </g>
+  </svg>
+);
+
+const FlagTH = ({ className = 'w-5 h-3.5' }) => (
+  <svg viewBox="0 0 60 40" className={`inline-block shrink-0 rounded-xs shadow-[0_0_1px_rgba(0,0,0,0.4)] ${className}`} aria-hidden="true">
+    <rect width="60" height="40" rx="1" fill="#A51931" />
+    <rect y="6.67" width="60" height="26.67" fill="#F4F5F8" />
+    <rect y="13.33" width="60" height="13.33" fill="#2D2A4A" />
+  </svg>
+);
+
+const FlagRU = ({ className = 'w-5 h-3.5' }) => (
+  <svg viewBox="0 0 60 40" className={`inline-block shrink-0 rounded-xs shadow-[0_0_1px_rgba(0,0,0,0.4)] border border-black/10 ${className}`} aria-hidden="true">
+    <rect width="60" height="40" rx="1" fill="#FFFFFF" />
+    <rect y="13.33" width="60" height="26.67" fill="#0039A6" />
+    <rect y="26.67" width="60" height="13.33" fill="#D52B1E" />
+  </svg>
+);
+
+const FlagCN = ({ className = 'w-5 h-3.5' }) => (
+  <svg viewBox="0 0 60 40" className={`inline-block shrink-0 rounded-xs shadow-[0_0_1px_rgba(0,0,0,0.4)] ${className}`} aria-hidden="true">
+    <rect width="60" height="40" rx="1" fill="#DE2910" />
+    <polygon points="10,3 12,9 18,9 13,13 15,19 10,15 5,19 7,13 2,9 8,9" fill="#FFDE00" transform="scale(0.85) translate(2, 2)" />
+    <polygon points="20,4 21,7 24,7 21.5,9 22.5,12 20,10 17.5,12 18.5,9 16,7 19,7" fill="#FFDE00" transform="scale(0.45) translate(22, 1)" />
+    <polygon points="20,4 21,7 24,7 21.5,9 22.5,12 20,10 17.5,12 18.5,9 16,7 19,7" fill="#FFDE00" transform="scale(0.45) translate(27, 6)" />
+    <polygon points="20,4 21,7 24,7 21.5,9 22.5,12 20,10 17.5,12 18.5,9 16,7 19,7" fill="#FFDE00" transform="scale(0.45) translate(27, 13)" />
+    <polygon points="20,4 21,7 24,7 21.5,9 22.5,12 20,10 17.5,12 18.5,9 16,7 19,7" fill="#FFDE00" transform="scale(0.45) translate(22, 18)" />
+  </svg>
+);
+
+const FlagFR = ({ className = 'w-5 h-3.5' }) => (
+  <svg viewBox="0 0 60 40" className={`inline-block shrink-0 rounded-xs shadow-[0_0_1px_rgba(0,0,0,0.4)] border border-black/10 ${className}`} aria-hidden="true">
+    <rect width="20" height="40" fill="#002395" rx="1" />
+    <rect x="20" width="20" height="40" fill="#FFFFFF" />
+    <rect x="40" width="20" height="40" fill="#ED2939" rx="1" />
+  </svg>
+);
+
+const FlagDE = ({ className = 'w-5 h-3.5' }) => (
+  <svg viewBox="0 0 60 40" className={`inline-block shrink-0 rounded-xs shadow-[0_0_1px_rgba(0,0,0,0.4)] ${className}`} aria-hidden="true">
+    <rect width="60" height="40" rx="1" fill="#000000" />
+    <rect y="13.33" width="60" height="26.67" fill="#DD0000" />
+    <rect y="26.67" width="60" height="13.33" fill="#FFCE00" />
+  </svg>
+);
+
 const languages = [
-  { code: 'EN', name: 'English', native: 'English', flag: '🇬🇧' },
-  { code: 'TH', name: 'Thailand', native: 'ภาษาไทย', flag: '🇹🇭' },
-  { code: 'RU', name: 'Russian', native: 'Русский', flag: '🇷🇺' },
-  { code: 'ZH', name: 'Chinese', native: '中文', flag: '🇨🇳' },
-  { code: 'FR', name: 'French', native: 'Français', flag: '🇫🇷' },
-  { code: 'DE', name: 'German', native: 'Deutsch', flag: '🇩🇪' },
+  { code: 'EN', name: 'English', native: 'English', FlagComponent: FlagGB },
+  { code: 'TH', name: 'Thailand', native: 'ภาษาไทย', FlagComponent: FlagTH },
+  { code: 'RU', name: 'Russian', native: 'Русский', FlagComponent: FlagRU },
+  { code: 'ZH', name: 'Chinese', native: '中文', FlagComponent: FlagCN },
+  { code: 'FR', name: 'French', native: 'Français', FlagComponent: FlagFR },
+  { code: 'DE', name: 'German', native: 'Deutsch', FlagComponent: FlagDE },
 ];
 
 export default function Navbar({ activePage, setActivePage, onOpenReservation }) {
@@ -235,7 +295,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                 <button
                   type="button"
                   onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                  className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-full border transition-all duration-300 cursor-pointer ${
+                  className={`flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-full border transition-all duration-300 cursor-pointer ${
                     isLightHeader
                       ? 'bg-white/90 text-[#23211E] border-[#A38B68]/30 hover:border-[#A38B68] shadow-sm'
                       : 'bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-md shadow-sm'
@@ -244,7 +304,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   title={`Language: ${selectedLang.name}`}
                 >
                   <Globe size={13} className={isLightHeader ? 'text-[#A38B68]' : 'text-[#C5A880]'} />
-                  <span className="text-xs leading-none">{selectedLang.flag}</span>
+                  <selectedLang.FlagComponent className="w-4 h-3" />
                   <span className="text-[11px] uppercase tracking-wider font-semibold font-sans">{selectedLang.code}</span>
                   <ChevronDown size={11} className={`transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -274,14 +334,14 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                                 setSelectedLang(lang);
                                 setLangDropdownOpen(false);
                               }}
-                              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-left transition-all cursor-pointer ${
+                              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all cursor-pointer ${
                                 isSelected
                                   ? 'bg-[#23211E] text-white shadow-sm'
                                   : 'hover:bg-[#EFECE6] text-[#23211E]'
                               }`}
                             >
-                              <div className="flex items-center gap-2.5">
-                                <span className="text-base">{lang.flag}</span>
+                              <div className="flex items-center gap-3">
+                                <lang.FlagComponent className="w-5 h-3.5" />
                                 <div>
                                   <div className="text-xs font-semibold leading-none">{lang.name}</div>
                                   <div className={`text-[10px] mt-0.5 font-light ${isSelected ? 'text-white/75' : 'text-[#6E6A63]'}`}>
@@ -435,9 +495,12 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
             <div className="pt-3 border-t border-[#A38B68]/20">
               <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-[#A38B68] font-bold mb-2">
                 <span>Select Language</span>
-                <span className="text-xs">{selectedLang.flag} {selectedLang.name}</span>
+                <span className="text-xs flex items-center gap-1.5">
+                  <selectedLang.FlagComponent className="w-4 h-3" />
+                  {selectedLang.name}
+                </span>
               </div>
-              <div className="grid grid-cols-3 gap-1.5">
+              <div className="grid grid-cols-3 gap-2">
                 {languages.map((lang) => {
                   const isSelected = selectedLang.code === lang.code;
                   return (
@@ -445,13 +508,13 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                       key={lang.code}
                       type="button"
                       onClick={() => setSelectedLang(lang)}
-                      className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center gap-0.5 cursor-pointer ${
+                      className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center gap-1.5 cursor-pointer ${
                         isSelected
                           ? 'bg-[#23211E] text-white border-[#23211E] shadow-sm'
                           : 'bg-white text-[#23211E] border-[#A38B68]/20 hover:border-[#A38B68]'
                       }`}
                     >
-                      <span className="text-sm">{lang.flag}</span>
+                      <lang.FlagComponent className="w-5 h-3.5" />
                       <span className="text-[10px] font-semibold">{lang.name}</span>
                     </button>
                   );
