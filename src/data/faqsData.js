@@ -20,8 +20,8 @@ export const top10GuestFaqs = [
     category: 'Top 10 Essentials',
     categoryKey: 'dining',
     question: 'Is breakfast included and where is it served?',
-    answer: 'Breakfast is served daily at GOAT Beach Club right next to the hotel. Enjoy fresh barista coffee, artisan bakery items, tropical fruits, and made-to-order hot breakfast dishes with panoramic Andaman Sea views.',
-    highlights: ['Served at GOAT Beach Club', 'Fresh barista coffee & artisan bakery', 'Beachfront morning atmosphere'],
+    answer: 'Breakfast is served daily from 7:00 AM to mid-day (12:00 PM) at GOAT Beach Club right next to the hotel. Enjoy fresh barista coffee, artisan bakery items, tropical fruits, and made-to-order hot breakfast dishes with panoramic Andaman Sea views.',
+    highlights: ['Daily 7:00 AM – Mid-day (12:00 PM)', 'Served at GOAT Beach Club', 'Fresh barista coffee & artisan bakery'],
   },
   {
     id: 4,

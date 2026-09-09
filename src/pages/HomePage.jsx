@@ -27,7 +27,7 @@ export default function HomePage({
       </div>
 
       {/* FAQs Section */}
-      <FaqsSection />
+      <FaqsSection onNavigate={onNavigate} />
     </div>
   );
 }

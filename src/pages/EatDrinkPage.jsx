@@ -61,16 +61,16 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
             <div className="lg:col-span-6 space-y-4">
               <div className="flex items-center gap-2 text-[#8B6E3F]">
                 <Coffee size={18} />
-                <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Morning Rituals</span>
+                <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Morning Rituals • 7:00 AM – 12:00 PM (Mid-day)</span>
               </div>
               <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#23211E]">
                 Breakfast by the Beach
               </h2>
               <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
-                No enormous hotel buffet.
+                No enormous hotel buffet. Served daily from 7:00 AM to mid-day (12:00 PM) at GOAT Beach Club.
               </p>
               <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
-                Start your morning at GOAT with freshly prepared breakfast, proper coffee and the sea in front of you.
+                Start your morning at GOAT with freshly prepared breakfast, proper barista coffee and the sea in front of you.
               </p>
               <p className="text-xs sm:text-sm text-[#8B6E3F] font-serif italic">
                 Take your time. You're already where you need to be.

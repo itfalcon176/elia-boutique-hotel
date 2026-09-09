@@ -359,7 +359,7 @@ export default function ContactPage({ onNavigate }) {
 
         {/* FAQs Underneath Contact */}
         <div className="pt-12 border-t border-[#A38B68]/20">
-          <FaqsSection />
+          <FaqsSection onNavigate={onNavigate} />
         </div>
 
       </div>
