@@ -1,12 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, Sparkles, ArrowRight } from 'lucide-react';
+import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, Sparkles, ArrowRight, Globe, Check } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
+
+const languages = [
+  { code: 'EN', name: 'English', native: 'English', flag: '🇬🇧' },
+  { code: 'TH', name: 'Thailand', native: 'ภาษาไทย', flag: '🇹🇭' },
+  { code: 'RU', name: 'Russian', native: 'Русский', flag: '🇷🇺' },
+  { code: 'ZH', name: 'Chinese', native: '中文', flag: '🇨🇳' },
+  { code: 'FR', name: 'French', native: 'Français', flag: '🇫🇷' },
+  { code: 'DE', name: 'German', native: 'Deutsch', flag: '🇩🇪' },
+];
 
 export default function Navbar({ activePage, setActivePage, onOpenReservation }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [roomsDropdownOpen, setRoomsDropdownOpen] = useState(false);
+  const [selectedLang, setSelectedLang] = useState(languages[0]);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const langDropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (langDropdownRef.current && !langDropdownRef.current.contains(e.target)) {
+        setLangDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -193,11 +215,12 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               })}
             </nav>
 
-            {/* Right CTA Button: BOOK NOW */}
-            <div className="hidden sm:flex items-center gap-3">
+            {/* Right Header Actions: BOOK NOW + Luxury Language Selector */}
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              {/* Desktop BOOK NOW Button */}
               <button
-                onClick={onOpenReservation}
-                className={`flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md cursor-pointer ${
+                type="button"
+                className={`hidden sm:flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-5 lg:px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md cursor-pointer ${
                   isLightHeader
                     ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
                     : 'bg-gradient-to-r from-[#C5A880] to-[#9E8259] text-[#141312] font-bold hover:brightness-110 shadow-[0_0_20px_rgba(197,168,128,0.4)]'
@@ -206,6 +229,75 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                 <Calendar size={14} />
                 <span>BOOK NOW</span>
               </button>
+
+              {/* Luxury Language Selector Dropdown */}
+              <div className="relative" ref={langDropdownRef}>
+                <button
+                  type="button"
+                  onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                  className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-full border transition-all duration-300 cursor-pointer ${
+                    isLightHeader
+                      ? 'bg-white/90 text-[#23211E] border-[#A38B68]/30 hover:border-[#A38B68] shadow-sm'
+                      : 'bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-md shadow-sm'
+                  }`}
+                  aria-label="Select Language"
+                  title={`Language: ${selectedLang.name}`}
+                >
+                  <Globe size={13} className={isLightHeader ? 'text-[#A38B68]' : 'text-[#C5A880]'} />
+                  <span className="text-xs leading-none">{selectedLang.flag}</span>
+                  <span className="text-[11px] uppercase tracking-wider font-semibold font-sans">{selectedLang.code}</span>
+                  <ChevronDown size={11} className={`transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {/* Animated Dropdown Menu */}
+                <AnimatePresence>
+                  {langDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute right-0 top-full mt-2 w-56 bg-[#FAF7F2] text-[#23211E] rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.25)] border border-[#A38B68]/30 p-2 z-50 backdrop-blur-2xl"
+                    >
+                      <div className="px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#A38B68] font-bold border-b border-[#A38B68]/20 mb-1 flex items-center justify-between">
+                        <span>Language</span>
+                        <span className="text-[9px] lowercase font-normal text-[#6E6A63]">({languages.length})</span>
+                      </div>
+                      <div className="space-y-1">
+                        {languages.map((lang) => {
+                          const isSelected = selectedLang.code === lang.code;
+                          return (
+                            <button
+                              key={lang.code}
+                              type="button"
+                              onClick={() => {
+                                setSelectedLang(lang);
+                                setLangDropdownOpen(false);
+                              }}
+                              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-left transition-all cursor-pointer ${
+                                isSelected
+                                  ? 'bg-[#23211E] text-white shadow-sm'
+                                  : 'hover:bg-[#EFECE6] text-[#23211E]'
+                              }`}
+                            >
+                              <div className="flex items-center gap-2.5">
+                                <span className="text-base">{lang.flag}</span>
+                                <div>
+                                  <div className="text-xs font-semibold leading-none">{lang.name}</div>
+                                  <div className={`text-[10px] mt-0.5 font-light ${isSelected ? 'text-white/75' : 'text-[#6E6A63]'}`}>
+                                    {lang.native}
+                                  </div>
+                                </div>
+                              </div>
+                              {isSelected && <Check size={14} className="text-[#C5A880]" />}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
             {/* Mobile Hamburger Toggle */}
@@ -339,8 +431,36 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               </div>
             </div>
 
+            {/* Mobile Language Selector */}
+            <div className="pt-3 border-t border-[#A38B68]/20">
+              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-[#A38B68] font-bold mb-2">
+                <span>Select Language</span>
+                <span className="text-xs">{selectedLang.flag} {selectedLang.name}</span>
+              </div>
+              <div className="grid grid-cols-3 gap-1.5">
+                {languages.map((lang) => {
+                  const isSelected = selectedLang.code === lang.code;
+                  return (
+                    <button
+                      key={lang.code}
+                      type="button"
+                      onClick={() => setSelectedLang(lang)}
+                      className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center gap-0.5 cursor-pointer ${
+                        isSelected
+                          ? 'bg-[#23211E] text-white border-[#23211E] shadow-sm'
+                          : 'bg-white text-[#23211E] border-[#A38B68]/20 hover:border-[#A38B68]'
+                      }`}
+                    >
+                      <span className="text-sm">{lang.flag}</span>
+                      <span className="text-[10px] font-semibold">{lang.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Bottom Quick Info & CTA Footer */}
-            <div className="space-y-3 pt-4 border-t border-[#A38B68]/20">
+            <div className="space-y-3 pt-3 border-t border-[#A38B68]/20">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
