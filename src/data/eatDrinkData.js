@@ -26,7 +26,7 @@ export const eatDrinkData = {
       timing: '07:00 AM – 12:00 PM (Mid-day)',
       description: 'Start your island morning with freshly pressed cold juices, tropical fruit platters, house-baked sourdough pastries, organic eggs made-to-order, and signature avocado tartines. Choose between open-air seating with sand between your toes or our signature floating pool breakfast tray.',
       features: ['Floating Breakfast in Lagoon Pool', 'A La Carte Hot Entrees', 'Cold-Pressed Juice Bar', 'Organic Barista Coffee & Matcha'],
-      image: '/images/suite.png',
+      image: '/images/Breakfast.webp',
     },
     {
       id: 'goat-dining',

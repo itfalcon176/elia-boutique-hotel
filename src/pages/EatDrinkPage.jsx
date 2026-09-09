@@ -78,7 +78,7 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
             </div>
             <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <img
-                src="/images/suite.png"
+                src="/images/Breakfast.webp"
                 alt="Beachfront breakfast at GOAT Beach Club Bang Tao"
                 className="w-full h-full object-cover"
               />
