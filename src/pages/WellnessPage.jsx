@@ -176,12 +176,14 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
-                <button
-                  onClick={onOpenReservation}
-                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg"
+                <a
+                  href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20book%20a%20massage%20treatment."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg text-center"
                 >
-                  BOOK YOUR STAY
-                </button>
+                  BOOK YOUR MASSAGE
+                </a>
                 <a
                   href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20massage%20treatment."
                   target="_blank"
