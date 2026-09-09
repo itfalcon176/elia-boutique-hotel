@@ -3,13 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronDown,
   Sparkles,
-  Wifi,
   Clock,
   Waves,
   Phone,
   Check,
-  Copy,
-  CheckCheck,
   Calendar,
   ExternalLink,
 } from 'lucide-react';
@@ -34,13 +31,6 @@ const WhatsAppIcon = ({ size = 18, ...props }) => (
 
 export default function FaqsPage({ onNavigate, onOpenReservation }) {
   const [openIndex, setOpenIndex] = useState(0);
-  const [copiedField, setCopiedField] = useState(null);
-
-  const handleCopy = (text, field) => {
-    navigator.clipboard.writeText(text);
-    setCopiedField(field);
-    setTimeout(() => setCopiedField(null), 2000);
-  };
 
   return (
     <div className="pt-28 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
@@ -121,20 +111,13 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
           <div className="p-4 rounded-2xl bg-white border border-[#A38B68]/25 shadow-sm hover:shadow-md transition-all">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-8 h-8 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] flex items-center justify-center shrink-0">
-                <Wifi size={16} />
+                <Sparkles size={16} />
               </div>
               <span className="text-xs uppercase tracking-wider font-semibold text-[#23211E]">Free Fast Wi-Fi</span>
             </div>
-            <div className="flex items-center justify-between text-xs text-[#555047]">
-              <span>Network / Pass: <strong className="text-[#23211E]">Elia</strong></span>
-              <button
-                onClick={() => handleCopy('Elia', 'quick-wifi')}
-                className="p-1.5 rounded-lg hover:bg-[#FAF7F2] text-[#A38B68] hover:text-[#8B6E3F] transition-all cursor-pointer"
-                title="Copy Password"
-              >
-                {copiedField === 'quick-wifi' ? <CheckCheck size={14} className="text-green-600" /> : <Copy size={14} />}
-              </button>
-            </div>
+            <p className="text-xs text-[#555047]">
+              Complimentary high-speed fiber throughout all suites & beach club.
+            </p>
           </div>
 
           {/* Card 3: Beach Access */}
@@ -234,42 +217,6 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
                         </div>
                       )}
 
-                      {/* Interactive Wi-Fi Card for Q9 */}
-                      {faq.wifiNote && (
-                        <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-[#FAF7F2] to-white border border-[#A38B68]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-sans">
-                          <div className="flex items-center gap-6">
-                            <div className="flex items-center gap-2 text-[#23211E]">
-                              <Wifi size={16} className="text-[#A38B68]" />
-                              <span>
-                                <strong>Network:</strong> {faq.wifiNote.network}
-                              </span>
-                            </div>
-                            <div className="h-4 w-[1px] bg-[#A38B68]/30 hidden sm:block" />
-                            <div className="text-[#23211E]">
-                              <span>
-                                <strong>Password:</strong> {faq.wifiNote.password}
-                              </span>
-                            </div>
-                          </div>
-                          <button
-                            onClick={() => handleCopy(faq.wifiNote.password, `wifi-${faq.id}`)}
-                            className="px-3.5 py-1.5 rounded-lg bg-[#23211E] text-white hover:bg-[#A38B68] text-[11px] font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
-                          >
-                            {copiedField === `wifi-${faq.id}` ? (
-                              <>
-                                <CheckCheck size={13} className="text-green-400" />
-                                <span>COPIED!</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy size={13} />
-                                <span>COPY PASSWORD</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-                      )}
-
                       {/* Direct Action Links for key questions */}
                       {faq.id === 10 && (
                         <div className="mt-4 flex flex-wrap gap-2.5">
@@ -324,7 +271,7 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
               </a>
 
               <button
-                onClick={onOpenReservation}
+                onClick={() => (onNavigate ? onNavigate('rooms') : null)}
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
                 <Calendar size={15} />

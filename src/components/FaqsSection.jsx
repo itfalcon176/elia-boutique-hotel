@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Sparkles, Wifi } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 import { top10GuestFaqs, additionalGuestFaqs, allFaqs } from '../data/faqsData';
 
 export { top10GuestFaqs, additionalGuestFaqs, allFaqs };
@@ -64,19 +64,6 @@ export default function FaqsSection({ onNavigate }) {
                       <p className="text-[#6E6A63] text-xs sm:text-sm font-light leading-relaxed font-sans mt-3.5">
                         {faq.answer}
                       </p>
-
-                      {faq.wifiNote && (
-                        <div className="mt-3 p-3 rounded-xl bg-[#FAF7F2] border border-[#A38B68]/25 inline-flex items-center gap-4 text-xs font-sans">
-                          <div className="flex items-center gap-1.5 text-[#23211E]">
-                            <Wifi size={14} className="text-[#A38B68]" />
-                            <span><strong>Network:</strong> {faq.wifiNote.network}</span>
-                          </div>
-                          <div className="h-3 w-[1px] bg-[#A38B68]/30" />
-                          <div className="text-[#23211E]">
-                            <span><strong>Password:</strong> {faq.wifiNote.password}</span>
-                          </div>
-                        </div>
-                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>

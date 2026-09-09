@@ -69,8 +69,7 @@ export const top10GuestFaqs = [
     categoryKey: 'essentials',
     question: 'Is Wi-Fi free, and is it available throughout the hotel?',
     answer: 'Yes. High-speed complimentary Wi-Fi is available for all hotel guests throughout the property, including all suites, garden terraces, pool area, and GOAT Beach Club.',
-    wifiNote: { network: 'Elia', password: 'Elia' },
-    highlights: ['High-speed optical fiber', 'Network: Elia', 'Password: Elia'],
+    highlights: ['High-speed optical fiber', 'Available in all suites & beach club', 'Complimentary access'],
   },
   {
     id: 10,
