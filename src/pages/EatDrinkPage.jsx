@@ -31,7 +31,7 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-light tracking-wide text-[#23211E] mb-4">
-            Food and Drinks at <span className="italic text-gold-gradient font-serif">Elia</span>
+            Dining by GOAT Beach Club at <span className="italic text-gold-gradient font-serif">Elia</span>
           </h1>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
           
@@ -45,19 +45,6 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
           <p className="text-[#6E6A63] font-light text-xs sm:text-sm font-sans leading-relaxed max-w-xl mx-auto mt-2">
             From the first coffee of the morning to the final drink of the evening, everything happens just a few steps from your room.
           </p>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="https://www.goatbeachclubphuket.com/food-menu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#23211E] text-[#FAF7F2] hover:bg-[#A38B68] text-xs font-semibold uppercase tracking-[0.15em] transition-all shadow-md cursor-pointer group"
-            >
-              <Utensils size={14} className="text-[#C5A880] group-hover:text-white transition-colors" />
-              <span>VIEW GOAT FOOD MENU</span>
-              <ExternalLink size={13} />
-            </a>
-          </div>
         </div>
 
         {/* 5 Core Pillars Grid matching Section 8 of SEO Pack */}
