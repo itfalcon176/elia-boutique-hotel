@@ -102,7 +102,7 @@ export default function CloudbedsBooking({
             </button>
 
             <a
-              href={`https://hotels.cloudbeds.com/reservation/${propertyCode}`}
+              href={`https://us2.cloudbeds.com/reservation/${propertyCode}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#A38B68]/15 hover:bg-[#A38B68]/25 text-[#826C4B] text-xs uppercase tracking-widest font-semibold transition-all"

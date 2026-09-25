@@ -171,7 +171,7 @@ export default function CloudbedsBookNow() {
                     Try again
                   </button>
                   <a
-                    href={`https://hotels.cloudbeds.com/reservation/${PROPERTY_CODE}`}
+                    href={`https://us2.cloudbeds.com/reservation/${PROPERTY_CODE}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-full border border-[#A38B68]/40 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#826C4B]"
