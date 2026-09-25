@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 
-const FRAME_NUMBERS = [1, 2, 3, 4, 6, 8, 7];
-const FRAMES = FRAME_NUMBERS.map((n) => `/preloader/frame-${String(n).padStart(2, '0')}.png`);
-const FRAME_MS = 520;
-const MIN_VISIBLE_MS = 4600;
+const FRAME_COUNT = 55;
+const FRAMES = Array.from({ length: FRAME_COUNT }, (_, index) => (
+  `/preloader/seq/${String(index + 1).padStart(3, '0')}.webp`
+));
+const FRAME_MS = 86;
+const HOLD_MS = 900;
+const MIN_VISIBLE_MS = FRAME_COUNT * FRAME_MS + HOLD_MS;
 
 export default function Preloader() {
   const [frame, setFrame] = useState(0);
@@ -12,55 +15,60 @@ export default function Preloader() {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const started = performance.now();
     let closed = false;
-    let intervalId = 0;
+    let rafId = 0;
     let exitTimer = 0;
-    let capTimer = 0;
+    let cancelled = false;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    const close = () => {
+    const finish = (delay) => {
       if (closed) return;
       closed = true;
-      const elapsed = performance.now() - started;
-      const wait = Math.max(0, MIN_VISIBLE_MS - elapsed);
       exitTimer = window.setTimeout(() => {
         setClosing(true);
         document.body.style.overflow = previousOverflow;
-      }, wait);
+      }, delay);
     };
 
     if (reduceMotion) {
       setFrame(FRAMES.length - 1);
-      exitTimer = window.setTimeout(() => {
-        setClosing(true);
-        document.body.style.overflow = previousOverflow;
-        closed = true;
-      }, 350);
+      finish(350);
     } else {
-      let index = 0;
-      intervalId = window.setInterval(() => {
-        index += 1;
-        if (index >= FRAMES.length) {
-          window.clearInterval(intervalId);
-          return;
-        }
-        setFrame(index);
-      }, FRAME_MS);
+      const preload = Promise.all(FRAMES.map((src) => new Promise((resolve) => {
+        const image = new Image();
+        image.onload = () => resolve();
+        image.onerror = () => resolve();
+        image.src = src;
+      })));
+      const preloadCap = new Promise((resolve) => {
+        window.setTimeout(resolve, 1200);
+      });
 
-      if (document.readyState === 'complete') close();
-      else window.addEventListener('load', close, { once: true });
-      capTimer = window.setTimeout(close, 7000);
+      Promise.race([preload, preloadCap]).then(() => {
+        if (cancelled) return;
+        const playFrom = performance.now();
+        let shown = -1;
+        const tick = (now) => {
+          if (cancelled) return;
+          const index = Math.min(FRAMES.length - 1, Math.floor((now - playFrom) / FRAME_MS));
+          if (index !== shown) {
+            shown = index;
+            setFrame(index);
+          }
+          if (index < FRAMES.length - 1) rafId = window.requestAnimationFrame(tick);
+        };
+        rafId = window.requestAnimationFrame(tick);
+        finish(MIN_VISIBLE_MS);
+      });
     }
 
     return () => {
+      cancelled = true;
       closed = true;
-      window.clearInterval(intervalId);
+      window.cancelAnimationFrame(rafId);
       window.clearTimeout(exitTimer);
-      window.clearTimeout(capTimer);
-      window.removeEventListener('load', close);
       document.body.style.overflow = previousOverflow;
     };
   }, []);
@@ -83,19 +91,13 @@ export default function Preloader() {
       aria-label="Loading Elia Boutique Hotel"
     >
       <div className={`flex w-[min(92vw,640px)] flex-col items-center transition-transform duration-1000 ease-in-out ${closing ? 'scale-[1.03]' : 'scale-100'}`}>
-        <div
-          className="relative aspect-[960/420] w-full"
-          style={{
-            WebkitMaskImage: 'radial-gradient(ellipse at center, #000 72%, transparent 96%)',
-            maskImage: 'radial-gradient(ellipse at center, #000 72%, transparent 96%)',
-          }}
-        >
+        <div className="relative aspect-[800/350] w-full">
           {FRAMES.map((src, index) => (
             <img
               key={src}
               src={src}
               alt=""
-              className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ease-in-out ${
+              className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-150 ease-linear ${
                 index === frame ? 'opacity-100' : 'opacity-0'
               }`}
             />
@@ -104,7 +106,7 @@ export default function Preloader() {
 
         <div className="mt-1 h-px w-28 overflow-hidden bg-white/10">
           <div
-            className="h-full bg-[#C5A880] transition-[width] duration-700 ease-in-out"
+            className="h-full bg-[#C5A880] transition-[width] duration-150 ease-linear"
             style={{ width: `${((frame + 1) / FRAMES.length) * 100}%` }}
           />
         </div>
