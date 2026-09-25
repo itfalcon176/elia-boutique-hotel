@@ -9,9 +9,9 @@ function popupSize() {
     return { width: '100%', height: '100%' };
   }
   if (width < 1024) {
-    return { width: 'min(680px, 92vw)', height: 'min(760px, 86dvh)' };
+    return { width: 'min(700px, 92vw)', height: 'min(760px, 86dvh)' };
   }
-  return { width: 'min(860px, 84vw)', height: 'min(700px, 80dvh)' };
+  return { width: 'min(880px, 86vw)', height: 'min(740px, 84dvh)' };
 }
 
 function isPopupOpen() {
