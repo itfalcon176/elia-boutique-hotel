@@ -286,7 +286,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
                   <span className="text-center leading-snug">{reserveLabel}</span>
                 </button>
                 <p className="text-[10px] text-center text-[#FAF7F2]/55 font-light leading-relaxed">
-                  Opens live availability for this room.
+                  Opens live availability on this page. Choose this room inside the reservation panel.
                 </p>
 
                 <a
