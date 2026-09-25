@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import { BedDouble, Users, Maximize, Check, ArrowRight, Sparkles, Waves, Calendar } from 'lucide-react';
+import { BedDouble, Users, Maximize, ArrowRight, Sparkles, Waves } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
-export default function RoomsPage({ onNavigate, onOpenReservation }) {
+export default function RoomsPage({ onNavigate }) {
   const getCtaLabel = (slug) => {
     switch (slug) {
       case 'garden-beach-room':
@@ -177,13 +177,6 @@ export default function RoomsPage({ onNavigate, onOpenReservation }) {
                         <span>{getCtaLabel(room.slug)}</span>
                         <ArrowRight size={14} />
                       </button>
-
-                      <button
-                        onClick={onOpenReservation}
-                        className="w-full sm:w-auto py-3 px-6 rounded-full border border-[#A38B68] text-[#8B6E3F] hover:bg-[#A38B68]/15 text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer"
-                      >
-                        CHECK AVAILABILITY
-                      </button>
                     </div>
 
                   </div>
@@ -201,15 +194,9 @@ export default function RoomsPage({ onNavigate, onOpenReservation }) {
           <h3 className="font-serif text-2xl sm:text-4xl font-light mb-4">
             The Simplest Way to Stay
           </h3>
-          <p className="text-[#FAF7F2]/80 text-xs sm:text-sm font-light max-w-2xl mx-auto leading-relaxed mb-6 font-sans">
+          <p className="text-[#FAF7F2]/80 text-xs sm:text-sm font-light max-w-2xl mx-auto leading-relaxed font-sans">
             Select your dates, choose your room and book securely online. For standard direct reservations, 50% of the accommodation total is payable when booking. The remaining balance is payable before arrival in accordance with your booking confirmation.
           </p>
-          <button
-            onClick={onOpenReservation}
-            className="px-8 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 shadow-lg cursor-pointer transition-all"
-          >
-            CHECK AVAILABILITY
-          </button>
         </div>
 
       </div>
