@@ -4,10 +4,13 @@ const FRAME_COUNT = 12;
 const FRAMES = Array.from({ length: FRAME_COUNT }, (_, index) => (
   `/preloader/frame-${String(index + 1).padStart(2, '0')}.webp`
 ));
-const SEGMENT_MS = 170;
-const DRAW_MS = (FRAME_COUNT - 1) * SEGMENT_MS;
-const HOLD_MS = 480;
-const FADE_MS = 400;
+const DRAW_MS = 2400;
+const HOLD_MS = 560;
+const FADE_MS = 480;
+
+function easeOutCubic(amount) {
+  return 1 - (1 - amount) ** 3;
+}
 
 function shouldPlayPreloader() {
   if (typeof window === 'undefined') return false;
@@ -81,8 +84,8 @@ export default function Preloader() {
         const tick = (now) => {
           if (cancelled) return;
           const elapsed = now - playFrom;
-          const next = Math.min(FRAME_COUNT - 1, elapsed / SEGMENT_MS);
-          setProgress(next);
+          const eased = easeOutCubic(Math.min(1, elapsed / DRAW_MS));
+          setProgress(eased * (FRAME_COUNT - 1));
           if (elapsed < DRAW_MS) rafId = window.requestAnimationFrame(tick);
         };
         rafId = window.requestAnimationFrame(tick);
@@ -109,24 +112,34 @@ export default function Preloader() {
 
   return (
     <div
-      className={`elia-preloader fixed inset-0 z-[80] flex items-center justify-center bg-[#141312] ${
+      className={`elia-preloader fixed inset-0 z-[80] flex items-center justify-center ${
         closing ? 'elia-preloader-leave pointer-events-none' : ''
       }`}
       role="status"
       aria-live="polite"
       aria-label="Loading Elia Boutique Hotel"
     >
-      <div className="relative aspect-[384/341] w-[min(86vw,440px)]">
-        {FRAMES.map((src, index) => (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            draggable="false"
-            className="absolute inset-0 h-full w-full object-contain select-none"
-            style={{ opacity: frameOpacity(index, progress) }}
-          />
-        ))}
+      <div
+        className="relative flex items-center justify-center"
+        style={{ transform: `scale(${0.94 + (progress / (FRAME_COUNT - 1)) * 0.06})` }}
+      >
+        <div
+          className="elia-preloader-glow pointer-events-none absolute"
+          style={{ opacity: 0.35 + (progress / (FRAME_COUNT - 1)) * 0.65 }}
+          aria-hidden="true"
+        />
+        <div className="relative aspect-[384/293] w-[min(88vw,520px)]">
+          {FRAMES.map((src, index) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              draggable="false"
+              className="absolute inset-0 h-full w-full object-contain select-none"
+              style={{ opacity: frameOpacity(index, progress) }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
