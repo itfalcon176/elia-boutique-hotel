@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   BedDouble,
@@ -32,8 +32,23 @@ const WhatsAppIcon = ({ size = 18, ...props }) => (
   </svg>
 );
 
+function useCompactBookingBar() {
+  const [compact, setCompact] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 1023px)');
+    const apply = () => setCompact(query.matches);
+    apply();
+    query.addEventListener('change', apply);
+    return () => query.removeEventListener('change', apply);
+  }, []);
+
+  return compact;
+}
+
 export default function RoomDetailPage({ roomSlug, onNavigate }) {
   const room = getRoomBySlug(roomSlug) || roomsData[0];
+  const compactBookingBar = useCompactBookingBar();
 
   // Other room suggestions
   const otherRooms = roomsData.filter((r) => r.id !== room.id);
@@ -275,7 +290,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
 
               {/* Action Buttons */}
               <div className="space-y-3">
-                <AccommodationDatePicker roomId={room.cloudbedsRoomId} />
+                {!compactBookingBar && <AccommodationDatePicker roomId={room.cloudbedsRoomId} />}
                 <p className="text-[10px] text-center text-[#FAF7F2]/55 font-light leading-relaxed">
                   Select dates to see live rates for this room, then continue to book it.
                 </p>
@@ -333,9 +348,11 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
 
       </div>
 
-      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-[#A38B68]/25 bg-[#181715]/95 backdrop-blur-md px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-        <AccommodationDatePicker roomId={room.cloudbedsRoomId} />
-      </div>
+      {compactBookingBar && (
+        <div className="fixed bottom-0 inset-x-0 z-40 border-t border-[#A38B68]/25 bg-[#181715]/95 backdrop-blur-md px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <AccommodationDatePicker roomId={room.cloudbedsRoomId} />
+        </div>
+      )}
     </div>
   );
 }
