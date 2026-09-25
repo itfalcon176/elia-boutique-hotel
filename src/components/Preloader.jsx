@@ -30,6 +30,7 @@ export default function Preloader() {
   const [progress, setProgress] = useState(0);  // 0-100
   const [gone, setGone] = useState(!playOnLoad);
 
+
   useEffect(() => {
     if (!playOnLoad) return undefined;
 
