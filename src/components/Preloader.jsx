@@ -8,12 +8,31 @@ const FRAME_MS = 86;
 const HOLD_MS = 900;
 const MIN_VISIBLE_MS = FRAME_COUNT * FRAME_MS + HOLD_MS;
 
+function shouldPlayPreloader() {
+  if (typeof window === 'undefined') return false;
+  const navigation = performance.getEntriesByType('navigation')[0];
+  if (navigation?.type === 'back_forward') return false;
+  if (navigation?.type === 'reload') return true;
+
+  const path = window.location.pathname.replace(/\/$/, '').toLowerCase();
+  const params = new URLSearchParams(window.location.search);
+  const fromDatePicker = path === '/book-your-stay'
+    || path === '/book'
+    || path === '/reserve'
+    || params.has('checkin')
+    || params.has('checkout')
+    || (params.get('widget_source') || '').includes('date_picker');
+  return !fromDatePicker;
+}
+
 export default function Preloader() {
+  const playOnLoad = shouldPlayPreloader();
   const [frame, setFrame] = useState(0);
   const [closing, setClosing] = useState(false);
-  const [gone, setGone] = useState(false);
+  const [gone, setGone] = useState(!playOnLoad);
 
   useEffect(() => {
+    if (!playOnLoad) return undefined;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let closed = false;
     let rafId = 0;
@@ -71,7 +90,7 @@ export default function Preloader() {
       window.clearTimeout(exitTimer);
       document.body.style.overflow = previousOverflow;
     };
-  }, []);
+  }, [playOnLoad]);
 
   useEffect(() => {
     if (!closing) return undefined;
