@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { roomsData, getRoomBySlug } from '../data/roomsData';
 import AccommodationDatePicker from '../components/booking/AccommodationDatePicker';
+import RoomPropertyDatePicker from '../components/booking/RoomPropertyDatePicker';
 
 const WhatsAppIcon = ({ size = 18, ...props }) => (
   <svg
@@ -206,6 +207,8 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
                 </div>
               </div>
             </div>
+
+            <RoomPropertyDatePicker key={room.id} />
 
             {/* Room Story / Full Description */}
             <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[#A38B68]/25 shadow-md">
