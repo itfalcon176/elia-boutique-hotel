@@ -43,16 +43,20 @@ export default function HeroSection({
 }) {
   return (
     <section id="home" className="relative w-full min-h-screen lg:min-h-[100vh] min-h-[720px] overflow-x-clip bg-[#141312] select-none flex flex-col justify-between pt-24 pb-8">
-      {/* Background Hero Image */}
+      {/* Background hero video */}
       <div className="absolute inset-0 overflow-hidden z-0">
-      <img
-        src="/banner/Elia boutique hotel banner.jpeg"
-        alt="Elia Boutique Hotel Bang Tao Beach Phuket"
-        className="absolute inset-0 w-full h-full object-cover scale-105 origin-center"
-        onError={(e) => {
-          e.target.src = '/banner/banner.jpeg';
-        }}
-      />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/banner/Elia boutique hotel banner.jpeg"
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/herbannervdo/16475202_3840_2160_60fps.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Subtle Natural Multi-Layer Contrast Overlay (Seamless & Invisible to visitors) */}
