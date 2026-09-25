@@ -614,7 +614,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-[#A38B68]/20 order-2 lg:order-1">
               <img
-                src="/images/suite.png"
+                src="/accommodation/garden-beach-room.jpg"
                 alt="Garden Beach Room at Elia Boutique Hotel Phuket"
                 className="w-full h-full object-cover"
               />
