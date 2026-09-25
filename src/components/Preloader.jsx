@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const LOGO_SRC = '/preloader/elia-logo.webp';
+const LOGO_SRC = '/preloader/elia-logo.png';
 const PLAY_MS = 2600;
 const FADE_MS = 480;
 
@@ -117,7 +117,7 @@ export default function Preloader() {
           src={LOGO_SRC}
           alt=""
           draggable="false"
-          className="h-auto w-full select-none"
+          className="h-auto w-full select-none bg-transparent"
           style={{ opacity: logoOpacity(amount) }}
         />
         <div
