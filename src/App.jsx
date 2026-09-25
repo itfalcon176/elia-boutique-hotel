@@ -22,7 +22,6 @@ import FacilityDetailPage from './pages/FacilityDetailPage';
 import BookingPage from './pages/BookingPage';
 
 import CloudbedsBookNow from './components/booking/CloudbedsBookNow';
-import Preloader from './components/Preloader';
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
 
@@ -347,7 +346,6 @@ function App() {
 
   return (
     <div className="relative w-full min-h-screen bg-elia-cream text-[#23211E]">
-      <Preloader />
       {/* Main Header Navigation Bar */}
       {activePage !== 'book-your-stay' && <CloudbedsBookNow />}
 
