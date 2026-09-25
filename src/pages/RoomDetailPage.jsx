@@ -208,7 +208,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
               </div>
             </div>
 
-            <RoomPropertyDatePicker key={room.id} />
+            <RoomPropertyDatePicker key={room.cloudbedsRoomId} roomId={room.cloudbedsRoomId} />
 
             {/* Room Story / Full Description */}
             <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[#A38B68]/25 shadow-md">
