@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroDatePicker from './booking/HeroDatePicker';
 import { Facebook, Instagram, ChevronDown, ArrowRight, MapPin } from 'lucide-react';
@@ -40,6 +41,8 @@ export default function HeroSection({
   onExploreClick,
   onNavigateRooms,
 }) {
+  const [videoReady, setVideoReady] = useState(false);
+
   return (
     <section id="home" className="relative w-full min-h-screen lg:min-h-[100vh] min-h-[720px] overflow-x-clip bg-[#141312] select-none flex flex-col justify-between pt-24 pb-8">
       {/* Background hero video */}
@@ -50,9 +53,9 @@ export default function HeroSection({
           loop
           playsInline
           preload="auto"
-          poster="/banner/Elia boutique hotel banner.jpeg"
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
+          onPlaying={() => setVideoReady(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
         >
           <source src="/herbannervdo/hero-banner.mp4" type="video/mp4" />
         </video>

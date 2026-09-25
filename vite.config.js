@@ -10,7 +10,7 @@ export default defineConfig({
   ],
   server: {
     watch: {
-      ignored: ['**/*.mp4'],
+      ignored: ['**/16475202_3840_2160_60fps.mp4'],
     },
   },
 })
