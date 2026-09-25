@@ -310,6 +310,12 @@ function App() {
 
     const handlePopState = () => {
       const page = getPageFromPath(window.location.pathname);
+      // The booking engine only paints the date bar on a fresh document.
+      // Leaving it with the back button has to reload, or the bar stays blank.
+      if (page !== 'book-your-stay' && document.querySelector('cb-immersive-experience')) {
+        window.location.reload();
+        return;
+      }
       setActivePage(page);
       scrollToTop();
       setTimeout(trackPageView, 0);
@@ -334,8 +340,15 @@ function App() {
   };
 
   const handleNavClick = (id) => {
-    setActivePage(id);
     const targetPath = pageToPath[id] || `/${id}`;
+    // Search opens the booking engine with a full page load. The logo and
+    // other links then swap the page in place, and Cloudbeds does not paint
+    // the date bar again until the next refresh. Load the next page for real.
+    if (id !== 'book-your-stay' && document.querySelector('cb-immersive-experience')) {
+      window.location.assign(targetPath);
+      return;
+    }
+    setActivePage(id);
     if (window.location.pathname !== targetPath) {
       window.history.pushState(null, '', targetPath);
     }
