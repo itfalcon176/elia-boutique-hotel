@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const LOGO_SRC = '/preloader/elia-logo.png';
+const LOGO_SRC = '/images/elia%20gold1.png';
 const PLAY_MS = 2600;
 const FADE_MS = 480;
 
