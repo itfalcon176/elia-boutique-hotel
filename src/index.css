@@ -619,4 +619,51 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   overflow: auto !important;
 }
 
+.elia-preloader-glow {
+  width: min(70vw, 520px);
+  height: min(42vw, 280px);
+  background: radial-gradient(ellipse at center, rgba(197, 168, 128, 0.28) 0%, rgba(197, 168, 128, 0.08) 42%, transparent 72%);
+  filter: blur(8px);
+  animation: eliaPreloaderGlow 2.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.elia-preloader-logo {
+  animation: eliaPreloaderMark 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.elia-preloader-sheen {
+  background: linear-gradient(105deg, transparent 32%, rgba(255, 244, 226, 0.72) 50%, transparent 68%);
+  transform: translateX(-130%);
+  animation: eliaPreloaderSheen 1.45s 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+  -webkit-mask-image: url('/preloader/elia-logo.webp');
+  mask-image: url('/preloader/elia-logo.webp');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+@keyframes eliaPreloaderGlow {
+  0% { opacity: 0; transform: scale(0.86); }
+  55% { opacity: 1; }
+  100% { opacity: 0.72; transform: scale(1); }
+}
+
+@keyframes eliaPreloaderMark {
+  0% { opacity: 0; transform: translateY(14px) scale(0.975); filter: blur(10px); }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes eliaPreloaderSheen {
+  to { transform: translateX(130%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elia-preloader-glow,
+  .elia-preloader-logo,
+  .elia-preloader-sheen {
+    animation: none;
+  }
+}
+
 
