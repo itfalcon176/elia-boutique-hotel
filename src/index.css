@@ -176,4 +176,18 @@ font[color] {
   color: inherit !important;
 }
 
+/* Keep the official Cloudbeds trigger off-screen. Its own button can be position:fixed. */
+cb-book-now-button,
+cb-book-now-button button {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  clip-path: inset(50%) !important;
+}
+
 

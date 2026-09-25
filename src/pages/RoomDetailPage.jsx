@@ -42,9 +42,10 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
     `Hello Elia Phuket Concierge, I would like to check availability for the ${room.title}.`
   );
   const whatsappUrl = `https://wa.me/66932719103?text=${whatsappMessage}`;
+  const reserveLabel = `Reserve Your ${room.title}`;
 
   return (
-    <div className="pt-24 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
+    <div className="pt-24 pb-36 lg:pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumbs for SEO */}
@@ -276,12 +277,18 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
               {/* Action Buttons */}
               <div className="space-y-3">
                 <button
+                  type="button"
                   onClick={onOpenReservation}
-                  className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#C5A880] to-[#9E8259] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] shadow-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  aria-label={reserveLabel}
+                  className="group relative w-full overflow-hidden py-4 px-5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-[11px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.16em] shadow-[0_10px_28px_rgba(197,168,128,0.28)] hover:shadow-[0_14px_34px_rgba(197,168,128,0.42)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Calendar size={15} />
-                  <span>CHECK AVAILABILITY</span>
+                  <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                  <Calendar size={15} className="relative shrink-0" />
+                  <span className="relative text-center leading-snug">{reserveLabel}</span>
                 </button>
+                <p className="text-[10px] text-center text-[#FAF7F2]/55 font-light leading-relaxed">
+                  Opens live availability. Choose this room inside the reservation panel.
+                </p>
 
                 <a
                   href={whatsappUrl}
@@ -334,6 +341,18 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
 
         </div>
 
+      </div>
+
+      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-[#A38B68]/25 bg-[#181715]/95 backdrop-blur-md px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+        <button
+          type="button"
+          onClick={onOpenReservation}
+          aria-label={reserveLabel}
+          className="w-full py-3.5 px-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-[11px] uppercase tracking-[0.14em] shadow-[0_8px_24px_rgba(197,168,128,0.28)] flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <Calendar size={15} className="shrink-0" />
+          <span className="text-center leading-snug">{reserveLabel}</span>
+        </button>
       </div>
     </div>
   );
