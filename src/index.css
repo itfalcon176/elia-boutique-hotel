@@ -278,6 +278,37 @@ cb-book-now-button button {
   object-fit: cover;
 }
 
+#cb-bookingengine .cb-landing-page {
+  height: 360px !important;
+  min-height: 360px !important;
+}
+
+#cb-bookingengine .cb-background-image,
+#cb-bookingengine .cb-background-image img {
+  height: 100% !important;
+  max-height: 360px;
+  object-fit: cover;
+}
+
+#cb-bookingengine .cb-search-card {
+  background: rgba(247, 244, 239, 0.96) !important;
+  border: 1px solid rgba(163, 139, 104, 0.28);
+  box-shadow: 0 16px 40px rgba(35, 33, 30, 0.16);
+}
+
+#cb-bookingengine .cb-search-button,
+#cb-bookingengine .cb-shopping-cart-confirm-button {
+  background: #826C4B !important;
+  color: #F7F4EF !important;
+  border-radius: 999px !important;
+  font-weight: 600;
+}
+
+#cb-bookingengine .cb-search-button:hover,
+#cb-bookingengine .cb-shopping-cart-confirm-button:hover {
+  background: #6E5A3C !important;
+}
+
 #cb-bookingengine .chakra-button {
   border-radius: 999px;
   letter-spacing: 0.04em;
@@ -315,6 +346,30 @@ cb-book-now-button button {
   .cb-bookingengine-root [class*="close-button"] {
     margin-top: max(10px, env(safe-area-inset-top)) !important;
     margin-right: 10px !important;
+  }
+
+  #cb-bookingengine .cb-landing-page {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 72px 12px 20px !important;
+  }
+
+  #cb-bookingengine .cb-background-image,
+  #cb-bookingengine .cb-background-image img {
+    max-height: none;
+  }
+
+  #cb-bookingengine .cb-search-card {
+    width: calc(100% - 8px);
+    max-width: 100%;
+    border-radius: 22px !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 8px;
+  }
+
+  #cb-bookingengine .cb-search-button {
+    min-height: 48px;
   }
 
   .cb-immersive-experience-popup-content {
