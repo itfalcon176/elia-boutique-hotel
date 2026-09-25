@@ -498,43 +498,26 @@ cb-book-now-button button {
 .elia-room-date-picker .elia-room-book-button,
 .elia-room-date-picker button {
   width: 100% !important;
+  max-width: 100% !important;
   height: auto !important;
-  min-height: 44px;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  border: 0 !important;
+  min-height: 48px;
   border-radius: 999px !important;
   background: #C5A880 !important;
   color: #141312 !important;
-  font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
   font-weight: 600;
-  font-size: 10px !important;
-  letter-spacing: 0.02em !important;
-  line-height: 1 !important;
+  font-size: clamp(8.5px, 3.2cqi, 10px) !important;
+  letter-spacing: 0.03em !important;
+  line-height: 1.2 !important;
   text-transform: uppercase;
   text-align: center;
   white-space: nowrap !important;
-  word-break: keep-all !important;
-  padding: 12px 14px !important;
+  padding: 12px 10px !important;
   cursor: pointer;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .elia-room-date-picker .elia-room-book-button *,
 .elia-room-date-picker button * {
-  font-size: inherit !important;
-  letter-spacing: inherit !important;
   white-space: nowrap !important;
-}
-
-@container (max-width: 280px) {
-  .elia-room-date-picker .elia-room-book-button,
-  .elia-room-date-picker button {
-    font-size: 8.5px !important;
-    letter-spacing: 0.01em !important;
-  }
 }
 
 .elia-room-date-picker .elia-room-book-button:focus-visible,
@@ -545,14 +528,6 @@ cb-book-now-button button {
 
 .elia-room-date-picker .elia-room-book-button:hover,
 .elia-room-date-picker button:hover {
-  background: #D4BC96 !important;
-  transform: translateY(-1px);
-  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.22);
-}
-
-.elia-room-date-picker .elia-room-book-button:active,
-.elia-room-date-picker button:active {
-  transform: translateY(0);
   background: #B89A70 !important;
 }
 

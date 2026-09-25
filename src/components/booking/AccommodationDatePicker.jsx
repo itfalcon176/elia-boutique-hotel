@@ -8,7 +8,7 @@ import { mountCloudbedsElement } from './mountCloudbedsElement';
  */
 export default function AccommodationDatePicker({ roomId, roomName, buttonLabel }) {
   const hostRef = useRef(null);
-  const label = (buttonLabel || (roomName ? `Reserve Your ${roomName}` : '')).replace(/ /g, '\u00A0');
+  const label = buttonLabel || (roomName ? `Reserve Your ${roomName}` : '');
   const bookingUrl = typeof window === 'undefined' ? '' : `${window.location.origin}/book-your-stay`;
 
   useEffect(() => {
