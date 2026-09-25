@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 
-const LOGO_SRC = '/Logos/elia gold.png';
-const HOLD_MS = 1100;
+const FRAME_COUNT = 12;
+const FRAMES = Array.from({ length: FRAME_COUNT }, (_, index) => (
+  `/preloader/frame-${String(index + 1).padStart(2, '0')}.webp`
+));
+const SEGMENT_MS = 170;
+const DRAW_MS = (FRAME_COUNT - 1) * SEGMENT_MS;
+const HOLD_MS = 480;
 const FADE_MS = 400;
 
 function shouldPlayPreloader() {
@@ -21,8 +26,18 @@ function shouldPlayPreloader() {
   return !fromDatePicker;
 }
 
+function frameOpacity(index, progress) {
+  const base = Math.floor(progress);
+  const mix = progress - base;
+  if (mix === 0) return index === base ? 1 : 0;
+  if (index === base) return 1 - mix;
+  if (index === base + 1) return mix;
+  return 0;
+}
+
 export default function Preloader() {
   const playOnLoad = shouldPlayPreloader();
+  const [progress, setProgress] = useState(0);
   const [closing, setClosing] = useState(false);
   const [gone, setGone] = useState(!playOnLoad);
 
@@ -31,24 +46,54 @@ export default function Preloader() {
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let closed = false;
+    let cancelled = false;
+    let rafId = 0;
     let exitTimer = 0;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    const image = new Image();
-    image.src = LOGO_SRC;
-
-    const release = () => {
-      if (closed) return;
-      closed = true;
-      document.body.style.overflow = previousOverflow;
-      setClosing(true);
+    const release = (delay) => {
+      exitTimer = window.setTimeout(() => {
+        if (closed || cancelled) return;
+        closed = true;
+        document.body.style.overflow = previousOverflow;
+        setClosing(true);
+      }, delay);
     };
 
-    exitTimer = window.setTimeout(release, reduceMotion ? 280 : HOLD_MS);
+    if (reduceMotion) {
+      setProgress(FRAME_COUNT - 1);
+      release(320);
+    } else {
+      const preload = Promise.all(FRAMES.map((src) => new Promise((resolve) => {
+        const image = new Image();
+        image.onload = () => resolve();
+        image.onerror = () => resolve();
+        image.src = src;
+      })));
+      const preloadCap = new Promise((resolve) => {
+        window.setTimeout(resolve, 700);
+      });
+
+      Promise.race([preload, preloadCap]).then(() => {
+        if (cancelled) return;
+        const playFrom = performance.now();
+        const tick = (now) => {
+          if (cancelled) return;
+          const elapsed = now - playFrom;
+          const next = Math.min(FRAME_COUNT - 1, elapsed / SEGMENT_MS);
+          setProgress(next);
+          if (elapsed < DRAW_MS) rafId = window.requestAnimationFrame(tick);
+        };
+        rafId = window.requestAnimationFrame(tick);
+        release(DRAW_MS + HOLD_MS);
+      });
+    }
 
     return () => {
+      cancelled = true;
       closed = true;
+      window.cancelAnimationFrame(rafId);
       window.clearTimeout(exitTimer);
       document.body.style.overflow = previousOverflow;
     };
@@ -71,14 +116,17 @@ export default function Preloader() {
       aria-live="polite"
       aria-label="Loading Elia Boutique Hotel"
     >
-      <div className="relative flex items-center justify-center">
-        <div className="elia-preloader-glow pointer-events-none absolute" aria-hidden="true" />
-        <img
-          src={LOGO_SRC}
-          alt="Elia Boutique Hotel"
-          className="elia-preloader-logo relative block h-auto w-[min(78vw,420px)] select-none"
-          draggable="false"
-        />
+      <div className="relative aspect-[384/341] w-[min(86vw,440px)]">
+        {FRAMES.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            draggable="false"
+            className="absolute inset-0 h-full w-full object-contain select-none"
+            style={{ opacity: frameOpacity(index, progress) }}
+          />
+        ))}
       </div>
     </div>
   );
