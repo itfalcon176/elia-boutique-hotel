@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+<<<<<<< HEAD
 const FRAME_COUNT = 12;
 const FRAMES = Array.from({ length: FRAME_COUNT }, (_, index) => (
   `/preloader/frame-${String(index + 1).padStart(2, '0')}.webp`
@@ -24,6 +25,33 @@ const DRAW_END_MS = TIMINGS[TIMINGS.length - 1];
 const HOLD_MS = 520;
 const TOTAL_VISIBLE_MS = DRAW_END_MS + HOLD_MS;
 const FADE_MS = 480;
+=======
+const LOGO_SRC = '/preloader/elia-logo.webp';
+const PLAY_MS = 2600;
+const FADE_MS = 480;
+
+function easeInCubic(amount) {
+  return amount ** 3;
+}
+
+function easeOutCubic(amount) {
+  return 1 - (1 - amount) ** 3;
+}
+>>>>>>> 5b81fc4 (Replace the drawn preloader with a fading Elia logo and eased bar.)
+
+function easeInOutCubic(amount) {
+  return amount < 0.5
+    ? 4 * amount * amount * amount
+    : 1 - ((-2 * amount + 2) ** 3) / 2;
+}
+
+function logoOpacity(amount) {
+  const fadeInUntil = 0.3;
+  const fadeOutFrom = 0.7;
+  if (amount <= fadeInUntil) return easeOutCubic(amount / fadeInUntil);
+  if (amount >= fadeOutFrom) return 1 - easeInCubic((amount - fadeOutFrom) / (1 - fadeOutFrom));
+  return 1;
+}
 
 function shouldPlayPreloader() {
   if (typeof window === 'undefined') return false;
@@ -44,7 +72,11 @@ function shouldPlayPreloader() {
 
 export default function Preloader() {
   const playOnLoad = shouldPlayPreloader();
+<<<<<<< HEAD
   const [currentFrame, setCurrentFrame] = useState(0);
+=======
+  const [amount, setAmount] = useState(0);
+>>>>>>> 5b81fc4 (Replace the drawn preloader with a fading Elia logo and eased bar.)
   const [closing, setClosing] = useState(false);
   const [gone, setGone] = useState(!playOnLoad);
   const [progress, setProgress] = useState(0);
@@ -70,6 +102,7 @@ export default function Preloader() {
     };
 
     if (reduceMotion) {
+<<<<<<< HEAD
       setCurrentFrame(FRAME_COUNT - 1);
       setProgress(100);
       release(250);
@@ -117,6 +150,20 @@ export default function Preloader() {
         rafId = window.requestAnimationFrame(tick);
         release(TOTAL_VISIBLE_MS);
       });
+=======
+      setAmount(1);
+      release(280);
+    } else {
+      const playFrom = performance.now();
+      const tick = (now) => {
+        if (cancelled) return;
+        const elapsed = now - playFrom;
+        setAmount(Math.min(1, elapsed / PLAY_MS));
+        if (elapsed < PLAY_MS) rafId = window.requestAnimationFrame(tick);
+      };
+      rafId = window.requestAnimationFrame(tick);
+      release(PLAY_MS);
+>>>>>>> 5b81fc4 (Replace the drawn preloader with a fading Elia logo and eased bar.)
     }
 
     return () => {
@@ -136,7 +183,11 @@ export default function Preloader() {
 
   if (gone) return null;
 
+<<<<<<< HEAD
   const isRadiant = currentFrame >= 8;
+=======
+  const bar = easeInOutCubic(amount);
+>>>>>>> 5b81fc4 (Replace the drawn preloader with a fading Elia logo and eased bar.)
 
   return (
     <div
@@ -147,6 +198,7 @@ export default function Preloader() {
       aria-live="polite"
       aria-label="Loading Elia Boutique Hotel"
     >
+<<<<<<< HEAD
       <div
         className={`relative flex flex-col items-center justify-center transition-all duration-700 ease-out ${
           closing ? 'scale-[1.03] opacity-0' : 'scale-100 opacity-100'
@@ -175,6 +227,28 @@ export default function Preloader() {
               }`}
             />
           ))}
+=======
+      <div className="flex w-[min(78vw,440px)] flex-col items-center">
+        <img
+          src={LOGO_SRC}
+          alt=""
+          draggable="false"
+          className="h-auto w-full select-none"
+          style={{ opacity: logoOpacity(amount) }}
+        />
+        <div
+          className="elia-preloader-track mt-8 sm:mt-10"
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(bar * 100)}
+          aria-label="Loading"
+        >
+          <div
+            className="elia-preloader-bar"
+            style={{ transform: `scaleX(${bar})` }}
+          />
+>>>>>>> 5b81fc4 (Replace the drawn preloader with a fading Elia logo and eased bar.)
         </div>
 
         {/* Minimalist Luxury Progress & Subtitle */}

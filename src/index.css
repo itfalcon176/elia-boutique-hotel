@@ -668,12 +668,30 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   opacity: 0;
 }
 
+<<<<<<< HEAD
 .elia-preloader-glow {
   width: min(85vw, 540px);
   height: min(42vw, 240px);
   background: radial-gradient(ellipse at center, rgba(197, 168, 128, 0.22) 0%, rgba(197, 168, 128, 0.06) 45%, transparent 72%);
   filter: blur(14px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+=======
+.elia-preloader-track {
+  width: min(100%, 280px);
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(197, 168, 128, 0.22);
+}
+
+.elia-preloader-bar {
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  border-radius: inherit;
+  background: #C5A880;
+  will-change: transform;
+>>>>>>> 5b81fc4 (Replace the drawn preloader with a fading Elia logo and eased bar.)
 }
 
 @media (prefers-reduced-motion: reduce) {
