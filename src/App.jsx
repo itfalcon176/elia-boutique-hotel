@@ -368,7 +368,6 @@ function App() {
         {activePage === 'rooms' && (
           <RoomsPage
             onNavigate={handleNavClick}
-            onOpenReservation={openReservation}
           />
         )}
         {activePage.startsWith('rooms/') && (
