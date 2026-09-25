@@ -55,7 +55,7 @@ export default function HeroSection({
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/herbannervdo/16475202_3840_2160_60fps.mp4" type="video/mp4" />
+          <source src="/herbannervdo/hero-banner.mp4" type="video/mp4" />
         </video>
       </div>
 
