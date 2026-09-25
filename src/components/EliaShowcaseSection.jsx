@@ -21,6 +21,13 @@ import {
 } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
+const showcaseImages = {
+  'garden-beach-room': '/accommodation/garden-beach-room.jpg',
+  'garden-family-suite': '/accommodation/garden-family-suite.jpg',
+  'loft-apartment': '/accommodation/loft-apartment.jpg',
+  'one-bedroom-loft-suite': '/accommodation/one-bedroom-loft-suite.jpg',
+};
+
 export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -256,7 +263,7 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
                     >
                       <div className="aspect-[4/3] overflow-hidden relative">
                         <img
-                          src={room.mainImage}
+                          src={showcaseImages[room.id] || room.mainImage}
                           alt={room.title}
                           className={`w-full h-full object-cover transition-transform duration-700 ${
                             isCenter ? 'scale-105' : 'group-hover:scale-105'
