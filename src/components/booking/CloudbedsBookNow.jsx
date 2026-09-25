@@ -193,9 +193,21 @@ export default function CloudbedsBookNow() {
     });
     popupObserver.observe(document.body, { childList: true, subtree: true });
 
+    const onSearchClick = (event) => {
+      const target = event.target;
+      const card = target instanceof Element ? target.closest('.cb-search-card') : null;
+      if (!card) return;
+      const button = card.querySelector('.cb-search-button');
+      if (!(button instanceof HTMLButtonElement) || !button.disabled) return;
+      const rect = button.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) return;
+      document.querySelector('#cb-bookingengine [aria-label="Check-in"]')?.click();
+    };
+
     window.addEventListener('elia-open-booking', open);
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('popstate', onPopState);
+    document.addEventListener('click', onSearchClick);
     return () => {
       cancelled = true;
       observer.disconnect();
@@ -204,6 +216,7 @@ export default function CloudbedsBookNow() {
       window.removeEventListener('elia-open-booking', open);
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('popstate', onPopState);
+      document.removeEventListener('click', onSearchClick);
     };
   }, []);
 

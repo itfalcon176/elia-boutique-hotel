@@ -394,6 +394,14 @@ cb-book-now-button button {
   background: #3A342C !important;
 }
 
+#cb-bookingengine .cb-search-button:disabled {
+  opacity: 1 !important;
+  background: #23211E !important;
+  color: #F7F4EF !important;
+  cursor: pointer !important;
+  pointer-events: none !important;
+}
+
 #cb-bookingengine .cb-title-text {
   font-family: "Playfair Display", Georgia, serif !important;
   font-weight: 500 !important;
