@@ -345,7 +345,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               {/* Desktop BOOK NOW Button */}
               <button
                 type="button"
-                onClick={onOpenReservation}
+                onClick={() => handleNavClick('book-your-stay')}
                 className={`hidden sm:flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-5 lg:px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md cursor-pointer ${
                   isLightHeader
                     ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
