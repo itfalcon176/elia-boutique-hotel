@@ -260,7 +260,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
 
           {/* Right Action & Reservation Sticky Card (4 cols) */}
           <div className="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#23211E] text-[#FAF7F2] border border-[#A38B68]/40 shadow-2xl">
+            <div className="px-4 py-6 sm:py-8 rounded-3xl bg-[#23211E] text-[#FAF7F2] border border-[#A38B68]/40 shadow-2xl">
               <span className="text-[10px] uppercase tracking-[0.3em] text-[#C5A880] font-bold block mb-2">
                 Direct Reservation
               </span>
