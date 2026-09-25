@@ -135,7 +135,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             </h4>
             <ul className="space-y-2 text-xs text-[#FAF7F2]/70 font-light">
               <li>
-                <button onClick={() => onNavClick('booking')} className="text-[#C5A880] font-medium hover:underline transition-all">
+                <button onClick={() => onOpenReservation?.()} className="text-[#C5A880] font-medium hover:underline transition-all">
                   Direct Reservations
                 </button>
               </li>

@@ -345,6 +345,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               {/* Desktop BOOK NOW Button */}
               <button
                 type="button"
+                onClick={onOpenReservation}
                 className={`hidden sm:flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-5 lg:px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md cursor-pointer ${
                   isLightHeader
                     ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
@@ -592,7 +593,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  handleNavClick('booking');
+                  onOpenReservation?.();
                 }}
                 className={`w-full py-3.5 rounded-full font-semibold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2.5 shadow-xl transition-all cursor-pointer ${activePage === 'booking'
                     ? 'bg-[#A38B68] text-white shadow-[0_0_20px_rgba(163,139,104,0.4)]'

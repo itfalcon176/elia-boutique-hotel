@@ -20,6 +20,7 @@ import FaqsPage from './pages/FaqsPage';
 import LegalAndPolicyPages from './pages/LegalAndPolicyPages';
 import FacilityDetailPage from './pages/FacilityDetailPage';
 
+import CloudbedsBookNow from './components/booking/CloudbedsBookNow';
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
 
@@ -27,7 +28,7 @@ export const scrollToTop = () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
-  const root = document.getElementById('root');
+  const root = document.getElementById('elia-app');
   if (root) root.scrollTop = 0;
   requestAnimationFrame(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -313,6 +314,10 @@ function App() {
     };
   }, []);
 
+  const openReservation = () => {
+    window.dispatchEvent(new Event('elia-open-booking'));
+  };
+
   const handleNavClick = (id) => {
     setActivePage(id);
     const targetPath = pageToPath[id] || `/${id}`;
@@ -328,9 +333,12 @@ function App() {
   return (
     <div className="relative w-full min-h-screen bg-elia-cream text-[#23211E]">
       {/* Main Header Navigation Bar */}
+      <CloudbedsBookNow />
+
       <Navbar
         activePage={activePage}
         setActivePage={handleNavClick}
+        onOpenReservation={openReservation}
       />
 
       {/* Page Content Rendering */}
@@ -338,54 +346,63 @@ function App() {
         {activePage === 'home' && (
           <HomePage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'rooms' && (
           <RoomsPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage.startsWith('rooms/') && (
           <RoomDetailPage
             roomSlug={activePage.replace('rooms/', '')}
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'eat-drink' && (
           <EatDrinkPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'wellness' && (
           <WellnessPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage.startsWith('facilities/') && (
           <FacilityDetailPage
             facilitySlug={activePage.replace('facilities/', '')}
             onNavigate={handleNavClick}
-            onOpenReservation={() => handleNavClick('contact')}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'goat-beach-club' && (
           <GoatBeachClubPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'family-hotel-phuket' && (
           <FamilyPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'experiences' && (
           <ExperiencesPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'bang-tao-beach-phuket' && (
           <BangTaoPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'gallery' && (
@@ -396,6 +413,7 @@ function App() {
         {activePage === 'about' && (
           <AboutPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'contact' && (
@@ -406,11 +424,13 @@ function App() {
         {activePage === 'offers' && (
           <SpecialOffersPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'faq' && (
           <FaqsPage
             onNavigate={handleNavClick}
+            onOpenReservation={openReservation}
           />
         )}
         {['policies', 'cancellation', 'privacy', 'terms', 'cookies', 'directions'].includes(activePage) && (
@@ -422,7 +442,7 @@ function App() {
       </main>
 
       {/* Footer Navigation */}
-      <Footer onNavClick={handleNavClick} />
+      <Footer onNavClick={handleNavClick} onOpenReservation={openReservation} />
     </div>
   );
 }

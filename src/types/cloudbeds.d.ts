@@ -21,6 +21,11 @@ declare global {
       'cb-book-now-button': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement> & {
           'property-code'?: string;
+          'close-label'?: string;
+          label?: string;
+          height?: string;
+          width?: string;
+          'class-name'?: string;
         },
         HTMLElement
       >;

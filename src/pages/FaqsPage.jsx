@@ -271,7 +271,7 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
               </a>
 
               <button
-                onClick={() => (onNavigate ? onNavigate('rooms') : null)}
+                onClick={() => onOpenReservation?.()}
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
                 <Calendar size={15} />

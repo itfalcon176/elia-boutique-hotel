@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { ShieldCheck, RotateCw, Phone, Mail, AlertCircle } from 'lucide-react';
 
-const DEFAULT_PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || 'h8cMpo';
+const DEFAULT_PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
 
 /**
  * CloudbedsBooking Component
@@ -10,7 +10,7 @@ const DEFAULT_PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || 'h
  * Inherits all typography, colors, and layout tokens from the existing Elia Boutique Hotel design system.
  *
  * @param {Object} props
- * @param {string} [props.propertyCode] - Cloudbeds property identifier (defaults to env or 'h8cMpo')
+ * @param {string} [props.propertyCode] - Cloudbeds property identifier from VITE_CLOUDBEDS_PROPERTY_CODE
  * @param {string} [props.className] - Optional container CSS classes
  */
 export default function CloudbedsBooking({
