@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import HeroDatePicker from './booking/HeroDatePicker';
-import { Facebook, Instagram, ChevronDown, Calendar, ArrowRight, Sparkles, MapPin } from 'lucide-react';
+import { Facebook, Instagram, ChevronDown, ArrowRight, MapPin } from 'lucide-react';
 
 const TiktokIcon = ({ size = 18, ...props }) => (
   <svg
@@ -37,7 +37,6 @@ const WhatsAppIcon = ({ size = 18, ...props }) => (
 );
 
 export default function HeroSection({
-  onOpenReservation,
   onExploreClick,
   onNavigateRooms,
 }) {
@@ -114,14 +113,6 @@ export default function HeroSection({
           transition={{ duration: 1, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 w-full max-w-xl mx-auto mb-6 sm:mb-8 px-2"
         >
-          <button
-            onClick={onOpenReservation}
-            className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#C5A880] via-[#E2C79F] to-[#B89A70] hover:from-[#E2C79F] hover:to-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.18em] sm:tracking-[0.22em] shadow-[0_10px_35px_rgba(197,168,128,0.4)] hover:shadow-[0_12px_45px_rgba(197,168,128,0.6)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
-          >
-            <Calendar size={15} className="shrink-0 text-[#141312]" />
-            <span className="whitespace-nowrap font-bold">BOOK YOUR STAY</span>
-          </button>
-
           <button
             onClick={onNavigateRooms}
             className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-white/[0.08] hover:bg-white/[0.18] backdrop-blur-xl border border-white/30 hover:border-white/60 text-white font-medium text-xs uppercase tracking-[0.18em] sm:tracking-[0.22em] shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"

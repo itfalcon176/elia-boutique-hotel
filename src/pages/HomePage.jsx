@@ -8,9 +8,8 @@ export default function HomePage({
 }) {
   return (
     <div>
-      {/* Hero Header Section (100vh Full Screen Video with Beachfront copy & immediate Book Now) */}
+      {/* Hero Header Section */}
       <HeroSection
-        onOpenReservation={onOpenReservation}
         onNavigateRooms={() => onNavigate('rooms')}
         onExploreClick={() => {
           const el = document.getElementById('elia-showcase');
