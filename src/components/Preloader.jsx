@@ -32,9 +32,15 @@ function shouldPlayPreloader() {
 function frameOpacity(index, progress) {
   const base = Math.floor(progress);
   const mix = progress - base;
-  if (mix === 0) return index === base ? 1 : 0;
-  if (index === base) return 1 - mix;
-  if (index === base + 1) return mix;
+  const blend = 0.22;
+  if (index === base) {
+    if (mix <= 1 - blend) return 1;
+    return 1 - (mix - (1 - blend)) / blend;
+  }
+  if (index === base + 1) {
+    if (mix <= 1 - blend) return 0;
+    return (mix - (1 - blend)) / blend;
+  }
   return 0;
 }
 
@@ -119,16 +125,13 @@ export default function Preloader() {
       aria-live="polite"
       aria-label="Loading Elia Boutique Hotel"
     >
-      <div
-        className="relative flex items-center justify-center"
-        style={{ transform: `scale(${0.94 + (progress / (FRAME_COUNT - 1)) * 0.06})` }}
-      >
+      <div className="relative flex items-center justify-center">
         <div
           className="elia-preloader-glow pointer-events-none absolute"
-          style={{ opacity: 0.35 + (progress / (FRAME_COUNT - 1)) * 0.65 }}
+          style={{ opacity: 0.2 + (progress / (FRAME_COUNT - 1)) * 0.45 }}
           aria-hidden="true"
         />
-        <div className="relative aspect-[384/293] w-[min(88vw,520px)]">
+        <div className="relative aspect-[730/454] w-[min(90vw,560px)]">
           {FRAMES.map((src, index) => (
             <img
               key={src}
