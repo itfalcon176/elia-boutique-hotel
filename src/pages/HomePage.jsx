@@ -3,7 +3,6 @@ import EliaShowcaseSection from '../components/EliaShowcaseSection';
 import FaqsSection from '../components/FaqsSection';
 
 export default function HomePage({
-  onOpenReservation,
   onNavigate,
 }) {
   return (
@@ -21,7 +20,6 @@ export default function HomePage({
       <div id="elia-showcase">
         <EliaShowcaseSection
           onNavigate={onNavigate}
-          onOpenReservation={onOpenReservation}
         />
       </div>
 

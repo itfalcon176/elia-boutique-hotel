@@ -28,7 +28,7 @@ const showcaseImages = {
   'one-bedroom-loft-suite': '/accommodation/one-bedroom-loft-suite.jpg',
 };
 
-export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
+export default function EliaShowcaseSection({ onNavigate }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -739,14 +739,6 @@ export default function EliaShowcaseSection({ onNavigate, onOpenReservation }) {
           <div className="space-y-1 text-lg sm:text-xl text-[#FAF7F2]/80 font-serif italic">
             <p>To the sea.</p>
             <p>To the good life.</p>
-          </div>
-          <div className="pt-4">
-            <button
-              onClick={onOpenReservation}
-              className="px-10 py-4 rounded-full bg-gradient-to-r from-[#C5A880] via-[#D5B992] to-[#B89A70] hover:from-[#D5B992] hover:to-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] shadow-[0_4px_25px_rgba(197,168,128,0.45)] hover:scale-105 transition-all duration-300 cursor-pointer"
-            >
-              BOOK YOUR STAY
-            </button>
           </div>
         </div>
       </section>

@@ -361,7 +361,6 @@ function App() {
         {activePage === 'home' && (
           <HomePage
             onNavigate={handleNavClick}
-            onOpenReservation={openReservation}
           />
         )}
         {activePage === 'rooms' && (
