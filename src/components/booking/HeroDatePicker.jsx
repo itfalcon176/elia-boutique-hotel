@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { mountCloudbedsElement } from './mountCloudbedsElement';
 
 const PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
 
 export default function HeroDatePicker() {
-  const [layout, setLayout] = useState('horizontal');
+  const hostRef = useRef(null);
+  const [layout, setLayout] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches ? 'vertical' : 'horizontal'
+  ));
   const bookingUrl = typeof window === 'undefined' ? '' : `${window.location.origin}/book-your-stay`;
 
   useEffect(() => {
@@ -32,21 +36,22 @@ export default function HeroDatePicker() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || !PROPERTY_CODE || !bookingUrl) return undefined;
+    return mountCloudbedsElement(host, 'cb-property-date-picker', {
+      'property-code': PROPERTY_CODE,
+      'button-label': 'Search',
+      layout,
+      lang: 'en',
+      currency: 'thb',
+      'open-in-new-tab': 'false',
+      'custom-url': bookingUrl,
+      'class-name': 'elia-hero-picker',
+    });
+  }, [layout, bookingUrl]);
+
   if (!PROPERTY_CODE || !bookingUrl) return null;
 
-  return (
-    <div className="elia-hero-date-picker w-full select-text">
-      <cb-property-date-picker
-        key={layout}
-        property-code={PROPERTY_CODE}
-        button-label="Search"
-        layout={layout}
-        lang="en"
-        currency="thb"
-        open-in-new-tab="false"
-        custom-url={bookingUrl}
-        class-name="elia-hero-picker"
-      />
-    </div>
-  );
+  return <div ref={hostRef} className="elia-hero-date-picker w-full select-text" />;
 }

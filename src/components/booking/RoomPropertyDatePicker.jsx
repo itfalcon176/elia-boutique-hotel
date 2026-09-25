@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CLOUDBEDS_PROPERTY_CODE } from '../../data/cloudbedsRooms';
+import { mountCloudbedsElement } from './mountCloudbedsElement';
 
 /**
  * Official Cloudbeds single-property date picker for one room page.
  * Search stays on this website and carries that room's Cloudbeds id.
  */
 export default function RoomPropertyDatePicker({ roomId }) {
-  const [layout, setLayout] = useState('horizontal');
+  const hostRef = useRef(null);
+  const [layout, setLayout] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches ? 'vertical' : 'horizontal'
+  ));
   const bookingUrl = typeof window === 'undefined' || !roomId
     ? ''
     : `${window.location.origin}/book-your-stay?rid=${encodeURIComponent(roomId)}`;
@@ -37,21 +41,22 @@ export default function RoomPropertyDatePicker({ roomId }) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || !CLOUDBEDS_PROPERTY_CODE || !bookingUrl) return undefined;
+    return mountCloudbedsElement(host, 'cb-property-date-picker', {
+      'property-code': CLOUDBEDS_PROPERTY_CODE,
+      'button-label': 'Check Availability',
+      layout,
+      lang: 'en',
+      currency: 'thb',
+      'open-in-new-tab': 'false',
+      'custom-url': bookingUrl,
+      'class-name': 'elia-room-property-search',
+    });
+  }, [layout, bookingUrl]);
+
   if (!CLOUDBEDS_PROPERTY_CODE || !bookingUrl) return null;
 
-  return (
-    <div className="elia-room-property-picker w-full">
-      <cb-property-date-picker
-        key={`${layout}-${roomId}`}
-        property-code={CLOUDBEDS_PROPERTY_CODE}
-        button-label="Check Availability"
-        layout={layout}
-        lang="en"
-        currency="thb"
-        open-in-new-tab="false"
-        custom-url={bookingUrl}
-        class-name="elia-room-property-search"
-      />
-    </div>
-  );
+  return <div ref={hostRef} className="elia-room-property-picker w-full" />;
 }
