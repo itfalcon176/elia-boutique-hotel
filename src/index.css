@@ -662,10 +662,10 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
 }
 
 .elia-preloader-glow {
-  width: min(92vw, 560px);
-  height: min(46vw, 240px);
-  background: radial-gradient(ellipse at center, rgba(197, 168, 128, 0.28) 0%, rgba(197, 168, 128, 0.08) 42%, transparent 72%);
-  filter: blur(6px);
+  width: min(78vw, 420px);
+  height: min(28vw, 140px);
+  background: radial-gradient(ellipse at center, rgba(197, 168, 128, 0.16) 0%, transparent 70%);
+  filter: blur(10px);
 }
 
 @media (prefers-reduced-motion: reduce) {
