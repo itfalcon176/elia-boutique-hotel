@@ -16,6 +16,23 @@ declare global {
       >;
 
       /**
+       * Official Book now button and calendar for one accommodation.
+       * Continue opens the hosted booking engine for that room type.
+       */
+      'cb-accommodation-date-picker': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & {
+          'property-code'?: string;
+          rid?: string;
+          'button-label'?: string;
+          lang?: string;
+          currency?: string;
+          'class-name'?: string;
+          'custom-url'?: string;
+        },
+        HTMLElement
+      >;
+
+      /**
        * Official single-property date search bar for the homepage hero.
        * Search continues on the Elia site through custom-url.
        */

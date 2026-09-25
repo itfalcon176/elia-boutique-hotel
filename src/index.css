@@ -489,6 +489,50 @@ cb-book-now-button button {
   }
 }
 
+/* Room page accommodation calendar. The button is the official Cloudbeds control. */
+.elia-room-date-picker {
+  width: 100%;
+}
+
+.elia-room-date-picker .elia-room-book-button,
+.elia-room-date-picker button {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 48px;
+  border-radius: 999px !important;
+  background: #C5A880 !important;
+  color: #141312 !important;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: normal !important;
+  padding: 12px 16px !important;
+  cursor: pointer;
+}
+
+.elia-room-date-picker .elia-room-book-button:focus-visible,
+.elia-room-date-picker button:focus-visible {
+  outline: 2px solid #F7F4EF;
+  outline-offset: 3px;
+}
+
+.elia-room-date-picker .elia-room-book-button:hover,
+.elia-room-date-picker button:hover {
+  background: #B89A70 !important;
+}
+
+.elia-room-date-picker [role="alert"] {
+  border-radius: 999px;
+  background: #F7F4EF;
+  color: #23211E;
+  padding: 12px 16px;
+  font-size: 12px;
+  text-align: center;
+}
+
 /* Homepage hero date bar only. */
 .elia-hero-date-picker {
   width: min(100%, 760px);

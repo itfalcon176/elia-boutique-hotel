@@ -16,6 +16,7 @@ dist-ssr
 *.MOV
 *.mov
 *.mp4
+!public/herbannervdo/hero-banner.mp4
 
 # Editor directories and files
 .vscode/*

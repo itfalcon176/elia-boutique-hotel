@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   BedDouble,
@@ -6,14 +6,12 @@ import {
   Maximize,
   Waves,
   Check,
-  Calendar,
   Sparkles,
-  ChevronLeft,
   ArrowRight,
   ShieldCheck,
-  MapPin,
 } from 'lucide-react';
 import { roomsData, getRoomBySlug } from '../data/roomsData';
+import AccommodationDatePicker from '../components/booking/AccommodationDatePicker';
 
 const WhatsAppIcon = ({ size = 18, ...props }) => (
   <svg
@@ -32,8 +30,23 @@ const WhatsAppIcon = ({ size = 18, ...props }) => (
   </svg>
 );
 
-export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation }) {
+function useCompactBookingBar() {
+  const [compact, setCompact] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 1023px)');
+    const apply = () => setCompact(query.matches);
+    apply();
+    query.addEventListener('change', apply);
+    return () => query.removeEventListener('change', apply);
+  }, []);
+
+  return compact;
+}
+
+export default function RoomDetailPage({ roomSlug, onNavigate }) {
   const room = getRoomBySlug(roomSlug) || roomsData[0];
+  const compactBookingBar = useCompactBookingBar();
 
   // Other room suggestions
   const otherRooms = roomsData.filter((r) => r.id !== room.id);
@@ -276,17 +289,16 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
 
               {/* Action Buttons */}
               <div className="space-y-3">
-                <button
-                  type="button"
-                  onClick={() => onOpenReservation(room.cloudbedsRoomId)}
-                  aria-label={reserveLabel}
-                  className="w-full min-h-12 py-3.5 px-5 rounded-full bg-[#C5A880] text-[#141312] font-semibold text-[11px] sm:text-xs uppercase tracking-[0.12em] shadow-[0_8px_22px_rgba(35,33,30,0.18)] hover:bg-[#B89A70] active:scale-[0.99] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#826C4B] flex items-center justify-center gap-2.5 cursor-pointer"
-                >
-                  <Calendar size={15} className="shrink-0" />
-                  <span className="text-center leading-snug">{reserveLabel}</span>
-                </button>
+                {!compactBookingBar && (
+                  <AccommodationDatePicker
+                    key={room.cloudbedsRoomId}
+                    roomId={room.cloudbedsRoomId}
+                    roomName={room.title}
+                    buttonLabel={reserveLabel}
+                  />
+                )}
                 <p className="text-[10px] text-center text-[#FAF7F2]/55 font-light leading-relaxed">
-                  Opens live availability on this page. Choose this room inside the reservation panel.
+                  Select dates to see live rates for this room, then continue to book it.
                 </p>
 
                 <a
@@ -342,17 +354,16 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
 
       </div>
 
-      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-[#A38B68]/25 bg-[#181715]/95 backdrop-blur-md px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-        <button
-          type="button"
-          onClick={() => onOpenReservation(room.cloudbedsRoomId)}
-          aria-label={reserveLabel}
-          className="w-full min-h-12 py-3.5 px-4 rounded-full bg-[#C5A880] text-[#141312] font-semibold text-[11px] uppercase tracking-[0.12em] shadow-[0_8px_22px_rgba(35,33,30,0.22)] hover:bg-[#B89A70] active:scale-[0.99] transition duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F7F4EF] flex items-center justify-center gap-2.5 cursor-pointer"
-        >
-          <Calendar size={15} className="shrink-0" />
-          <span className="text-center leading-snug">{reserveLabel}</span>
-        </button>
-      </div>
+      {compactBookingBar && (
+        <div className="fixed bottom-0 inset-x-0 z-40 border-t border-[#A38B68]/25 bg-[#181715]/95 backdrop-blur-md px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <AccommodationDatePicker
+            key={room.cloudbedsRoomId}
+            roomId={room.cloudbedsRoomId}
+            roomName={room.title}
+            buttonLabel={reserveLabel}
+          />
+        </div>
+      )}
     </div>
   );
 }
