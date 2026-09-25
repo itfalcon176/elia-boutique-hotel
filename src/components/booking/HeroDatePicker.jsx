@@ -14,6 +14,29 @@ export default function HeroDatePicker() {
     return () => query.removeEventListener('change', apply);
   }, []);
 
+  useEffect(() => {
+    const pinCalendar = () => {
+      document.querySelectorAll('.cb-portal [class*="calendar-popover"]').forEach((popover) => {
+        if (!(popover instanceof HTMLElement) || popover.dataset.eliaPinned === '1') return;
+        const rect = popover.getBoundingClientRect();
+        if (rect.height > window.innerHeight * 0.85) return;
+        if (rect.top >= 12 && rect.bottom <= window.innerHeight - 8) return;
+        popover.dataset.eliaPinned = '1';
+        popover.style.top = '88px';
+        popover.style.left = '50%';
+        popover.style.right = 'auto';
+        popover.style.bottom = 'auto';
+        popover.style.transform = 'translateX(-50%)';
+        popover.style.maxHeight = 'calc(100dvh - 104px)';
+        popover.style.overflow = 'auto';
+      });
+    };
+
+    const observer = new MutationObserver(pinCalendar);
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+    return () => observer.disconnect();
+  }, []);
+
   if (!PROPERTY_CODE || !bookingUrl) return null;
 
   return (
