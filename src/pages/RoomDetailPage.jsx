@@ -7,10 +7,8 @@ import {
   Waves,
   Check,
   Sparkles,
-  ChevronLeft,
   ArrowRight,
   ShieldCheck,
-  MapPin,
 } from 'lucide-react';
 import { roomsData, getRoomBySlug } from '../data/roomsData';
 import AccommodationDatePicker from '../components/booking/AccommodationDatePicker';
@@ -57,6 +55,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
     `Hello Elia Phuket Concierge, I would like to check availability for the ${room.title}.`
   );
   const whatsappUrl = `https://wa.me/66932719103?text=${whatsappMessage}`;
+  const reserveLabel = `Reserve Your ${room.title}`;
 
   return (
     <div className="pt-24 pb-36 lg:pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
@@ -290,7 +289,14 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
 
               {/* Action Buttons */}
               <div className="space-y-3">
-                {!compactBookingBar && <AccommodationDatePicker roomId={room.cloudbedsRoomId} />}
+                {!compactBookingBar && (
+                  <AccommodationDatePicker
+                    key={room.cloudbedsRoomId}
+                    roomId={room.cloudbedsRoomId}
+                    roomName={room.title}
+                    buttonLabel={reserveLabel}
+                  />
+                )}
                 <p className="text-[10px] text-center text-[#FAF7F2]/55 font-light leading-relaxed">
                   Select dates to see live rates for this room, then continue to book it.
                 </p>
@@ -350,7 +356,12 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
 
       {compactBookingBar && (
         <div className="fixed bottom-0 inset-x-0 z-40 border-t border-[#A38B68]/25 bg-[#181715]/95 backdrop-blur-md px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-          <AccommodationDatePicker roomId={room.cloudbedsRoomId} />
+          <AccommodationDatePicker
+            key={room.cloudbedsRoomId}
+            roomId={room.cloudbedsRoomId}
+            roomName={room.title}
+            buttonLabel={reserveLabel}
+          />
         </div>
       )}
     </div>

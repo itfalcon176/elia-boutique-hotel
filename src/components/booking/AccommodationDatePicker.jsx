@@ -1,23 +1,24 @@
-const PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
+import { CLOUDBEDS_PROPERTY_CODE } from '../../data/cloudbedsRooms';
 
 /**
- * Official Cloudbeds accommodation calendar.
- * Book now opens a date picker for one room type. Continue sends the guest
- * to the hosted booking engine with that room and the selected dates.
+ * Official Cloudbeds accommodation calendar for one room type.
+ * The component renders the reserve button. Continue opens the hosted
+ * booking engine with the selected dates and this room's type id.
  */
-export default function AccommodationDatePicker({ roomId, buttonLabel = 'Book now' }) {
-  if (!PROPERTY_CODE || !roomId) return null;
+export default function AccommodationDatePicker({ roomId, roomName, buttonLabel }) {
+  const label = buttonLabel || (roomName ? `Reserve Your ${roomName}` : '');
+
+  if (!CLOUDBEDS_PROPERTY_CODE || !roomId || !label) return null;
 
   return (
     <div className="elia-room-date-picker w-full">
       <cb-accommodation-date-picker
         key={roomId}
-        property-code={PROPERTY_CODE}
+        property-code={CLOUDBEDS_PROPERTY_CODE}
         rid={roomId}
-        button-label={buttonLabel}
+        button-label={label}
         lang="en"
         currency="thb"
-        show-lowest-rate="true"
         class-name="elia-room-book-button"
       />
     </div>

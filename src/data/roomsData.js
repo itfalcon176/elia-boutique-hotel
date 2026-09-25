@@ -1,8 +1,10 @@
+import { CLOUDBEDS_ROOM_IDS } from './cloudbedsRooms';
+
 export const roomsData = [
   {
     id: 'garden-beach-room',
     slug: 'garden-beach-room',
-    cloudbedsRoomId: '272558354096320',
+    cloudbedsRoomId: CLOUDBEDS_ROOM_IDS.gardenBeachRoom,
     roomCount: 8,
     countLabel: '8 rooms',
     title: 'Garden Beach Room',
@@ -47,7 +49,7 @@ export const roomsData = [
   {
     id: 'garden-family-suite',
     slug: 'garden-family-suite',
-    cloudbedsRoomId: '272559587213504',
+    cloudbedsRoomId: CLOUDBEDS_ROOM_IDS.gardenFamilySuite,
     roomCount: 2,
     countLabel: '2 suites',
     title: 'Garden Family Suite',
@@ -91,7 +93,7 @@ export const roomsData = [
   {
     id: 'loft-apartment',
     slug: 'loft-apartment',
-    cloudbedsRoomId: '273686137761984',
+    cloudbedsRoomId: CLOUDBEDS_ROOM_IDS.loftApartment,
     roomCount: 2,
     countLabel: '2 apartments',
     title: 'Loft Apartment',
@@ -132,7 +134,7 @@ export const roomsData = [
   {
     id: 'one-bedroom-loft-suite',
     slug: 'one-bedroom-loft-suite',
-    cloudbedsRoomId: '273686803132545',
+    cloudbedsRoomId: CLOUDBEDS_ROOM_IDS.oneBedroomLoftSuite,
     roomCount: 1,
     countLabel: '1 suite',
     title: 'One-Bedroom Loft Suite',

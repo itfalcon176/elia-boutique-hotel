@@ -28,7 +28,6 @@ declare global {
           currency?: string;
           'class-name'?: string;
           'custom-url'?: string;
-          'show-lowest-rate'?: 'true' | 'false' | string;
         },
         HTMLElement
       >;
