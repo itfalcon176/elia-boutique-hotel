@@ -16,6 +16,10 @@ html {
   color-scheme: light;
 }
 
+body.elia-booking-scroll-lock {
+  overflow: hidden !important;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -248,9 +252,9 @@ cb-book-now-button button {
 
 .cb-bookingengine-root [class*="close-button"] {
   position: relative;
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
   margin: 0 !important;
   padding: 0 !important;
   border-radius: 999px !important;
@@ -260,6 +264,12 @@ cb-book-now-button button {
   font-size: 0 !important;
   letter-spacing: 0 !important;
   box-shadow: 0 6px 16px rgba(35, 33, 30, 0.08);
+  cursor: pointer;
+}
+
+.cb-bookingengine-root [class*="close-button"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #F7F4EF, 0 0 0 4px #826C4B;
 }
 
 .cb-bookingengine-root [class*="close-button"]::after {
@@ -295,7 +305,7 @@ cb-book-now-button button {
   background: transparent !important;
   color: #23211E !important;
   box-shadow: none !important;
-  padding-right: 52px !important;
+  padding-right: 64px !important;
 }
 
 #cb-bookingengine .cb-language-selector,
@@ -308,6 +318,9 @@ cb-book-now-button button {
 }
 
 #cb-bookingengine .cb-landing-page {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   height: auto !important;
   min-height: 0 !important;
   display: flex !important;
@@ -315,7 +328,7 @@ cb-book-now-button button {
   align-items: stretch !important;
   justify-content: flex-start !important;
   padding: 8px 28px 18px !important;
-  background: transparent !important;
+  background: #F7F4EF !important;
 }
 
 #cb-bookingengine .cb-landing-page::before {
@@ -357,10 +370,16 @@ cb-book-now-button button {
   box-shadow: 0 10px 30px rgba(35, 33, 30, 0.06) !important;
 }
 
+#cb-bookingengine .cb-search-card button {
+  min-height: 44px;
+}
+
 #cb-bookingengine .cb-search-button,
 #cb-bookingengine .cb-shopping-cart-confirm-button {
   min-width: 128px;
-  min-height: 48px;
+  min-height: 48px !important;
+  height: auto !important;
+  padding-inline: 16px !important;
   border-radius: 12px !important;
   background: #23211E !important;
   color: #F7F4EF !important;
@@ -407,6 +426,15 @@ cb-book-now-button button {
   #cb-bookingengine .cb-landing-page {
     padding-inline: 20px !important;
   }
+
+  #cb-bookingengine .cb-search-card {
+    flex-wrap: wrap;
+  }
+
+  #cb-bookingengine .cb-search-button {
+    flex: 1 1 100%;
+    width: 100%;
+  }
 }
 
 @media (max-width: 639px) {
@@ -426,7 +454,11 @@ cb-book-now-button button {
 
   .cb-immersive-experience-popup-content > [class*="header--"] {
     top: max(12px, env(safe-area-inset-top)) !important;
-    right: 12px !important;
+    right: max(12px, env(safe-area-inset-right)) !important;
+  }
+
+  #cb-bookingengine [class*="header--"] {
+    padding-right: 72px !important;
   }
 
   #cb-bookingengine .cb-landing-page {
