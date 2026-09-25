@@ -526,4 +526,15 @@ cb-book-now-button button {
   min-height: 44px;
 }
 
+/* Cloudbeds anchors this popover above the viewport. Keep the hero calendar on screen. */
+body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pinned="1"] {
+  top: 88px !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translateX(-50%) !important;
+  max-height: calc(100dvh - 104px) !important;
+  overflow: auto !important;
+}
+
 
