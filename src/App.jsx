@@ -19,6 +19,7 @@ import SpecialOffersPage from './pages/SpecialOffersPage';
 import FaqsPage from './pages/FaqsPage';
 import LegalAndPolicyPages from './pages/LegalAndPolicyPages';
 import FacilityDetailPage from './pages/FacilityDetailPage';
+import BookingPage from './pages/BookingPage';
 
 import CloudbedsBookNow from './components/booking/CloudbedsBookNow';
 import './App.css';
@@ -89,6 +90,7 @@ const pageToPath = {
   terms: '/terms',
   cookies: '/cookies',
   directions: '/directions',
+  'book-your-stay': '/book-your-stay',
 };
 
 const seoMetadata = {
@@ -220,6 +222,10 @@ const seoMetadata = {
     title: 'Location & Contact | Elia Boutique Hotel Bang Tao Phuket',
     description: 'Find Elia Boutique Hotel on Bang Tao Beach, Phuket. Get location details, Google Maps directions, phone, WhatsApp concierge and contact information.',
   },
+  'book-your-stay': {
+    title: 'Book Your Stay | Elia Boutique Hotel Phuket',
+    description: 'Check live availability and reserve a room at Elia Boutique Hotel Phuket, on Bang Tao Beach.',
+  },
 };
 
 const getPageFromPath = (pathname) => {
@@ -261,7 +267,8 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/terms') return 'terms';
   if (cleanPath === '/cookies') return 'cookies';
   if (cleanPath === '/directions') return 'directions';
-  
+  if (cleanPath === '/book-your-stay' || cleanPath === '/book' || cleanPath === '/reserve') return 'book-your-stay';
+
   return 'home';
 };
 
@@ -315,6 +322,11 @@ function App() {
   }, []);
 
   const openReservation = (roomId) => {
+    const onBookingPage = window.location.pathname.replace(/\/$/, '').toLowerCase() === '/book-your-stay';
+    if (onBookingPage) {
+      document.getElementById('elia-booking-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
     window.dispatchEvent(new CustomEvent('elia-open-booking', {
       detail: { roomId: typeof roomId === 'string' ? roomId : '' },
     }));
@@ -335,7 +347,7 @@ function App() {
   return (
     <div className="relative w-full min-h-screen bg-elia-cream text-[#23211E]">
       {/* Main Header Navigation Bar */}
-      <CloudbedsBookNow />
+      {activePage !== 'book-your-stay' && <CloudbedsBookNow />}
 
       <Navbar
         activePage={activePage}
@@ -345,6 +357,7 @@ function App() {
 
       {/* Page Content Rendering */}
       <main className="min-h-screen">
+        {activePage === 'book-your-stay' && <BookingPage />}
         {activePage === 'home' && (
           <HomePage
             onNavigate={handleNavClick}

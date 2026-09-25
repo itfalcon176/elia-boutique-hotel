@@ -16,6 +16,24 @@ declare global {
       >;
 
       /**
+       * Official single-property date search bar for the homepage hero.
+       * Search continues on the Elia site through custom-url.
+       */
+      'cb-property-date-picker': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & {
+          'property-code'?: string;
+          'button-label'?: string;
+          layout?: 'horizontal' | 'vertical' | string;
+          'open-in-new-tab'?: 'true' | 'false' | string;
+          lang?: string;
+          currency?: string;
+          'class-name'?: string;
+          'custom-url'?: string;
+        },
+        HTMLElement
+      >;
+
+      /**
        * Official Cloudbeds Book Now Button (Popup Mode)
        */
       'cb-book-now-button': React.DetailedHTMLProps<

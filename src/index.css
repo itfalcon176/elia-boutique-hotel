@@ -489,4 +489,41 @@ cb-book-now-button button {
   }
 }
 
+/* Homepage hero date bar only. */
+.elia-hero-date-picker {
+  width: min(100%, 760px);
+  margin-inline: auto;
+  --booking-engine-colors-neutral-50: rgba(247, 244, 239, 0.96);
+  --booking-engine-colors-neutral-300: rgba(35, 33, 30, 0.14);
+  --booking-engine-fonts-body: "Plus Jakarta Sans", "Inter", sans-serif;
+  --chakra-colors-blue-500: #23211E;
+  --chakra-colors-blue-600: #181715;
+}
+
+.elia-hero-date-picker .cb-bookingengine-root {
+  width: 100%;
+  color: #23211E;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+}
+
+.elia-hero-date-picker [role="alert"] {
+  border-radius: 999px;
+  background: rgba(247, 244, 239, 0.96);
+  color: #23211E;
+  padding: 12px 18px;
+  font-size: 13px;
+}
+
+.elia-hero-date-picker button {
+  min-height: 44px;
+}
+
+.elia-hero-date-picker [data-testid$="search-button"],
+.elia-hero-date-picker .cb-search-button {
+  background: #23211E !important;
+  color: #F7F4EF !important;
+  border-radius: 999px !important;
+  min-height: 44px;
+}
+
 

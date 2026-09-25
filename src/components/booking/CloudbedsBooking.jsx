@@ -101,14 +101,6 @@ export default function CloudbedsBooking({
               <span>Try Again</span>
             </button>
 
-            <a
-              href={`https://us2.cloudbeds.com/reservation/${propertyCode}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#A38B68]/15 hover:bg-[#A38B68]/25 text-[#826C4B] text-xs uppercase tracking-widest font-semibold transition-all"
-            >
-              <span>Direct Link</span>
-            </a>
           </div>
 
           <div className="pt-6 border-t border-[#A38B68]/20 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-[#6E6A63]">

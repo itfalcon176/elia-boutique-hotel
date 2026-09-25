@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import HeroDatePicker from './booking/HeroDatePicker';
 import { Facebook, Instagram, ChevronDown, Calendar, ArrowRight, Sparkles, MapPin } from 'lucide-react';
 
 const TiktokIcon = ({ size = 18, ...props }) => (
@@ -41,16 +42,18 @@ export default function HeroSection({
   onNavigateRooms,
 }) {
   return (
-    <section id="home" className="relative w-full min-h-screen lg:h-[100vh] min-h-[720px] overflow-hidden bg-[#141312] select-none flex flex-col justify-between pt-24 pb-8">
+    <section id="home" className="relative w-full min-h-screen lg:min-h-[100vh] min-h-[720px] overflow-x-clip bg-[#141312] select-none flex flex-col justify-between pt-24 pb-8">
       {/* Background Hero Image */}
+      <div className="absolute inset-0 overflow-hidden z-0">
       <img
         src="/banner/Elia boutique hotel banner.jpeg"
         alt="Elia Boutique Hotel Bang Tao Beach Phuket"
-        className="absolute inset-0 w-full h-full object-cover z-0 scale-105 origin-center"
+        className="absolute inset-0 w-full h-full object-cover scale-105 origin-center"
         onError={(e) => {
           e.target.src = '/banner/banner.jpeg';
         }}
       />
+      </div>
 
       {/* Subtle Natural Multi-Layer Contrast Overlay (Seamless & Invisible to visitors) */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/10 z-10 pointer-events-none" />
@@ -99,6 +102,10 @@ export default function HeroSection({
             Elia is an intimate boutique hotel on Bang Tao Beach, created for guests who want to stay closer to the sea, closer to the good life and a little further from everything else.
           </p>
         </motion.div>
+
+        <div className="w-full max-w-3xl mx-auto mb-6 sm:mb-8 px-1">
+          <HeroDatePicker />
+        </div>
 
         {/* Action Buttons: Modern Luxury Glassmorphism & Gold Buttons */}
         <motion.div
