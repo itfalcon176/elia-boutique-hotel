@@ -6,12 +6,12 @@ const PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
 function popupSize() {
   const width = window.innerWidth;
   if (width < 640) {
-    return { width: '96vw', height: '94dvh' };
+    return { width: '100%', height: '100%' };
   }
   if (width < 1024) {
-    return { width: 'min(760px, 94vw)', height: 'min(860px, 92dvh)' };
+    return { width: 'min(680px, 92vw)', height: 'min(760px, 86dvh)' };
   }
-  return { width: 'min(1040px, 90vw)', height: 'min(880px, 90dvh)' };
+  return { width: 'min(860px, 84vw)', height: 'min(700px, 80dvh)' };
 }
 
 function isPopupOpen() {

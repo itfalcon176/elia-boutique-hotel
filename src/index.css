@@ -190,4 +190,137 @@ cb-book-now-button button {
   clip-path: inset(50%) !important;
 }
 
+/* Booking panel only. These selectors do not match the Elia site. */
+@keyframes elia-booking-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cb-bookingengine-root > .cb-portal > div {
+  --cb-popup-border-radius: 28px;
+  --cb-popup-width: min(860px, 84vw);
+  --cb-popup-height: min(700px, 80dvh);
+  --cb-popup-text-color: #23211E;
+  --cb-popup-background-color: #F7F4EF;
+  --cb-popup-z-index: 1600;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 28px !important;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+}
+
+.cb-bookingengine-root [class*="overlay--"] {
+  background: rgba(24, 23, 21, 0.5) !important;
+}
+
+.cb-immersive-experience-popup-content {
+  animation: elia-booking-panel-in 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+  filter: drop-shadow(0 28px 70px rgba(35, 33, 30, 0.28));
+}
+
+.cb-bookingengine-root [class*="body--"] {
+  background: #F7F4EF !important;
+  border-radius: 28px !important;
+}
+
+.cb-bookingengine-root [class*="close-button"] {
+  margin: 10px 10px 0 0 !important;
+  padding: 10px 16px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(163, 139, 104, 0.45) !important;
+  background: #F7F4EF !important;
+  color: #23211E !important;
+  letter-spacing: 0.16em;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+}
+
+#cb-bookingengine {
+  --chakra-colors-blue-50: #F7F4EF;
+  --chakra-colors-blue-100: #EFEAE2;
+  --chakra-colors-blue-200: #E4D5BC;
+  --chakra-colors-blue-300: #CDB892;
+  --chakra-colors-blue-400: #B89A70;
+  --chakra-colors-blue-500: #826C4B;
+  --chakra-colors-blue-600: #6E5A3C;
+  --chakra-colors-blue-700: #3A342C;
+  --chakra-colors-blue-800: #23211E;
+  --chakra-colors-blue-900: #181715;
+  --booking-engine-fonts-body: "Plus Jakarta Sans", "Inter", sans-serif;
+  --booking-engine-fonts-heading: "Playfair Display", Georgia, serif;
+  background: #F7F4EF;
+  color: #23211E;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+}
+
+#cb-bookingengine [class*="header--"] {
+  background: #23211E !important;
+  color: #F7F4EF !important;
+  box-shadow: none !important;
+}
+
+#cb-bookingengine [class*="checkin-checkout"],
+#cb-bookingengine [class*="date-box"],
+#cb-bookingengine [class*="form-field"] {
+  border-radius: 16px;
+}
+
+#cb-bookingengine [class*="hero"] img,
+#cb-bookingengine [class*="cover"] img,
+#cb-bookingengine [class*="banner"] img {
+  max-height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#cb-bookingengine .chakra-button {
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+#cb-bookingengine .chakra-button:hover {
+  filter: brightness(1.06);
+}
+
+#cb-bookingengine .chakra-button:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 1023px) and (min-width: 640px) {
+  .cb-bookingengine-root > .cb-portal > div {
+    --cb-popup-width: min(680px, 92vw);
+    --cb-popup-height: min(760px, 86dvh);
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .cb-bookingengine-root > .cb-portal > div {
+    --cb-popup-width: 100%;
+    --cb-popup-height: 100%;
+    --cb-popup-border-radius: 0px;
+    padding: 0 !important;
+  }
+
+  .cb-bookingengine-root [class*="body--"] {
+    border-radius: 0 !important;
+  }
+
+  .cb-bookingengine-root [class*="close-button"] {
+    margin-top: max(10px, env(safe-area-inset-top)) !important;
+    margin-right: 10px !important;
+  }
+
+  .cb-immersive-experience-popup-content {
+    animation: none;
+    filter: none;
+  }
+}
+
 

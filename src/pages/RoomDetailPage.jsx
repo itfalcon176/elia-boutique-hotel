@@ -280,11 +280,10 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
                   type="button"
                   onClick={onOpenReservation}
                   aria-label={reserveLabel}
-                  className="group relative w-full overflow-hidden py-4 px-5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-[11px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.16em] shadow-[0_10px_28px_rgba(197,168,128,0.28)] hover:shadow-[0_14px_34px_rgba(197,168,128,0.42)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full min-h-12 py-3.5 px-5 rounded-full bg-[#C5A880] text-[#141312] font-semibold text-[11px] sm:text-xs uppercase tracking-[0.12em] shadow-[0_8px_22px_rgba(35,33,30,0.18)] hover:bg-[#B89A70] active:scale-[0.99] transition-colors duration-200 flex items-center justify-center gap-2.5 cursor-pointer"
                 >
-                  <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                  <Calendar size={15} className="relative shrink-0" />
-                  <span className="relative text-center leading-snug">{reserveLabel}</span>
+                  <Calendar size={15} className="shrink-0" />
+                  <span className="text-center leading-snug">{reserveLabel}</span>
                 </button>
                 <p className="text-[10px] text-center text-[#FAF7F2]/55 font-light leading-relaxed">
                   Opens live availability. Choose this room inside the reservation panel.
@@ -348,7 +347,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
           type="button"
           onClick={onOpenReservation}
           aria-label={reserveLabel}
-          className="w-full py-3.5 px-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-[11px] uppercase tracking-[0.14em] shadow-[0_8px_24px_rgba(197,168,128,0.28)] flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full min-h-12 py-3.5 px-4 rounded-full bg-[#C5A880] text-[#141312] font-semibold text-[11px] uppercase tracking-[0.12em] shadow-[0_8px_22px_rgba(35,33,30,0.22)] active:scale-[0.99] transition-transform duration-150 flex items-center justify-center gap-2.5 cursor-pointer"
         >
           <Calendar size={15} className="shrink-0" />
           <span className="text-center leading-snug">{reserveLabel}</span>
