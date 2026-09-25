@@ -659,8 +659,7 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
 }
 
 .elia-preloader {
-  background:
-    radial-gradient(ellipse at center, #1a1815 0%, #0d0c0b 60%, #060505 100%);
+  background: #F7F4EF;
   transition: opacity 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -673,7 +672,7 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   height: 2px;
   overflow: hidden;
   border-radius: 999px;
-  background: rgba(197, 168, 128, 0.22);
+  background: rgba(163, 139, 104, 0.35);
 }
 
 .elia-preloader-bar {

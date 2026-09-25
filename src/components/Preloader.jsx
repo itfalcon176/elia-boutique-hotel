@@ -105,7 +105,7 @@ export default function Preloader() {
 
   return (
     <div
-      className={`elia-preloader fixed inset-0 z-[80] flex items-center justify-center bg-[#0D0C0B] ${
+      className={`elia-preloader fixed inset-0 z-[80] flex items-center justify-center ${
         closing ? 'elia-preloader-leave pointer-events-none' : ''
       }`}
       role="status"
