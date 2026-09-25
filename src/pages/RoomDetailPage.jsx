@@ -278,7 +278,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
               <div className="space-y-3">
                 <button
                   type="button"
-                  onClick={onOpenReservation}
+                  onClick={() => onOpenReservation(room.cloudbedsRoomId)}
                   aria-label={reserveLabel}
                   className="w-full min-h-12 py-3.5 px-5 rounded-full bg-[#C5A880] text-[#141312] font-semibold text-[11px] sm:text-xs uppercase tracking-[0.12em] shadow-[0_8px_22px_rgba(35,33,30,0.18)] hover:bg-[#B89A70] active:scale-[0.99] transition-colors duration-200 flex items-center justify-center gap-2.5 cursor-pointer"
                 >
@@ -286,7 +286,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
                   <span className="text-center leading-snug">{reserveLabel}</span>
                 </button>
                 <p className="text-[10px] text-center text-[#FAF7F2]/55 font-light leading-relaxed">
-                  Opens live availability. Choose this room inside the reservation panel.
+                  Opens live availability for this room.
                 </p>
 
                 <a
@@ -345,7 +345,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate, onOpenReservation
       <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-[#A38B68]/25 bg-[#181715]/95 backdrop-blur-md px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <button
           type="button"
-          onClick={onOpenReservation}
+          onClick={() => onOpenReservation(room.cloudbedsRoomId)}
           aria-label={reserveLabel}
           className="w-full min-h-12 py-3.5 px-4 rounded-full bg-[#C5A880] text-[#141312] font-semibold text-[11px] uppercase tracking-[0.12em] shadow-[0_8px_22px_rgba(35,33,30,0.22)] active:scale-[0.99] transition-transform duration-150 flex items-center justify-center gap-2.5 cursor-pointer"
         >

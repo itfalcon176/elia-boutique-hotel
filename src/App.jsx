@@ -314,8 +314,10 @@ function App() {
     };
   }, []);
 
-  const openReservation = () => {
-    window.dispatchEvent(new Event('elia-open-booking'));
+  const openReservation = (roomId) => {
+    window.dispatchEvent(new CustomEvent('elia-open-booking', {
+      detail: { roomId: typeof roomId === 'string' ? roomId : '' },
+    }));
   };
 
   const handleNavClick = (id) => {
