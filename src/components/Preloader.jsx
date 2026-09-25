@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-const FRAME_NUMBERS = [1, 2, 3, 4, 5, 6, 8, 7];
-const FRAMES = FRAME_NUMBERS.map((n) => `/preloader/frame-${String(n).padStart(2, '0')}.webp`);
-const FRAME_MS = 170;
-const MIN_VISIBLE_MS = 2100;
+const FRAME_NUMBERS = [1, 2, 3, 4, 6, 8, 7];
+const FRAMES = FRAME_NUMBERS.map((n) => `/preloader/frame-${String(n).padStart(2, '0')}.png`);
+const FRAME_MS = 520;
+const MIN_VISIBLE_MS = 4600;
 
 export default function Preloader() {
   const [frame, setFrame] = useState(0);
@@ -52,7 +52,7 @@ export default function Preloader() {
 
       if (document.readyState === 'complete') close();
       else window.addEventListener('load', close, { once: true });
-      capTimer = window.setTimeout(close, 3200);
+      capTimer = window.setTimeout(close, 7000);
     }
 
     return () => {
@@ -67,7 +67,7 @@ export default function Preloader() {
 
   useEffect(() => {
     if (!closing) return undefined;
-    const timer = window.setTimeout(() => setGone(true), 700);
+    const timer = window.setTimeout(() => setGone(true), 1100);
     return () => window.clearTimeout(timer);
   }, [closing]);
 
@@ -75,30 +75,36 @@ export default function Preloader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[80] flex items-center justify-center bg-[#070706] transition-opacity duration-700 ease-out ${
+      className={`fixed inset-0 z-[80] flex items-center justify-center bg-[#070706] transition-opacity duration-1000 ease-in-out ${
         closing ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
       role="status"
       aria-live="polite"
       aria-label="Loading Elia Boutique Hotel"
     >
-      <div className={`flex w-[min(92vw,640px)] flex-col items-center transition-transform duration-700 ${closing ? 'scale-105' : 'scale-100'}`}>
-        <div className="relative aspect-[960/420] w-full">
+      <div className={`flex w-[min(92vw,640px)] flex-col items-center transition-transform duration-1000 ease-in-out ${closing ? 'scale-[1.03]' : 'scale-100'}`}>
+        <div
+          className="relative aspect-[960/420] w-full"
+          style={{
+            WebkitMaskImage: 'radial-gradient(ellipse at center, #000 72%, transparent 96%)',
+            maskImage: 'radial-gradient(ellipse at center, #000 72%, transparent 96%)',
+          }}
+        >
           {FRAMES.map((src, index) => (
             <img
               key={src}
               src={src}
               alt=""
-              className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-200 ${
+              className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ease-in-out ${
                 index === frame ? 'opacity-100' : 'opacity-0'
               }`}
             />
           ))}
         </div>
 
-        <div className="mt-2 h-px w-28 overflow-hidden bg-white/10">
+        <div className="mt-1 h-px w-28 overflow-hidden bg-white/10">
           <div
-            className="h-full bg-[#C5A880] transition-[width] duration-200 ease-out"
+            className="h-full bg-[#C5A880] transition-[width] duration-700 ease-in-out"
             style={{ width: `${((frame + 1) / FRAMES.length) * 100}%` }}
           />
         </div>
