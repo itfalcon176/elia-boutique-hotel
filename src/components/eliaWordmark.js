@@ -55,3 +55,39 @@ export function lockupShift(step) {
     y: Math.round(y * 1000) / 1000,
   };
 }
+
+function smootherstep(t) {
+  const x = Math.min(1, Math.max(0, t));
+  return x * x * x * (x * (x * 6 - 15) + 10);
+}
+
+function shiftAlong(index) {
+  const clamped = Math.min(4, Math.max(1, index));
+  const i0 = Math.min(3, Math.floor(clamped));
+  const span = clamped - i0;
+  const from = lockupShift(i0);
+  const to = lockupShift(i0 + 1);
+  return {
+    x: from.x + (to.x - from.x) * span,
+    y: from.y + (to.y - from.y) * span,
+  };
+}
+
+/** One continuous glide through E → EL → ELI → ELIA, then into the full lockup. */
+export function glideShift(elapsed, timing) {
+  const glideSpan = timing.glideEnd - timing.glideStart;
+  let index = 1;
+  if (elapsed > timing.glideStart) {
+    const u = Math.min(1, (elapsed - timing.glideStart) / glideSpan);
+    index = 1 + smootherstep(u) * 3;
+  }
+  const letters = shiftAlong(index);
+  if (elapsed <= timing.taglineAt) return letters;
+  const u = Math.min(1, (elapsed - timing.taglineAt) / timing.taglineMs);
+  const eased = smootherstep(u);
+  const settled = lockupShift(5);
+  return {
+    x: letters.x + (settled.x - letters.x) * eased,
+    y: letters.y + (settled.y - letters.y) * eased,
+  };
+}

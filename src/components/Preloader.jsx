@@ -1,13 +1,25 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
-import { LETTERS, TAGLINE_PATHS, WORDMARK_VIEWBOX, lockupShift } from './eliaWordmark';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { LETTERS, TAGLINE_PATHS, WORDMARK_VIEWBOX, glideShift, lockupShift } from './eliaWordmark';
 
-const LETTER_AT = [140, 640, 1140, 1640];
-const TAGLINE_AT = 3060;
-const REVEAL_MS = 4000;
-const LEAVE_MS = 1000;
+const LETTER_AT = [16, 700, 1280, 1860];
+const FADE_MS = 1120;
+const GLIDE = {
+  glideStart: 700,
+  glideEnd: 2980,
+  taglineAt: 2980,
+  taglineMs: 880,
+};
+const TAGLINE_AT = GLIDE.taglineAt;
+const REVEAL_MS = 4080;
+const LEAVE_MS = 1120;
 const REDUCED_MS = 420;
 
 const VIEWBOX = `${WORDMARK_VIEWBOX.x} ${WORDMARK_VIEWBOX.y} ${WORDMARK_VIEWBOX.width} ${WORDMARK_VIEWBOX.height}`;
+
+function fadeAmount(elapsed, start, duration) {
+  const u = Math.min(1, Math.max(0, (elapsed - start) / duration));
+  return u * u * u * (u * (u * 6 - 15) + 10);
+}
 
 function shouldPlayPreloader() {
   if (typeof window === 'undefined') return false;
@@ -50,10 +62,14 @@ export default function Preloader() {
   ));
   const [phase, setPhase] = useState(playOnLoad ? 'play' : 'gone');
   const [step, setStep] = useState(motionOk ? 0 : 5);
+  const lockupRef = useRef(null);
 
   useLayoutEffect(() => {
     document.getElementById('elia-boot')?.remove();
-  }, []);
+    if (!motionOk || !lockupRef.current) return;
+    const shift = lockupShift(1);
+    lockupRef.current.style.transform = `translate3d(${shift.x}%, ${shift.y}%, 0)`;
+  }, [motionOk]);
 
   useEffect(() => {
     if (!playOnLoad) return undefined;
@@ -76,17 +92,41 @@ export default function Preloader() {
     window.addEventListener('popstate', onPopState);
 
     const timers = [];
+    let frame = 0;
     if (!motionOk) {
       timers.push(window.setTimeout(finish, REDUCED_MS));
     } else {
-      LETTER_AT.forEach((at, index) => {
-        timers.push(window.setTimeout(() => {
-          if (!cancelled) setStep(index + 1);
-        }, at));
-      });
-      timers.push(window.setTimeout(() => {
-        if (!cancelled) setStep(5);
-      }, TAGLINE_AT));
+      const started = performance.now();
+      let shown = 0;
+      const tick = (now) => {
+        if (cancelled) return;
+        const elapsed = now - started;
+        const shift = glideShift(elapsed, GLIDE);
+        const lockup = lockupRef.current;
+        if (lockup) {
+          lockup.style.transform = `translate3d(${shift.x}%, ${shift.y}%, 0)`;
+          lockup.querySelectorAll('.elia-preloader-letter').forEach((node, index) => {
+            const amount = fadeAmount(elapsed, LETTER_AT[index], FADE_MS);
+            node.style.opacity = String(amount);
+            node.style.transform = `translate3d(0, ${(1 - amount) * 10}px, 0)`;
+          });
+          const tagline = lockup.querySelector('.elia-preloader-tagline');
+          if (tagline) {
+            const amount = elapsed < TAGLINE_AT ? 0 : fadeAmount(elapsed, TAGLINE_AT, GLIDE.taglineMs);
+            tagline.style.opacity = String(amount);
+            tagline.style.visibility = amount > 0.01 ? 'visible' : 'hidden';
+          }
+        }
+        const next = elapsed >= TAGLINE_AT
+          ? 5
+          : LETTER_AT.reduce((count, at) => count + (elapsed >= at ? 1 : 0), 0);
+        if (next !== shown) {
+          shown = next;
+          setStep(next);
+        }
+        if (elapsed < REVEAL_MS) frame = window.requestAnimationFrame(tick);
+      };
+      frame = window.requestAnimationFrame(tick);
       timers.push(window.setTimeout(() => {
         if (cancelled) return;
         unlock();
@@ -97,6 +137,7 @@ export default function Preloader() {
 
     return () => {
       cancelled = true;
+      window.cancelAnimationFrame(frame);
       timers.forEach((timer) => window.clearTimeout(timer));
       window.removeEventListener('popstate', onPopState);
       unlock();
@@ -106,7 +147,6 @@ export default function Preloader() {
   if (phase === 'gone') return null;
 
   const leaving = phase === 'leave';
-  const shift = lockupShift(step);
 
   return (
     <div
@@ -135,10 +175,7 @@ export default function Preloader() {
       <div className="elia-preloader-stage">
         <div className="elia-preloader-glow" aria-hidden="true" />
         <div className="elia-preloader-mark">
-          <div
-            className="elia-preloader-lockup"
-            style={motionOk ? { transform: `translate3d(${shift.x}%, ${shift.y}%, 0)` } : undefined}
-          >
+          <div className="elia-preloader-lockup" ref={lockupRef}>
             {LETTERS.map((letter, index) => (
               <LogoLayer
                 key={letter.id}
