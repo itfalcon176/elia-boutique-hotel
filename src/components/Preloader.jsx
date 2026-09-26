@@ -1,9 +1,13 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
+import { LETTERS, TAGLINE_PATHS, WORDMARK_VIEWBOX, lockupShift } from './eliaWordmark';
 
-const LOGO_SRC = '/logo.svg';
-const REVEAL_MS = 2400;
+const LETTER_AT = [140, 640, 1140, 1640];
+const TAGLINE_AT = 3060;
+const REVEAL_MS = 4000;
 const LEAVE_MS = 1000;
 const REDUCED_MS = 420;
+
+const VIEWBOX = `${WORDMARK_VIEWBOX.x} ${WORDMARK_VIEWBOX.y} ${WORDMARK_VIEWBOX.width} ${WORDMARK_VIEWBOX.height}`;
 
 function shouldPlayPreloader() {
   if (typeof window === 'undefined') return false;
@@ -22,12 +26,30 @@ function shouldPlayPreloader() {
   return !fromDatePicker;
 }
 
+function LogoLayer({ paths, className }) {
+  return (
+    <svg
+      className={className}
+      viewBox={VIEWBOX}
+      fill="none"
+      aria-hidden="true"
+    >
+      <g transform="translate(0 1201) scale(0.1 -0.1)" fill="#ffffff">
+        {paths.map((d, index) => (
+          <path key={index} d={d} />
+        ))}
+      </g>
+    </svg>
+  );
+}
+
 export default function Preloader() {
   const [playOnLoad] = useState(shouldPlayPreloader);
   const [motionOk] = useState(() => (
     playOnLoad && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ));
   const [phase, setPhase] = useState(playOnLoad ? 'play' : 'gone');
+  const [step, setStep] = useState(motionOk ? 0 : 5);
 
   useLayoutEffect(() => {
     document.getElementById('elia-boot')?.remove();
@@ -57,6 +79,14 @@ export default function Preloader() {
     if (!motionOk) {
       timers.push(window.setTimeout(finish, REDUCED_MS));
     } else {
+      LETTER_AT.forEach((at, index) => {
+        timers.push(window.setTimeout(() => {
+          if (!cancelled) setStep(index + 1);
+        }, at));
+      });
+      timers.push(window.setTimeout(() => {
+        if (!cancelled) setStep(5);
+      }, TAGLINE_AT));
       timers.push(window.setTimeout(() => {
         if (cancelled) return;
         unlock();
@@ -76,6 +106,7 @@ export default function Preloader() {
   if (phase === 'gone') return null;
 
   const leaving = phase === 'leave';
+  const shift = lockupShift(step);
 
   return (
     <div
@@ -83,11 +114,17 @@ export default function Preloader() {
         'elia-preloader fixed inset-0 z-[80] flex items-center justify-center',
         motionOk ? 'elia-preloader--motion' : 'elia-preloader--reduced',
         leaving ? 'elia-preloader-leave' : '',
+        step >= 5 ? 'is-complete' : '',
       ].filter(Boolean).join(' ')}
-      style={motionOk ? { '--elia-leave-ms': `${LEAVE_MS}ms` } : undefined}
+      style={motionOk ? {
+        '--elia-leave-ms': `${LEAVE_MS}ms`,
+        '--elia-reveal-ms': `${REVEAL_MS}ms`,
+      } : undefined}
+      data-step={step}
       role={leaving ? undefined : 'status'}
       aria-live={leaving ? 'off' : 'polite'}
       aria-hidden={leaving ? true : undefined}
+      inert={leaving ? true : undefined}
     >
       <span className="sr-only">Loading Elia Boutique Hotel</span>
       <span className="elia-preloader-corner is-tl" aria-hidden="true" />
@@ -98,13 +135,28 @@ export default function Preloader() {
       <div className="elia-preloader-stage">
         <div className="elia-preloader-glow" aria-hidden="true" />
         <div className="elia-preloader-mark">
-          <img
-            src={LOGO_SRC}
-            alt=""
-            draggable="false"
-            className="elia-preloader-logo"
-          />
-          <div className="elia-preloader-streak" aria-hidden="true" />
+          <div
+            className="elia-preloader-lockup"
+            style={motionOk ? { transform: `translate3d(${shift.x}%, ${shift.y}%, 0)` } : undefined}
+          >
+            {LETTERS.map((letter, index) => (
+              <LogoLayer
+                key={letter.id}
+                paths={letter.paths}
+                className={[
+                  'elia-preloader-layer elia-preloader-letter',
+                  step > index ? 'is-on' : '',
+                ].filter(Boolean).join(' ')}
+              />
+            ))}
+            <LogoLayer
+              paths={TAGLINE_PATHS}
+              className={[
+                'elia-preloader-layer elia-preloader-tagline',
+                step >= 5 ? 'is-on' : '',
+              ].filter(Boolean).join(' ')}
+            />
+          </div>
         </div>
         <div className="elia-preloader-rule" aria-hidden="true" />
         <p className="elia-preloader-meta">Bang Tao Beach, Phuket</p>
