@@ -670,11 +670,27 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
 
 .elia-preloader-leave {
   pointer-events: none;
+}
+
+.elia-preloader--glide.elia-preloader-leave,
+.elia-preloader--curtain.elia-preloader-leave {
   transform: translate3d(0, -100%, 0);
 }
 
-.elia-preloader--motion {
+.elia-preloader--fade.elia-preloader-leave {
+  opacity: 0;
+}
+
+.elia-preloader--glide.elia-preloader--motion {
   transition: transform var(--elia-leave-ms) cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.elia-preloader--curtain.elia-preloader--motion {
+  transition: transform var(--elia-leave-ms) cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.elia-preloader--fade.elia-preloader--motion {
+  transition: opacity var(--elia-leave-ms) cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .elia-preloader-stage {
@@ -687,11 +703,16 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   padding-inline: 1.25rem;
 }
 
-.elia-preloader--motion .elia-preloader-stage {
+.elia-preloader--glide.elia-preloader--motion .elia-preloader-stage {
   transition: transform var(--elia-leave-ms) cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-.elia-preloader--motion.elia-preloader-leave .elia-preloader-stage {
+.elia-preloader--curtain.elia-preloader--motion .elia-preloader-stage {
+  transition: transform var(--elia-leave-ms) cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.elia-preloader--glide.elia-preloader--motion.elia-preloader-leave .elia-preloader-stage,
+.elia-preloader--curtain.elia-preloader--motion.elia-preloader-leave .elia-preloader-stage {
   transform: translate3d(0, -8%, 0);
 }
 
@@ -728,7 +749,7 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   pointer-events: none;
 }
 
-.elia-preloader-rule {
+.elia-preloader--glide .elia-preloader-rule {
   position: absolute;
   left: 50%;
   top: calc(100% + 1.35rem);
@@ -739,7 +760,7 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   transform-origin: center;
 }
 
-.elia-preloader-meta {
+.elia-preloader--glide .elia-preloader-meta {
   position: absolute;
   left: 50%;
   top: calc(100% + 2.55rem);
@@ -834,29 +855,29 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
     animation: elia-preloader-glow 2.2s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  .elia-preloader--motion .elia-preloader-lockup {
+  .elia-preloader--glide.elia-preloader--motion .elia-preloader-lockup {
     will-change: transform;
   }
 
-  .elia-preloader--motion .elia-preloader-letter,
-  .elia-preloader--motion .elia-preloader-tagline {
+  .elia-preloader--glide.elia-preloader--motion .elia-preloader-letter,
+  .elia-preloader--glide.elia-preloader--motion .elia-preloader-tagline {
     opacity: 0;
   }
 
-  .elia-preloader--motion .elia-preloader-tagline {
+  .elia-preloader--glide.elia-preloader--motion .elia-preloader-tagline {
     visibility: hidden;
   }
 
-  .elia-preloader--motion .elia-preloader-rule {
+  .elia-preloader--glide.elia-preloader--motion .elia-preloader-rule {
     transform: translateX(-50%) scaleX(0);
     transition: transform 0.92s cubic-bezier(0.16, 0.84, 0.32, 1);
   }
 
-  .elia-preloader--motion.is-complete .elia-preloader-rule {
+  .elia-preloader--glide.elia-preloader--motion.is-complete .elia-preloader-rule {
     transform: translateX(-50%) scaleX(1);
   }
 
-  .elia-preloader--motion .elia-preloader-meta {
+  .elia-preloader--glide.elia-preloader--motion .elia-preloader-meta {
     opacity: 0;
     transform: translateX(-50%) translateY(8px);
     transition:
@@ -864,7 +885,7 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
       transform 0.92s cubic-bezier(0.16, 0.84, 0.32, 1);
   }
 
-  .elia-preloader--motion.is-complete .elia-preloader-meta {
+  .elia-preloader--glide.elia-preloader--motion.is-complete .elia-preloader-meta {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
@@ -879,9 +900,47 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   .elia-preloader--motion .elia-preloader-corner.is-br { animation-delay: 0.2s; }
   .elia-preloader--motion .elia-preloader-corner.is-bl { animation-delay: 0.28s; }
 
-  .elia-preloader--motion .elia-preloader-bar {
+  .elia-preloader--glide.elia-preloader--motion .elia-preloader-bar {
     transform: scaleX(0);
     animation: elia-preloader-bar var(--elia-reveal-ms, 4.04s) cubic-bezier(0.45, 0, 0.2, 1) forwards;
+  }
+
+  .elia-preloader--curtain.elia-preloader--motion .elia-preloader-logo {
+    -webkit-mask-image: linear-gradient(90deg, #000 0 42%, transparent 52%);
+    -webkit-mask-size: 300% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: linear-gradient(90deg, #000 0 42%, transparent 52%);
+    mask-size: 300% 100%;
+    mask-repeat: no-repeat;
+    animation: elia-preloader-logo 1.45s cubic-bezier(0.77, 0, 0.18, 1) 0.22s both;
+  }
+
+  .elia-preloader--curtain.elia-preloader--motion .elia-preloader-streak {
+    animation: elia-preloader-streak 1.45s cubic-bezier(0.77, 0, 0.18, 1) 0.22s both;
+  }
+
+  .elia-preloader--curtain.elia-preloader--motion .elia-preloader-rule {
+    transform: scaleX(0);
+    animation: elia-curtain-rule 0.75s cubic-bezier(0.22, 1, 0.36, 1) 1.45s forwards;
+  }
+
+  .elia-preloader--curtain.elia-preloader--motion .elia-preloader-meta {
+    opacity: 0;
+    animation: elia-curtain-meta 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.55s forwards;
+  }
+
+  .elia-preloader--curtain.elia-preloader--motion .elia-preloader-bar {
+    transform: scaleX(0);
+    animation: elia-preloader-bar 2.15s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+  }
+
+  .elia-preloader--fade.elia-preloader--motion .elia-preloader-fade-logo {
+    animation: elia-fade-logo 1.9s cubic-bezier(0.16, 0.84, 0.28, 1) both;
+  }
+
+  .elia-preloader--fade.elia-preloader--motion .elia-preloader-fade-rule {
+    transform: scaleX(0);
+    animation: elia-fade-rule 1.15s cubic-bezier(0.22, 0.61, 0.36, 1) 1.05s forwards;
   }
 }
 
@@ -900,19 +959,143 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   to { transform: scaleX(1); }
 }
 
+.elia-preloader--curtain .elia-preloader-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.elia-preloader--curtain .elia-preloader-streak {
+  position: absolute;
+  top: 6%;
+  bottom: 6%;
+  left: 0;
+  width: 22%;
+  background: linear-gradient(90deg, transparent, rgba(255, 250, 242, 0.95) 48%, rgba(243, 223, 191, 0.35) 62%, transparent);
+  filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.elia-preloader--curtain .elia-preloader-rule {
+  width: min(38vw, 168px);
+  height: 1px;
+  margin-top: 1.35rem;
+  background: linear-gradient(90deg, transparent, #c5a880 20%, #f3dfbf 50%, #c5a880 80%, transparent);
+  transform-origin: center;
+}
+
+.elia-preloader--curtain .elia-preloader-meta {
+  margin: 0.95rem 0 0;
+  color: rgba(243, 223, 191, 0.86);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.elia-preloader--fade .elia-preloader-fade-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.elia-preloader--fade .elia-preloader-fade-rule {
+  width: min(42vw, 196px);
+  height: 1px;
+  margin-top: 1.5rem;
+  background: linear-gradient(90deg, transparent, #a38b68 0%, #c5a880 28%, #f3dfbf 50%, #c5a880 72%, #a38b68 100%);
+  transform: scaleX(1);
+  transform-origin: center;
+}
+
+@keyframes elia-preloader-logo {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(1.06);
+    -webkit-mask-position: 100% 50%;
+    mask-position: 100% 50%;
+  }
+
+  38% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    -webkit-mask-position: 0% 50%;
+    mask-position: 0% 50%;
+  }
+}
+
+@keyframes elia-preloader-streak {
+  0% { opacity: 0; transform: translate3d(-130%, 0, 0); }
+  14% { opacity: 0.95; }
+  100% { opacity: 0; transform: translate3d(455%, 0, 0); }
+}
+
+@keyframes elia-curtain-rule {
+  to { transform: scaleX(1); }
+}
+
+@keyframes elia-curtain-meta {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes elia-fade-logo {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(1.08);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes elia-fade-rule {
+  to { transform: scaleX(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .elia-preloader,
   .elia-preloader-stage,
   .elia-preloader-lockup,
   .elia-preloader-letter,
   .elia-preloader-tagline,
+  .elia-preloader-logo,
+  .elia-preloader-fade-logo,
+  .elia-preloader-streak,
   .elia-preloader-rule,
+  .elia-preloader-fade-rule,
   .elia-preloader-meta,
   .elia-preloader-corner,
   .elia-preloader-bar,
   .elia-preloader-glow {
     animation: none !important;
     transition: none !important;
+  }
+
+  .elia-preloader-streak {
+    display: none;
   }
 }
 

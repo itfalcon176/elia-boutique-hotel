@@ -12,7 +12,17 @@ const GLIDE = {
 const TAGLINE_AT = GLIDE.taglineAt;
 const REVEAL_MS = 4080;
 const LEAVE_MS = 1120;
+const CURTAIN_REVEAL_MS = 2400;
+const CURTAIN_LEAVE_MS = 1000;
+const FADE_REVEAL_MS = 2460;
+const FADE_LEAVE_MS = 1200;
 const REDUCED_MS = 420;
+
+function readVariant() {
+  const value = new URLSearchParams(window.location.search).get('preloader');
+  if (value === 'curtain' || value === 'fade') return value;
+  return 'glide';
+}
 
 const VIEWBOX = `${WORDMARK_VIEWBOX.x} ${WORDMARK_VIEWBOX.y} ${WORDMARK_VIEWBOX.width} ${WORDMARK_VIEWBOX.height}`;
 
@@ -57,6 +67,7 @@ function LogoLayer({ paths, className }) {
 
 export default function Preloader() {
   const [playOnLoad] = useState(shouldPlayPreloader);
+  const [variant] = useState(readVariant);
   const [motionOk] = useState(() => (
     playOnLoad && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ));
@@ -66,10 +77,10 @@ export default function Preloader() {
 
   useLayoutEffect(() => {
     document.getElementById('elia-boot')?.remove();
-    if (!motionOk || !lockupRef.current) return;
+    if (variant !== 'glide' || !motionOk || !lockupRef.current) return;
     const shift = lockupShift(1);
     lockupRef.current.style.transform = `translate3d(${shift.x}%, ${shift.y}%, 0)`;
-  }, [motionOk]);
+  }, [motionOk, variant]);
 
   useEffect(() => {
     if (!playOnLoad) return undefined;
@@ -93,8 +104,25 @@ export default function Preloader() {
 
     const timers = [];
     let frame = 0;
+    const revealMs = variant === 'curtain'
+      ? CURTAIN_REVEAL_MS
+      : variant === 'fade'
+        ? FADE_REVEAL_MS
+        : REVEAL_MS;
+    const leaveMs = variant === 'curtain'
+      ? CURTAIN_LEAVE_MS
+      : variant === 'fade'
+        ? FADE_LEAVE_MS
+        : LEAVE_MS;
     if (!motionOk) {
       timers.push(window.setTimeout(finish, REDUCED_MS));
+    } else if (variant !== 'glide') {
+      timers.push(window.setTimeout(() => {
+        if (cancelled) return;
+        unlock();
+        setPhase('leave');
+      }, revealMs));
+      timers.push(window.setTimeout(finish, revealMs + leaveMs));
     } else {
       const started = performance.now();
       let shown = 0;
@@ -131,8 +159,8 @@ export default function Preloader() {
         if (cancelled) return;
         unlock();
         setPhase('leave');
-      }, REVEAL_MS));
-      timers.push(window.setTimeout(finish, REVEAL_MS + LEAVE_MS));
+      }, revealMs));
+      timers.push(window.setTimeout(finish, revealMs + leaveMs));
     }
 
     return () => {
@@ -142,7 +170,7 @@ export default function Preloader() {
       window.removeEventListener('popstate', onPopState);
       unlock();
     };
-  }, [motionOk, playOnLoad]);
+  }, [motionOk, playOnLoad, variant]);
 
   if (phase === 'gone') return null;
 
@@ -152,15 +180,17 @@ export default function Preloader() {
     <div
       className={[
         'elia-preloader fixed inset-0 z-[80] flex items-center justify-center',
+        `elia-preloader--${variant}`,
         motionOk ? 'elia-preloader--motion' : 'elia-preloader--reduced',
         leaving ? 'elia-preloader-leave' : '',
-        step >= 5 ? 'is-complete' : '',
+        variant === 'glide' && step >= 5 ? 'is-complete' : '',
       ].filter(Boolean).join(' ')}
       style={motionOk ? {
-        '--elia-leave-ms': `${LEAVE_MS}ms`,
-        '--elia-reveal-ms': `${REVEAL_MS}ms`,
+        '--elia-leave-ms': `${variant === 'curtain' ? CURTAIN_LEAVE_MS : variant === 'fade' ? FADE_LEAVE_MS : LEAVE_MS}ms`,
+        '--elia-reveal-ms': `${variant === 'glide' ? REVEAL_MS : variant === 'curtain' ? CURTAIN_REVEAL_MS : FADE_REVEAL_MS}ms`,
       } : undefined}
-      data-step={step}
+      data-variant={variant}
+      data-step={variant === 'glide' ? step : undefined}
       role={leaving ? undefined : 'status'}
       aria-live={leaving ? 'off' : 'polite'}
       aria-hidden={leaving ? true : undefined}
@@ -174,36 +204,53 @@ export default function Preloader() {
 
       <div className="elia-preloader-stage">
         <div className="elia-preloader-glow" aria-hidden="true" />
-        <div className="elia-preloader-mark">
-          <div className="elia-preloader-lockup" ref={lockupRef}>
-            {LETTERS.map((letter, index) => (
+        {variant === 'curtain' && (
+          <div className="elia-preloader-mark">
+            <img src="/logo.svg" alt="" draggable="false" className="elia-preloader-logo" />
+            <div className="elia-preloader-streak" aria-hidden="true" />
+          </div>
+        )}
+        {variant === 'fade' && (
+          <div className="elia-preloader-mark">
+            <img src="/logo.svg" alt="" draggable="false" className="elia-preloader-fade-logo" />
+          </div>
+        )}
+        {variant === 'glide' && (
+          <div className="elia-preloader-mark">
+            <div className="elia-preloader-lockup" ref={lockupRef}>
+              {LETTERS.map((letter, index) => (
+                <LogoLayer
+                  key={letter.id}
+                  paths={letter.paths}
+                  className={[
+                    'elia-preloader-layer elia-preloader-letter',
+                    step > index ? 'is-on' : '',
+                  ].filter(Boolean).join(' ')}
+                />
+              ))}
               <LogoLayer
-                key={letter.id}
-                paths={letter.paths}
+                paths={TAGLINE_PATHS}
                 className={[
-                  'elia-preloader-layer elia-preloader-letter',
-                  step > index ? 'is-on' : '',
+                  'elia-preloader-layer elia-preloader-tagline',
+                  step >= 5 ? 'is-on' : '',
                 ].filter(Boolean).join(' ')}
               />
-            ))}
-            <LogoLayer
-              paths={TAGLINE_PATHS}
-              className={[
-                'elia-preloader-layer elia-preloader-tagline',
-                step >= 5 ? 'is-on' : '',
-              ].filter(Boolean).join(' ')}
-            />
+            </div>
           </div>
-        </div>
-        <div className="elia-preloader-rule" aria-hidden="true" />
-        <p className="elia-preloader-meta">Bang Tao Beach, Phuket</p>
+        )}
+        {variant === 'curtain' && <div className="elia-preloader-rule" aria-hidden="true" />}
+        {variant === 'fade' && <div className="elia-preloader-fade-rule" aria-hidden="true" />}
+        {variant === 'glide' && <div className="elia-preloader-rule" aria-hidden="true" />}
+        {variant !== 'fade' && <p className="elia-preloader-meta">Bang Tao Beach, Phuket</p>}
       </div>
 
-      <div className="elia-preloader-progress" aria-hidden="true">
-        <div className="elia-preloader-track">
-          <div className="elia-preloader-bar" />
+      {variant !== 'fade' && (
+        <div className="elia-preloader-progress" aria-hidden="true">
+          <div className="elia-preloader-track">
+            <div className="elia-preloader-bar" />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
