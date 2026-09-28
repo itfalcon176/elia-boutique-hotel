@@ -162,23 +162,42 @@ export default function RoomsPage({ onNavigate }) {
                       </div>
 
                       {room.outdoorArea && (
-                        <div className="mt-4 mb-6">
+                        <div className="mt-4 mb-4">
                           <div className="flex items-start gap-2 text-xs text-[#555047] font-light">
                             <Waves size={15} className="text-[#A38B68] shrink-0 mt-0.5" />
                             <span><strong className="font-medium text-[#23211E]">Outdoor Area:</strong> {room.outdoorArea}</span>
                           </div>
                         </div>
                       )}
+
+                      <div className="flex flex-wrap gap-2 mb-2">
+                        {room.highlights.slice(0, 6).map((feature) => (
+                          <span
+                            key={feature}
+                            className="inline-flex items-center rounded-full bg-[#FAF7F2] border border-[#A38B68]/20 px-2.5 py-1 text-[10px] uppercase tracking-wider text-[#555047]"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Action CTAs */}
                     <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-[#A38B68]/15">
                       <button
+                        type="button"
                         onClick={() => onNavigate(`rooms/${room.slug}`)}
-                        className="w-full sm:flex-1 py-3 px-5 rounded-full bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] hover:text-white transition-all text-xs uppercase tracking-[0.2em] font-semibold flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                        className="w-full sm:flex-1 min-h-12 py-3 px-5 rounded-full bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68] hover:text-white transition-all text-xs uppercase tracking-[0.2em] font-semibold flex items-center justify-center gap-2 cursor-pointer shadow-md"
                       >
                         <span>{getCtaLabel(room.slug)}</span>
                         <ArrowRight size={14} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onNavigate('book-your-stay')}
+                        className="w-full sm:w-auto min-h-12 py-3 px-5 rounded-full border border-[#A38B68] text-[#8B6E3F] hover:bg-[#A38B68]/10 transition-all text-xs uppercase tracking-[0.16em] font-semibold cursor-pointer"
+                      >
+                        Book Your Stay
                       </button>
                     </div>
 

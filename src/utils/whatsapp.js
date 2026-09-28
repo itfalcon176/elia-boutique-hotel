@@ -25,8 +25,34 @@ export const WHATSAPP_MESSAGES = {
     'Hello Elia Phuket Concierge, I would like to order room service from GOAT Beach Club.',
   location:
     'Hello Elia Phuket Concierge, I would like directions and arrival assistance.',
+  massage:
+    'Hello Elia Phuket Concierge, I would like to book a massage treatment.',
+  family:
+    'Hello Elia Phuket Concierge, I would like to inquire about a family stay.',
+  experiences:
+    'Hello Elia Phuket Concierge, I would like to plan custom Phuket experiences.',
+  faq: 'Hello Elia Phuket Concierge, I have a question about staying at Elia.',
 };
 
 export function roomEnquiryMessage(roomTitle) {
   return `Hello Elia Phuket Concierge, I would like to check availability for the ${roomTitle}.`;
+}
+
+export function experienceEnquiryMessage(title) {
+  return `Hello Elia Phuket Concierge, I would like to inquire about: ${title}`;
+}
+
+export function facilityEnquiryMessage(title) {
+  return `Hello Elia Phuket Concierge, I would like to inquire about the ${title}.`;
+}
+
+export function contactFormMessage({ name, email, phone, message }) {
+  const phoneLine = phone ? ` Phone: ${phone}.` : '';
+  return `Hello Elia Phuket Concierge, my name is ${name}. Email: ${email}.${phoneLine} Message: ${message}`;
+}
+
+export function newsletterMailto(email) {
+  return `mailto:info@eliaphuket.com?subject=${encodeURIComponent('Elia Privé')}&body=${encodeURIComponent(
+    `Please add ${email} to the Elia Privé guest circle.`
+  )}`;
 }

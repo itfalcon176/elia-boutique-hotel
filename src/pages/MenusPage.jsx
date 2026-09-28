@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, ArrowRight, Moon } from 'lucide-react';
+import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 const MENU_CONTEXT = {
   all: {
@@ -1895,17 +1895,18 @@ export default function MenusPage({ onNavigate, menuContext = 'all' }) {
           )}
         </div>
 
-        {/* Late Night Banner Link */}
-        <div className="text-center mb-8">
-          <button
-            onClick={() => onNavigate && onNavigate('latenight')}
-            className="inline-flex items-center gap-2 text-xs font-serif italic text-[#A38B68] hover:text-[#23211E] transition-colors cursor-pointer bg-white/70 px-4 py-1.5 rounded-full border border-[#E2DACB] shadow-xs"
-          >
-            <Moon size={13} className="text-[#A38B68]" />
-            <span>Looking for Late Night Menu (10 PM - 2 AM)? Click here for Midnight Sliders & Shisha</span>
-            <ArrowRight size={12} />
-          </button>
-        </div>
+        {menuContext === 'room-service' && (
+          <div className="text-center mb-8">
+            <a
+              href={whatsappUrl(WHATSAPP_MESSAGES.roomService)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-white bg-[#25D366] px-5 py-2.5 rounded-full"
+            >
+              WhatsApp Concierge to order
+            </a>
+          </div>
+        )}
 
 
 

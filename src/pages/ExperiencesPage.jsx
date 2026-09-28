@@ -1,22 +1,7 @@
 import { motion } from 'framer-motion';
-import { Compass, Waves, Anchor, MapPin, Car, Check, ArrowRight, Phone } from 'lucide-react';
-
-const WhatsAppIcon = ({ size = 18, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-  </svg>
-);
+import { Compass, Waves, Anchor, MapPin, Car, ArrowRight } from 'lucide-react';
+import { whatsappUrl, WHATSAPP_MESSAGES, experienceEnquiryMessage } from '../utils/whatsapp';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 
 export default function ExperiencesPage({ onNavigate, onOpenReservation }) {
   const experiences = [
@@ -35,7 +20,7 @@ export default function ExperiencesPage({ onNavigate, onOpenReservation }) {
       desc: "From island-hopping and private boats to days exploring the waters around Phuket, speak to the Elia concierge and we'll help arrange your day.",
       icon: Anchor,
       image: '/images/dining.png',
-      actionText: 'Inquire via WhatsApp',
+      actionText: 'WhatsApp Concierge',
       isWhatsApp: true,
     },
     {
@@ -44,7 +29,7 @@ export default function ExperiencesPage({ onNavigate, onOpenReservation }) {
       desc: "Temples, viewpoints, Old Phuket Town, restaurants, markets and hidden corners. Tell us what kind of day you're after and we'll help you find it.",
       icon: MapPin,
       image: '/images/suite.png',
-      actionText: 'Ask Concierge',
+      actionText: 'WhatsApp Concierge',
       isWhatsApp: true,
     },
     {
@@ -53,7 +38,7 @@ export default function ExperiencesPage({ onNavigate, onOpenReservation }) {
       desc: 'Need an airport transfer, taxi or private transport? Arrange it through Elia and spend less of your holiday organising your holiday.',
       icon: Car,
       image: '/images/latenight.png',
-      actionText: 'Book Transfer',
+      actionText: 'WhatsApp Concierge',
       isWhatsApp: true,
     },
   ];
@@ -144,10 +129,10 @@ export default function ExperiencesPage({ onNavigate, onOpenReservation }) {
                 <div className="p-6 sm:p-8 pt-0">
                   {item.isWhatsApp ? (
                     <a
-                      href={`https://wa.me/66932719103?text=${encodeURIComponent(`Hello Elia Phuket, I would like to inquire about: ${item.title}`)}`}
+                      href={whatsappUrl(experienceEnquiryMessage(item.title))}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-3 rounded-full bg-[#FAF7F2] hover:bg-[#23211E] hover:text-white text-[#23211E] text-xs uppercase tracking-[0.2em] font-semibold border border-[#A38B68]/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full min-h-12 py-3 rounded-full bg-[#FAF7F2] hover:bg-[#23211E] hover:text-white text-[#23211E] text-xs uppercase tracking-[0.2em] font-semibold border border-[#A38B68]/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <WhatsAppIcon size={14} className="text-[#25D366]" />
                       <span>{item.actionText}</span>
@@ -183,7 +168,7 @@ export default function ExperiencesPage({ onNavigate, onOpenReservation }) {
               BOOK YOUR STAY
             </button>
             <a
-              href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20plan%20custom%20Phuket%20experiences."
+              href={whatsappUrl(WHATSAPP_MESSAGES.experiences)}
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer flex items-center gap-2 justify-center"

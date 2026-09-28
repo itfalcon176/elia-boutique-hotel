@@ -25,6 +25,7 @@ import CloudbedsBookNow from './components/booking/CloudbedsBookNow';
 import Preloader from './components/Preloader';
 import WhatsAppConcierge from './components/WhatsAppConcierge';
 import MenusPage from './pages/MenusPage';
+import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
 import { WHATSAPP_MESSAGES, roomEnquiryMessage } from './utils/whatsapp';
@@ -233,6 +234,10 @@ const seoMetadata = {
     title: 'Book Your Stay | Elia Boutique Hotel Phuket',
     description: 'Check live availability and reserve a room at Elia Boutique Hotel Phuket, on Bang Tao Beach.',
   },
+  'not-found': {
+    title: 'Page not found | Elia Boutique Hotel Phuket',
+    description: 'This Elia page is not available. Return home, view rooms, or message WhatsApp Concierge.',
+  },
   menus: {
     title: 'GOAT Beach Club Menu | Dining at Elia Phuket',
     description: 'Browse the live GOAT Beach Club menu for breakfast, dining and room service when staying at Elia Boutique Hotel on Bang Tao Beach.',
@@ -295,8 +300,9 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/cookies') return 'cookies';
   if (cleanPath === '/directions') return 'directions';
   if (cleanPath === '/book-your-stay' || cleanPath === '/book' || cleanPath === '/reserve') return 'book-your-stay';
+  if (cleanPath === '/' || cleanPath === '/index.html' || cleanPath === '/home') return 'home';
 
-  return 'home';
+  return 'not-found';
 };
 
 function App() {
@@ -507,13 +513,16 @@ function App() {
             onNavigate={handleNavClick}
           />
         )}
+        {activePage === 'not-found' && (
+          <NotFoundPage onNavigate={handleNavClick} />
+        )}
       </main>
 
       {/* Footer Navigation */}
       <Footer onNavClick={handleNavClick} onOpenReservation={openReservation} />
       <WhatsAppConcierge
         message={whatsappMessage}
-        hidden={activePage === 'book-your-stay' || isRoomPage}
+        hidden={activePage === 'book-your-stay' || isRoomPage || activePage === 'contact'}
       />
     </div>
   );

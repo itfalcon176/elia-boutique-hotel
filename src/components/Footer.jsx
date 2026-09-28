@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Facebook, Instagram, Send, Phone, Mail, ArrowUpRight } from 'lucide-react';
 import SharedWhatsAppIcon from './WhatsAppIcon';
-import { whatsappUrl, WHATSAPP_MESSAGES, PHONE_HREF, EMAIL_HREF, MAPS_HREF, WHATSAPP_DISPLAY } from '../utils/whatsapp';
+import { whatsappUrl, WHATSAPP_MESSAGES, PHONE_HREF, EMAIL_HREF, MAPS_HREF, WHATSAPP_DISPLAY, newsletterMailto } from '../utils/whatsapp';
 
 const TiktokIcon = ({ size = 18, ...props }) => (
   <svg
@@ -29,12 +29,13 @@ export default function Footer({ onNavClick, onOpenReservation }) {
   const handleSubscribe = (e) => {
     e.preventDefault();
     if (newsletterEmail) {
+      window.location.href = newsletterMailto(newsletterEmail);
       setSubscribed(true);
     }
   };
 
   return (
-    <footer className="bg-[#181715] text-[#FAF7F2] pt-14 pb-8 border-t border-[#A38B68]/25 relative">
+    <footer className="bg-[#181715] text-[#FAF7F2] pt-12 pb-16 border-t border-[#A38B68]/25 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-10 border-b border-[#FAF7F2]/10">
 
@@ -88,7 +89,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
                 href={whatsappUrl(WHATSAPP_MESSAGES.default)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
+                className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
                 aria-label="WhatsApp"
                 title={`Chat on WhatsApp (${WHATSAPP_DISPLAY})`}
               >
@@ -98,7 +99,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
                 href="https://www.instagram.com/eliaboutiquehotel/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
+                className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
                 aria-label="Instagram"
               >
                 <Instagram size={16} />
@@ -107,7 +108,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
                 href="https://www.facebook.com/profile.php?id=61590545618953"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
+                className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
                 aria-label="Facebook"
               >
                 <Facebook size={16} />
@@ -116,7 +117,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
                 href="https://www.tiktok.com/@elia.boutique.hote"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
+                className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
                 aria-label="TikTok"
               >
                 <TiktokIcon size={16} />
@@ -286,6 +287,9 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             </button>
             <button onClick={() => onNavClick('cancellation')} className="hover:text-white transition-colors cursor-pointer">
               Cancellation Policy
+            </button>
+            <button onClick={() => onNavClick('cookies')} className="hover:text-white transition-colors cursor-pointer">
+              Cookie Policy
             </button>
             <button onClick={() => onNavClick('faq')} className="hover:text-white transition-colors cursor-pointer">
               FAQ

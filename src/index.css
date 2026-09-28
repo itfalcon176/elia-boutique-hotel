@@ -1079,6 +1079,13 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   filter: brightness(1.05);
 }
 
+.elia-whatsapp-fab:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #A38B68;
+  outline-offset: 3px;
+}
+
 .elia-whatsapp-fab-label {
   display: none;
 }

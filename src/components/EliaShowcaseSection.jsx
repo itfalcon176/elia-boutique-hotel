@@ -8,18 +8,17 @@ import {
   Waves, 
   Flame, 
   Droplets, 
-  Check, 
   ArrowRight, 
-  Sun, 
   Bath, 
   Heart, 
   Palmtree, 
   Compass, 
-  Phone,
   Bell,
   Car
 } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
+import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const showcaseImages = {
   'garden-beach-room': '/accommodation/garden-beach-room.jpg',
@@ -46,86 +45,6 @@ export default function EliaShowcaseSection({ onNavigate }) {
     { ...roomsData[prevIdx], targetIndex: prevIdx, isCenter: false },
     { ...roomsData[currentIndex], targetIndex: currentIndex, isCenter: true },
     { ...roomsData[nextIdx], targetIndex: nextIdx, isCenter: false },
-  ];
-
-  const facilities = [
-    {
-      title: 'Plunge Pool',
-      subtitle: 'Cool off & unwind under tropical palms',
-      category: 'Relaxation',
-      icon: Waves,
-      tag: 'Hydro',
-    },
-    {
-      title: 'Outdoor Sauna',
-      subtitle: 'Nordic heat & botanical detox rituals',
-      category: 'Wellness',
-      icon: Flame,
-      tag: 'Thermal',
-    },
-    {
-      title: 'Cold Plunge',
-      subtitle: 'Invigorating contrast therapy & recovery',
-      category: 'Recovery',
-      icon: Droplets,
-      tag: 'Vitality',
-    },
-    {
-      title: 'Jacuzzi',
-      subtitle: 'Warm bubbling open-air soak',
-      category: 'Hydrotherapy',
-      icon: Bath,
-      tag: 'Spa',
-    },
-    {
-      title: 'Massage Treatments',
-      subtitle: 'Traditional Thai & restorative bodywork',
-      category: 'Spa Rituals',
-      icon: Sparkles,
-      tag: 'Bespoke',
-    },
-    {
-      title: 'Kids Club',
-      subtitle: 'Creative play for younger guests',
-      category: 'Family Care',
-      icon: Heart,
-      tag: 'Family',
-    },
-    {
-      title: 'Beach Access',
-      subtitle: 'Direct footsteps to Bang Tao sandy shore',
-      category: 'Location',
-      icon: Palmtree,
-      tag: 'Beachfront',
-    },
-    {
-      title: 'GOAT Beach Club',
-      subtitle: 'Complimentary VIP access & beachfront dining',
-      category: 'Day-to-Night',
-      icon: Utensils,
-      tag: 'Exclusive',
-    },
-    {
-      title: 'Concierge Service',
-      subtitle: 'Personalised 24/7 island reservations',
-      category: 'Guest Care',
-      icon: Bell,
-      tag: '24/7 Care',
-    },
-    {
-      title: 'Airport Transfers',
-      subtitle: 'Seamless private chauffeur pickup',
-      category: 'Arrivals',
-      icon: Car,
-      tag: 'Transfer',
-    },
-    {
-      title: 'Phuket Experiences',
-      subtitle: 'Curated boat trips, excursions & culture',
-      category: 'Adventures',
-      icon: Compass,
-      tag: 'Curated',
-    },
   ];
 
   return (
@@ -298,14 +217,19 @@ export default function EliaShowcaseSection({ onNavigate }) {
                           <p className="text-[10px] text-[#A38B68] uppercase tracking-widest font-semibold font-sans mb-2">
                             {room.subtitle}
                           </p>
-                          <p className="text-[12px] text-[#6E6A63] font-light font-sans mb-4 leading-relaxed">
+                          <p className="text-[12px] text-[#6E6A63] font-light font-sans mb-3 leading-relaxed">
                             {room.shortDesc}
                           </p>
+                          {isCenter && (
+                            <p className="text-[11px] text-[#23211E] font-medium font-sans mb-3">
+                              {room.bedConfig} · {room.pricePerNight}
+                            </p>
+                          )}
                         </div>
 
                         <div className="pt-3 border-t border-[#A38B68]/15 flex items-center justify-between gap-2">
                           <span className="text-[10px] text-[#555047] uppercase font-medium font-sans">
-                            {room.size} • {room.occupancy}
+                            {room.size} • {room.maxOccupancyText}
                           </span>
                           
                           <button
@@ -745,6 +669,24 @@ export default function EliaShowcaseSection({ onNavigate }) {
           <div className="space-y-1 text-lg sm:text-xl text-[#FAF7F2]/80 font-serif italic">
             <p>To the sea.</p>
             <p>To the good life.</p>
+          </div>
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => onNavigate('book-your-stay')}
+              className="min-h-12 px-8 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer"
+            >
+              Book Your Stay
+            </button>
+            <a
+              href={whatsappUrl(WHATSAPP_MESSAGES.default)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="min-h-12 px-7 py-3.5 rounded-full bg-[#25D366] text-white font-semibold text-xs uppercase tracking-[0.16em] inline-flex items-center justify-center gap-2"
+            >
+              <WhatsAppIcon size={15} />
+              WhatsApp Concierge
+            </a>
           </div>
         </div>
       </section>

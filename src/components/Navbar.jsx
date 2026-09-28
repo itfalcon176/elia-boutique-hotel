@@ -316,7 +316,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                                   {/* Action Arrow */}
                                   <div className="shrink-0 pl-1">
                                     <span className="text-xs font-semibold uppercase tracking-wider text-[#A38B68] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                                      View →
+                                      View Room
                                     </span>
                                   </div>
                                 </button>

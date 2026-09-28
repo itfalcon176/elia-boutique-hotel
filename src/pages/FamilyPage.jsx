@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Heart, Users, Baby, Palmtree, Waves, Check, ArrowRight, BedDouble } from 'lucide-react';
+import { Heart, Baby, Waves, Check, ArrowRight, BedDouble } from 'lucide-react';
+import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 export default function FamilyPage({ onNavigate, onOpenReservation }) {
   return (
@@ -116,9 +117,14 @@ export default function FamilyPage({ onNavigate, onOpenReservation }) {
               </div>
             </div>
             <div className="pt-6 mt-6 border-t border-[#A38B68]/15">
-              <span className="text-xs text-[#A38B68] font-semibold uppercase tracking-wider">
-                Included with your stay
-              </span>
+              <button
+                type="button"
+                onClick={() => onNavigate('facilities/kids-club')}
+                className="text-xs uppercase tracking-[0.2em] font-semibold text-[#8B6E3F] hover:text-[#23211E] transition-colors flex items-center gap-1 cursor-pointer"
+              >
+                <span>View Kids Club</span>
+                <ArrowRight size={13} />
+              </button>
             </div>
           </div>
 
@@ -223,7 +229,7 @@ export default function FamilyPage({ onNavigate, onOpenReservation }) {
               BOOK YOUR STAY
             </button>
             <a
-              href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20family%20stay."
+              href={whatsappUrl(WHATSAPP_MESSAGES.family)}
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"

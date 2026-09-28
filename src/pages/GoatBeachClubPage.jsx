@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Utensils, Waves, Clock, Check, Calendar, ArrowRight, Sun, Music, GlassWater, ExternalLink } from 'lucide-react';
+import { Sparkles, Utensils, Check, ArrowRight, Sun, GlassWater } from 'lucide-react';
 
 export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
   return (
@@ -164,6 +164,14 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
                 As afternoon turns to evening, stay for sunset drinks, craft cocktails, music, and beachfront dinner before walking back to your room.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/dining')}
+                className="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View dinner & drinks menu
+                <ArrowRight size={14} />
+              </button>
             </div>
           </div>
 
