@@ -660,37 +660,42 @@ export default function EliaShowcaseSection({ onNavigate }) {
         </div>
       </section>
 
-      {/* SECTION 8: HOME PAGE FINAL CTA */}
-      <section className="py-20 sm:py-28 bg-[#181715] text-[#FAF7F2] text-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-6">
-          <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-semibold block font-sans">
-            Elia Boutique Hotel Phuket
+      {/* SECTION 8: Stay a little closer */}
+      <section className="bg-[#111111] text-white text-center">
+        <div className="max-w-[22.75rem] min-[390px]:max-w-[24rem] lg:max-w-5xl mx-auto px-6 py-20 lg:py-28 xl:py-32">
+          <span className="block font-sans text-[11px] uppercase tracking-[0.28em] font-normal text-[#C5B7A0]">
+            Your stay at Elia
           </span>
-          <h2 className="font-serif text-4xl sm:text-6xl font-light text-white leading-tight">
-            Stay a little closer.
+          <h2 className="mt-6 font-serif font-normal text-[2.75rem] sm:text-[3.25rem] lg:text-[4.75rem] xl:text-[5.35rem] leading-[1.08] tracking-[-0.02em] text-white">
+            Stay a little<br className="lg:hidden" /> closer.
           </h2>
-          <div className="space-y-1 text-lg sm:text-xl text-[#FAF7F2]/80 font-serif italic">
-            <p>To the sea.</p>
-            <p>To the good life.</p>
-          </div>
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <p className="mt-5 lg:mt-6 font-serif italic font-normal text-[1.2rem] lg:text-[1.45rem] leading-snug text-white/90">
+            To the sea. To the good life.
+          </p>
+
+          <div className="mt-9 lg:mt-10 flex flex-col lg:flex-row items-stretch lg:items-center justify-center gap-3.5 lg:gap-4">
             <button
               type="button"
               onClick={() => onNavigate('book-your-stay')}
-              className="min-h-12 px-8 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer"
+              className="w-full lg:w-auto lg:min-w-[15.5rem] h-[3.35rem] px-8 rounded-full bg-[#C9B89A] text-[#141312] font-sans text-[12px] font-medium uppercase tracking-[0.16em] inline-flex items-center justify-center gap-2.5 cursor-pointer"
             >
               Book Your Stay
+              <span aria-hidden="true" className="text-[15px] font-normal tracking-normal">→</span>
             </button>
             <a
               href={whatsappUrl(WHATSAPP_MESSAGES.default)}
               target="_blank"
               rel="noopener noreferrer"
-              className="min-h-12 px-7 py-3.5 rounded-full bg-[#25D366] text-white font-semibold text-xs uppercase tracking-[0.16em] inline-flex items-center justify-center gap-2"
+              className="w-full lg:w-auto lg:min-w-[15.5rem] h-[3.35rem] px-8 rounded-full border border-white text-white font-sans text-[12px] font-medium uppercase tracking-[0.14em] inline-flex items-center justify-center gap-2.5"
             >
               <WhatsAppIcon size={15} />
               WhatsApp Concierge
             </a>
           </div>
+
+          <p className="mt-8 lg:mt-10 font-sans text-[13px] lg:text-[14px] font-normal text-white/55">
+            13 rooms. One beautiful corner of Phuket.
+          </p>
         </div>
       </section>
     </div>
