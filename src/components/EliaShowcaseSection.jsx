@@ -576,8 +576,8 @@ export default function EliaShowcaseSection({ onNavigate }) {
       </section>
 
       {/* SECTION 6: Eat. Drink. Stay awhile. */}
-      <section className="py-16 sm:py-24 bg-[#FFFFFF] text-[#23211E]">
-        <div className="max-w-[34rem] mx-auto px-6">
+      <section className="py-16 sm:py-24 bg-[#FFFFFF] text-[#23211E] scroll-mt-28">
+        <div className="max-w-xl mx-auto px-6">
           <span className="text-[10px] uppercase tracking-[0.32em] text-[#A38B68] font-semibold block font-sans">
             Food & Beverage
           </span>
@@ -605,10 +605,10 @@ export default function EliaShowcaseSection({ onNavigate }) {
             From breakfast and barista coffee to sunset cocktails and dinner. Enjoy it all next door—or let room service come to you.
           </p>
 
-          <div className="mt-6 grid grid-cols-3 text-center font-serif text-[13px] sm:text-[15px] font-light text-[#23211E]">
-            <span className="px-1">Breakfast</span>
-            <span className="px-1 border-x border-[#D9D3C8]">Beachfront dining</span>
-            <span className="px-1">Room service</span>
+          <div className="mt-6 grid grid-cols-3 text-center font-serif text-[12.5px] sm:text-[15px] font-light text-[#23211E] leading-tight">
+            <span className="px-1 whitespace-nowrap">Breakfast</span>
+            <span className="px-1 whitespace-nowrap border-x border-[#D9D3C8]">Beachfront dining</span>
+            <span className="px-1 whitespace-nowrap">Room service</span>
           </div>
 
           <button
