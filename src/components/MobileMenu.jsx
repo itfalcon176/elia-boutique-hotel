@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowLeft,
-  BedDouble,
+  Bed,
   Calendar,
+  ChevronDown,
   ChevronRight,
   Flower2,
   Info,
@@ -25,9 +26,9 @@ const PRIMARY_CARDS = [
     id: 'accommodation',
     title: 'Accommodation',
     subtitle: '13 rooms across 4 room types',
-    image: '/accommodation/garden-beach-room.jpg',
-    imagePosition: '86% 68%',
-    Icon: BedDouble,
+    image: '/accommodation/Loft Apartment 3.webp',
+    imagePosition: '82% 78%',
+    Icon: Bed,
     opensPanel: true,
   },
   {
@@ -35,15 +36,15 @@ const PRIMARY_CARDS = [
     title: 'Facilities',
     subtitle: 'Pool, beach club and more',
     image: '/images/suite.png',
-    imagePosition: '88% 78%',
+    imagePosition: '92% 72%',
     Icon: Waves,
   },
   {
     id: 'eat-drink',
     title: 'Food & Drinks',
     subtitle: 'Dining experiences',
-    image: '/images/Breakfast.webp',
-    imagePosition: '72% 48%',
+    image: '/menus-images/Nomad+Crab+Salad.jpg',
+    imagePosition: '52% 42%',
     Icon: Utensils,
   },
   {
@@ -51,7 +52,7 @@ const PRIMARY_CARDS = [
     title: 'Location',
     subtitle: 'Bang Tao Beach, Phuket',
     image: '/banner/banner.jpeg',
-    imagePosition: '70% 58%',
+    imagePosition: '58% 42%',
     Icon: MapPin,
   },
 ];
@@ -88,11 +89,16 @@ function LanguageControl({ selectedLang, languages, onSelectLanguage }) {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="w-10 h-10 rounded-full bg-white border border-black/[0.05] shadow-[0_1px_3px_rgba(0,0,0,0.07)] flex items-center justify-center cursor-pointer"
+        className="h-10 pl-2.5 pr-2 rounded-full bg-white border border-black/[0.04] shadow-[0_1px_3px_rgba(0,0,0,0.06)] flex items-center gap-1 cursor-pointer"
         aria-label={`Language: ${selectedLang.name}`}
         aria-expanded={open}
       >
         <selectedLang.FlagComponent className="w-[1.15rem] h-3.5" />
+        <ChevronDown
+          size={12}
+          strokeWidth={2}
+          className={`text-[#8A847B] transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+        />
       </button>
       <AnimatePresence>
         {open && (
@@ -189,7 +195,7 @@ export default function MobileMenu({
           aria-label="Mobile menu"
         >
           <div
-            className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center px-5 shrink-0 h-[3.7rem]"
+            className="grid grid-cols-[3.25rem_minmax(0,1fr)_3.25rem] items-center px-5 shrink-0 h-[3.7rem]"
             style={{ paddingTop: 'max(0.1rem, env(safe-area-inset-top))' }}
           >
             {level === 'rooms' ? (
@@ -244,11 +250,11 @@ export default function MobileMenu({
                 ref={mainRef}
                 className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-5"
               >
-                <p className="pt-2 pb-3 text-[10px] uppercase tracking-[0.28em] text-[#8A847B] font-medium">
+                <p className="pt-1.5 pb-3.5 text-[10px] uppercase tracking-[0.28em] text-[#8A847B] font-medium">
                   13 rooms · Bang Tao Beach
                 </p>
 
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2.5">
                   {PRIMARY_CARDS.map((card) => {
                     const Icon = card.Icon;
                     return (
@@ -256,7 +262,7 @@ export default function MobileMenu({
                         key={card.id}
                         type="button"
                         onClick={() => (card.opensPanel ? setLevel('rooms') : go(card.id))}
-                        className="relative w-full h-[5rem] min-[375px]:h-[5.2rem] min-[414px]:h-[5.4rem] rounded-[2rem] overflow-hidden bg-[#f7f4ef] text-left cursor-pointer"
+                        className="relative w-full h-[4.7rem] min-[375px]:h-[4.9rem] min-[414px]:h-[5.15rem] rounded-full overflow-hidden bg-[#f4f0ea] text-left cursor-pointer shadow-[0_1px_2px_rgba(28,25,22,0.04)]"
                       >
                         <img
                           src={card.image}
@@ -265,22 +271,20 @@ export default function MobileMenu({
                           style={{ objectPosition: card.imagePosition }}
                         />
                         <div className="elia-mobile-menu-card-wash absolute inset-0" />
-                        <div className="relative h-full flex items-center gap-3 px-3 min-[375px]:px-3.5">
-                          <span className="w-12 h-12 rounded-full bg-white shadow-[0_1px_4px_rgba(0,0,0,0.06)] flex items-center justify-center shrink-0">
-                            <Icon size={20} strokeWidth={1.5} className="text-[#3A3530]" />
-                          </span>
-                          <span className="min-w-0 max-w-[62%] min-[360px]:max-w-[66%] pr-1">
-                            <span className="block text-[15.5px] min-[375px]:text-[16.5px] font-medium tracking-[-0.021em] text-[#1C1916] leading-none">
+                        <div className="relative h-full flex items-center gap-3 pl-4 min-[375px]:pl-[1.15rem] pr-12">
+                          <Icon size={22} strokeWidth={1.55} className="text-[#6F6558] shrink-0" />
+                          <span className="min-w-0 max-w-[52%] min-[360px]:max-w-[54%]">
+                            <span className="block text-[15.5px] min-[375px]:text-[16.5px] font-medium tracking-[-0.018em] text-[#1C1916] leading-none">
                               {card.title}
                             </span>
-                            <span className="block mt-1 text-[12px] min-[375px]:text-[12.5px] text-[#6F6A62] font-normal leading-snug">
+                            <span className="block mt-1 text-[12px] min-[375px]:text-[12.5px] text-[#7A746B] font-normal leading-snug">
                               {card.subtitle}
                             </span>
                           </span>
                           <ChevronRight
                             size={16}
                             strokeWidth={1.8}
-                            className="absolute right-3.5 text-white/80 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]"
+                            className="absolute right-3.5 text-white/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.28)]"
                           />
                         </div>
                       </button>
