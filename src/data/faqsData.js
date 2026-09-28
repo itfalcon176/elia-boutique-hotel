@@ -4,7 +4,7 @@ export const top10GuestFaqs = [
     category: 'Top 10 Essentials',
     categoryKey: 'essentials',
     question: 'What time is check-in and check-out?',
-    answer: 'Check-in is from 3:00 PM and check-out is by 11:00 AM. Early check-in or late check-out may be available on request, subject to room availability.',
+    answer: 'Check-in is from 2:00 PM and check-out is by 12:00 PM. Early check-in or late check-out may be available on request, subject to room availability.',
     highlights: ['Check-in: 3:00 PM', 'Check-out: 11:00 AM', 'Late check-out upon request'],
   },
   {

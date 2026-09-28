@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Flame, Snowflake, Bath, Droplets, Check, ArrowRight, Heart, Calendar } from 'lucide-react';
+import { Sparkles, Flame, Snowflake, Bath, Droplets, Heart } from 'lucide-react';
+import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 export default function WellnessPage({ onNavigate, onOpenReservation }) {
   const spaFacilities = [
@@ -152,6 +153,32 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
           </div>
         </div>
 
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-20">
+          {[
+            {
+              slug: 'kids-club',
+              title: 'Kids Club',
+              desc: 'A place for younger guests to play, create and spend some time of their own.',
+            },
+            {
+              slug: 'beach-access',
+              title: 'Beachfront',
+              desc: 'Bang Tao Beach is a few steps from the gardens. No shuttle. No timetable.',
+            },
+          ].map((item) => (
+            <button
+              key={item.slug}
+              type="button"
+              onClick={() => onNavigate(`facilities/${item.slug}`)}
+              className="text-left p-6 rounded-3xl bg-white border border-[#A38B68]/25 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all cursor-pointer"
+            >
+              <h3 className="font-serif text-2xl font-light text-[#23211E] mb-2">{item.title}</h3>
+              <p className="text-xs text-[#6E6A63] font-light leading-relaxed mb-4">{item.desc}</p>
+              <span className="text-[11px] uppercase tracking-wider font-semibold text-[#A38B68]">View {item.title}</span>
+            </button>
+          ))}
+        </div>
+
         {/* H2: Massage at Elia Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -191,12 +218,12 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
                   VIEW MASSAGE MENU & RITUALS
                 </button>
                 <a
-                  href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20book%20a%20massage%20treatment."
+                  href={whatsappUrl(WHATSAPP_MESSAGES.massage)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.15em] font-semibold whitespace-nowrap transition-all cursor-pointer text-center"
                 >
-                  WHATSAPP BOOKING
+                  WhatsApp Concierge
                 </a>
               </div>
             </div>

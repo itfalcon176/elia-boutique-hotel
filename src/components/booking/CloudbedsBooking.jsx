@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { ShieldCheck, RotateCw, Phone, Mail, AlertCircle } from 'lucide-react';
+import WhatsAppIcon from '../WhatsAppIcon';
+import { whatsappUrl, WHATSAPP_MESSAGES, PHONE_HREF, EMAIL_HREF } from '../../utils/whatsapp';
 
 const DEFAULT_PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
 
@@ -103,13 +105,21 @@ export default function CloudbedsBooking({
 
           </div>
 
-          <div className="pt-6 border-t border-[#A38B68]/20 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-[#6E6A63]">
-            <a href="tel:+66932719103" className="inline-flex items-center gap-2 hover:text-[#A38B68] transition-colors">
+          <div className="pt-6 border-t border-[#A38B68]/20 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-[#6E6A63]">
+            <a
+              href={whatsappUrl(WHATSAPP_MESSAGES.booking)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#25D366] px-4 text-white font-semibold"
+            >
+              <WhatsAppIcon size={14} />
+              <span>WhatsApp Concierge</span>
+            </a>
+            <a href={PHONE_HREF} className="inline-flex items-center gap-2 hover:text-[#A38B68] transition-colors">
               <Phone size={14} className="text-[#A38B68]" />
               <span>+66 93 271 9103</span>
             </a>
-            <span className="hidden sm:inline text-black/20">•</span>
-            <a href="mailto:info@eliaphuket.com" className="inline-flex items-center gap-2 hover:text-[#A38B68] transition-colors">
+            <a href={EMAIL_HREF} className="inline-flex items-center gap-2 hover:text-[#A38B68] transition-colors">
               <Mail size={14} className="text-[#A38B68]" />
               <span>info@eliaphuket.com</span>
             </a>
@@ -168,8 +178,12 @@ export default function CloudbedsBooking({
               <ShieldCheck size={14} className="text-[#A38B68]" />
               <span>Best Rate Guaranteed • No Booking Fees • Instant Confirmation</span>
             </div>
-            <div>
-              <span>Need special assistance? <a href="tel:+66932719103" className="text-[#A38B68] font-medium hover:underline">+66 93 271 9103</a></span>
+            <div className="flex items-center gap-3">
+              <a href={whatsappUrl(WHATSAPP_MESSAGES.booking)} target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-medium hover:underline">
+                WhatsApp Concierge
+              </a>
+              <span className="text-black/20">•</span>
+              <a href={PHONE_HREF} className="text-[#A38B68] font-medium hover:underline">+66 93 271 9103</a>
             </div>
           </div>
         </div>

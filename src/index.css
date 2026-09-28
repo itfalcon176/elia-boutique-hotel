@@ -160,11 +160,24 @@ body {
 
 .goog-te-banner-frame,
 .skiptranslate,
+iframe.skiptranslate,
+body > .skiptranslate,
 #goog-gt-tt,
 .goog-te-balloon-frame,
-.goog-te-spinner-pos {
+.goog-te-spinner-pos,
+.goog-te-gadget,
+.goog-te-menu-frame {
   display: none !important;
   visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+html.translated-ltr,
+html.translated-rtl {
+  margin-top: 0 !important;
 }
 
 #google_translate_element {
@@ -332,7 +345,7 @@ cb-book-now-button button {
 }
 
 #cb-bookingengine .cb-landing-page::before {
-  content: "Reserve your stay";
+  content: "Check availability";
   font-family: "Playfair Display", Georgia, serif;
   font-size: 34px;
   font-weight: 500;
@@ -343,7 +356,7 @@ cb-book-now-button button {
 }
 
 #cb-bookingengine .cb-landing-page::after {
-  content: "Choose dates and guests. Live availability opens here.";
+  content: "Check-in, check-out and guests. Live rates and Stripe payment stay on this page.";
   order: 1;
   margin: 0 0 16px;
   color: #6E6A63;
@@ -940,6 +953,216 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
 
   .elia-preloader-streak {
     display: none;
+  }
+}
+
+/* Stay-date labels sit above Cloudbeds so Check-in / Check-out / Guests are explicit. */
+.elia-stay-search {
+  width: 100%;
+}
+
+.elia-stay-search-labels {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .elia-stay-search-labels {
+    display: grid;
+    grid-template-columns: 1.15fr 1.15fr 0.9fr 1fr;
+    gap: 8px;
+    margin: 0 10px 8px;
+    color: rgba(247, 244, 239, 0.78);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .elia-stay-search--room .elia-stay-search-labels {
+    color: #8B6E3F;
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .elia-stay-search-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 12px;
+    margin-bottom: 8px;
+    color: rgba(247, 244, 239, 0.8);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .elia-stay-search--room .elia-stay-search-labels {
+    color: #8B6E3F;
+  }
+}
+
+/* Prefer Cloudbeds native field names when they can be relabelled. */
+.elia-hero-date-picker [class*="stay-dates"] label,
+.elia-room-property-picker [class*="stay-dates"] label,
+#cb-bookingengine [aria-label="Stay Dates"] span,
+#cb-bookingengine label[for*="stay"] {
+  font-size: 0 !important;
+}
+
+.elia-hero-date-picker [class*="stay-dates"] label::after,
+.elia-room-property-picker [class*="stay-dates"] label::after,
+#cb-bookingengine [aria-label="Stay Dates"] span::after {
+  content: "Check-in — Check-out";
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#cb-bookingengine .cb-search-button {
+  font-size: 11px !important;
+}
+
+#cb-bookingengine .cb-search-button::first-line {
+  text-transform: uppercase;
+}
+
+/* Cloudbeds / Stripe payment states inside the booking panel. */
+#cb-bookingengine [class*="payment"],
+#cb-bookingengine [class*="checkout"],
+#cb-bookingengine form {
+  max-width: 100%;
+}
+
+#cb-bookingengine input,
+#cb-bookingengine select,
+#cb-bookingengine textarea {
+  min-height: 44px;
+  font-size: 16px !important;
+}
+
+#cb-bookingengine .chakra-alert[status="error"],
+#cb-bookingengine [class*="error"],
+#cb-bookingengine [data-status="error"] {
+  border-radius: 12px;
+  background: #F8EDE6 !important;
+  color: #23211E !important;
+}
+
+#cb-bookingengine [class*="success"],
+#cb-bookingengine [data-status="success"] {
+  border-radius: 12px;
+  background: #EEF6EF !important;
+}
+
+.elia-whatsapp-fab {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 35;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 48px;
+  padding: 0 14px 0 12px;
+  border-radius: 999px;
+  background: #25D366;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(20, 19, 18, 0.18);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.elia-whatsapp-fab:hover {
+  filter: brightness(1.05);
+}
+
+.elia-whatsapp-fab:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #A38B68;
+  outline-offset: 3px;
+}
+
+.elia-whatsapp-fab-label {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .elia-whatsapp-fab-label {
+    display: inline;
+  }
+}
+
+.elia-has-sticky-book .elia-whatsapp-fab {
+  bottom: calc(5.75rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 1024px) {
+  .elia-has-sticky-book .elia-whatsapp-fab {
+    bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+.elia-skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 80;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #23211E;
+  color: #F7F4EF;
+  font-size: 12px;
+}
+
+.elia-skip-link:focus {
+  top: 12px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.elia-cloudbeds-failed {
+  display: none !important;
+}
+
+.elia-availability-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #C5A880;
+  color: #141312;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.elia-hero-date-picker + .elia-availability-fallback,
+.elia-stay-search .elia-availability-fallback {
+  background: #23211E;
+  color: #F7F4EF;
+}
+
+.elia-footer-logo {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (min-width: 640px) {
+  .elia-footer-logo {
+    height: 2.25rem;
   }
 }
 

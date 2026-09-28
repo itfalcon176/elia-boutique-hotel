@@ -249,7 +249,7 @@ export const wellnessData = {
       timing: '07:00 AM – Late Daily',
       access: 'Complimentary for all in-house guests',
       image: '/images/dining.png',
-      galleryImages: ['/images/dining.png', '/images/cocktail.png', '/images/Breakfast.webp'],
+      galleryImages: ['/images/dining.png', '/images/Breakfast.webp'],
       description: 'Staying at Elia includes complimentary access to GOAT Beach Club Phuket, located right beside the hotel directly on Bang Tao Beach. Start with breakfast and barista coffee, drift into a day on the beach, stop for lunch, stay for sunset cocktails and return for dinner. There is no taxi, no shuttle, and no planning — it is simply there whenever you want it.',
       benefits: [
         { title: 'Direct Beachfront Daybed Access', desc: 'Complimentary entry and daybed access beside the turquoise Andaman Sea.' },

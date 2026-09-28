@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Utensils, Sparkles, Coffee, Sun, Moon, GlassWater, Bell, Check, ArrowRight, BedDouble, ExternalLink } from 'lucide-react';
+import { GOAT_BEACH_CLUB_URL } from '../utils/goat';
 
 export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
   return (
@@ -75,6 +76,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs sm:text-sm text-[#8B6E3F] font-serif italic">
                 Take your time. You're already where you need to be.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/breakfast')}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View breakfast menu
+                <ArrowRight size={14} />
+              </button>
             </div>
             <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <img
@@ -114,6 +123,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
                 Staying at Elia means the restaurant isn't somewhere you have to travel to. It's part of the experience.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/dining')}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View dining menu
+                <ArrowRight size={14} />
+              </button>
             </div>
           </motion.div>
 
@@ -139,10 +156,18 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
                 Then walk home. Your room is only moments away.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/dining')}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View dinner & drinks menu
+                <ArrowRight size={14} />
+              </button>
             </div>
             <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <img
-                src="/images/cocktail.png"
+                src="/images/dining.png"
                 alt="Sunset drinks and cocktails at GOAT Beach Club Bang Tao"
                 className="w-full h-full object-cover"
               />
@@ -171,9 +196,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
                 </p>
               </div>
               <div className="pt-6 mt-6 border-t border-[#A38B68]/15">
-                <span className="text-xs text-[#A38B68] font-semibold uppercase tracking-wider">
-                  Available direct to your room or terrace
-                </span>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('menus/room-service')}
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+                >
+                  View room service menu
+                  <ArrowRight size={14} />
+                </button>
               </div>
             </motion.div>
 
@@ -218,12 +248,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
             Complimentary access to GOAT Beach Club is included for all Elia guests throughout their stay on Bang Tao Beach.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => onNavigate('goat-beach-club')}
-              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
+            <a
+              href={GOAT_BEACH_CLUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md inline-flex items-center justify-center"
             >
               DISCOVER GOAT BEACH CLUB
-            </button>
+            </a>
             <button
               onClick={() => onNavigate('rooms')}
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"

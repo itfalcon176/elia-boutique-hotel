@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroDatePicker from './booking/HeroDatePicker';
 import { Facebook, Instagram, ChevronDown, ArrowRight, MapPin } from 'lucide-react';
+import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 const TiktokIcon = ({ size = 18, ...props }) => (
   <svg
@@ -165,12 +166,12 @@ export default function HeroSection({
           className="flex items-center gap-3"
         >
           <a
-            href="https://wa.me/66932719103"
+            href={whatsappUrl(WHATSAPP_MESSAGES.default)}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#FAF7F2]/90 hover:text-[#25D366] hover:scale-110 transition-all p-1.5 drop-shadow"
-            aria-label="WhatsApp"
-            title="Chat on WhatsApp (+66 93 271 9103)"
+            className="text-[#FAF7F2]/90 hover:text-[#25D366] hover:scale-110 transition-all p-1.5 drop-shadow min-w-11 min-h-11 inline-flex items-center justify-center"
+            aria-label="WhatsApp Concierge"
+            title="WhatsApp Concierge"
           >
             <WhatsAppIcon size={18} />
           </a>

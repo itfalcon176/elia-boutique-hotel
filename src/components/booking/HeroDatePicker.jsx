@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { mountCloudbedsElement } from './mountCloudbedsElement';
+import { useCloudbedsFailure } from '../../utils/useCloudbedsFailure';
+import AvailabilityFallback from './AvailabilityFallback';
 
 const PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
 
@@ -9,6 +11,7 @@ export default function HeroDatePicker() {
     typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches ? 'vertical' : 'horizontal'
   ));
   const bookingUrl = typeof window === 'undefined' ? '' : `${window.location.origin}/book-your-stay`;
+  const failed = useCloudbedsFailure(hostRef);
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 767px)');
@@ -41,7 +44,7 @@ export default function HeroDatePicker() {
     if (!host || !PROPERTY_CODE || !bookingUrl) return undefined;
     return mountCloudbedsElement(host, 'cb-property-date-picker', {
       'property-code': PROPERTY_CODE,
-      'button-label': 'Search',
+      'button-label': 'Check Availability',
       layout,
       lang: 'en',
       currency: 'thb',
@@ -53,5 +56,21 @@ export default function HeroDatePicker() {
 
   if (!PROPERTY_CODE || !bookingUrl) return null;
 
-  return <div ref={hostRef} className="elia-hero-date-picker w-full select-text" />;
+  return (
+    <div className="elia-stay-search w-full">
+      {!failed && (
+        <div className="elia-stay-search-labels" aria-hidden="true">
+          <span>Check-in</span>
+          <span>Check-out</span>
+          <span>Guests</span>
+          <span>Availability</span>
+        </div>
+      )}
+      <div
+        ref={hostRef}
+        className={`elia-hero-date-picker w-full select-text ${failed ? 'elia-cloudbeds-failed' : ''}`}
+      />
+      {failed && <AvailabilityFallback href="/book-your-stay" label="Check Availability" />}
+    </div>
+  );
 }

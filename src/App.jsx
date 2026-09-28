@@ -23,8 +23,12 @@ import BookingPage from './pages/BookingPage';
 
 import CloudbedsBookNow from './components/booking/CloudbedsBookNow';
 import Preloader from './components/Preloader';
+import WhatsAppConcierge from './components/WhatsAppConcierge';
+import MenusPage from './pages/MenusPage';
+import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
+import { WHATSAPP_MESSAGES, roomEnquiryMessage } from './utils/whatsapp';
 
 export const scrollToTop = () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -55,7 +59,10 @@ const pageToPath = {
   'eat-drink': '/food-and-drinks',
   'food-and-drinks': '/food-and-drinks',
   'food-and-drink': '/food-and-drinks',
-  menus: '/food-and-drinks',
+  menus: '/menus',
+  'menus/breakfast': '/menus/breakfast',
+  'menus/dining': '/menus/dining',
+  'menus/room-service': '/menus/room-service',
   wellness: '/facilities',
   facilities: '/facilities',
   spa: '/facilities',
@@ -227,6 +234,26 @@ const seoMetadata = {
     title: 'Book Your Stay | Elia Boutique Hotel Phuket',
     description: 'Check live availability and reserve a room at Elia Boutique Hotel Phuket, on Bang Tao Beach.',
   },
+  'not-found': {
+    title: 'Page not found | Elia Boutique Hotel Phuket',
+    description: 'This Elia page is not available. Return home, view rooms, or message WhatsApp Concierge.',
+  },
+  menus: {
+    title: 'GOAT Beach Club Menu | Dining at Elia Phuket',
+    description: 'Browse the live GOAT Beach Club menu for breakfast, dining and room service when staying at Elia Boutique Hotel on Bang Tao Beach.',
+  },
+  'menus/breakfast': {
+    title: 'Breakfast Menu | GOAT Beach Club at Elia Phuket',
+    description: 'Breakfast at GOAT Beach Club, next door to Elia Boutique Hotel on Bang Tao Beach. Served daily from 7:00 AM to midday.',
+  },
+  'menus/dining': {
+    title: 'Dining Menu | GOAT Beach Club at Elia Phuket',
+    description: 'All-day dining and drinks at GOAT Beach Club, included as Elia’s beachfront restaurant next door on Bang Tao Beach.',
+  },
+  'menus/room-service': {
+    title: 'Room Service Menu | GOAT at Elia Boutique Hotel Phuket',
+    description: 'Order GOAT Beach Club dishes to your Elia room or terrace. Browse the live menu and message WhatsApp Concierge to order.',
+  },
 };
 
 const getPageFromPath = (pathname) => {
@@ -237,7 +264,11 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/rooms/loft-apartment' || cleanPath === '/rooms/loft-apartments' || cleanPath === '/accommodation/loft-apartment' || cleanPath === '/accomodation/loft-apartment') return 'rooms/loft-apartment';
   if (cleanPath === '/rooms/one-bedroom-loft-suite' || cleanPath === '/accommodation/one-bedroom-loft-suite' || cleanPath === '/accomodation/one-bedroom-loft-suite') return 'rooms/one-bedroom-loft-suite';
   if (cleanPath === '/accommodation' || cleanPath === '/accomodation' || cleanPath === '/rooms' || cleanPath === '/suites') return 'rooms';
-  if (cleanPath === '/food-and-drinks' || cleanPath === '/food-and-drink' || cleanPath === '/food-drinks' || cleanPath === '/eat-drink' || cleanPath === '/menus' || cleanPath === '/dining') return 'eat-drink';
+  if (cleanPath === '/menus/breakfast') return 'menus/breakfast';
+  if (cleanPath === '/menus/dining') return 'menus/dining';
+  if (cleanPath === '/menus/room-service') return 'menus/room-service';
+  if (cleanPath === '/menus') return 'menus';
+  if (cleanPath === '/food-and-drinks' || cleanPath === '/food-and-drink' || cleanPath === '/food-drinks' || cleanPath === '/eat-drink' || cleanPath === '/dining') return 'eat-drink';
   
   // Dedicated Facilities Deep-Links
   if (cleanPath === '/facilities/sauna' || cleanPath === '/facilities/outdoor-sauna' || cleanPath === '/sauna') return 'facilities/sauna';
@@ -269,8 +300,9 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/cookies') return 'cookies';
   if (cleanPath === '/directions') return 'directions';
   if (cleanPath === '/book-your-stay' || cleanPath === '/book' || cleanPath === '/reserve') return 'book-your-stay';
+  if (cleanPath === '/' || cleanPath === '/index.html' || cleanPath === '/home') return 'home';
 
-  return 'home';
+  return 'not-found';
 };
 
 function App() {
@@ -328,17 +360,6 @@ function App() {
     };
   }, []);
 
-  const openReservation = (roomId) => {
-    const onBookingPage = window.location.pathname.replace(/\/$/, '').toLowerCase() === '/book-your-stay';
-    if (onBookingPage) {
-      document.getElementById('elia-booking-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return;
-    }
-    window.dispatchEvent(new CustomEvent('elia-open-booking', {
-      detail: { roomId: typeof roomId === 'string' ? roomId : '' },
-    }));
-  };
-
   const handleNavClick = (id) => {
     const targetPath = pageToPath[id] || `/${id}`;
     // Search opens the booking engine with a full page load. The logo and
@@ -358,8 +379,20 @@ function App() {
     setTimeout(trackPageView, 0);
   };
 
+  const openReservation = () => {
+    handleNavClick('book-your-stay');
+  };
+
+  const isRoomPage = activePage.startsWith('rooms/');
+  const whatsappMessage = isRoomPage
+    ? roomEnquiryMessage(activePage.replace('rooms/', '').replace(/-/g, ' '))
+    : activePage === 'book-your-stay'
+      ? WHATSAPP_MESSAGES.booking
+      : WHATSAPP_MESSAGES.default;
+
   return (
-    <div className="relative w-full min-h-screen bg-elia-cream text-[#23211E]">
+    <div className={`relative w-full bg-elia-cream text-[#23211E] ${isRoomPage ? 'elia-has-sticky-book' : ''}`}>
+      <a href="#elia-main" className="elia-skip-link">Skip to content</a>
       <Preloader />
       {/* Main Header Navigation Bar */}
       {activePage !== 'book-your-stay' && <CloudbedsBookNow />}
@@ -367,11 +400,10 @@ function App() {
       <Navbar
         activePage={activePage}
         setActivePage={handleNavClick}
-        onOpenReservation={openReservation}
       />
 
       {/* Page Content Rendering */}
-      <main className="min-h-screen">
+      <main id="elia-main">
         {activePage === 'book-your-stay' && <BookingPage />}
         {activePage === 'home' && (
           <HomePage
@@ -394,6 +426,12 @@ function App() {
           <EatDrinkPage
             onNavigate={handleNavClick}
             onOpenReservation={openReservation}
+          />
+        )}
+        {activePage.startsWith('menus') && (
+          <MenusPage
+            menuContext={activePage === 'menus' ? 'all' : activePage.replace('menus/', '')}
+            onNavigate={handleNavClick}
           />
         )}
         {activePage === 'wellness' && (
@@ -467,10 +505,17 @@ function App() {
             onNavigate={handleNavClick}
           />
         )}
+        {activePage === 'not-found' && (
+          <NotFoundPage onNavigate={handleNavClick} />
+        )}
       </main>
 
       {/* Footer Navigation */}
       <Footer onNavClick={handleNavClick} onOpenReservation={openReservation} />
+      <WhatsAppConcierge
+        message={whatsappMessage}
+        hidden={activePage === 'book-your-stay' || isRoomPage || activePage === 'contact'}
+      />
     </div>
   );
 }

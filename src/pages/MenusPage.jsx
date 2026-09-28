@@ -1,10 +1,30 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, ArrowRight, Moon } from 'lucide-react';
+import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
-export default function MenusPage({ onNavigate }) {
+const MENU_CONTEXT = {
+  all: {
+    title: 'GOAT Beach Club Menu',
+    copy: 'The live GOAT menu for Elia guests — breakfast, all-day dining and room service, a few steps from your room.',
+  },
+  breakfast: {
+    title: 'Breakfast at GOAT',
+    copy: 'Served daily from 7:00 AM to midday at GOAT Beach Club, next door. Coffee, juice and the full morning offering are below. Return to Elia whenever you like.',
+  },
+  dining: {
+    title: 'Dining at GOAT',
+    copy: 'All-day dining, drinks and sunset plates at GOAT Beach Club. Complimentary access is included for every Elia stay.',
+  },
+  'room-service': {
+    title: 'Room service from GOAT',
+    copy: 'Order from this menu to your Elia room or terrace. WhatsApp Concierge can place the order for you.',
+  },
+};
+
+export default function MenusPage({ onNavigate, menuContext = 'all' }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const context = MENU_CONTEXT[menuContext] || MENU_CONTEXT.all;
 
   const row1Categories = [
     { id: 'starters', label: 'Finger Bites & Starters' },
@@ -1776,16 +1796,35 @@ export default function MenusPage({ onNavigate }) {
     const drinkSectionIds = ['champagne', 'wine', 'signature-cocktails', 'classic-cocktails', 'spirits', 'beers', 'soft-drinks'];
 
   return (
-    <div className="pt-20 sm:pt-24 pb-0 bg-[#F5EFE6] text-[#23211E] min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-16 bg-[#F5EFE6] text-[#23211E]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Title Block */}
         <div className="text-center max-w-3xl mx-auto mb-6 pt-4">
+          <p className="text-[10px] uppercase tracking-[0.28em] text-[#A38B68] font-semibold mb-2">
+            Dining by GOAT Beach Club
+          </p>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#23211E] mb-3">
-            Food & Drink Menus
+            {context.title}
           </h1>
           <p className="text-[#88837A] font-light text-xs sm:text-sm font-sans max-w-2xl mx-auto leading-relaxed">
-            Savor exquisite bites, Nikkei fusion & handcrafted cocktails along Bang Tao Beach, Phuket. Served daily from 12:00 PM onwards.
+            {context.copy}
           </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => onNavigate?.('eat-drink')}
+              className="text-xs uppercase tracking-[0.16em] text-[#8B6E3F] font-semibold hover:underline cursor-pointer"
+            >
+              Back to Food and Drinks
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate?.('home')}
+              className="text-xs uppercase tracking-[0.16em] text-[#6E6A63] hover:text-[#23211E] cursor-pointer"
+            >
+              Return to Elia
+            </button>
+          </div>
         </div>
 
         {/* Category Jump Navigation Layout matching Screenshot (3 Rows) */}
@@ -1856,17 +1895,18 @@ export default function MenusPage({ onNavigate }) {
           )}
         </div>
 
-        {/* Late Night Banner Link */}
-        <div className="text-center mb-8">
-          <button
-            onClick={() => onNavigate && onNavigate('latenight')}
-            className="inline-flex items-center gap-2 text-xs font-serif italic text-[#A38B68] hover:text-[#23211E] transition-colors cursor-pointer bg-white/70 px-4 py-1.5 rounded-full border border-[#E2DACB] shadow-xs"
-          >
-            <Moon size={13} className="text-[#A38B68]" />
-            <span>Looking for Late Night Menu (10 PM - 2 AM)? Click here for Midnight Sliders & Shisha</span>
-            <ArrowRight size={12} />
-          </button>
-        </div>
+        {menuContext === 'room-service' && (
+          <div className="text-center mb-8">
+            <a
+              href={whatsappUrl(WHATSAPP_MESSAGES.roomService)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-white bg-[#25D366] px-5 py-2.5 rounded-full"
+            >
+              WhatsApp Concierge to order
+            </a>
+          </div>
+        )}
 
 
 

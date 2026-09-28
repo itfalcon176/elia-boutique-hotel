@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Calendar, CheckCircle, Navigation, Sparkles } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, CheckCircle, Navigation } from 'lucide-react';
 import FaqsSection from '../components/FaqsSection';
+import { whatsappUrl, WHATSAPP_MESSAGES, PHONE_HREF, EMAIL_HREF, MAPS_HREF, WHATSAPP_DISPLAY, contactFormMessage } from '../utils/whatsapp';
 
 const WhatsAppIcon = ({ size = 20, ...props }) => (
   <svg
@@ -35,6 +36,11 @@ export default function ContactPage({ onNavigate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    window.open(
+      whatsappUrl(contactFormMessage({ name, email, phone, message })),
+      '_blank',
+      'noopener,noreferrer'
+    );
     setSubmitted(true);
   };
 
@@ -82,24 +88,24 @@ export default function ContactPage({ onNavigate }) {
         {/* 4 Core Action Buttons Row matching Section 16 of SEO Pack */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           <a
-            href="https://wa.me/66932719103"
+            href={whatsappUrl(WHATSAPP_MESSAGES.default)}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
+            className="p-6 rounded-3xl bg-[#25D366] text-white border border-[#1EBE5A] shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center gap-3 cursor-pointer group md:col-span-1 col-span-2"
           >
-            <div className="w-12 h-12 rounded-2xl bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-2xl bg-white/20 text-white flex items-center justify-center group-hover:scale-110 transition-transform">
               <WhatsAppIcon size={24} />
             </div>
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#23211E] block mb-1">
-                WHATSAPP
+              <span className="text-xs uppercase tracking-[0.2em] font-bold text-white block mb-1">
+                WhatsApp Concierge
               </span>
-              <span className="text-xs text-[#8B6E3F] font-medium">+66 93 271 9103</span>
+              <span className="text-xs text-white/90 font-medium">{WHATSAPP_DISPLAY}</span>
             </div>
           </a>
 
           <a
-            href="tel:+66932719103"
+            href={PHONE_HREF}
             className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
           >
             <div className="w-12 h-12 rounded-2xl bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -109,12 +115,12 @@ export default function ContactPage({ onNavigate }) {
               <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#23211E] block mb-1">
                 CALL
               </span>
-              <span className="text-xs text-[#8B6E3F] font-medium">+66 93 271 9103</span>
+              <span className="text-xs text-[#8B6E3F] font-medium">{WHATSAPP_DISPLAY}</span>
             </div>
           </a>
 
           <a
-            href="mailto:info@eliaphuket.com"
+            href={EMAIL_HREF}
             className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
           >
             <div className="w-12 h-12 rounded-2xl bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -129,7 +135,7 @@ export default function ContactPage({ onNavigate }) {
           </a>
 
           <a
-            href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
+            href={MAPS_HREF}
             target="_blank"
             rel="noopener noreferrer"
             className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
@@ -171,8 +177,8 @@ export default function ContactPage({ onNavigate }) {
                 <span className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
                 <p>
                   <strong className="text-[#23211E] font-medium">WhatsApp Concierge:</strong>{' '}
-                  <a href="https://wa.me/66932719103" target="_blank" rel="noopener noreferrer" className="hover:text-[#A38B68] underline">
-                    +66 93 271 9103
+                  <a href={whatsappUrl(WHATSAPP_MESSAGES.location)} target="_blank" rel="noopener noreferrer" className="hover:text-[#A38B68] underline">
+                    {WHATSAPP_DISPLAY}
                   </a>
                 </p>
               </div>
@@ -180,8 +186,8 @@ export default function ContactPage({ onNavigate }) {
                 <span className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
                 <p>
                   <strong className="text-[#23211E] font-medium">Front Desk Telephone:</strong>{' '}
-                  <a href="tel:+66932719103" className="hover:text-[#A38B68]">
-                    +66 93 271 9103
+                  <a href={PHONE_HREF} className="hover:text-[#A38B68]">
+                    {WHATSAPP_DISPLAY}
                   </a>
                 </p>
               </div>
@@ -189,7 +195,7 @@ export default function ContactPage({ onNavigate }) {
                 <span className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
                 <p>
                   <strong className="text-[#23211E] font-medium">Email Inquiries:</strong>{' '}
-                  <a href="mailto:info@eliaphuket.com" className="hover:text-[#A38B68] underline">
+                  <a href={EMAIL_HREF} className="hover:text-[#A38B68] underline">
                     info@eliaphuket.com
                   </a>
                 </p>
@@ -222,7 +228,7 @@ export default function ContactPage({ onNavigate }) {
                   Message Sent
                 </h3>
                 <p className="text-[#6E6A63] text-xs sm:text-sm font-light max-w-sm mx-auto mb-6 font-sans">
-                  Thank you, <strong className="text-[#23211E] font-semibold">{name}</strong>. Our team will get back to you shortly.
+                  Thank you, <strong className="text-[#23211E] font-semibold">{name}</strong>. Your message opened in WhatsApp Concierge. If the chat did not appear, use the WhatsApp button above.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -331,7 +337,7 @@ export default function ContactPage({ onNavigate }) {
                 </p>
               </div>
               <a
-                href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
+                href={MAPS_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#23211E] hover:bg-[#A38B68] text-[#F7F4EF] text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer shadow-md group shrink-0"

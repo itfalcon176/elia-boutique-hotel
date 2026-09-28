@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { MapPin, Navigation, Mail, Phone, Clock, Sun, Waves, Sparkles, ArrowRight, ExternalLink } from 'lucide-react';
+import { whatsappUrl, WHATSAPP_MESSAGES, PHONE_HREF, WHATSAPP_DISPLAY } from '../utils/whatsapp';
 
 const WhatsAppIcon = ({ size = 18, ...props }) => (
   <svg
@@ -139,14 +140,14 @@ export default function BangTaoPage({ onNavigate, onOpenReservation }) {
                   </p>
                   <p>
                     <strong className="text-[#23211E] font-medium">WhatsApp:</strong>{' '}
-                    <a href="https://wa.me/66932719103" target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] font-medium">
-                      +66 93 271 9103
+                    <a href={whatsappUrl(WHATSAPP_MESSAGES.location)} target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] font-medium">
+                      {WHATSAPP_DISPLAY}
                     </a>
                   </p>
                   <p>
                     <strong className="text-[#23211E] font-medium">Telephone:</strong>{' '}
-                    <a href="tel:+66932719103" className="hover:text-[#A38B68]">
-                      +66 93 271 9103
+                    <a href={PHONE_HREF} className="hover:text-[#A38B68]">
+                      {WHATSAPP_DISPLAY}
                     </a>
                   </p>
                 </div>
@@ -165,13 +166,13 @@ export default function BangTaoPage({ onNavigate, onOpenReservation }) {
                 </a>
 
                 <a
-                  href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20directions%20and%20location."
+                  href={whatsappUrl(WHATSAPP_MESSAGES.location)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-[#25D366] text-white text-xs uppercase tracking-[0.2em] font-semibold hover:brightness-110 transition-all flex items-center gap-2 cursor-pointer shadow-md"
                 >
                   <WhatsAppIcon size={14} />
-                  <span>WHATSAPP US</span>
+                  <span>WhatsApp Concierge</span>
                 </a>
 
                 <button
