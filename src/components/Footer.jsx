@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Facebook, Instagram, Send, MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
+import { Facebook, Instagram, Send, Phone, Mail, ArrowUpRight } from 'lucide-react';
 
 const TiktokIcon = ({ size = 18, ...props }) => (
   <svg
@@ -47,17 +47,20 @@ export default function Footer({ onNavClick, onOpenReservation }) {
   };
 
   return (
-    <footer className="bg-[#181715] text-[#FAF7F2] pt-20 pb-12 border-t border-[#A38B68]/25 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-[#FAF7F2]/10">
+    <footer className="bg-[#181715] text-[#FAF7F2] pt-12 pb-8 sm:pt-14 sm:pb-10 border-t border-[#A38B68]/25">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-8 sm:pb-10 border-b border-[#FAF7F2]/10">
 
           {/* Col 1: Brand & Identity (4 cols) matching Section 20 */}
-          <div className="lg:col-span-4 space-y-4">
-            <button onClick={() => onNavClick('home')} className="focus:outline-none cursor-pointer block text-left">
+          <div className="lg:col-span-4 space-y-3">
+            <button
+              onClick={() => onNavClick('home')}
+              className="cursor-pointer block text-left rounded-sm focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#C5A880]/70"
+            >
               <img
                 src="/Logos/logo nwww.png"
                 alt="Elia Boutique Hotel Phuket"
-                className="h-12 sm:h-14 w-auto object-contain mb-3 transition-transform duration-300 hover:scale-105"
+                className="h-16 sm:h-20 w-auto object-contain"
               />
             </button>
             <h3 className="font-serif text-sm text-white font-medium uppercase tracking-widest">
@@ -69,7 +72,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             <p className="text-[#C5A880] text-xs font-serif italic">
               The beach. At your door.
             </p>
-            <div className="pt-2 text-xs text-[#FAF7F2]/70 font-light leading-relaxed">
+            <div className="text-xs text-[#FAF7F2]/70 font-light leading-relaxed">
               <a
                 href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
                 target="_blank"
@@ -87,7 +90,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             </div>
 
             {/* Social Links */}
-            <div className="pt-3 flex items-center gap-3 text-[#FAF7F2]/80">
+            <div className="flex items-center gap-3 text-[#FAF7F2]/80">
               <a
                 href="https://wa.me/66932719103"
                 target="_blank"
@@ -275,7 +278,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
         </div>
 
         {/* Footer Sub-Links matching Section 20 */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-[#FAF7F2]/60 font-light">
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-[11px] text-[#FAF7F2]/60 font-light">
           <p>© {new Date().getFullYear()} Elia Boutique Hotel Phuket. 13 rooms by the sea.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px]">
