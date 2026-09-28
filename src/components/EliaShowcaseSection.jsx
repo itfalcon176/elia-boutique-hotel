@@ -331,42 +331,18 @@ export default function EliaShowcaseSection({ onNavigate }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-[#A38B68]/30 shadow-sm text-[#8B6E3F] text-[10px] uppercase tracking-[0.25em] font-sans font-semibold mb-3"
-            >
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-[#A38B68]/30 shadow-sm text-[#8B6E3F] text-[10px] uppercase tracking-[0.25em] font-sans font-semibold mb-3">
               <Sparkles size={12} className="text-[#A38B68]" />
               <span>Boutique Scale, Generous Experience</span>
-            </motion.div>
+            </div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.05 }}
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#23211E] tracking-tight leading-tight mb-4"
-            >
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#23211E] tracking-tight leading-tight mb-4">
               A Stay With <span className="italic text-gold-gradient font-serif">Something Extra</span>
-            </motion.h2>
+            </h2>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="w-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-4"
-            />
+            <div className="w-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-4" />
 
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="space-y-2 text-xs sm:text-sm text-[#555047] font-light leading-relaxed font-sans max-w-2xl mx-auto"
-            >
+            <div className="space-y-2 text-xs sm:text-sm text-[#555047] font-light leading-relaxed font-sans max-w-2xl mx-auto">
               <p className="font-medium text-[#23211E]">
                 A small hotel doesn't have to mean a small experience.
               </p>
@@ -376,7 +352,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
               <p className="text-[#8B6E3F] font-serif italic text-sm pt-1">
                 And beyond the hotel, Phuket is waiting.
               </p>
-            </motion.div>
+            </div>
           </div>
 
           {/* All 11 Facilities Grid */}
@@ -470,17 +446,13 @@ export default function EliaShowcaseSection({ onNavigate }) {
                 icon: Compass,
                 route: 'facilities/phuket-experiences',
               },
-            ].map((item, i) => {
+            ].map((item) => {
               const Icon = item.icon;
               return (
-                <motion.div
+                <div
                   key={item.idx}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: i * 0.03 }}
                   onClick={() => onNavigate(item.route)}
-                  className="group relative bg-white/95 hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#A38B68]/25 hover:border-[#A38B68] shadow-[0_4px_15px_rgba(163,139,104,0.05)] hover:shadow-[0_12px_28px_rgba(163,139,104,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer overflow-hidden"
+                  className="group relative bg-white/95 hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#A38B68]/25 hover:border-[#A38B68] shadow-[0_4px_15px_rgba(163,139,104,0.05)] hover:shadow-[0_12px_28px_rgba(163,139,104,0.15)] transition-all duration-300 flex flex-col justify-between cursor-pointer overflow-hidden"
                 >
                   {/* Subtle golden corner light glow */}
                   <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-[#C5A880]/15 to-transparent rounded-full blur-lg group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
@@ -517,7 +489,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
                     <span>Explore</span>
                     <ArrowRight size={13} className="text-[#A38B68] group-hover:text-[#23211E] group-hover:translate-x-1 transition-all" />
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
