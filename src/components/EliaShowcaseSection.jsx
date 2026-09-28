@@ -636,7 +636,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
 
           <div className="mt-8 overflow-hidden rounded-[1.15rem]">
             <img
-              src="/banner/banner.jpeg"
+              src="/banner/Elia%20boutique%20hotel%20banner.jpeg"
               alt="Bang Tao Beach beside Elia Boutique Hotel Phuket"
               className="w-full aspect-[4/3] object-cover object-[center_40%]"
             />
