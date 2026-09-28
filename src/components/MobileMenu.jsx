@@ -409,8 +409,8 @@ export default function MobileMenu({
                       <div className="elia-mobile-menu-room-wash absolute inset-0" />
                       <div className="absolute left-5 bottom-3.5 right-[4.4rem]">
                         <span
-                          className="block text-white text-[1.32rem] min-[375px]:text-[1.5rem] font-medium tracking-[-0.03em] leading-[1.12]"
-                          style={{ textShadow: '0 1px 12px rgba(0,0,0,0.4)' }}
+                          className="block text-white text-[1.22rem] min-[375px]:text-[1.38rem] min-[414px]:text-[1.45rem] font-medium tracking-[-0.028em] leading-[1.12]"
+                          style={{ textShadow: '0 1px 12px rgba(0,0,0,0.45)' }}
                         >
                           {room.title}
                         </span>

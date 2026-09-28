@@ -716,9 +716,9 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   background: linear-gradient(
     180deg,
     rgba(18, 16, 14, 0) 0%,
-    rgba(18, 16, 14, 0.05) 40%,
-    rgba(18, 16, 14, 0.34) 74%,
-    rgba(18, 16, 14, 0.52) 100%
+    rgba(18, 16, 14, 0.04) 36%,
+    rgba(18, 16, 14, 0.38) 72%,
+    rgba(18, 16, 14, 0.62) 100%
   );
 }
 
