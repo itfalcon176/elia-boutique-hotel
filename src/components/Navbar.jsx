@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, Sparkles, ArrowRight, Globe, Check } from 'lucide-react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Menu as MenuIcon, X, Calendar, ChevronDown, ArrowRight, Globe, Check } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
 // Crisp Vector SVG Flag Components for 100% Consistent Cross-Platform Rendering (iOS, Android, Windows, Mac)
@@ -79,6 +79,10 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   const [selectedLang, setSelectedLang] = useState(languages[0]);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const langDropdownRef = useRef(null);
+  const menuRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const menuToggleRef = useRef(null);
+  const reduceMotion = useReducedMotion();
 
   // Restore selected language from storage/cookies on mount
   useEffect(() => {
@@ -121,6 +125,92 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1024px)');
+    const closeOnDesktop = () => {
+      if (media.matches) setMobileMenuOpen(false);
+    };
+    media.addEventListener('change', closeOnDesktop);
+    return () => media.removeEventListener('change', closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+
+    const menu = menuRef.current;
+    const body = document.body;
+    const root = document.documentElement;
+    const previousBodyOverflow = body.style.overflow;
+    const previousRootOverflow = root.style.overflow;
+    body.style.overflow = 'hidden';
+    root.style.overflow = 'hidden';
+
+    const inerted = [];
+    if (menu?.parentElement) {
+      for (const child of menu.parentElement.children) {
+        if (child === menu || child.contains(menu) || child.hasAttribute('inert')) continue;
+        child.setAttribute('inert', '');
+        inerted.push(child);
+      }
+    }
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    const getFocusable = () => {
+      if (!menu) return [];
+      return [...menu.querySelectorAll(focusableSelector)].filter((el) => el.getClientRects().length > 0);
+    };
+
+    closeButtonRef.current?.focus({ preventScroll: true });
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMobileMenuOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+
+      const items = getFocusable();
+      if (items.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      const inside = menu?.contains(active);
+
+      if (event.shiftKey) {
+        if (!inside || active === first) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else if (!inside || active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      body.style.overflow = previousBodyOverflow;
+      root.style.overflow = previousRootOverflow;
+      inerted.forEach((el) => el.removeAttribute('inert'));
+      menuToggleRef.current?.focus({ preventScroll: true });
+    };
+  }, [mobileMenuOpen]);
 
   const handleSelectLanguage = (lang) => {
     setSelectedLang(lang);
@@ -423,200 +513,145 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               </div>
             </div>
 
-            {/* Mobile Hamburger Toggle */}
+            {/* Mobile menu toggle. Desktop navigation stays in the bar above. */}
             <button
+              ref={menuToggleRef}
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden p-2 focus:outline-none cursor-pointer ${isLightHeader ? 'text-[#23211E]' : 'text-white'}`}
-              aria-label="Toggle menu"
+              className={`lg:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+                isLightHeader
+                  ? 'text-[#23211E] focus-visible:outline-[#A38B68]'
+                  : 'text-white focus-visible:outline-[#C5A880]'
+              }`}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls={mobileMenuOpen ? 'elia-mobile-menu' : undefined}
             >
-              {mobileMenuOpen ? <X size={26} /> : <MenuIcon size={26} />}
+              {mobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
             </button>
           </div>
         </div>
       </motion.header>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile navigation. Language and secondary promo links stay outside this drawer. */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed inset-0 z-50 bg-[#F7F4EF] text-[#23211E] lg:hidden flex flex-col justify-between px-5 pt-5 pb-6 overflow-y-auto"
+            id="elia-mobile-menu"
+            key="elia-mobile-menu"
+            ref={menuRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="elia-mobile-menu-title"
+            initial={reduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[60] flex h-dvh max-h-dvh flex-col overflow-y-auto overscroll-contain bg-[#F7F4EF] px-6 text-[#23211E] lg:hidden"
           >
-            {/* Top Close Header */}
-            <div>
-              <div className="flex items-center justify-between pb-4 border-b border-[#A38B68]/20">
+            <h2 id="elia-mobile-menu-title" className="sr-only">Menu</h2>
+            <div className="mx-auto flex min-h-full w-full max-w-md flex-col">
+              <div className="sticky top-0 z-10 -mx-6 shrink-0 bg-[#F7F4EF] px-6 pt-[max(0.75rem,env(safe-area-inset-top))]">
+                <div className="flex items-center justify-between gap-4 border-b border-[#A38B68]/20 pb-4">
                 <button
+                  type="button"
                   onClick={() => handleNavClick('home')}
-                  className="focus:outline-none cursor-pointer"
+                  className="min-w-0 cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A38B68]"
                 >
                   <img
                     src="/Logos/elia gold.png"
-                    alt="Elia Boutique Hotel Phuket Logo"
-                    className="h-11 sm:h-12 w-auto object-contain"
+                    alt="Elia Boutique Hotel Phuket"
+                    className="h-11 w-auto max-w-[9.5rem] object-contain object-left sm:h-12"
                     onError={(e) => {
                       e.target.src = '/Logos/logo nwww.png';
                     }}
                   />
                 </button>
                 <button
+                  ref={closeButtonRef}
+                  type="button"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-9 h-9 rounded-full bg-[#EFECE6] border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all cursor-pointer"
+                  className="inline-flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[#A38B68]/35 text-[#23211E] transition-colors duration-200 hover:border-[#A38B68] hover:text-[#A38B68] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A38B68]"
                   aria-label="Close menu"
                 >
-                  <X size={18} />
+                  <X size={18} strokeWidth={1.5} />
                 </button>
+                </div>
               </div>
 
-              {/* Sub-label */}
-              <div className="pt-3 pb-1 flex items-center justify-between text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold font-sans">
-                <span>NAVIGATION</span>
-                <span>ELIA PHUKET • 13 ROOMS</span>
-              </div>
-
-              {/* Menu Links Stack */}
-              <div className="py-2 flex flex-col gap-1.5">
-                {navLinks.map((link, idx) => {
-                  const isSelected = activePage === link.id || (link.id === 'rooms' && activePage.startsWith('rooms'));
-                  return (
-                    <div key={link.id} className="flex flex-col gap-1">
-                      <button
-                        onClick={() => handleNavClick(link.id)}
-                        className={`flex items-center justify-between px-4 py-2.5 rounded-xl border transition-all text-left cursor-pointer ${isSelected
-                            ? 'bg-[#23211E] text-[#F7F4EF] border-[#23211E] shadow-md'
-                            : 'bg-[#FFFFFF]/80 hover:bg-[#FFFFFF] text-[#23211E] border-[#A38B68]/20'
-                          }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="font-serif italic text-xs text-[#A38B68]">
-                            0{idx + 1}
-                          </span>
-                          <span className="text-xs uppercase tracking-[0.2em] font-semibold font-sans">
+              <nav className="my-auto w-full py-5" aria-label="Primary">
+                <ul className="flex flex-col">
+                  {navLinks.map((link) => {
+                    if (link.hasDropdown) {
+                      const sectionActive = activePage === link.id || activePage.startsWith(`${link.id}/`);
+                      return (
+                        <li key={link.id} className="border-b border-[#A38B68]/20">
+                          <button
+                            type="button"
+                            onClick={() => handleNavClick(link.id)}
+                            className={`flex min-h-12 w-full cursor-pointer items-center py-2 text-left font-serif text-[1.65rem] font-light leading-tight tracking-wide transition-colors duration-200 focus-visible:underline focus-visible:decoration-[#A38B68] focus-visible:underline-offset-8 focus-visible:outline-none sm:text-[2rem] ${
+                              sectionActive ? 'text-[#A38B68]' : 'text-[#23211E] hover:text-[#A38B68]'
+                            }`}
+                            aria-current={activePage === link.id ? 'page' : undefined}
+                          >
                             {link.label}
-                          </span>
-                        </div>
-                        <div className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#A38B68]' : 'bg-[#A38B68]/40'}`} />
-                      </button>
+                          </button>
+                          <ul className="mb-3 mt-0.5 flex flex-col" aria-label="Rooms">
+                            {roomsData.map((room) => {
+                              const roomPage = `rooms/${room.slug}`;
+                              const isRoomActive = activePage === roomPage;
+                              return (
+                                <li key={room.id}>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleNavClick(roomPage)}
+                                    className={`flex min-h-11 w-full cursor-pointer items-center border-l py-2 pl-4 text-left font-sans text-[15px] leading-snug tracking-wide transition-colors duration-200 focus-visible:underline focus-visible:decoration-[#A38B68] focus-visible:underline-offset-4 focus-visible:outline-none sm:text-base ${
+                                      isRoomActive
+                                        ? 'border-[#A38B68] text-[#A38B68]'
+                                        : 'border-[#A38B68]/30 text-[#6E6A63] hover:border-[#A38B68] hover:text-[#23211E]'
+                                    }`}
+                                    aria-current={isRoomActive ? 'page' : undefined}
+                                  >
+                                    {room.title}
+                                  </button>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </li>
+                      );
+                    }
 
-                      {/* If rooms, show quick links in mobile */}
-                      {link.id === 'rooms' && (
-                        <div className="pl-6 pr-2 py-1 space-y-1 bg-[#FAF7F2]/60 rounded-xl border border-[#A38B68]/15 mb-1">
-                          {roomsData.map((room) => (
-                            <button
-                              key={room.id}
-                              onClick={() => handleNavClick(`rooms/${room.slug}`)}
-                              className={`w-full text-left py-1.5 px-2 text-[11px] font-sans flex items-center justify-between cursor-pointer rounded-lg ${activePage === `rooms/${room.slug}`
-                                  ? 'font-bold text-[#A38B68] bg-white'
-                                  : 'text-[#6E6A63] hover:text-[#23211E]'
-                                }`}
-                            >
-                              <span>{room.title}</span>
-                              <span className="text-[9px] uppercase tracking-wider text-[#A38B68]">
-                                {room.countLabel}
-                              </span>
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                    const isSelected = activePage === link.id;
+                    return (
+                      <li key={link.id} className="border-b border-[#A38B68]/20">
+                        <button
+                          type="button"
+                          onClick={() => handleNavClick(link.id)}
+                          className={`flex min-h-12 w-full cursor-pointer items-center py-2 text-left font-serif text-[1.65rem] font-light leading-tight tracking-wide transition-colors duration-200 focus-visible:underline focus-visible:decoration-[#A38B68] focus-visible:underline-offset-8 focus-visible:outline-none sm:text-[2rem] ${
+                            isSelected ? 'text-[#A38B68]' : 'text-[#23211E] hover:text-[#A38B68]'
+                          }`}
+                          aria-current={isSelected ? 'page' : undefined}
+                        >
+                          {link.label}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
 
-                {/* Secondary SEO Pages Quick Links */}
-                <div className="pt-2 grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => handleNavClick('family-hotel-phuket')}
-                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
-                  >
-                    Family Stays
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('goat-beach-club')}
-                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
-                  >
-                    GOAT Beach Club
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('bang-tao-beach-phuket')}
-                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
-                  >
-                    Bang Tao Beach
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('offers')}
-                    className="p-2.5 rounded-xl border border-[#A38B68]/40 bg-[#A38B68]/10 text-left text-xs font-semibold text-[#8B6E3F] hover:bg-[#A38B68]/20 cursor-pointer"
-                  >
-                    Special Offers
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile Language Selector */}
-            <div className="pt-3 border-t border-[#A38B68]/20">
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-[#A38B68] font-bold mb-2">
-                <span>Select Language</span>
-                <span className="text-xs flex items-center gap-1.5">
-                  <selectedLang.FlagComponent className="w-4 h-3" />
-                  {selectedLang.name}
-                </span>
-              </div>
-              <div className="grid grid-cols-3 gap-2">
-                {languages.map((lang) => {
-                  const isSelected = selectedLang.code === lang.code;
-                  return (
-                    <button
-                      key={lang.code}
-                      type="button"
-                      onClick={() => {
-                        handleSelectLanguage(lang);
-                        setMobileMenuOpen(false);
-                      }}
-                      className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center gap-1.5 cursor-pointer ${
-                        isSelected
-                          ? 'bg-[#23211E] text-white border-[#23211E] shadow-sm'
-                          : 'bg-white text-[#23211E] border-[#A38B68]/20 hover:border-[#A38B68]'
-                      }`}
-                    >
-                      <lang.FlagComponent className="w-5 h-3.5" />
-                      <span className="text-[10px] font-semibold">{lang.name}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Bottom Quick Info & CTA Footer */}
-            <div className="space-y-3 pt-3 border-t border-[#A38B68]/20">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenReservation?.();
-                }}
-                className={`w-full py-3.5 rounded-full font-semibold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2.5 shadow-xl transition-all cursor-pointer ${activePage === 'booking'
-                    ? 'bg-[#A38B68] text-white shadow-[0_0_20px_rgba(163,139,104,0.4)]'
-                    : 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
-                  }`}
-              >
-                <Calendar size={15} className="text-[#A38B68]" />
-                <span>RESERVE STAY OR TABLE</span>
-              </button>
-
-              <div className="flex items-center justify-between text-[11px] text-[#6E6A63] font-sans font-light px-1">
-                <div className="flex items-center gap-1.5">
-                  <MapPin size={13} className="text-[#A38B68]" />
-                  <span>Bang Tao Beach, Phuket</span>
-                </div>
-                <a
-                  href="https://wa.me/66932719103"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-[#A38B68] transition-colors font-medium text-[#23211E]"
+              <div className="sticky bottom-0 z-10 -mx-6 shrink-0 bg-[#F7F4EF] px-6 pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    window.setTimeout(() => onOpenReservation?.(), 0);
+                  }}
+                  className="flex min-h-12 w-full cursor-pointer items-center justify-center rounded-full bg-[#23211E] px-6 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[#F7F4EF] transition-colors duration-300 hover:bg-[#A38B68] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A38B68] sm:text-xs"
                 >
-                  <span>WhatsApp: +66 93 271 9103</span>
-                </a>
+                  Reserve stay or table
+                </button>
               </div>
             </div>
           </motion.div>
