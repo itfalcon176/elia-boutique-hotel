@@ -584,7 +584,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
           <h2 className="mt-5 font-serif font-normal text-[2.85rem] sm:text-[3.25rem] leading-[1.12] tracking-[-0.018em] text-[#1A1612]">
             Eat. Drink.
             <br />
-            <span className="italic font-serif font-normal">Stay awhile.</span>
+            <span className="italic font-serif font-normal text-gold-gradient">Stay awhile.</span>
           </h2>
           <p className="mt-4 font-sans text-[15px] leading-[1.55] font-normal text-[#6E6860]">
             Beachfront dining by GOAT Beach Club, just next door.
@@ -605,18 +605,16 @@ export default function EliaShowcaseSection({ onNavigate }) {
             From breakfast and barista coffee to sunset cocktails and dinner. Enjoy it all next door—or let room service come to you.
           </p>
 
-          <div className="mt-7 flex items-center justify-between font-sans text-[13.5px] font-normal text-[#2A2620]">
-            <span className="flex-1 text-center whitespace-nowrap">Breakfast</span>
-            <span className="w-px h-[14px] bg-[#D0C9BC] shrink-0" aria-hidden="true" />
-            <span className="flex-1 text-center whitespace-nowrap">Beachfront dining</span>
-            <span className="w-px h-[14px] bg-[#D0C9BC] shrink-0" aria-hidden="true" />
-            <span className="flex-1 text-center whitespace-nowrap">Room service</span>
+          <div className="mt-7 grid grid-cols-3 items-center font-sans text-[13px] font-normal text-[#2A2620]">
+            <span className="text-center px-1 leading-tight">Breakfast</span>
+            <span className="text-center px-1 leading-tight border-x border-[#D0C9BC]">Beachfront dining</span>
+            <span className="text-center px-1 leading-tight">Room service</span>
           </div>
 
           <button
             type="button"
             onClick={() => onNavigate('menus/breakfast')}
-            className="mt-8 w-full h-[3.45rem] rounded-full bg-[#111111] text-white font-sans text-[13px] font-medium uppercase tracking-[0.12em] inline-flex items-center justify-center gap-2.5 cursor-pointer"
+            className="mt-8 w-full h-[3.45rem] rounded-[10px] bg-[#111111] text-white font-sans text-[13px] font-medium uppercase tracking-[0.12em] inline-flex items-center justify-center gap-2.5 cursor-pointer"
           >
             View GOAT menus
             <span aria-hidden="true" className="text-[16px] font-normal tracking-normal">→</span>
