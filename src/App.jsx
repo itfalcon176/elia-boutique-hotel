@@ -223,6 +223,10 @@ const seoMetadata = {
     title: 'Location & Contact | Elia Boutique Hotel Bang Tao Phuket',
     description: 'Find Elia Boutique Hotel on Bang Tao Beach, Phuket. Get location details, Google Maps directions, phone, WhatsApp concierge and contact information.',
   },
+  directions: {
+    title: 'Directions & Arrival | Elia Boutique Hotel Bang Tao Phuket',
+    description: 'How to reach Elia Boutique Hotel on Bang Tao Beach from Phuket International Airport (HKT), with driving directions, landmarks, and private transfer options.',
+  },
   'book-your-stay': {
     title: 'Book Your Stay | Elia Boutique Hotel Phuket',
     description: 'Check live availability and reserve a room at Elia Boutique Hotel Phuket, on Bang Tao Beach.',
@@ -245,7 +249,7 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/facilities/jacuzzi' || cleanPath === '/facilities/hydrotherapy' || cleanPath === '/jacuzzi') return 'facilities/jacuzzi';
   if (cleanPath === '/facilities/plunge-pool' || cleanPath === '/facilities/pool' || cleanPath === '/pool') return 'facilities/plunge-pool';
   if (cleanPath === '/facilities/massage' || cleanPath === '/facilities/massage-treatments' || cleanPath === '/facilities/spa' || cleanPath === '/massage' || cleanPath === '/spa') return 'facilities/massage';
-  if (cleanPath === '/facilities/concierge' || cleanPath === '/facilities/transfers' || cleanPath === '/concierge') return 'facilities/concierge';
+  if (cleanPath === '/facilities/concierge' || cleanPath === '/concierge') return 'facilities/concierge';
   if (cleanPath === '/facilities/goat-beach-club' || cleanPath === '/facilities/goat') return 'facilities/goat-beach-club';
   if (cleanPath === '/facilities/kids-club' || cleanPath === '/facilities/family') return 'facilities/kids-club';
   if (cleanPath === '/facilities/beach-access' || cleanPath === '/facilities/beach') return 'facilities/beach-access';
@@ -259,7 +263,8 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/bang-tao-beach-phuket') return 'bang-tao-beach-phuket';
   if (cleanPath === '/gallery') return 'gallery';
   if (cleanPath === '/about') return 'about';
-  if (cleanPath === '/location' || cleanPath === '/contact' || cleanPath === '/contact-us' || cleanPath === '/directions' || cleanPath === '/getting-here') return 'contact';
+  if (cleanPath === '/directions' || cleanPath === '/getting-here') return 'directions';
+  if (cleanPath === '/location' || cleanPath === '/contact' || cleanPath === '/contact-us') return 'contact';
   if (cleanPath === '/offers' || cleanPath === '/special-offers') return 'offers';
   if (cleanPath === '/faq' || cleanPath === '/faqs') return 'faq';
   if (cleanPath === '/policies' || cleanPath === '/hotel-policies') return 'policies';
@@ -267,7 +272,6 @@ const getPageFromPath = (pathname) => {
   if (cleanPath === '/privacy') return 'privacy';
   if (cleanPath === '/terms') return 'terms';
   if (cleanPath === '/cookies') return 'cookies';
-  if (cleanPath === '/directions') return 'directions';
   if (cleanPath === '/book-your-stay' || cleanPath === '/book' || cleanPath === '/reserve') return 'book-your-stay';
 
   return 'home';

@@ -146,6 +146,26 @@ export default function ContactPage({ onNavigate }) {
           </a>
         </div>
 
+        <p className="text-center text-xs text-[#6E6A63] font-light mb-16 max-w-2xl mx-auto">
+          Driving from Phuket Airport?{' '}
+          <button
+            type="button"
+            onClick={() => onNavigate && onNavigate('directions')}
+            className="text-[#8B6E3F] font-medium underline hover:text-[#23211E] transition-colors cursor-pointer"
+          >
+            Read our full arrival &amp; directions guide
+          </button>
+          , or arrange a private transfer via{' '}
+          <button
+            type="button"
+            onClick={() => onNavigate && onNavigate('facilities/airport-transfers')}
+            className="text-[#8B6E3F] font-medium underline hover:text-[#23211E] transition-colors cursor-pointer"
+          >
+            airport transfers
+          </button>
+          .
+        </p>
+
         {/* Address Card & Map Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-20">
           {/* Left: Address Card */}
@@ -306,6 +326,18 @@ export default function ContactPage({ onNavigate }) {
                   >
                     Send Message
                   </button>
+                  <p className="text-[10px] text-center text-[#6E6A63] font-light pt-1">
+                    For the fastest reply, message our{' '}
+                    <a
+                      href="https://wa.me/66932719103"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#8B6E3F] underline hover:text-[#23211E]"
+                    >
+                      WhatsApp concierge
+                    </a>
+                    . This form is not yet connected to our inbox.
+                  </p>
                 </form>
               </div>
             )}
