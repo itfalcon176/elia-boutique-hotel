@@ -605,10 +605,10 @@ export default function EliaShowcaseSection({ onNavigate }) {
             From breakfast and barista coffee to sunset cocktails and dinner. Enjoy it all next door—or let room service come to you.
           </p>
 
-          <div className="mt-7 grid grid-cols-3 items-center font-sans text-[13px] font-normal text-[#2A2620]">
-            <span className="text-center px-1 leading-tight">Breakfast</span>
-            <span className="text-center px-1 leading-tight border-x border-[#D0C9BC]">Beachfront dining</span>
-            <span className="text-center px-1 leading-tight">Room service</span>
+          <div className="mt-7 grid grid-cols-3 items-center font-sans text-[12px] font-normal text-[#2A2620]">
+            <span className="text-center px-0.5 whitespace-nowrap">Breakfast</span>
+            <span className="text-center px-0.5 whitespace-nowrap border-x border-[#D0C9BC]">Beachfront dining</span>
+            <span className="text-center px-0.5 whitespace-nowrap">Room service</span>
           </div>
 
           <button
