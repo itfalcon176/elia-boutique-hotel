@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Menu as MenuIcon, X, Calendar, ChevronDown, ArrowRight, Globe, Check } from 'lucide-react';
+import { X, Calendar, ChevronDown, ArrowRight, Globe, Check } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
 // Crisp Vector SVG Flag Components for 100% Consistent Cross-Platform Rendering (iOS, Android, Windows, Mac)
@@ -79,6 +79,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   const [selectedLang, setSelectedLang] = useState(languages[0]);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const langDropdownRef = useRef(null);
+  const mobileLangRef = useRef(null);
   const menuRef = useRef(null);
   const closeButtonRef = useRef(null);
   const menuToggleRef = useRef(null);
@@ -106,9 +107,8 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (langDropdownRef.current && !langDropdownRef.current.contains(e.target)) {
-        setLangDropdownOpen(false);
-      }
+      const inside = [langDropdownRef.current, mobileLangRef.current].some((node) => node?.contains(e.target));
+      if (!inside) setLangDropdownOpen(false);
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -275,6 +275,53 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
 
   const isLightHeader = scrolled || (activePage !== 'home');
 
+  const renderLanguageMenu = () => (
+    <AnimatePresence>
+      {langDropdownOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: 8, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 8, scale: 0.96 }}
+          transition={{ duration: 0.18 }}
+          className="absolute right-0 top-full mt-2 w-56 bg-[#FAF7F2] text-[#23211E] rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.25)] border border-[#A38B68]/30 p-2 z-50 backdrop-blur-2xl"
+        >
+          <div className="px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#A38B68] font-bold border-b border-[#A38B68]/20 mb-1 flex items-center justify-between">
+            <span>Language</span>
+            <span className="text-[9px] lowercase font-normal text-[#6E6A63]">({languages.length})</span>
+          </div>
+          <div className="space-y-1">
+            {languages.map((lang) => {
+              const isSelected = selectedLang.code === lang.code;
+              return (
+                <button
+                  key={lang.code}
+                  type="button"
+                  onClick={() => handleSelectLanguage(lang)}
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all cursor-pointer ${
+                    isSelected
+                      ? 'bg-[#23211E] text-white shadow-sm'
+                      : 'hover:bg-[#EFECE6] text-[#23211E]'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <lang.FlagComponent className="w-5 h-3.5" />
+                    <div>
+                      <div className="text-xs font-semibold leading-none">{lang.name}</div>
+                      <div className={`text-[10px] mt-0.5 font-light ${isSelected ? 'text-white/75' : 'text-[#6E6A63]'}`}>
+                        {lang.native}
+                      </div>
+                    </div>
+                  </div>
+                  {isSelected && <Check size={14} className="text-[#C5A880]" />}
+                </button>
+              );
+            })}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
   return (
     <>
       <motion.header
@@ -287,7 +334,60 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center lg:hidden">
+            <button
+              ref={menuToggleRef}
+              type="button"
+              onClick={() => {
+                setLangDropdownOpen(false);
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
+              className={`inline-flex h-11 min-w-11 items-center justify-center justify-self-start text-[11px] font-medium uppercase tracking-[0.18em] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+                isLightHeader
+                  ? 'text-[#23211E] focus-visible:outline-[#A38B68]'
+                  : 'text-white focus-visible:outline-[#C5A880]'
+              }`}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls={mobileMenuOpen ? 'elia-mobile-menu' : undefined}
+            >
+              Menu
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick('home')}
+              className="justify-self-center cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A38B68]"
+            >
+              <img
+                src={isLightHeader ? '/Logos/elia gold.png' : '/Logos/logo nwww.png'}
+                alt="Elia Boutique Hotel Phuket Logo"
+                className="h-11 w-auto max-w-[42vw] object-contain"
+                onError={(e) => {
+                  e.target.src = '/Logos/elia gold.png';
+                }}
+              />
+            </button>
+            <div ref={mobileLangRef} className="relative justify-self-end">
+              <button
+                type="button"
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                className={`inline-flex h-11 min-w-11 items-center justify-center text-[11px] font-semibold uppercase tracking-[0.18em] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+                  isLightHeader
+                    ? 'text-[#23211E] focus-visible:outline-[#A38B68]'
+                    : 'text-white focus-visible:outline-[#C5A880]'
+                }`}
+                aria-label={`Select language, ${selectedLang.name}`}
+                aria-expanded={langDropdownOpen}
+                aria-haspopup="listbox"
+                title={`Language: ${selectedLang.name}`}
+              >
+                {selectedLang.code}
+              </button>
+              {renderLanguageMenu()}
+            </div>
+          </div>
+
+          <div className="hidden lg:flex items-center justify-between">
             {/* Brand Logo */}
             <button
               onClick={() => handleNavClick('home')}
@@ -315,6 +415,10 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                       className="relative"
                       onMouseEnter={() => setRoomsDropdownOpen(true)}
                       onMouseLeave={() => setRoomsDropdownOpen(false)}
+                      onFocus={() => setRoomsDropdownOpen(true)}
+                      onBlur={(event) => {
+                        if (!event.currentTarget.contains(event.relatedTarget)) setRoomsDropdownOpen(false);
+                      }}
                     >
                       <button
                         onClick={() => handleNavClick(link.id)}
@@ -466,70 +570,9 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                   <ChevronDown size={11} className={`transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
-                {/* Animated Dropdown Menu */}
-                <AnimatePresence>
-                  {langDropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                      transition={{ duration: 0.18 }}
-                      className="absolute right-0 top-full mt-2 w-56 bg-[#FAF7F2] text-[#23211E] rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.25)] border border-[#A38B68]/30 p-2 z-50 backdrop-blur-2xl"
-                    >
-                      <div className="px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#A38B68] font-bold border-b border-[#A38B68]/20 mb-1 flex items-center justify-between">
-                        <span>Language</span>
-                        <span className="text-[9px] lowercase font-normal text-[#6E6A63]">({languages.length})</span>
-                      </div>
-                      <div className="space-y-1">
-                        {languages.map((lang) => {
-                          const isSelected = selectedLang.code === lang.code;
-                          return (
-                            <button
-                              key={lang.code}
-                              type="button"
-                              onClick={() => handleSelectLanguage(lang)}
-                              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all cursor-pointer ${
-                                isSelected
-                                  ? 'bg-[#23211E] text-white shadow-sm'
-                                  : 'hover:bg-[#EFECE6] text-[#23211E]'
-                              }`}
-                            >
-                              <div className="flex items-center gap-3">
-                                <lang.FlagComponent className="w-5 h-3.5" />
-                                <div>
-                                  <div className="text-xs font-semibold leading-none">{lang.name}</div>
-                                  <div className={`text-[10px] mt-0.5 font-light ${isSelected ? 'text-white/75' : 'text-[#6E6A63]'}`}>
-                                    {lang.native}
-                                  </div>
-                                </div>
-                              </div>
-                              {isSelected && <Check size={14} className="text-[#C5A880]" />}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {renderLanguageMenu()}
               </div>
             </div>
-
-            {/* Mobile menu toggle. Desktop navigation stays in the bar above. */}
-            <button
-              ref={menuToggleRef}
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
-                isLightHeader
-                  ? 'text-[#23211E] focus-visible:outline-[#A38B68]'
-                  : 'text-white focus-visible:outline-[#C5A880]'
-              }`}
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileMenuOpen}
-              aria-controls={mobileMenuOpen ? 'elia-mobile-menu' : undefined}
-            >
-              {mobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
-            </button>
           </div>
         </div>
       </motion.header>
