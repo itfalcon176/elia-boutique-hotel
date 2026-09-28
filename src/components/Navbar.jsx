@@ -139,6 +139,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
     if (!mobileMenuOpen) return undefined;
 
     const menu = menuRef.current;
+    const toggleButton = menuToggleRef.current;
     const body = document.body;
     const root = document.documentElement;
     const previousBodyOverflow = body.style.overflow;
@@ -208,7 +209,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
       body.style.overflow = previousBodyOverflow;
       root.style.overflow = previousRootOverflow;
       inerted.forEach((el) => el.removeAttribute('inert'));
-      menuToggleRef.current?.focus({ preventScroll: true });
+      toggleButton?.focus({ preventScroll: true });
     };
   }, [mobileMenuOpen]);
 
