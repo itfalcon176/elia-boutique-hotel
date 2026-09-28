@@ -269,7 +269,7 @@ export default function MobileMenu({
                           <span className="w-11 h-11 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0">
                             <Icon size={18} strokeWidth={1.6} className="text-[#4A453E]" />
                           </span>
-                          <span className="min-w-0 pr-2">
+                          <span className="min-w-0 max-w-[64%] pr-1">
                             <span className="block text-[15px] min-[375px]:text-[16px] font-semibold tracking-tight text-[#23211E] leading-tight">
                               {card.title}
                             </span>
