@@ -26,7 +26,7 @@ const PRIMARY_CARDS = [
     title: 'Accommodation',
     subtitle: '13 rooms across 4 room types',
     image: '/accommodation/garden-beach-room.jpg',
-    imagePosition: '68% 78%',
+    imagePosition: '86% 68%',
     Icon: BedDouble,
     opensPanel: true,
   },
@@ -35,15 +35,15 @@ const PRIMARY_CARDS = [
     title: 'Facilities',
     subtitle: 'Pool, beach club and more',
     image: '/images/suite.png',
-    imagePosition: '82% center',
+    imagePosition: '88% 78%',
     Icon: Waves,
   },
   {
     id: 'eat-drink',
     title: 'Food & Drinks',
     subtitle: 'Dining experiences',
-    image: '/images/dining.png',
-    imagePosition: 'center 35%',
+    image: '/images/Breakfast.webp',
+    imagePosition: '72% 48%',
     Icon: Utensils,
   },
   {
@@ -51,7 +51,7 @@ const PRIMARY_CARDS = [
     title: 'Location',
     subtitle: 'Bang Tao Beach, Phuket',
     image: '/banner/banner.jpeg',
-    imagePosition: 'center 72%',
+    imagePosition: '70% 58%',
     Icon: MapPin,
   },
 ];
@@ -88,11 +88,11 @@ function LanguageControl({ selectedLang, languages, onSelectLanguage }) {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="w-11 h-11 rounded-full bg-white border border-black/5 shadow-sm flex items-center justify-center cursor-pointer"
+        className="w-10 h-10 rounded-full bg-white border border-black/[0.05] shadow-[0_1px_3px_rgba(0,0,0,0.07)] flex items-center justify-center cursor-pointer"
         aria-label={`Language: ${selectedLang.name}`}
         aria-expanded={open}
       >
-        <selectedLang.FlagComponent className="w-5 h-3.5" />
+        <selectedLang.FlagComponent className="w-[1.15rem] h-3.5" />
       </button>
       <AnimatePresence>
         {open && (
@@ -182,33 +182,33 @@ export default function MobileMenu({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[60] lg:hidden bg-[#F6F3EE] text-[#23211E] flex flex-col overflow-hidden"
+          className="elia-mobile-menu fixed inset-0 z-[60] lg:hidden text-[#1F1C19] flex flex-col overflow-hidden"
           style={{ height: '100dvh' }}
           role="dialog"
           aria-modal="true"
           aria-label="Mobile menu"
         >
           <div
-            className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center px-4 shrink-0"
-            style={{ paddingTop: 'max(0.7rem, env(safe-area-inset-top))' }}
+            className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center px-5 shrink-0 h-[3.7rem]"
+            style={{ paddingTop: 'max(0.1rem, env(safe-area-inset-top))' }}
           >
             {level === 'rooms' ? (
               <button
                 type="button"
                 onClick={() => setLevel('main')}
-                className="w-11 h-11 -ml-1 flex items-center justify-center cursor-pointer"
+                className="w-11 h-11 -ml-1.5 flex items-center justify-center cursor-pointer text-[#1C1916]"
                 aria-label="Back to menu"
               >
-                <ArrowLeft size={22} strokeWidth={1.75} />
+                <ArrowLeft size={21} strokeWidth={1.7} />
               </button>
             ) : (
               <button
                 type="button"
                 onClick={onClose}
-                className="w-11 h-11 -ml-1 flex items-center justify-center cursor-pointer"
+                className="w-11 h-11 -ml-1.5 flex items-center justify-center cursor-pointer text-[#1C1916]"
                 aria-label="Close menu"
               >
-                <X size={22} strokeWidth={1.75} />
+                <X size={21} strokeWidth={1.7} />
               </button>
             )}
 
@@ -220,7 +220,7 @@ export default function MobileMenu({
               <img
                 src="/Logos/elia gold.png"
                 alt="Elia Boutique Hotel Phuket"
-                className="h-8 w-auto object-contain"
+                className="h-[1.95rem] w-auto object-contain"
               />
             </button>
 
@@ -242,13 +242,13 @@ export default function MobileMenu({
             >
               <div
                 ref={mainRef}
-                className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-4"
+                className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-5"
               >
-                <p className="pt-3 pb-3 text-[10px] uppercase tracking-[0.28em] text-[#8A8378] font-medium">
+                <p className="pt-2 pb-3 text-[10px] uppercase tracking-[0.28em] text-[#8A847B] font-medium">
                   13 rooms · Bang Tao Beach
                 </p>
 
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col gap-2">
                   {PRIMARY_CARDS.map((card) => {
                     const Icon = card.Icon;
                     return (
@@ -256,44 +256,51 @@ export default function MobileMenu({
                         key={card.id}
                         type="button"
                         onClick={() => (card.opensPanel ? setLevel('rooms') : go(card.id))}
-                        className="relative w-full h-[5.1rem] min-[375px]:h-[5.2rem] rounded-[1.65rem] overflow-hidden text-left cursor-pointer"
+                        className="relative w-full h-[5rem] min-[375px]:h-[5.2rem] min-[414px]:h-[5.4rem] rounded-[2rem] overflow-hidden bg-[#f7f4ef] text-left cursor-pointer"
                       >
                         <img
                           src={card.image}
                           alt=""
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="elia-mobile-menu-card-photo"
                           style={{ objectPosition: card.imagePosition }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#F6F3EE] from-0% via-[#F6F3EE]/90 via-[42%] to-transparent to-[78%]" />
+                        <div className="elia-mobile-menu-card-wash absolute inset-0" />
                         <div className="relative h-full flex items-center gap-3 px-3 min-[375px]:px-3.5">
-                          <span className="w-11 h-11 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0">
-                            <Icon size={18} strokeWidth={1.6} className="text-[#4A453E]" />
+                          <span className="w-12 h-12 rounded-full bg-white shadow-[0_1px_4px_rgba(0,0,0,0.06)] flex items-center justify-center shrink-0">
+                            <Icon size={20} strokeWidth={1.5} className="text-[#3A3530]" />
                           </span>
-                          <span className="min-w-0 max-w-[64%] pr-1">
-                            <span className="block text-[15px] min-[375px]:text-[16px] font-semibold tracking-tight text-[#23211E] leading-tight">
+                          <span className="min-w-0 max-w-[62%] min-[360px]:max-w-[66%] pr-1">
+                            <span className="block text-[15.5px] min-[375px]:text-[16.5px] font-medium tracking-[-0.021em] text-[#1C1916] leading-none">
                               {card.title}
                             </span>
-                            <span className="block mt-0.5 text-[11px] min-[375px]:text-[12px] text-[#6E6A63] font-light leading-tight">
+                            <span className="block mt-1 text-[12px] min-[375px]:text-[12.5px] text-[#6F6A62] font-normal leading-snug">
                               {card.subtitle}
                             </span>
                           </span>
+                          <ChevronRight
+                            size={16}
+                            strokeWidth={1.8}
+                            className="absolute right-3.5 text-white/80 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]"
+                          />
                         </div>
                       </button>
                     );
                   })}
                 </div>
 
-                <nav className="mt-2" aria-label="More">
+                <div className="mt-3.5 mb-0.5 h-px bg-[#E7E2D8]" />
+
+                <nav className="pt-0.5" aria-label="More">
                   {SECONDARY_LINKS.map((item) => {
                     const Icon = item.Icon;
-                    const className = 'w-full min-h-12 flex items-center gap-3.5 py-1 cursor-pointer';
+                    const className = 'w-full min-h-[3rem] flex items-center gap-3.5 py-1 cursor-pointer';
                     const inner = (
                       <>
-                        <Icon size={18} strokeWidth={1.6} className="text-[#8A8378] shrink-0" />
-                        <span className="flex-1 text-left text-[15px] text-[#23211E] font-medium tracking-tight">
+                        <Icon size={18} strokeWidth={1.5} className="text-[#8A8378] shrink-0" />
+                        <span className="flex-1 text-left text-[15.5px] min-[375px]:text-[16.5px] text-[#1C1916] font-medium tracking-[-0.015em]">
                           {item.title}
                         </span>
-                        <ChevronRight size={16} className="text-[#B5AFA6]" />
+                        <ChevronRight size={16} strokeWidth={1.8} className="text-[#C6C0B6]" />
                       </>
                     );
                     if (item.external) {
@@ -325,83 +332,94 @@ export default function MobileMenu({
               </div>
 
               <div
-                className="shrink-0 px-4 pt-3 space-y-2.5 bg-[#F6F3EE]"
-                style={{ paddingBottom: 'max(0.85rem, env(safe-area-inset-bottom))' }}
+                className="elia-mobile-menu shrink-0 px-5 pt-2.5 space-y-2"
+                style={{ paddingBottom: 'max(0.8rem, env(safe-area-inset-bottom))' }}
               >
                 <button
                   type="button"
                   onClick={() => go('book-your-stay')}
-                  className="w-full min-h-12 rounded-full bg-[#1C1A18] text-white font-semibold uppercase tracking-[0.16em] text-[11px] flex items-center justify-between px-5 cursor-pointer"
+                  className="w-full h-[3.15rem] rounded-full bg-[#171614] text-white font-semibold uppercase tracking-[0.2em] text-[11px] flex items-center justify-between px-5 cursor-pointer"
                 >
-                  <Calendar size={16} />
+                  <Calendar size={16} strokeWidth={1.75} />
                   <span>Book Now</span>
-                  <ChevronRight size={16} />
+                  <ChevronRight size={16} strokeWidth={1.75} />
                 </button>
                 <a
                   href={whatsappUrl(WHATSAPP_MESSAGES.default)}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={onClose}
-                  className="w-full min-h-12 rounded-full bg-[#22C55E] text-white font-semibold uppercase tracking-[0.14em] text-[11px] flex items-center justify-between px-5"
+                  className="w-full h-[3.15rem] rounded-full bg-[#25D366] text-white font-semibold uppercase tracking-[0.14em] text-[11px] flex items-center justify-between px-5"
                 >
                   <WhatsAppIcon size={16} />
                   <span>WhatsApp Concierge</span>
-                  <ChevronRight size={16} />
+                  <ChevronRight size={16} strokeWidth={1.75} />
                 </a>
-                <p className="flex items-center justify-center gap-1.5 pt-0.5 pb-0.5 text-[11px] text-[#8A8378]">
-                  <MapPin size={12} />
+                <p className="flex items-center justify-center gap-1.5 pt-0.5 text-[11px] text-[#8A847B] font-normal">
+                  <MapPin size={12} strokeWidth={1.75} />
                   Bang Tao Beach, Phuket
                 </p>
               </div>
             </div>
 
             <div
-              className={`absolute inset-0 flex flex-col bg-[#F6F3EE] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              className={`elia-mobile-menu absolute inset-0 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 level === 'rooms' ? 'translate-x-0' : 'translate-x-full pointer-events-none'
               }`}
               aria-hidden={level !== 'rooms'}
             >
               <div
                 ref={roomsRef}
-                className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-4"
-                style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}
+                className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-5"
+                style={{ paddingBottom: 'max(1.1rem, env(safe-area-inset-bottom))' }}
               >
-                <h2 className="pt-3 font-sans text-[1.7rem] min-[375px]:text-[1.95rem] leading-[1.1] font-semibold tracking-[-0.03em] text-[#23211E]">
+                <p className="pt-2 text-[10px] uppercase tracking-[0.28em] text-[#8A847B] font-medium">
+                  Accommodation
+                </p>
+                <h2 className="mt-2 font-sans text-[2rem] min-[375px]:text-[2.3rem] leading-[1.04] font-semibold tracking-[-0.038em] text-[#1C1916]">
                   13 rooms across
                   <br />
                   4 room types
                 </h2>
-                <p className="mt-2.5 mb-4 text-[13px] min-[375px]:text-[14px] leading-relaxed text-[#6E6A63] font-light max-w-[20rem]">
+                <p className="mt-2.5 mb-4 text-[13.5px] min-[375px]:text-[14.5px] leading-[1.5] text-[#6A655D] font-normal max-w-[21.5rem]">
                   Designed for relaxed coastal living with modern comforts and natural elegance.
                 </p>
 
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col gap-2.5 min-[390px]:gap-3">
                   {roomsData.map((room) => (
                     <button
                       key={room.id}
                       type="button"
                       onClick={() => go(`rooms/${room.slug}`)}
-                      className="relative w-full h-[8.35rem] min-[375px]:h-[8.85rem] min-[414px]:h-[9.25rem] rounded-[1.75rem] overflow-hidden text-left cursor-pointer"
+                      className="relative w-full h-[8.35rem] min-[375px]:h-[8.85rem] min-[414px]:h-[9.25rem] rounded-[1.9rem] overflow-hidden text-left cursor-pointer"
                     >
                       <img
                         src={ROOM_MENU_IMAGES[room.slug] || room.mainImage}
                         alt={room.title}
                         className="absolute inset-0 w-full h-full object-cover"
                         style={{
-                          objectPosition: room.slug === 'garden-beach-room' ? '42% 80%' : 'center',
+                          objectPosition: {
+                            'garden-beach-room': '82% 70%',
+                            'garden-family-suite': '24% 38%',
+                            'loft-apartment': '78% 58%',
+                            'one-bedroom-loft-suite': '46% 52%',
+                          }[room.slug] || 'center',
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/5" />
-                      <div className="absolute left-5 bottom-4 right-16">
-                        <span className="block text-white text-[1.35rem] min-[375px]:text-[1.5rem] font-medium tracking-[-0.03em] leading-tight">
+                      <div className="elia-mobile-menu-room-wash absolute inset-0" />
+                      <div className="absolute left-5 bottom-3.5 right-[4.4rem]">
+                        <span
+                          className="block text-white text-[1.32rem] min-[375px]:text-[1.5rem] font-medium tracking-[-0.03em] leading-[1.12]"
+                          style={{ textShadow: '0 1px 12px rgba(0,0,0,0.4)' }}
+                        >
                           {room.title}
                         </span>
-                        <span className="block mt-1 text-[11px] uppercase tracking-[0.18em] text-white/80">
+                        <span className="block mt-1 text-[10.5px] uppercase tracking-[0.22em] text-white/90 font-medium">
                           {room.countLabel}
                         </span>
                       </div>
-                      <span className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-sm flex items-center justify-center">
-                        <ChevronRight size={18} className="text-[#23211E]" />
+                      <span className="absolute right-3.5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.14)] flex items-center justify-center">
+                        <ChevronRight size={19} strokeWidth={1.8} className="text-[#1C1916]" />
                       </span>
                     </button>
                   ))}
