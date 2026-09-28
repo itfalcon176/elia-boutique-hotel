@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 
-const LOGO_SRC = '/logo.svg';
+const LOGO_SRC = '/preloader/elia-wordmark.svg';
 const REVEAL_MS = 2400;
 const LEAVE_MS = 1000;
 const REDUCED_MS = 420;
