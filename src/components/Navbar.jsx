@@ -99,7 +99,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
           if (found) setSelectedLang(found);
         }
       }
-    } catch (e) {
+    } catch {
       // ignore
     }
   }, []);
@@ -219,7 +219,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
 
     try {
       localStorage.setItem('elia_preferred_lang', lang.code);
-    } catch (e) {
+    } catch {
       // ignore
     }
 
