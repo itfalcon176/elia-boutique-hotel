@@ -191,7 +191,7 @@ export default function Navbar({ activePage, setActivePage }) {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isLightHeader
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${mobileMenuOpen ? 'max-lg:hidden' : ''} ${isLightHeader}
             ? 'bg-[#FAF7F2]/95 backdrop-blur-md shadow-sm border-b border-[#A38B68]/20 py-3'
             : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-4'
           }`}

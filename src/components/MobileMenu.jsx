@@ -26,7 +26,7 @@ const PRIMARY_CARDS = [
     title: 'Accommodation',
     subtitle: '13 rooms across 4 room types',
     image: '/accommodation/garden-beach-room.jpg',
-    imagePosition: 'right center',
+    imagePosition: '68% 78%',
     Icon: BedDouble,
     opensPanel: true,
   },
@@ -51,7 +51,7 @@ const PRIMARY_CARDS = [
     title: 'Location',
     subtitle: 'Bang Tao Beach, Phuket',
     image: '/banner/banner.jpeg',
-    imagePosition: 'center 40%',
+    imagePosition: 'center 72%',
     Icon: MapPin,
   },
 ];
@@ -236,8 +236,9 @@ export default function MobileMenu({
           <div className="relative flex-1 min-h-0 overflow-hidden">
             <div
               className={`absolute inset-0 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                level === 'rooms' ? '-translate-x-full' : 'translate-x-0'
+                level === 'rooms' ? '-translate-x-full pointer-events-none' : 'translate-x-0'
               }`}
+              aria-hidden={level === 'rooms'}
             >
               <div
                 ref={mainRef}
@@ -255,7 +256,7 @@ export default function MobileMenu({
                         key={card.id}
                         type="button"
                         onClick={() => (card.opensPanel ? setLevel('rooms') : go(card.id))}
-                        className="relative w-full h-[4.85rem] min-[375px]:h-[5.15rem] rounded-[1.65rem] overflow-hidden text-left cursor-pointer"
+                        className="relative w-full h-[5.1rem] min-[375px]:h-[5.2rem] rounded-[1.65rem] overflow-hidden text-left cursor-pointer"
                       >
                         <img
                           src={card.image}
@@ -263,7 +264,7 @@ export default function MobileMenu({
                           className="absolute inset-0 w-full h-full object-cover"
                           style={{ objectPosition: card.imagePosition }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#F6F3EE] via-[#F6F3EE]/88 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#F6F3EE] from-0% via-[#F6F3EE]/90 via-[42%] to-transparent to-[78%]" />
                         <div className="relative h-full flex items-center gap-3 px-3 min-[375px]:px-3.5">
                           <span className="w-11 h-11 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0">
                             <Icon size={18} strokeWidth={1.6} className="text-[#4A453E]" />
@@ -272,7 +273,7 @@ export default function MobileMenu({
                             <span className="block text-[15px] min-[375px]:text-[16px] font-semibold tracking-tight text-[#23211E] leading-tight">
                               {card.title}
                             </span>
-                            <span className="block mt-0.5 text-[11px] min-[375px]:text-[12px] text-[#6E6A63] font-light leading-snug">
+                            <span className="block mt-0.5 text-[11px] min-[375px]:text-[12px] text-[#6E6A63] font-light leading-tight">
                               {card.subtitle}
                             </span>
                           </span>
@@ -356,35 +357,39 @@ export default function MobileMenu({
 
             <div
               className={`absolute inset-0 flex flex-col bg-[#F6F3EE] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                level === 'rooms' ? 'translate-x-0' : 'translate-x-full'
+                level === 'rooms' ? 'translate-x-0' : 'translate-x-full pointer-events-none'
               }`}
+              aria-hidden={level !== 'rooms'}
             >
               <div
                 ref={roomsRef}
                 className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-4"
                 style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}
               >
-                <h2 className="pt-4 font-sans text-[1.85rem] min-[375px]:text-[2.05rem] leading-[1.12] font-semibold tracking-[-0.03em] text-[#23211E]">
+                <h2 className="pt-3 font-sans text-[1.7rem] min-[375px]:text-[1.95rem] leading-[1.1] font-semibold tracking-[-0.03em] text-[#23211E]">
                   13 rooms across
                   <br />
                   4 room types
                 </h2>
-                <p className="mt-3 mb-5 text-[13px] min-[375px]:text-[14px] leading-relaxed text-[#6E6A63] font-light max-w-[20rem]">
+                <p className="mt-2.5 mb-4 text-[13px] min-[375px]:text-[14px] leading-relaxed text-[#6E6A63] font-light max-w-[20rem]">
                   Designed for relaxed coastal living with modern comforts and natural elegance.
                 </p>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2.5">
                   {roomsData.map((room) => (
                     <button
                       key={room.id}
                       type="button"
                       onClick={() => go(`rooms/${room.slug}`)}
-                      className="relative w-full h-[9.4rem] min-[375px]:h-[10.25rem] rounded-[1.75rem] overflow-hidden text-left cursor-pointer"
+                      className="relative w-full h-[8.35rem] min-[375px]:h-[8.85rem] min-[414px]:h-[9.25rem] rounded-[1.75rem] overflow-hidden text-left cursor-pointer"
                     >
                       <img
                         src={ROOM_MENU_IMAGES[room.slug] || room.mainImage}
                         alt={room.title}
                         className="absolute inset-0 w-full h-full object-cover"
+                        style={{
+                          objectPosition: room.slug === 'garden-beach-room' ? '42% 80%' : 'center',
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/5" />
                       <div className="absolute left-5 bottom-4 right-16">
