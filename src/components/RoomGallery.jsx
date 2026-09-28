@@ -4,13 +4,14 @@ import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
 
 export default function RoomGallery({ images = [], title }) {
   const slides = images.filter(Boolean);
+  const slideKey = slides.join('|');
   const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState(false);
   const touchStartX = useRef(null);
 
   useEffect(() => {
     setIndex(0);
-  }, [title, slides.join('|')]);
+  }, [title, slideKey]);
 
   const go = useCallback((next) => {
     if (!slides.length) return;

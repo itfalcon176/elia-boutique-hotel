@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { CLOUDBEDS_PROPERTY_CODE } from '../../data/cloudbedsRooms';
 import { mountCloudbedsElement } from './mountCloudbedsElement';
+import { useCloudbedsFailure } from '../../utils/useCloudbedsFailure';
+import AvailabilityFallback from './AvailabilityFallback';
 
 /**
  * Official Cloudbeds single-property date picker for one room page.
@@ -14,6 +16,7 @@ export default function RoomPropertyDatePicker({ roomId }) {
   const bookingUrl = typeof window === 'undefined' || !roomId
     ? ''
     : `${window.location.origin}/book-your-stay?rid=${encodeURIComponent(roomId)}`;
+  const failed = useCloudbedsFailure(hostRef);
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 767px)');
@@ -60,13 +63,24 @@ export default function RoomPropertyDatePicker({ roomId }) {
 
   return (
     <div className="elia-stay-search elia-stay-search--room w-full">
-      <div className="elia-stay-search-labels" aria-hidden="true">
-        <span>Check-in</span>
-        <span>Check-out</span>
-        <span>Guests</span>
-        <span>Availability</span>
-      </div>
-      <div ref={hostRef} className="elia-room-property-picker w-full" />
+      {!failed && (
+        <div className="elia-stay-search-labels" aria-hidden="true">
+          <span>Check-in</span>
+          <span>Check-out</span>
+          <span>Guests</span>
+          <span>Availability</span>
+        </div>
+      )}
+      <div
+        ref={hostRef}
+        className={`elia-room-property-picker w-full ${failed ? 'elia-cloudbeds-failed' : ''}`}
+      />
+      {failed && (
+        <AvailabilityFallback
+          href={bookingUrl.replace(window.location.origin, '') || '/book-your-stay'}
+          label="Check Availability"
+        />
+      )}
     </div>
   );
 }

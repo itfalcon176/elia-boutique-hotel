@@ -13,6 +13,7 @@ Theme, branding and page architecture are unchanged. Work is a hierarchy and boo
 - Stay search labels spell out Check-in, Check-out, Guests and Availability.
 - Cloudbeds search button copy is “Check Availability”.
 - Booking page explains the Cloudbeds → guest details → Stripe sequence and adds WhatsApp help if payment fails.
+- If Cloudbeds is blocked (localhost CORS or network), date pickers hide the raw “Network Error” chip and show a Check Availability button.
 
 ### P1
 

@@ -513,7 +513,7 @@ function App() {
       <Footer onNavClick={handleNavClick} onOpenReservation={openReservation} />
       <WhatsAppConcierge
         message={whatsappMessage}
-        hidden={activePage === 'book-your-stay'}
+        hidden={activePage === 'book-your-stay' || isRoomPage}
       />
     </div>
   );
