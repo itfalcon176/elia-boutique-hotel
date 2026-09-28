@@ -673,9 +673,7 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
 
 .elia-preloader {
   --elia-leave-ms: 1000ms;
-  background:
-    radial-gradient(ellipse at center, rgba(197, 168, 128, 0.16) 0%, rgba(197, 168, 128, 0) 46%),
-    radial-gradient(ellipse at center, #1c1a17 0%, #100e0c 58%, #070606 100%);
+  background: #eeede7;
   overflow: hidden;
   user-select: none;
   touch-action: none;
@@ -757,7 +755,7 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
 
 .elia-preloader-meta {
   margin: 0.95rem 0 0;
-  color: rgba(243, 223, 191, 0.86);
+  color: #6b5c4d;
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 500;
