@@ -576,53 +576,53 @@ export default function EliaShowcaseSection({ onNavigate }) {
       </section>
 
       {/* SECTION 6: Eat. Drink. Stay awhile. */}
-      <section className="py-16 sm:py-24 bg-[#FFFFFF] text-[#23211E] scroll-mt-28">
-        <div className="max-w-xl mx-auto px-6">
-          <span className="text-[10px] uppercase tracking-[0.32em] text-[#A38B68] font-semibold block font-sans">
+      <section className="py-16 sm:py-24 bg-[#FFFFFF] scroll-mt-28">
+        <div className="max-w-[22.75rem] min-[390px]:max-w-[24rem] sm:max-w-xl mx-auto px-6">
+          <span className="block font-sans text-[11px] uppercase tracking-[0.26em] font-normal text-[#C5B7A0]">
             Food & Beverage
           </span>
-          <h2 className="mt-4 font-serif text-[2.35rem] leading-[1.08] sm:text-5xl font-light tracking-[-0.02em] text-[#23211E]">
+          <h2 className="mt-5 font-serif font-normal text-[2.85rem] sm:text-[3.25rem] leading-[1.12] tracking-[-0.018em] text-[#1A1612]">
             Eat. Drink.
             <br />
-            Stay awhile.
+            <span className="italic font-serif font-normal">Stay awhile.</span>
           </h2>
-          <p className="mt-4 text-[15px] sm:text-base text-[#555047] font-light leading-relaxed font-sans">
+          <p className="mt-4 font-sans text-[15px] leading-[1.55] font-normal text-[#6E6860]">
             Beachfront dining by GOAT Beach Club, just next door.
           </p>
 
-          <div className="mt-7 rounded-[1.35rem] overflow-hidden">
+          <div className="mt-8 overflow-hidden rounded-[1.15rem]">
             <img
               src="/images/dining.png"
               alt="Beachfront dining at GOAT Beach Club Bang Tao"
               className="w-full aspect-[4/3] object-cover"
             />
           </div>
-          <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-[#8A847B] font-medium font-sans">
+          <p className="mt-3.5 font-sans text-[10px] uppercase tracking-[0.2em] font-normal text-[#A39B90]">
             GOAT Beach Club · Bang Tao Beach
           </p>
 
-          <p className="mt-5 text-[15px] sm:text-base text-[#555047] font-light leading-[1.65] font-sans">
+          <p className="mt-5 font-sans text-[15px] leading-[1.6] font-normal text-[#5F5A52]">
             From breakfast and barista coffee to sunset cocktails and dinner. Enjoy it all next door—or let room service come to you.
           </p>
 
-          <div className="mt-6 grid grid-cols-3 text-center font-serif text-[12.5px] sm:text-[15px] font-light text-[#23211E] leading-tight">
-            <span className="px-1 whitespace-nowrap">Breakfast</span>
-            <span className="px-1 whitespace-nowrap border-x border-[#D9D3C8]">Beachfront dining</span>
-            <span className="px-1 whitespace-nowrap">Room service</span>
+          <div className="mt-7 grid grid-cols-3 text-center font-sans text-[13.5px] font-normal text-[#2A2620]">
+            <span className="whitespace-nowrap">Breakfast</span>
+            <span className="whitespace-nowrap border-x border-[#E5E0D6]">Beachfront dining</span>
+            <span className="whitespace-nowrap">Room service</span>
           </div>
 
           <button
             type="button"
             onClick={() => onNavigate('menus/breakfast')}
-            className="mt-7 w-full min-h-12 rounded-full bg-[#171614] text-white text-[11px] font-semibold uppercase tracking-[0.2em] inline-flex items-center justify-center gap-2 cursor-pointer"
+            className="mt-8 w-full h-[3.4rem] rounded-full bg-[#111111] text-white font-sans text-[12px] font-medium uppercase tracking-[0.14em] inline-flex items-center justify-center gap-2 cursor-pointer"
           >
             View GOAT menus
-            <ArrowRight size={14} strokeWidth={1.8} />
+            <span aria-hidden="true" className="text-[15px] font-normal tracking-normal">→</span>
           </button>
           <button
             type="button"
             onClick={() => onNavigate('eat-drink')}
-            className="mt-4 w-full text-center text-[13px] font-medium text-[#A38B68] font-sans cursor-pointer"
+            className="mt-5 w-full text-center font-sans text-[15px] font-normal text-[#C5A880] cursor-pointer"
           >
             Explore food & drinks →
           </button>
