@@ -4,6 +4,7 @@ import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, ArrowRight, Globe, 
 import { roomsData } from '../data/roomsData';
 import WhatsAppIcon from './WhatsAppIcon';
 import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
+import { GOAT_BEACH_CLUB_URL } from '../utils/goat';
 
 // Crisp Vector SVG Flag Components for 100% Consistent Cross-Platform Rendering (iOS, Android, Windows, Mac)
 const FlagGB = ({ className = 'w-5 h-3.5' }) => (
@@ -521,8 +522,15 @@ export default function Navbar({ activePage, setActivePage }) {
               </nav>
 
               <div className="pt-6 flex flex-wrap gap-x-5 gap-y-2 text-[12px] text-[#6E6A63]">
+                <a
+                  href={GOAT_BEACH_CLUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-offset-4 hover:text-[#23211E] hover:underline"
+                >
+                  GOAT Beach Club
+                </a>
                 {[
-                  { id: 'goat-beach-club', label: 'GOAT Beach Club' },
                   { id: 'experiences', label: 'Experiences' },
                   { id: 'family-hotel-phuket', label: 'Families' },
                   { id: 'offers', label: 'Offers' },

@@ -44,7 +44,7 @@ export const eatDrinkData = {
       timing: '18:00 PM – 22:30 PM (Reservations Recommended)',
       description: 'For romantic celebrations and unforgettable evenings, our team sets up private, lantern-lit tables directly on the sands of Bang Tao Beach. Savor a bespoke multi-course tasting menu curated by our executive chef while the sun dips below the turquoise horizon.',
       features: ['Private Beachfront Table Setup', 'Custom Multi-Course Seafood Tasting', 'Sommelier Wine Pairing', 'Dedicated Personal Waiter'],
-      image: '/images/cocktail.png',
+      image: '/images/dining.png',
     },
     {
       id: 'room-service',
@@ -53,7 +53,7 @@ export const eatDrinkData = {
       timing: '24 Hours (Full Menu till 10 PM, Late Night Menu till 02:00 AM)',
       description: 'Enjoy the privacy of your suite or garden terrace. Our in-room dining menu brings restaurant-quality cuisine straight to your door with thoughtful presentation, whether it’s a lazy midday bowl on your daybed or late-night Wagyu sliders after an evening out.',
       features: ['Prompt Delivery via WhatsApp Concierge', 'Eco-Friendly Bamboo Presentation', 'In-Suite Table Setting', 'Full Wine & Cocktail Pairing'],
-      image: '/images/latenight.png',
+      image: '/images/dining.png',
     },
     {
       id: 'minibar',

@@ -1,5 +1,14 @@
 # Elia Boutique Hotel — Changelog
 
+## 2026-09-28 — GOAT Beach Club official site and imagery
+
+Theme, branding and page architecture are unchanged. Cloudbeds and Stripe were not modified.
+
+- Every **GOAT Beach Club** / **Discover GOAT Beach Club** CTA now opens `https://www.goatbeachclubphuket.com/` in a new tab. Elia stays in the original tab.
+- Shared URL lives in `src/utils/goat.js`.
+- GOAT venue imagery is now the existing beachfront dining photo (`/images/dining.png`). Breakfast food uses `/images/Breakfast.webp`. Indoor-bar `cocktail.png` and the fake “Azureure Lounge” `latenight.png` were removed from GOAT sections.
+- Elia’s own `/goat-beach-club` and `/facilities/goat-beach-club` pages remain as guest-access copy and now include the official-site CTA.
+
 ## 2026-09-28 — Site-wide booking CTA unification
 
 Theme, branding and page architecture are unchanged. Cloudbeds and Stripe were not modified. No new booking popup or second booking implementation was added.

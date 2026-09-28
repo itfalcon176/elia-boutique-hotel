@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { wellnessData, getFacilityBySlug } from '../data/wellnessData';
 import { whatsappUrl as buildWhatsAppUrl, facilityEnquiryMessage } from '../utils/whatsapp';
+import { GOAT_BEACH_CLUB_URL } from '../utils/goat';
 
 const WhatsAppIcon = ({ size = 18, ...props }) => (
   <svg
@@ -201,7 +202,17 @@ export default function FacilityDetailPage({ facilitySlug, onNavigate, onOpenRes
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-[#A38B68]/15">
+              <div className="pt-4 mt-4 border-t border-[#A38B68]/15 space-y-2">
+                {facility.slug === 'goat-beach-club' && (
+                  <a
+                    href={GOAT_BEACH_CLUB_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center py-2.5 rounded-xl bg-[#23211E] text-[#F7F4EF] text-xs font-semibold uppercase tracking-[0.14em] hover:bg-[#A38B68] transition-all shadow-sm"
+                  >
+                    Discover GOAT Beach Club
+                  </a>
+                )}
                 <a
                   href={whatsappUrl}
                   target="_blank"
@@ -361,6 +372,16 @@ export default function FacilityDetailPage({ facilitySlug, onNavigate, onOpenRes
             Enjoy full complimentary access to our outdoor sauna, cold plunge, jacuzzi, plunge pool, and GOAT Beach Club throughout your stay.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {facility.slug === 'goat-beach-club' && (
+              <a
+                href={GOAT_BEACH_CLUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg inline-flex items-center justify-center"
+              >
+                DISCOVER GOAT BEACH CLUB
+              </a>
+            )}
             <button
               onClick={onOpenReservation}
               className="px-8 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg"

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Utensils, Sparkles, Coffee, Sun, Moon, GlassWater, Bell, Check, ArrowRight, BedDouble, ExternalLink } from 'lucide-react';
+import { GOAT_BEACH_CLUB_URL } from '../utils/goat';
 
 export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
   return (
@@ -166,7 +167,7 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
             </div>
             <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <img
-                src="/images/cocktail.png"
+                src="/images/dining.png"
                 alt="Sunset drinks and cocktails at GOAT Beach Club Bang Tao"
                 className="w-full h-full object-cover"
               />
@@ -247,12 +248,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
             Complimentary access to GOAT Beach Club is included for all Elia guests throughout their stay on Bang Tao Beach.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => onNavigate('goat-beach-club')}
-              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
+            <a
+              href={GOAT_BEACH_CLUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 rounded-full bg-[#23211E] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68] transition-all cursor-pointer shadow-md inline-flex items-center justify-center"
             >
               DISCOVER GOAT BEACH CLUB
-            </button>
+            </a>
             <button
               onClick={() => onNavigate('rooms')}
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"

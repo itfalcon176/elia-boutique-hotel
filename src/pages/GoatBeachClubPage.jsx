@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Sparkles, Utensils, Check, ArrowRight, Sun, GlassWater } from 'lucide-react';
+import { GOAT_BEACH_CLUB_URL } from '../utils/goat';
 
 export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
   return (
@@ -97,6 +98,14 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
               </div>
 
               <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+                <a
+                  href={GOAT_BEACH_CLUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-7 py-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg text-center inline-flex items-center justify-center"
+                >
+                  DISCOVER GOAT BEACH CLUB
+                </a>
                 <button
                   onClick={() => onNavigate('eat-drink')}
                   className="w-full sm:w-auto px-7 py-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg text-center"

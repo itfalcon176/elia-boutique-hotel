@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Facebook, Instagram, Send, Phone, Mail, ArrowUpRight } from 'lucide-react';
 import SharedWhatsAppIcon from './WhatsAppIcon';
 import { whatsappUrl, WHATSAPP_MESSAGES, PHONE_HREF, EMAIL_HREF, MAPS_HREF, WHATSAPP_DISPLAY, newsletterMailto } from '../utils/whatsapp';
+import { GOAT_BEACH_CLUB_URL } from '../utils/goat';
 
 const TiktokIcon = ({ size = 18, ...props }) => (
   <svg
@@ -167,9 +168,14 @@ export default function Footer({ onNavClick, onOpenReservation }) {
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavClick('goat-beach-club')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                <a
+                  href={GOAT_BEACH_CLUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#C5A880] transition-colors"
+                >
                   GOAT Beach Club
-                </button>
+                </a>
               </li>
               <li>
                 <button onClick={() => onNavClick('bang-tao-beach-phuket')} className="hover:text-[#C5A880] transition-colors cursor-pointer">

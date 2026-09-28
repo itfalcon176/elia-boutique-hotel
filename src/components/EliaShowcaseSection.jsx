@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
+import { GOAT_BEACH_CLUB_URL } from '../utils/goat';
 import WhatsAppIcon from './WhatsAppIcon';
 
 const showcaseImages = {
@@ -299,12 +300,14 @@ export default function EliaShowcaseSection({ onNavigate }) {
                 There is no shuttle. No taxi. No planning. It's simply there when you want it.
               </div>
               <div className="pt-2">
-                <button
-                  onClick={() => onNavigate('goat-beach-club')}
-                  className="px-8 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg"
+                <a
+                  href={GOAT_BEACH_CLUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg"
                 >
                   DISCOVER GOAT BEACH CLUB
-                </button>
+                </a>
               </div>
             </div>
 
