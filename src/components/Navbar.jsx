@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, Sparkles, ArrowRight, Globe, Check } from 'lucide-react';
+import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, ArrowRight, Globe, Check } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
+import WhatsAppIcon from './WhatsAppIcon';
+import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
 
 // Crisp Vector SVG Flag Components for 100% Consistent Cross-Platform Rendering (iOS, Android, Windows, Mac)
 const FlagGB = ({ className = 'w-5 h-3.5' }) => (
@@ -78,6 +80,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
   const [roomsDropdownOpen, setRoomsDropdownOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(languages[0]);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [mobileRoomsOpen, setMobileRoomsOpen] = useState(true);
   const langDropdownRef = useRef(null);
 
   // Restore selected language from storage/cookies on mount
@@ -191,21 +194,32 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isLightHeader
-            ? 'bg-[#FAF7F2]/95 backdrop-blur-md shadow-sm border-b border-[#A38B68]/20 py-3.5'
-            : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5'
+            ? 'bg-[#FAF7F2]/95 backdrop-blur-md shadow-sm border-b border-[#A38B68]/20 py-3'
+            : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-4'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Brand Logo */}
+          <div className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center lg:flex lg:justify-between">
+            {/* Mobile menu — left */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`lg:hidden w-11 h-11 -ml-1 flex items-center justify-center focus:outline-none cursor-pointer ${isLightHeader ? 'text-[#23211E]' : 'text-white'}`}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X size={22} /> : <MenuIcon size={22} />}
+            </button>
+
+            {/* Brand logo — centred on mobile, left on desktop */}
             <button
               onClick={() => handleNavClick('home')}
-              className="flex items-center gap-3 cursor-pointer group text-left"
+              className="justify-self-center lg:justify-self-start flex items-center cursor-pointer group"
             >
               <img
                 src={isLightHeader ? '/Logos/elia gold.png' : '/Logos/logo nwww.png'}
-                alt="Elia Boutique Hotel Phuket Logo"
-                className="h-12 sm:h-12 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                alt="Elia Boutique Hotel Phuket"
+                className="h-8 sm:h-9 lg:h-10 w-auto object-contain object-center transition-transform duration-300 group-hover:scale-105"
                 onError={(e) => {
                   e.target.src = '/Logos/elia gold.png';
                 }}
@@ -213,7 +227,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
             </button>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-7 xl:gap-8">
+            <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
               {navLinks.map((link) => {
                 const isSelected = activePage === link.id || (link.id === 'rooms' && activePage.startsWith('rooms'));
 
@@ -340,13 +354,12 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               })}
             </nav>
 
-            {/* Right Header Actions: BOOK NOW + Luxury Language Selector */}
-            <div className="flex items-center gap-2.5 sm:gap-3">
-              {/* Desktop BOOK NOW Button */}
+            {/* Right Header Actions: compact language on mobile, BOOK NOW + language on desktop */}
+            <div className="justify-self-end flex items-center justify-end gap-2.5" ref={langDropdownRef}>
               <button
                 type="button"
                 onClick={() => handleNavClick('book-your-stay')}
-                className={`hidden sm:flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-5 lg:px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md cursor-pointer ${
+                className={`hidden lg:flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold px-5 xl:px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md cursor-pointer ${
                   isLightHeader
                     ? 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
                     : 'bg-gradient-to-r from-[#C5A880] to-[#9E8259] text-[#141312] font-bold hover:brightness-110 shadow-[0_0_20px_rgba(197,168,128,0.4)]'
@@ -356,23 +369,23 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                 <span>BOOK NOW</span>
               </button>
 
-              {/* Luxury Language Selector Dropdown */}
-              <div className="relative" ref={langDropdownRef}>
+              <div className="relative">
                 <button
                   type="button"
                   onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                  className={`flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-full border transition-all duration-300 cursor-pointer ${
+                  className={`flex items-center justify-center gap-1.5 min-w-11 min-h-11 lg:min-w-0 lg:min-h-0 lg:px-3 lg:py-2 rounded-full border transition-all duration-300 cursor-pointer ${
                     isLightHeader
                       ? 'bg-white/90 text-[#23211E] border-[#A38B68]/30 hover:border-[#A38B68] shadow-sm'
                       : 'bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-md shadow-sm'
                   }`}
-                  aria-label="Select Language"
+                  aria-label={`Language: ${selectedLang.name}`}
+                  aria-expanded={langDropdownOpen}
                   title={`Language: ${selectedLang.name}`}
                 >
-                  <Globe size={13} className={isLightHeader ? 'text-[#A38B68]' : 'text-[#C5A880]'} />
-                  <selectedLang.FlagComponent className="w-4 h-3" />
-                  <span className="text-[11px] uppercase tracking-wider font-semibold font-sans">{selectedLang.code}</span>
-                  <ChevronDown size={11} className={`transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
+                  <Globe size={13} className={`hidden lg:block ${isLightHeader ? 'text-[#A38B68]' : 'text-[#C5A880]'}`} />
+                  <selectedLang.FlagComponent className="w-5 h-3.5 lg:w-4 lg:h-3" />
+                  <span className="hidden lg:inline text-[11px] uppercase tracking-wider font-semibold font-sans">{selectedLang.code}</span>
+                  <ChevronDown size={11} className={`hidden lg:block transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
                 {/* Animated Dropdown Menu */}
@@ -422,15 +435,6 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                 </AnimatePresence>
               </div>
             </div>
-
-            {/* Mobile Hamburger Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden p-2 focus:outline-none cursor-pointer ${isLightHeader ? 'text-[#23211E]' : 'text-white'}`}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X size={26} /> : <MenuIcon size={26} />}
-            </button>
           </div>
         </div>
       </motion.header>
@@ -439,185 +443,128 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed inset-0 z-50 bg-[#F7F4EF] text-[#23211E] lg:hidden flex flex-col justify-between px-5 pt-5 pb-6 overflow-y-auto"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="fixed inset-0 z-40 bg-[#F7F4EF] text-[#23211E] lg:hidden flex flex-col px-5 pt-[4.75rem] pb-[max(1.25rem,env(safe-area-inset-bottom))] overflow-y-auto"
           >
-            {/* Top Close Header */}
-            <div>
-              <div className="flex items-center justify-between pb-4 border-b border-[#A38B68]/20">
-                <button
-                  onClick={() => handleNavClick('home')}
-                  className="focus:outline-none cursor-pointer"
-                >
-                  <img
-                    src="/Logos/elia gold.png"
-                    alt="Elia Boutique Hotel Phuket Logo"
-                    className="h-11 sm:h-12 w-auto object-contain"
-                    onError={(e) => {
-                      e.target.src = '/Logos/logo nwww.png';
-                    }}
-                  />
-                </button>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-9 h-9 rounded-full bg-[#EFECE6] border border-[#A38B68]/30 flex items-center justify-center text-[#23211E] hover:bg-[#23211E] hover:text-white transition-all cursor-pointer"
-                  aria-label="Close menu"
-                >
-                  <X size={18} />
-                </button>
-              </div>
+            <div className="flex-1">
+              <p className="pb-3 text-[10px] uppercase tracking-[0.28em] text-[#A38B68] font-semibold">
+                13 rooms · Bang Tao Beach
+              </p>
 
-              {/* Sub-label */}
-              <div className="pt-3 pb-1 flex items-center justify-between text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-semibold font-sans">
-                <span>NAVIGATION</span>
-                <span>ELIA PHUKET • 13 ROOMS</span>
-              </div>
-
-              {/* Menu Links Stack */}
-              <div className="py-2 flex flex-col gap-1.5">
-                {navLinks.map((link, idx) => {
+              <nav className="flex flex-col gap-1.5" aria-label="Mobile">
+                {navLinks.map((link) => {
                   const isSelected = activePage === link.id || (link.id === 'rooms' && activePage.startsWith('rooms'));
-                  return (
-                    <div key={link.id} className="flex flex-col gap-1">
-                      <button
-                        onClick={() => handleNavClick(link.id)}
-                        className={`flex items-center justify-between px-4 py-2.5 rounded-xl border transition-all text-left cursor-pointer ${isSelected
-                            ? 'bg-[#23211E] text-[#F7F4EF] border-[#23211E] shadow-md'
-                            : 'bg-[#FFFFFF]/80 hover:bg-[#FFFFFF] text-[#23211E] border-[#A38B68]/20'
-                          }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="font-serif italic text-xs text-[#A38B68]">
-                            0{idx + 1}
-                          </span>
-                          <span className="text-xs uppercase tracking-[0.2em] font-semibold font-sans">
+                  if (link.hasDropdown) {
+                    return (
+                      <div key={link.id} className="rounded-2xl border border-[#A38B68]/20 bg-white overflow-hidden">
+                        <div className="flex items-stretch">
+                          <button
+                            type="button"
+                            onClick={() => handleNavClick(link.id)}
+                            className={`flex-1 text-left px-4 py-3.5 text-xs uppercase tracking-[0.18em] font-semibold cursor-pointer ${
+                              isSelected ? 'text-[#A38B68]' : 'text-[#23211E]'
+                            }`}
+                          >
                             {link.label}
-                          </span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setMobileRoomsOpen((open) => !open)}
+                            className="px-4 text-[#6E6A63] cursor-pointer"
+                            aria-expanded={mobileRoomsOpen}
+                            aria-label="Show room types"
+                          >
+                            <ChevronDown size={16} className={`transition-transform ${mobileRoomsOpen ? 'rotate-180' : ''}`} />
+                          </button>
                         </div>
-                        <div className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#A38B68]' : 'bg-[#A38B68]/40'}`} />
-                      </button>
-
-                      {/* If rooms, show quick links in mobile */}
-                      {link.id === 'rooms' && (
-                        <div className="pl-6 pr-2 py-1 space-y-1 bg-[#FAF7F2]/60 rounded-xl border border-[#A38B68]/15 mb-1">
-                          {roomsData.map((room) => (
-                            <button
-                              key={room.id}
-                              onClick={() => handleNavClick(`rooms/${room.slug}`)}
-                              className={`w-full text-left py-1.5 px-2 text-[11px] font-sans flex items-center justify-between cursor-pointer rounded-lg ${activePage === `rooms/${room.slug}`
-                                  ? 'font-bold text-[#A38B68] bg-white'
-                                  : 'text-[#6E6A63] hover:text-[#23211E]'
+                        {mobileRoomsOpen && (
+                          <div className="px-2 pb-2 space-y-1 border-t border-[#A38B68]/10">
+                            {roomsData.map((room) => (
+                              <button
+                                key={room.id}
+                                type="button"
+                                onClick={() => handleNavClick(`rooms/${room.slug}`)}
+                                className={`w-full min-h-11 text-left px-3 py-2.5 rounded-xl text-[13px] cursor-pointer flex items-center justify-between ${
+                                  activePage === `rooms/${room.slug}`
+                                    ? 'bg-[#23211E] text-white'
+                                    : 'text-[#555047] hover:bg-[#FAF7F2]'
                                 }`}
-                            >
-                              <span>{room.title}</span>
-                              <span className="text-[9px] uppercase tracking-wider text-[#A38B68]">
-                                {room.countLabel}
-                              </span>
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                              >
+                                <span>{room.title}</span>
+                                <span className="text-[10px] uppercase tracking-wider text-[#A38B68]">{room.countLabel}</span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
 
-                {/* Secondary SEO Pages Quick Links */}
-                <div className="pt-2 grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => handleNavClick('family-hotel-phuket')}
-                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
-                  >
-                    Family Stays
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('goat-beach-club')}
-                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
-                  >
-                    GOAT Beach Club
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('bang-tao-beach-phuket')}
-                    className="p-2.5 rounded-xl border border-[#A38B68]/20 bg-white text-left text-xs font-medium text-[#23211E] hover:border-[#A38B68] cursor-pointer"
-                  >
-                    Bang Tao Beach
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('offers')}
-                    className="p-2.5 rounded-xl border border-[#A38B68]/40 bg-[#A38B68]/10 text-left text-xs font-semibold text-[#8B6E3F] hover:bg-[#A38B68]/20 cursor-pointer"
-                  >
-                    Special Offers
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile Language Selector */}
-            <div className="pt-3 border-t border-[#A38B68]/20">
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-[#A38B68] font-bold mb-2">
-                <span>Select Language</span>
-                <span className="text-xs flex items-center gap-1.5">
-                  <selectedLang.FlagComponent className="w-4 h-3" />
-                  {selectedLang.name}
-                </span>
-              </div>
-              <div className="grid grid-cols-3 gap-2">
-                {languages.map((lang) => {
-                  const isSelected = selectedLang.code === lang.code;
                   return (
                     <button
-                      key={lang.code}
+                      key={link.id}
                       type="button"
-                      onClick={() => {
-                        handleSelectLanguage(lang);
-                        setMobileMenuOpen(false);
-                      }}
-                      className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center gap-1.5 cursor-pointer ${
+                      onClick={() => handleNavClick(link.id)}
+                      className={`min-h-12 px-4 rounded-2xl border text-left text-xs uppercase tracking-[0.18em] font-semibold cursor-pointer ${
                         isSelected
-                          ? 'bg-[#23211E] text-white border-[#23211E] shadow-sm'
-                          : 'bg-white text-[#23211E] border-[#A38B68]/20 hover:border-[#A38B68]'
+                          ? 'bg-[#23211E] text-[#F7F4EF] border-[#23211E]'
+                          : 'bg-white text-[#23211E] border-[#A38B68]/20'
                       }`}
                     >
-                      <lang.FlagComponent className="w-5 h-3.5" />
-                      <span className="text-[10px] font-semibold">{lang.name}</span>
+                      {link.label}
                     </button>
                   );
                 })}
+              </nav>
+
+              <div className="pt-6 flex flex-wrap gap-x-5 gap-y-2 text-[12px] text-[#6E6A63]">
+                {[
+                  { id: 'goat-beach-club', label: 'GOAT Beach Club' },
+                  { id: 'experiences', label: 'Experiences' },
+                  { id: 'family-hotel-phuket', label: 'Families' },
+                  { id: 'offers', label: 'Offers' },
+                  { id: 'about', label: 'About' },
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleNavClick(item.id)}
+                    className="underline-offset-4 hover:text-[#23211E] hover:underline cursor-pointer"
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </div>
             </div>
 
-            {/* Bottom Quick Info & CTA Footer */}
-            <div className="space-y-3 pt-3 border-t border-[#A38B68]/20">
+            <div className="pt-6 space-y-2.5">
               <button
+                type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenReservation?.();
                 }}
-                className={`w-full py-3.5 rounded-full font-semibold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-2.5 shadow-xl transition-all cursor-pointer ${activePage === 'booking'
-                    ? 'bg-[#A38B68] text-white shadow-[0_0_20px_rgba(163,139,104,0.4)]'
-                    : 'bg-[#23211E] text-[#F7F4EF] hover:bg-[#A38B68]'
-                  }`}
+                className="w-full min-h-12 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold uppercase tracking-[0.18em] text-xs flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Calendar size={15} className="text-[#A38B68]" />
-                <span>RESERVE STAY OR TABLE</span>
+                <Calendar size={15} />
+                Book Now
               </button>
-
-              <div className="flex items-center justify-between text-[11px] text-[#6E6A63] font-sans font-light px-1">
-                <div className="flex items-center gap-1.5">
-                  <MapPin size={13} className="text-[#A38B68]" />
-                  <span>Bang Tao Beach, Phuket</span>
-                </div>
-                <a
-                  href="https://wa.me/66932719103"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-[#A38B68] transition-colors font-medium text-[#23211E]"
-                >
-                  <span>WhatsApp: +66 93 271 9103</span>
-                </a>
-              </div>
+              <a
+                href={whatsappUrl(WHATSAPP_MESSAGES.default)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full min-h-12 rounded-full bg-[#25D366] text-white font-semibold uppercase tracking-[0.16em] text-xs flex items-center justify-center gap-2"
+              >
+                <WhatsAppIcon size={16} />
+                WhatsApp Concierge
+              </a>
+              <p className="flex items-center justify-center gap-1.5 text-[11px] text-[#6E6A63]">
+                <MapPin size={12} className="text-[#A38B68]" />
+                Bang Tao Beach, Phuket
+              </p>
             </div>
           </motion.div>
         )}

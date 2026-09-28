@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Facebook, Instagram, Send, MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
+import { Facebook, Instagram, Send, Phone, Mail, ArrowUpRight } from 'lucide-react';
+import SharedWhatsAppIcon from './WhatsAppIcon';
+import { whatsappUrl, WHATSAPP_MESSAGES, PHONE_HREF, EMAIL_HREF, MAPS_HREF, WHATSAPP_DISPLAY } from '../utils/whatsapp';
 
 const TiktokIcon = ({ size = 18, ...props }) => (
   <svg
@@ -18,22 +20,7 @@ const TiktokIcon = ({ size = 18, ...props }) => (
   </svg>
 );
 
-const WhatsAppIcon = ({ size = 18, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-  </svg>
-);
+const WhatsAppIcon = SharedWhatsAppIcon;
 
 export default function Footer({ onNavClick, onOpenReservation }) {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -47,9 +34,9 @@ export default function Footer({ onNavClick, onOpenReservation }) {
   };
 
   return (
-    <footer className="bg-[#181715] text-[#FAF7F2] pt-20 pb-12 border-t border-[#A38B68]/25 relative overflow-hidden">
+    <footer className="bg-[#181715] text-[#FAF7F2] pt-14 pb-8 border-t border-[#A38B68]/25 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-[#FAF7F2]/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-10 border-b border-[#FAF7F2]/10">
 
           {/* Col 1: Brand & Identity (4 cols) matching Section 20 */}
           <div className="lg:col-span-4 space-y-4">
@@ -57,7 +44,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               <img
                 src="/Logos/logo nwww.png"
                 alt="Elia Boutique Hotel Phuket"
-                className="h-12 sm:h-14 w-auto object-contain mb-3 transition-transform duration-300 hover:scale-105"
+                className="elia-footer-logo mb-4 transition-transform duration-300 hover:scale-105"
               />
             </button>
             <h3 className="font-serif text-sm text-white font-medium uppercase tracking-widest">
@@ -71,7 +58,7 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             </p>
             <div className="pt-2 text-xs text-[#FAF7F2]/70 font-light leading-relaxed">
               <a
-                href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
+                href={MAPS_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#C5A880] transition-colors block"
@@ -87,14 +74,23 @@ export default function Footer({ onNavClick, onOpenReservation }) {
             </div>
 
             {/* Social Links */}
-            <div className="pt-3 flex items-center gap-3 text-[#FAF7F2]/80">
+            <a
+              href={whatsappUrl(WHATSAPP_MESSAGES.default)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#25D366] px-4 text-xs font-semibold uppercase tracking-[0.14em] text-white"
+            >
+              <WhatsAppIcon size={15} />
+              WhatsApp Concierge
+            </a>
+            <div className="pt-1 flex items-center gap-3 text-[#FAF7F2]/80">
               <a
-                href="https://wa.me/66932719103"
+                href={whatsappUrl(WHATSAPP_MESSAGES.default)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#C5A880] hover:border-[#C5A880] hover:bg-white/10 transition-all"
                 aria-label="WhatsApp"
-                title="Chat on WhatsApp (+66 93 271 9103)"
+                title={`Chat on WhatsApp (${WHATSAPP_DISPLAY})`}
               >
                 <WhatsAppIcon size={16} />
               </a>
@@ -152,6 +148,11 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               <li>
                 <button onClick={() => onNavClick('eat-drink')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
                   Food and Drinks
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavClick('menus')} className="hover:text-[#C5A880] transition-colors cursor-pointer">
+                  GOAT Menus
                 </button>
               </li>
               <li>
@@ -215,21 +216,21 @@ export default function Footer({ onNavClick, onOpenReservation }) {
               <div className="flex items-center gap-2">
                 <WhatsAppIcon size={15} className="text-[#C5A880] shrink-0" />
                 <a
-                  href="https://wa.me/66932719103"
+                  href={whatsappUrl(WHATSAPP_MESSAGES.default)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#C5A880] transition-colors"
                 >
-                  +66 93 271 9103
+                  {WHATSAPP_DISPLAY}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={15} className="text-[#C5A880] shrink-0" />
-                <a href="tel:+66932719103" className="hover:text-[#C5A880] transition-colors">+66 93 271 9103</a>
+                <a href={PHONE_HREF} className="hover:text-[#C5A880] transition-colors">{WHATSAPP_DISPLAY}</a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={15} className="text-[#C5A880] shrink-0" />
-                <a href="mailto:info@eliaphuket.com" className="hover:text-[#C5A880] transition-colors">info@eliaphuket.com</a>
+                <a href={EMAIL_HREF} className="hover:text-[#C5A880] transition-colors">info@eliaphuket.com</a>
               </div>
             </div>
           </div>

@@ -90,6 +90,8 @@ export default function RoomsPage({ onNavigate }) {
                       src={room.mainImage}
                       alt={room.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
                     
@@ -159,13 +161,14 @@ export default function RoomsPage({ onNavigate }) {
                         </div>
                       </div>
 
-                      {/* Outdoor Area Highlight */}
-                      <div className="mt-4 mb-6">
-                        <div className="flex items-start gap-2 text-xs text-[#555047] font-light">
-                          <Waves size={15} className="text-[#A38B68] shrink-0 mt-0.5" />
-                          <span><strong className="font-medium text-[#23211E]">Outdoor Area:</strong> {room.outdoorArea}</span>
+                      {room.outdoorArea && (
+                        <div className="mt-4 mb-6">
+                          <div className="flex items-start gap-2 text-xs text-[#555047] font-light">
+                            <Waves size={15} className="text-[#A38B68] shrink-0 mt-0.5" />
+                            <span><strong className="font-medium text-[#23211E]">Outdoor Area:</strong> {room.outdoorArea}</span>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
 
                     {/* Action CTAs */}

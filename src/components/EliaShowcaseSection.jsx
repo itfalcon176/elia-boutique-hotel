@@ -665,12 +665,18 @@ export default function EliaShowcaseSection({ onNavigate }) {
               <p className="text-[#555047] text-xs sm:text-sm font-light leading-relaxed font-sans">
                 Enjoy breakfast, proper restaurant-quality food throughout the day, fresh coffee, cocktails, sunset drinks and beachfront dining — with room service available when you'd rather stay exactly where you are.
               </p>
-              <div className="pt-2">
+              <div className="pt-2 flex flex-wrap gap-3">
                 <button
                   onClick={() => onNavigate('eat-drink')}
                   className="px-6 py-3 rounded-full border border-[#C5A880] text-[#C5A880] text-xs font-semibold uppercase tracking-widest hover:bg-[#C5A880] hover:text-[#141312] transition-all cursor-pointer"
                 >
                   FOOD & DRINKS
+                </button>
+                <button
+                  onClick={() => onNavigate('menus/breakfast')}
+                  className="px-6 py-3 rounded-full bg-[#23211E] text-[#F7F4EF] text-xs font-semibold uppercase tracking-widest hover:bg-[#A38B68] transition-all cursor-pointer"
+                >
+                  View GOAT menus
                 </button>
               </div>
             </div>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   BedDouble,
   Users,
@@ -13,23 +12,9 @@ import {
 import { roomsData, getRoomBySlug } from '../data/roomsData';
 import AccommodationDatePicker from '../components/booking/AccommodationDatePicker';
 import RoomPropertyDatePicker from '../components/booking/RoomPropertyDatePicker';
-
-const WhatsAppIcon = ({ size = 18, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-  </svg>
-);
+import RoomGallery from '../components/RoomGallery';
+import WhatsAppIcon from '../components/WhatsAppIcon';
+import { whatsappUrl, roomEnquiryMessage } from '../utils/whatsapp';
 
 function useCompactBookingBar() {
   const [compact, setCompact] = useState(false);
@@ -52,14 +37,14 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
   // Other room suggestions
   const otherRooms = roomsData.filter((r) => r.id !== room.id);
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello Elia Phuket Concierge, I would like to check availability for the ${room.title}.`
-  );
-  const whatsappUrl = `https://wa.me/66932719103?text=${whatsappMessage}`;
+  const conciergeUrl = whatsappUrl(roomEnquiryMessage(room.title));
   const reserveLabel = `Reserve Your ${room.title}`;
+  const galleryImages = [room.mainImage, ...(room.gallery || [])].filter(
+    (src, index, list) => src && list.indexOf(src) === index
+  );
 
   return (
-    <div className="pt-24 pb-36 lg:pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
+    <div className="pt-24 pb-36 lg:pb-16 bg-[#F7F4EF] text-[#23211E]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumbs for SEO */}
@@ -108,28 +93,8 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
           
           {/* Main Photo Display (lg:col-span-9) */}
-          <div className="lg:col-span-9 relative rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] shadow-2xl border border-[#A38B68]/30 group">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={room.id}
-                src={room.mainImage}
-                alt={`${room.title} at Elia Boutique Hotel Phuket`}
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="w-full h-full object-cover"
-              />
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-            
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs backdrop-blur-md bg-black/40 px-4 py-2.5 rounded-xl border border-white/20">
-              <div>
-                <span className="font-serif text-sm sm:text-base font-normal tracking-wide block">{room.title}</span>
-                <span className="text-[10px] text-white/80">{room.countLabel} • {room.size}</span>
-              </div>
-              <span className="text-[#C5A880] uppercase tracking-wider text-[10px] font-semibold">Bang Tao Beach, Phuket</span>
-            </div>
+          <div className="lg:col-span-9">
+            <RoomGallery images={galleryImages} title={room.title} />
           </div>
 
           {/* Thumbnails Sidebar - 4 Accommodations (lg:col-span-3) */}
@@ -305,10 +270,10 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
                 </p>
 
                 <a
-                  href={whatsappUrl}
+                  href={conciergeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.18em] font-semibold flex items-center justify-center gap-2 transition-all"
+                  className="w-full py-3 rounded-full bg-[#25D366] hover:brightness-110 text-white text-xs uppercase tracking-[0.18em] font-semibold flex items-center justify-center gap-2 transition-all"
                 >
                   <WhatsAppIcon size={16} className="text-[#25D366]" />
                   <span>WHATSAPP CONCIERGE</span>

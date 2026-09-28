@@ -82,19 +82,19 @@ export default function ContactPage({ onNavigate }) {
         {/* 4 Core Action Buttons Row matching Section 16 of SEO Pack */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           <a
-            href="https://wa.me/66932719103"
+            href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%20Concierge%2C%20I%20would%20like%20some%20assistance%20with%20my%20stay."
             target="_blank"
             rel="noopener noreferrer"
-            className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
+            className="p-6 rounded-3xl bg-[#25D366] text-white border border-[#1EBE5A] shadow-md hover:shadow-xl transition-all flex flex-col items-center text-center gap-3 cursor-pointer group md:col-span-1 col-span-2"
           >
-            <div className="w-12 h-12 rounded-2xl bg-[#A38B68]/15 text-[#A38B68] flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-2xl bg-white/20 text-white flex items-center justify-center group-hover:scale-110 transition-transform">
               <WhatsAppIcon size={24} />
             </div>
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#23211E] block mb-1">
-                WHATSAPP
+              <span className="text-xs uppercase tracking-[0.2em] font-bold text-white block mb-1">
+                WhatsApp Concierge
               </span>
-              <span className="text-xs text-[#8B6E3F] font-medium">+66 93 271 9103</span>
+              <span className="text-xs text-white/90 font-medium">+66 93 271 9103</span>
             </div>
           </a>
 

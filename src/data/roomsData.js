@@ -22,6 +22,7 @@ export const roomsData = [
     pricePerNight: 'From 8,500 THB / night',
     tag: '8 Rooms • Ground Floor',
     mainImage: '/accommodation/garden-beach-room.jpg',
+    // Photoshoot order when final images arrive: hero, sleeping area, bathroom, terrace/garden, details.
     gallery: [
       '/accommodation/garden-beach-room.jpg',
       '/images/dining.png',
@@ -69,6 +70,7 @@ export const roomsData = [
     mainImage: '/accommodation/garden-family-suite.jpg',
     gallery: [
       '/accommodation/garden-family-suite.jpg',
+      '/accommodation/Garden Family Suite 2.webp',
       '/images/spa.png',
       '/images/latenight.png',
     ],
@@ -111,6 +113,7 @@ export const roomsData = [
     mainImage: '/accommodation/loft-apartment.jpg',
     gallery: [
       '/accommodation/loft-apartment.jpg',
+      '/accommodation/Loft Apartment 3.webp',
       '/images/cocktail.png',
       '/images/dining.png',
     ],
@@ -151,6 +154,7 @@ export const roomsData = [
     mainImage: '/accommodation/one-bedroom-loft-suite.jpg',
     gallery: [
       '/accommodation/one-bedroom-loft-suite.jpg',
+      '/accommodation/One-Bedroom Loft Suite 4.webp',
       '/images/spa.png',
       '/images/dining.png',
     ],

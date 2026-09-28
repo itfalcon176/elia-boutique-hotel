@@ -139,6 +139,14 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
                 Enjoy breakfast, barista coffee, proper restaurant-quality food throughout the day, and barefoot lunches right by the Andaman Sea.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/breakfast')}
+                className="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View breakfast & dining menus
+                <ArrowRight size={14} />
+              </button>
             </div>
           </div>
 
@@ -173,6 +181,14 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
                 When you'd rather stay exactly where you are, order from GOAT and enjoy restaurant-quality dishes from your private Elia room or garden terrace.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/room-service')}
+                className="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View room service menu
+                <ArrowRight size={14} />
+              </button>
             </div>
           </div>
         </div>

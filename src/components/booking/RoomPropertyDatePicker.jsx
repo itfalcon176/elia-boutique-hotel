@@ -58,5 +58,15 @@ export default function RoomPropertyDatePicker({ roomId }) {
 
   if (!CLOUDBEDS_PROPERTY_CODE || !bookingUrl) return null;
 
-  return <div ref={hostRef} className="elia-room-property-picker w-full" />;
+  return (
+    <div className="elia-stay-search elia-stay-search--room w-full">
+      <div className="elia-stay-search-labels" aria-hidden="true">
+        <span>Check-in</span>
+        <span>Check-out</span>
+        <span>Guests</span>
+        <span>Availability</span>
+      </div>
+      <div ref={hostRef} className="elia-room-property-picker w-full" />
+    </div>
+  );
 }

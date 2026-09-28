@@ -75,6 +75,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs sm:text-sm text-[#8B6E3F] font-serif italic">
                 Take your time. You're already where you need to be.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/breakfast')}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View breakfast menu
+                <ArrowRight size={14} />
+              </button>
             </div>
             <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <img
@@ -114,6 +122,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
                 Staying at Elia means the restaurant isn't somewhere you have to travel to. It's part of the experience.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/dining')}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View dining menu
+                <ArrowRight size={14} />
+              </button>
             </div>
           </motion.div>
 
@@ -139,6 +155,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
               <p className="text-xs sm:text-sm text-[#555047] font-light leading-relaxed">
                 Then walk home. Your room is only moments away.
               </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('menus/dining')}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+              >
+                View dinner & drinks menu
+                <ArrowRight size={14} />
+              </button>
             </div>
             <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <img
@@ -171,9 +195,14 @@ export default function EatDrinkPage({ onNavigate, onOpenReservation }) {
                 </p>
               </div>
               <div className="pt-6 mt-6 border-t border-[#A38B68]/15">
-                <span className="text-xs text-[#A38B68] font-semibold uppercase tracking-wider">
-                  Available direct to your room or terrace
-                </span>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('menus/room-service')}
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-[#23211E] hover:text-[#A38B68] cursor-pointer"
+                >
+                  View room service menu
+                  <ArrowRight size={14} />
+                </button>
               </div>
             </motion.div>
 
