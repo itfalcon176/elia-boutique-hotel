@@ -620,8 +620,49 @@ export default function EliaShowcaseSection({ onNavigate }) {
       </section>
 
       {/* SECTION 7: Bang Tao, Phuket */}
-      <section className="py-16 sm:py-24 bg-[#FAF7F2] text-[#23211E]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 bg-[#FAF7F2] text-[#23211E] scroll-mt-28">
+        <div className="lg:hidden max-w-[22.75rem] min-[390px]:max-w-[24rem] mx-auto px-6">
+          <span className="block font-sans text-[11px] uppercase tracking-[0.26em] font-normal text-[#C5B7A0]">
+            West Coast Phuket
+          </span>
+          <h2 className="mt-5 font-serif font-normal text-[2.85rem] leading-[1.12] tracking-[-0.018em] text-[#1A1612]">
+            Bang Tao,
+            <br />
+            <span className="italic font-serif font-normal text-gold-gradient">Phuket.</span>
+          </h2>
+          <p className="mt-3.5 font-serif font-normal text-[1.2rem] leading-[1.35] tracking-[-0.015em] text-[#1A1612]">
+            A little closer to the sea.
+          </p>
+
+          <div className="mt-8 overflow-hidden rounded-[1.15rem]">
+            <img
+              src="/banner/Elia%20boutique%20hotel%20banner.jpeg"
+              alt="Bang Tao Beach beside Elia Boutique Hotel Phuket"
+              className="w-full aspect-[4/3] object-cover object-[center_40%]"
+            />
+          </div>
+          <p className="mt-3.5 font-sans text-[10px] uppercase tracking-[0.18em] font-normal text-[#A39B90]">
+            Coastal inspiration · Final location photo to follow
+          </p>
+
+          <p className="mt-5 font-sans text-[15px] leading-[1.6] font-normal text-[#5F5A52]">
+            Elia sits beside Bang Tao Beach on Phuket’s west coast. Beachfront restaurants, laid-back beach clubs and island experiences are all part of the neighbourhood.
+          </p>
+          <p className="mt-5 font-serif italic font-normal text-[1.55rem] leading-[1.25] tracking-[-0.018em] text-gold-gradient">
+            Right in it. A way from it all.
+          </p>
+
+          <button
+            type="button"
+            onClick={() => onNavigate('bang-tao-beach-phuket')}
+            className="mt-8 w-full h-[3.45rem] rounded-[10px] bg-[#111111] text-white font-sans text-[13px] font-medium uppercase tracking-[0.12em] inline-flex items-center justify-between px-6 cursor-pointer"
+          >
+            Discover Bang Tao
+            <span aria-hidden="true" className="text-[16px] font-normal tracking-normal">→</span>
+          </button>
+        </div>
+
+        <div className="hidden lg:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-[#A38B68]/20 order-2 lg:order-1">
               <img
