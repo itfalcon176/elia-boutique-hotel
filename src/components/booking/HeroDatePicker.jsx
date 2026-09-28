@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { mountCloudbedsElement } from './mountCloudbedsElement';
-
-const PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
+import { PROPERTY_CODE, watchStayCalendar } from './staySearch';
 
 export default function HeroDatePicker() {
   const hostRef = useRef(null);
@@ -18,40 +17,32 @@ export default function HeroDatePicker() {
     return () => query.removeEventListener('change', apply);
   }, []);
 
-  useEffect(() => {
-    const pinCalendar = () => {
-      if (document.querySelector('.cb-immersive-experience-popup-content')) return;
-      document.querySelectorAll('.cb-portal [class*="calendar-popover"]').forEach((popover) => {
-        if (!(popover instanceof HTMLElement) || popover.dataset.eliaPinned === '1') return;
-        const rect = popover.getBoundingClientRect();
-        if (rect.height > window.innerHeight * 0.85) return;
-        if (rect.top >= 12 && rect.bottom <= window.innerHeight - 8) return;
-        popover.dataset.eliaPinned = '1';
-      });
-    };
-
-    const observer = new MutationObserver(pinCalendar);
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
-    pinCalendar();
-    return () => observer.disconnect();
-  }, []);
+  useEffect(() => watchStayCalendar(), []);
 
   useEffect(() => {
     const host = hostRef.current;
     if (!host || !PROPERTY_CODE || !bookingUrl) return undefined;
     return mountCloudbedsElement(host, 'cb-property-date-picker', {
       'property-code': PROPERTY_CODE,
-      'button-label': 'Search',
+      'button-label': 'Check availability',
       layout,
       lang: 'en',
       currency: 'thb',
       'open-in-new-tab': 'false',
       'custom-url': bookingUrl,
       'class-name': 'elia-hero-picker',
+      'test-id': 'elia-hero-stay',
     });
   }, [layout, bookingUrl]);
 
   if (!PROPERTY_CODE || !bookingUrl) return null;
 
-  return <div ref={hostRef} className="elia-hero-date-picker w-full select-text" />;
+  return (
+    <div className="elia-hero-date-picker w-full select-text">
+      <div ref={hostRef} />
+      <p className="mt-3 text-[12px] font-light leading-relaxed text-[#F3DFBF]/90">
+        Check-in and check-out. Guests are chosen with availability.
+      </p>
+    </div>
+  );
 }

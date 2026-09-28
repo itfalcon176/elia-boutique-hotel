@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { AlertCircle, RotateCw } from 'lucide-react';
-
-const PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
+import { PROPERTY_CODE } from './staySearch';
 
 function popupSize() {
   const width = window.innerWidth;
@@ -262,7 +261,7 @@ export default function CloudbedsBookNow() {
                 <div className="mx-auto mb-4 h-10 w-10 rounded-full border-2 border-[#A38B68]/25 border-t-[#A38B68] animate-spin" />
                 <p className="font-serif text-2xl font-light text-[#23211E]">Opening availability</p>
                 <p className="mt-2 text-xs font-light leading-relaxed text-[#6E6A63]">
-                  Live rates open here, on this page.
+                  Check-in, check-out, and guests open on this page. Payment is completed in the panel.
                 </p>
               </>
             ) : (
@@ -270,7 +269,7 @@ export default function CloudbedsBookNow() {
                 <AlertCircle size={28} className="mx-auto mb-3 text-[#826C4B]" />
                 <p className="font-serif text-2xl font-light text-[#23211E]">Reservation panel unavailable</p>
                 <p className="mt-2 text-xs font-light leading-relaxed text-[#6E6A63]">
-                  The booking panel could not open on this page. Please try again.
+                  The panel did not open. Try again, or continue on the booking page. Payment is completed there, inside Cloudbeds.
                 </p>
                 <div className="mt-5 flex flex-col gap-2">
                   <button
@@ -283,6 +282,16 @@ export default function CloudbedsBookNow() {
                   >
                     <RotateCw size={14} />
                     Try again
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      document.body.classList.remove('elia-booking-scroll-lock');
+                      window.location.assign('/book-your-stay');
+                    }}
+                    className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#A38B68]/40 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#23211E] cursor-pointer"
+                  >
+                    Continue on the booking page
                   </button>
                   <button
                     type="button"

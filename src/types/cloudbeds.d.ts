@@ -28,6 +28,7 @@ declare global {
           currency?: string;
           'class-name'?: string;
           'custom-url'?: string;
+          'test-id'?: string;
         },
         HTMLElement
       >;
@@ -46,6 +47,7 @@ declare global {
           currency?: string;
           'class-name'?: string;
           'custom-url'?: string;
+          'test-id'?: string;
         },
         HTMLElement
       >;

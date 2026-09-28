@@ -343,7 +343,7 @@ cb-book-now-button button {
 }
 
 #cb-bookingengine .cb-landing-page::after {
-  content: "Choose dates and guests. Live availability opens here.";
+  content: "Check-in, check-out, and guests. Payment is completed here.";
   order: 1;
   margin: 0 0 16px;
   color: #6E6A63;
@@ -442,6 +442,46 @@ cb-book-now-button button {
   #cb-bookingengine .cb-search-button {
     flex: 1 1 100%;
     width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  #cb-bookingengine .cb-search-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    row-gap: 8px;
+  }
+
+  #cb-bookingengine .cb-search-card > *,
+  #cb-bookingengine .cb-search-card-filters,
+  #cb-bookingengine [data-testid="guest-selector-button"],
+  #cb-bookingengine [data-testid$="-date-picker"] {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  #cb-bookingengine [data-testid="guest-selector-button"],
+  #cb-bookingengine [data-testid$="-checkin-input"],
+  #cb-bookingengine [data-testid$="-checkout-input"] {
+    min-height: 48px !important;
+    justify-content: flex-start !important;
+  }
+
+  #cb-bookingengine [data-testid$="-date-picker"] {
+    flex-wrap: wrap !important;
+    height: auto !important;
+    justify-content: stretch !important;
+    row-gap: 2px !important;
+  }
+
+  #cb-bookingengine [data-testid$="-checkin-input"],
+  #cb-bookingengine [data-testid$="-checkout-input"] {
+    flex: 1 1 100% !important;
+  }
+
+  #cb-bookingengine [data-testid$="-date-picker"] .arrow-icon,
+  #cb-bookingengine [data-testid$="-date-picker"] .calendar-icon {
+    display: none !important;
   }
 }
 
@@ -644,7 +684,43 @@ cb-book-now-button button {
   background: #23211E !important;
   color: #F7F4EF !important;
   border-radius: 999px !important;
-  min-height: 44px;
+  min-height: 48px;
+}
+
+@media (max-width: 767px) {
+  .elia-hero-date-picker [data-testid$="-date-picker"],
+  .elia-room-property-picker [data-testid$="-date-picker"] {
+    flex-wrap: wrap !important;
+    height: auto !important;
+    justify-content: stretch !important;
+    row-gap: 2px !important;
+  }
+
+  .elia-hero-date-picker [data-testid$="-checkin-input"],
+  .elia-hero-date-picker [data-testid$="-checkout-input"],
+  .elia-room-property-picker [data-testid$="-checkin-input"],
+  .elia-room-property-picker [data-testid$="-checkout-input"] {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: flex-start !important;
+    padding-inline: 14px !important;
+  }
+
+  .elia-hero-date-picker .arrow-icon,
+  .elia-hero-date-picker .calendar-icon,
+  .elia-room-property-picker .arrow-icon,
+  .elia-room-property-picker .calendar-icon {
+    display: none !important;
+  }
+
+  .elia-hero-date-picker .cb-search-button,
+  .elia-hero-date-picker [data-testid$="search-button"],
+  .elia-room-property-picker .cb-search-button,
+  .elia-room-property-picker [data-testid$="search-button"] {
+    width: 100% !important;
+    min-height: 48px !important;
+  }
 }
 
 /* Cloudbeds anchors this popover above the viewport. Keep the hero calendar on screen. */
@@ -654,6 +730,8 @@ body:not(:has(.cb-immersive-experience-popup-content)) .cb-portal [data-elia-pin
   right: auto !important;
   bottom: auto !important;
   transform: translateX(-50%) !important;
+  width: min(100%, calc(100vw - 16px)) !important;
+  max-width: calc(100vw - 16px) !important;
   max-height: calc(100dvh - 104px) !important;
   overflow: auto !important;
 }

@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { CLOUDBEDS_PROPERTY_CODE } from '../../data/cloudbedsRooms';
 import { mountCloudbedsElement } from './mountCloudbedsElement';
+import { PROPERTY_CODE, watchStayCalendar } from './staySearch';
 
 /**
  * Official Cloudbeds single-property date picker for one room page.
  * Search stays on this website and carries that room's Cloudbeds id.
+ * The widget exposes check-in and check-out only. Guests are chosen
+ * on the booking page.
  */
 export default function RoomPropertyDatePicker({ roomId }) {
   const hostRef = useRef(null);
@@ -23,40 +25,32 @@ export default function RoomPropertyDatePicker({ roomId }) {
     return () => query.removeEventListener('change', apply);
   }, []);
 
-  useEffect(() => {
-    const pinCalendar = () => {
-      if (document.querySelector('.cb-immersive-experience-popup-content')) return;
-      document.querySelectorAll('.cb-portal [class*="calendar-popover"]').forEach((popover) => {
-        if (!(popover instanceof HTMLElement) || popover.dataset.eliaPinned === '1') return;
-        const rect = popover.getBoundingClientRect();
-        if (rect.height > window.innerHeight * 0.85) return;
-        if (rect.top >= 12 && rect.bottom <= window.innerHeight - 8) return;
-        popover.dataset.eliaPinned = '1';
-      });
-    };
-
-    const observer = new MutationObserver(pinCalendar);
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
-    pinCalendar();
-    return () => observer.disconnect();
-  }, []);
+  useEffect(() => watchStayCalendar(), []);
 
   useEffect(() => {
     const host = hostRef.current;
-    if (!host || !CLOUDBEDS_PROPERTY_CODE || !bookingUrl) return undefined;
+    if (!host || !PROPERTY_CODE || !bookingUrl) return undefined;
     return mountCloudbedsElement(host, 'cb-property-date-picker', {
-      'property-code': CLOUDBEDS_PROPERTY_CODE,
-      'button-label': 'Check Availability',
+      'property-code': PROPERTY_CODE,
+      'button-label': 'Check availability',
       layout,
       lang: 'en',
       currency: 'thb',
       'open-in-new-tab': 'false',
       'custom-url': bookingUrl,
       'class-name': 'elia-room-property-search',
+      'test-id': 'elia-room-stay',
     });
   }, [layout, bookingUrl]);
 
-  if (!CLOUDBEDS_PROPERTY_CODE || !bookingUrl) return null;
+  if (!PROPERTY_CODE || !bookingUrl) return null;
 
-  return <div ref={hostRef} className="elia-room-property-picker w-full" />;
+  return (
+    <div className="elia-room-property-picker w-full">
+      <div ref={hostRef} />
+      <p className="mt-3 text-[12px] font-light leading-relaxed text-[#6E6A63]">
+        Check-in and check-out for this room. Availability opens on the booking page, where guests are chosen.
+      </p>
+    </div>
+  );
 }

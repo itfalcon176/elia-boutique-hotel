@@ -56,7 +56,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
     `Hello Elia Phuket Concierge, I would like to check availability for the ${room.title}.`
   );
   const whatsappUrl = `https://wa.me/66932719103?text=${whatsappMessage}`;
-  const reserveLabel = `Reserve Your ${room.title}`;
+  const reserveLabel = 'Check dates';
 
   return (
     <div className="pt-24 pb-36 lg:pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
@@ -296,12 +296,11 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
                   <AccommodationDatePicker
                     key={room.cloudbedsRoomId}
                     roomId={room.cloudbedsRoomId}
-                    roomName={room.title}
                     buttonLabel={reserveLabel}
                   />
                 )}
                 <p className="text-[10px] text-center text-[#FAF7F2]/55 font-light leading-relaxed">
-                  Select dates to see live rates for this room, then continue to book it.
+                  Opens the calendar for this room. Availability continues in a new tab, where guests and payment are completed.
                 </p>
 
                 <a
@@ -359,10 +358,12 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
 
       {compactBookingBar && (
         <div className="fixed bottom-0 inset-x-0 z-40 border-t border-[#A38B68]/25 bg-[#181715]/95 backdrop-blur-md px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <p className="mb-2 text-center text-[11px] font-light leading-snug text-[#F7F4EF]/75">
+            Check-in and check-out for {room.title}
+          </p>
           <AccommodationDatePicker
             key={room.cloudbedsRoomId}
             roomId={room.cloudbedsRoomId}
-            roomName={room.title}
             buttonLabel={reserveLabel}
           />
         </div>

@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { ShieldCheck, RotateCw, Phone, Mail, AlertCircle } from 'lucide-react';
+import { PROPERTY_CODE } from './staySearch';
 
-const DEFAULT_PROPERTY_CODE = import.meta.env.VITE_CLOUDBEDS_PROPERTY_CODE || '';
+const DEFAULT_PROPERTY_CODE = PROPERTY_CODE;
 
 /**
  * CloudbedsBooking Component
@@ -122,11 +123,11 @@ export default function CloudbedsBooking({
         >
           {/* Subtle Security / Status Bar */}
           <div className="bg-[#FAF7F2] px-4 sm:px-6 py-3 border-b border-[#A38B68]/20 flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2 text-[#6E6A63]">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[#6E6A63]">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-medium text-[#23211E]">Live Availability & Direct Rates</span>
               <span className="hidden sm:inline text-black/30">•</span>
-              <span className="hidden sm:inline text-[#826C4B]">Official Elia Booking Engine</span>
+              <span className="basis-full text-[#826C4B] sm:basis-auto">Check-in, check-out, and guests</span>
             </div>
 
             <div className="flex items-center gap-2 ml-auto text-[11px] text-[#6E6A63]">
@@ -166,7 +167,7 @@ export default function CloudbedsBooking({
           <div className="bg-[#FAF7F2] px-6 py-3.5 border-t border-[#A38B68]/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#6E6A63]">
             <div className="flex items-center gap-2">
               <ShieldCheck size={14} className="text-[#A38B68]" />
-              <span>Best Rate Guaranteed • No Booking Fees • Instant Confirmation</span>
+              <span>Payment and confirmation are completed in this panel.</span>
             </div>
             <div>
               <span>Need special assistance? <a href="tel:+66932719103" className="text-[#A38B68] font-medium hover:underline">+66 93 271 9103</a></span>
