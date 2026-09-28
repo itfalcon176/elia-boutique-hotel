@@ -262,7 +262,7 @@ export default function MobileMenu({
                         key={card.id}
                         type="button"
                         onClick={() => (card.opensPanel ? setLevel('rooms') : go(card.id))}
-                        className="relative w-full h-[4.85rem] min-[375px]:h-[5.05rem] min-[414px]:h-[5.25rem] rounded-full overflow-hidden bg-[#f4f0ea] text-left cursor-pointer shadow-[0_1px_2px_rgba(28,25,22,0.04)]"
+                        className="relative w-full h-[4.85rem] min-[375px]:h-[5.05rem] min-[414px]:h-[5.25rem] rounded-[10px] overflow-hidden bg-[#f4f0ea] text-left cursor-pointer shadow-[0_1px_2px_rgba(28,25,22,0.04)]"
                       >
                         <img
                           src={card.image}
