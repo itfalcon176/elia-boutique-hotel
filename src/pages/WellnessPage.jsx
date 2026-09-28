@@ -1,5 +1,10 @@
 import { motion } from 'framer-motion';
 import { Sparkles, Flame, Snowflake, Bath, Droplets, Heart, Waves, Users } from 'lucide-react';
+import {
+  WHATSAPP_CONCIERGE_LABEL,
+  whatsappHref,
+  whatsappMessages,
+} from '../utils/whatsappConcierge';
 
 export default function WellnessPage({ onNavigate, onOpenReservation }) {
   const spaFacilities = [
@@ -191,12 +196,12 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
                   VIEW MASSAGE MENU & RITUALS
                 </button>
                 <a
-                  href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20book%20a%20massage%20treatment."
+                  href={whatsappHref(whatsappMessages.wellnessMassage)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.15em] font-semibold whitespace-nowrap transition-all cursor-pointer text-center"
                 >
-                  WHATSAPP BOOKING
+                  {WHATSAPP_CONCIERGE_LABEL.toUpperCase()}
                 </a>
               </div>
             </div>

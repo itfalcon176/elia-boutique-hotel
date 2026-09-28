@@ -1,3 +1,5 @@
+import { whatsappHref, whatsappMessages, WHATSAPP_DISPLAY } from '../utils/whatsappConcierge';
+
 export const experiencesData = {
   hero: {
     title: 'Experiences & Phuket Curations',
@@ -110,8 +112,8 @@ export const experiencesData = {
   conciergeAppNote: {
     title: 'Elia Digital Concierge',
     subtitle: 'Instant Booking & Assistance via WhatsApp',
-    phone: '+66 93 271 9103',
-    whatsapp: '+66 93 271 9103',
-    whatsappUrl: 'https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20experiences%20and%20curations.',
+    phone: WHATSAPP_DISPLAY,
+    whatsapp: WHATSAPP_DISPLAY,
+    whatsappUrl: whatsappHref(whatsappMessages.experiences),
   },
 };

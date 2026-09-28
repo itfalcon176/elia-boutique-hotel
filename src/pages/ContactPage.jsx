@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Calendar, CheckCircle, Navigation, Sparkles } from 'lucide-react';
 import FaqsSection from '../components/FaqsSection';
+import {
+  WHATSAPP_CONCIERGE_LABEL,
+  WHATSAPP_DISPLAY,
+  whatsappHref,
+  whatsappMessages,
+} from '../utils/whatsappConcierge';
 
 const WhatsAppIcon = ({ size = 20, ...props }) => (
   <svg
@@ -82,7 +88,7 @@ export default function ContactPage({ onNavigate }) {
         {/* 4 Core Action Buttons Row matching Section 16 of SEO Pack */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           <a
-            href="https://wa.me/66932719103"
+            href={whatsappHref(whatsappMessages.location)}
             target="_blank"
             rel="noopener noreferrer"
             className="p-6 rounded-3xl bg-white border border-[#A38B68]/30 shadow-md hover:shadow-xl hover:border-[#A38B68] transition-all flex flex-col items-center text-center gap-3 cursor-pointer group"
@@ -92,9 +98,9 @@ export default function ContactPage({ onNavigate }) {
             </div>
             <div>
               <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#23211E] block mb-1">
-                WHATSAPP
+                {WHATSAPP_CONCIERGE_LABEL.toUpperCase()}
               </span>
-              <span className="text-xs text-[#8B6E3F] font-medium">+66 93 271 9103</span>
+              <span className="text-xs text-[#8B6E3F] font-medium">{WHATSAPP_DISPLAY}</span>
             </div>
           </a>
 
@@ -191,8 +197,8 @@ export default function ContactPage({ onNavigate }) {
                 <span className="w-2 h-2 rounded-full bg-[#A38B68] shrink-0" />
                 <p>
                   <strong className="text-[#23211E] font-medium">WhatsApp Concierge:</strong>{' '}
-                  <a href="https://wa.me/66932719103" target="_blank" rel="noopener noreferrer" className="hover:text-[#A38B68] underline">
-                    +66 93 271 9103
+                  <a href={whatsappHref(whatsappMessages.location)} target="_blank" rel="noopener noreferrer" className="hover:text-[#A38B68] underline">
+                    {WHATSAPP_DISPLAY}
                   </a>
                 </p>
               </div>
@@ -329,12 +335,12 @@ export default function ContactPage({ onNavigate }) {
                   <p className="text-[10px] text-center text-[#6E6A63] font-light pt-1">
                     For the fastest reply, message our{' '}
                     <a
-                      href="https://wa.me/66932719103"
+                      href={whatsappHref(whatsappMessages.location)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#8B6E3F] underline hover:text-[#23211E]"
                     >
-                      WhatsApp concierge
+                      {WHATSAPP_CONCIERGE_LABEL}
                     </a>
                     . This form is not yet connected to our inbox.
                   </p>

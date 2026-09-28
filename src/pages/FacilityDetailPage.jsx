@@ -19,6 +19,11 @@ import {
   Phone,
 } from 'lucide-react';
 import { wellnessData, getFacilityBySlug } from '../data/wellnessData';
+import {
+  WHATSAPP_CONCIERGE_LABEL,
+  whatsappHref,
+  whatsappMessages,
+} from '../utils/whatsappConcierge';
 
 const WhatsAppIcon = ({ size = 18, ...props }) => (
   <svg
@@ -44,10 +49,7 @@ export default function FacilityDetailPage({ facilitySlug, onNavigate, onOpenRes
   const gallery = facility.galleryImages || [facility.image];
   const otherFacilities = wellnessData.facilities.filter((f) => f.id !== facility.id);
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello Elia Phuket Concierge, I would like to inquire about the ${facility.title}.`
-  );
-  const whatsappUrl = `https://wa.me/66932719103?text=${whatsappMessage}`;
+  const whatsappUrl = whatsappHref(whatsappMessages.facility(facility.title));
 
   return (
     <div className="pt-24 pb-24 bg-[#F7F4EF] text-[#23211E] min-h-screen">
@@ -376,7 +378,7 @@ export default function FacilityDetailPage({ facilitySlug, onNavigate, onOpenRes
               className="px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs uppercase tracking-[0.2em] transition-all cursor-pointer inline-flex items-center gap-2"
             >
               <WhatsAppIcon size={16} />
-              <span>WHATSAPP CONCIERGE</span>
+              <span>{WHATSAPP_CONCIERGE_LABEL.toUpperCase()}</span>
             </a>
           </div>
         </div>

@@ -1,5 +1,10 @@
 import { motion } from 'framer-motion';
 import { Sparkles, Heart, Users, Baby, Palmtree, Waves, Check, ArrowRight, BedDouble } from 'lucide-react';
+import {
+  WHATSAPP_CONCIERGE_LABEL,
+  whatsappHref,
+  whatsappMessages,
+} from '../utils/whatsappConcierge';
 
 export default function FamilyPage({ onNavigate, onOpenReservation }) {
   return (
@@ -223,12 +228,12 @@ export default function FamilyPage({ onNavigate, onOpenReservation }) {
               BOOK YOUR STAY
             </button>
             <a
-              href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%2C%20I%20would%20like%20to%20inquire%20about%20a%20family%20stay."
+              href={whatsappHref(whatsappMessages.family)}
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"
             >
-              WHATSAPP CONCIERGE
+              {WHATSAPP_CONCIERGE_LABEL.toUpperCase()}
             </a>
           </div>
         </div>

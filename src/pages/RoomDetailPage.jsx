@@ -13,6 +13,11 @@ import {
   X,
 } from 'lucide-react';
 import { roomsData, getRoomBySlug, getRoomPhotoGallery } from '../data/roomsData';
+import {
+  WHATSAPP_CONCIERGE_LABEL,
+  whatsappHref,
+  whatsappMessages,
+} from '../utils/whatsappConcierge';
 import AccommodationDatePicker from '../components/booking/AccommodationDatePicker';
 import RoomPropertyDatePicker from '../components/booking/RoomPropertyDatePicker';
 
@@ -77,10 +82,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
   // Other room suggestions
   const otherRooms = roomsData.filter((r) => r.id !== room.id);
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello Elia Phuket Concierge, I would like to check availability for the ${room.title}.`
-  );
-  const whatsappUrl = `https://wa.me/66932719103?text=${whatsappMessage}`;
+  const whatsappUrl = whatsappHref(whatsappMessages.roomDetail(room.title));
   const reserveLabel = 'Check dates';
 
   return (
@@ -395,7 +397,7 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
                   className="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.18em] font-semibold flex items-center justify-center gap-2 transition-all"
                 >
                   <WhatsAppIcon size={16} className="text-[#25D366]" />
-                  <span>WHATSAPP CONCIERGE</span>
+                  <span>{WHATSAPP_CONCIERGE_LABEL.toUpperCase()}</span>
                 </a>
               </div>
 

@@ -22,6 +22,7 @@ import FacilityDetailPage from './pages/FacilityDetailPage';
 import BookingPage from './pages/BookingPage';
 
 import CloudbedsBookNow from './components/booking/CloudbedsBookNow';
+import FloatingWhatsAppConcierge from './components/FloatingWhatsAppConcierge';
 import Preloader from './components/Preloader';
 import './App.css';
 import { initGA, trackPageView } from './utils/analytics';
@@ -475,6 +476,10 @@ function App() {
 
       {/* Footer Navigation */}
       <Footer onNavClick={handleNavClick} onOpenReservation={openReservation} />
+
+      {activePage !== 'book-your-stay' && (
+        <FloatingWhatsAppConcierge activePage={activePage} />
+      )}
     </div>
   );
 }

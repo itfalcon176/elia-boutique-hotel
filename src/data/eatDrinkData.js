@@ -1,12 +1,16 @@
-const WHATSAPP_DIGITS = '66932719103';
+import {
+  WHATSAPP_DIGITS,
+  WHATSAPP_DISPLAY,
+  whatsappHref,
+} from '../utils/whatsappConcierge';
 
 export const eatDrinkWhatsapp = {
-  display: '+66 93 271 9103',
+  display: WHATSAPP_DISPLAY,
   digits: WHATSAPP_DIGITS,
 };
 
 export function eatDrinkWhatsappHref(message) {
-  return `https://wa.me/${WHATSAPP_DIGITS}?text=${encodeURIComponent(message)}`;
+  return whatsappHref(message);
 }
 
 export const eatDrinkRoutes = {

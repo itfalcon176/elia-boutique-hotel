@@ -11,6 +11,12 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { allFaqs } from '../data/faqsData';
+import {
+  WHATSAPP_CONCIERGE_LABEL,
+  WHATSAPP_DISPLAY,
+  whatsappHref,
+  whatsappMessages,
+} from '../utils/whatsappConcierge';
 
 const WhatsAppIcon = ({ size = 18, ...props }) => (
   <svg
@@ -139,15 +145,15 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
               <div className="w-8 h-8 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] flex items-center justify-center shrink-0">
                 <WhatsAppIcon size={16} className="text-[#25D366]" />
               </div>
-              <span className="text-xs uppercase tracking-wider font-semibold text-[#23211E]">WhatsApp Host</span>
+              <span className="text-xs uppercase tracking-wider font-semibold text-[#23211E]">{WHATSAPP_CONCIERGE_LABEL}</span>
             </div>
             <a
-              href="https://wa.me/66932719103"
+              href={whatsappHref(whatsappMessages.faq)}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-semibold text-[#8B6E3F] hover:text-[#23211E] flex items-center gap-1 transition-colors"
             >
-              <span>+66 93 271 9103</span>
+              <span>{WHATSAPP_DISPLAY}</span>
               <ExternalLink size={11} />
             </a>
           </div>
@@ -221,13 +227,13 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
                       {faq.id === 10 && (
                         <div className="mt-4 flex flex-wrap gap-2.5">
                           <a
-                            href="https://wa.me/66932719103"
+                            href={whatsappHref(whatsappMessages.faq)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-4 py-2 rounded-full bg-[#25D366] text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 hover:brightness-105 transition-all"
                           >
                             <WhatsAppIcon size={14} />
-                            <span>WhatsApp Host</span>
+                            <span>{WHATSAPP_CONCIERGE_LABEL}</span>
                           </a>
                           <a
                             href="tel:+66932719103"
@@ -261,13 +267,13 @@ export default function FaqsPage({ onNavigate, onOpenReservation }) {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/66932719103?text=Hello%20Elia%20Phuket%20Concierge%2C%20I%20have%20a%20question%20about%20staying%20at%20Elia."
+                href={whatsappHref(whatsappMessages.faq)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#25D366] text-white font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
                 <WhatsAppIcon size={16} />
-                <span>WHATSAPP: +66 93 271 9103</span>
+                <span>{WHATSAPP_CONCIERGE_LABEL.toUpperCase()}</span>
               </a>
 
               <button
