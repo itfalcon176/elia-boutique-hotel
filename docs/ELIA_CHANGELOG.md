@@ -1,5 +1,16 @@
 # Elia Boutique Hotel — Changelog
 
+## 2026-09-28 — Site-wide booking CTA unification
+
+Theme, branding and page architecture are unchanged. Cloudbeds and Stripe were not modified. No new booking popup or second booking implementation was added.
+
+- The header **BOOK NOW** handler (`handleNavClick('book-your-stay')` → `/book-your-stay`) is now the single stay-booking function for every primary Book / Reserve / Check Availability CTA.
+- `openReservation` no longer dispatches `elia-open-booking`. It calls the same header handler.
+- Existing button styles were left unchanged.
+- Hero and room Cloudbeds date pickers were left as Cloudbeds widgets (they already continue to `/book-your-stay`).
+
+Verified on desktop 1440 and mobile 390: header BOOK NOW, mobile drawer Book Now, homepage Book Your Stay, accommodation Book Your Stay, facilities BOOK YOUR STAY, facility-detail BOOK YOUR STAY, experiences / Bang Tao / GOAT / family / about / FAQ / offers CTAs, and footer Direct Reservations all open `/book-your-stay`. Location/contact has no page-level stay-booking button; its booking path is header BOOK NOW plus footer Direct Reservations.
+
 ## 2026-09-28 — Remaining handover completion
 
 Theme, branding and page architecture are unchanged. Cloudbeds and Stripe were not modified.
