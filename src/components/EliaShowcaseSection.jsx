@@ -575,9 +575,60 @@ export default function EliaShowcaseSection({ onNavigate }) {
         </div>
       </section>
 
-      {/* SECTION 6: Eat. Drink. Stay Awhile. */}
-      <section className="py-16 sm:py-24 bg-[#FFFFFF] text-[#23211E]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* SECTION 6: Eat. Drink. Stay awhile. */}
+      <section className="py-16 sm:py-24 bg-[#FFFFFF] text-[#23211E] scroll-mt-28">
+        <div className="lg:hidden max-w-[22.75rem] min-[390px]:max-w-[24rem] mx-auto px-6">
+          <span className="block font-sans text-[11px] uppercase tracking-[0.26em] font-normal text-[#C5B7A0]">
+            Food & Beverage
+          </span>
+          <h2 className="mt-5 font-serif font-normal text-[2.85rem] leading-[1.12] tracking-[-0.018em] text-[#1A1612]">
+            Eat. Drink.
+            <br />
+            <span className="italic font-serif font-normal text-gold-gradient">Stay awhile.</span>
+          </h2>
+          <p className="mt-4 font-sans text-[15px] leading-[1.55] font-normal text-[#6E6860]">
+            Beachfront dining by GOAT Beach Club, just next door.
+          </p>
+
+          <div className="mt-8 overflow-hidden rounded-[1.15rem]">
+            <img
+              src="/images/dining.png"
+              alt="Beachfront dining at GOAT Beach Club Bang Tao"
+              className="w-full aspect-[4/3] object-cover"
+            />
+          </div>
+          <p className="mt-3.5 font-sans text-[10px] uppercase tracking-[0.2em] font-normal text-[#A39B90]">
+            GOAT Beach Club · Bang Tao Beach
+          </p>
+
+          <p className="mt-5 font-sans text-[15px] leading-[1.6] font-normal text-[#5F5A52]">
+            From breakfast and barista coffee to sunset cocktails and dinner. Enjoy it all next door—or let room service come to you.
+          </p>
+
+          <div className="mt-7 grid grid-cols-3 items-center font-sans text-[12px] font-normal text-[#2A2620]">
+            <span className="text-center px-0.5 whitespace-nowrap">Breakfast</span>
+            <span className="text-center px-0.5 whitespace-nowrap border-x border-[#D0C9BC]">Beachfront dining</span>
+            <span className="text-center px-0.5 whitespace-nowrap">Room service</span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onNavigate('menus/breakfast')}
+            className="mt-8 w-full h-[3.45rem] rounded-[10px] bg-[#111111] text-white font-sans text-[13px] font-medium uppercase tracking-[0.12em] inline-flex items-center justify-center gap-2.5 cursor-pointer"
+          >
+            View GOAT menus
+            <span aria-hidden="true" className="text-[16px] font-normal tracking-normal">→</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigate('eat-drink')}
+            className="mt-5 w-full text-center font-sans text-[15px] font-normal text-[#C5A880] cursor-pointer"
+          >
+            Explore food & drinks →
+          </button>
+        </div>
+
+        <div className="hidden lg:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-5">
               <span className="text-[10px] uppercase tracking-[0.3em] text-[#A38B68] font-bold block font-sans">
