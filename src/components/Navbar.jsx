@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { X, Calendar, ChevronDown, ArrowRight, Globe, Check } from 'lucide-react';
+import { Menu as MenuIcon, X, Calendar, ChevronDown, ArrowRight, Globe, Check } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
 // Crisp Vector SVG Flag Components for 100% Consistent Cross-Platform Rendering (iOS, Android, Windows, Mac)
@@ -342,7 +342,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                 setLangDropdownOpen(false);
                 setMobileMenuOpen(!mobileMenuOpen);
               }}
-              className={`inline-flex h-11 min-w-11 items-center justify-center justify-self-start text-[11px] font-medium uppercase tracking-[0.18em] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+              className={`inline-flex h-11 w-11 shrink-0 items-center justify-center justify-self-start cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
                 isLightHeader
                   ? 'text-[#23211E] focus-visible:outline-[#A38B68]'
                   : 'text-white focus-visible:outline-[#C5A880]'
@@ -351,7 +351,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               aria-expanded={mobileMenuOpen}
               aria-controls={mobileMenuOpen ? 'elia-mobile-menu' : undefined}
             >
-              Menu
+              {mobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
             </button>
             <button
               type="button"
@@ -361,7 +361,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               <img
                 src={isLightHeader ? '/Logos/elia gold.png' : '/Logos/logo nwww.png'}
                 alt="Elia Boutique Hotel Phuket Logo"
-                className="h-11 w-auto max-w-[42vw] object-contain"
+                className="h-12 w-auto max-w-[calc(100vw-15.5rem)] object-contain"
                 onError={(e) => {
                   e.target.src = '/Logos/elia gold.png';
                 }}
@@ -371,17 +371,18 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               <button
                 type="button"
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className={`inline-flex h-11 min-w-11 items-center justify-center text-[11px] font-semibold uppercase tracking-[0.18em] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+                className={`flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-full border transition-all duration-300 cursor-pointer ${
                   isLightHeader
-                    ? 'text-[#23211E] focus-visible:outline-[#A38B68]'
-                    : 'text-white focus-visible:outline-[#C5A880]'
+                    ? 'bg-white/90 text-[#23211E] border-[#A38B68]/30 hover:border-[#A38B68] shadow-sm'
+                    : 'bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-md shadow-sm'
                 }`}
-                aria-label={`Select language, ${selectedLang.name}`}
-                aria-expanded={langDropdownOpen}
-                aria-haspopup="listbox"
+                aria-label="Select Language"
                 title={`Language: ${selectedLang.name}`}
               >
-                {selectedLang.code}
+                <Globe size={13} className={isLightHeader ? 'text-[#A38B68]' : 'text-[#C5A880]'} />
+                <selectedLang.FlagComponent className="w-4 h-3" />
+                <span className="text-[11px] uppercase tracking-wider font-semibold font-sans">{selectedLang.code}</span>
+                <ChevronDown size={11} className={`transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {renderLanguageMenu()}
             </div>
