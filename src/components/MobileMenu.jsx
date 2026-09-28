@@ -43,8 +43,8 @@ const PRIMARY_CARDS = [
     id: 'eat-drink',
     title: 'Food & Drinks',
     subtitle: 'Dining experiences',
-    image: '/menus-images/Nomad+Crab+Salad.jpg',
-    imagePosition: '52% 42%',
+    image: '/images/menu-food-card.jpg',
+    imagePosition: '38% 48%',
     Icon: Utensils,
   },
   {
@@ -262,7 +262,7 @@ export default function MobileMenu({
                         key={card.id}
                         type="button"
                         onClick={() => (card.opensPanel ? setLevel('rooms') : go(card.id))}
-                        className="relative w-full h-[4.7rem] min-[375px]:h-[4.9rem] min-[414px]:h-[5.15rem] rounded-full overflow-hidden bg-[#f4f0ea] text-left cursor-pointer shadow-[0_1px_2px_rgba(28,25,22,0.04)]"
+                        className="relative w-full h-[4.85rem] min-[375px]:h-[5.05rem] min-[414px]:h-[5.25rem] rounded-full overflow-hidden bg-[#f4f0ea] text-left cursor-pointer shadow-[0_1px_2px_rgba(28,25,22,0.04)]"
                       >
                         <img
                           src={card.image}
@@ -271,13 +271,13 @@ export default function MobileMenu({
                           style={{ objectPosition: card.imagePosition }}
                         />
                         <div className="elia-mobile-menu-card-wash absolute inset-0" />
-                        <div className="relative h-full flex items-center gap-3 pl-4 min-[375px]:pl-[1.15rem] pr-12">
-                          <Icon size={22} strokeWidth={1.55} className="text-[#6F6558] shrink-0" />
-                          <span className="min-w-0 max-w-[52%] min-[360px]:max-w-[54%]">
+                        <div className="relative h-full flex items-center gap-2.5 pl-4 min-[375px]:pl-[1.15rem] pr-11">
+                          <Icon size={21} strokeWidth={1.55} className="text-[#6F6558] shrink-0" />
+                          <span className="min-w-0 max-w-[62%] min-[360px]:max-w-[64%]">
                             <span className="block text-[15.5px] min-[375px]:text-[16.5px] font-medium tracking-[-0.018em] text-[#1C1916] leading-none">
                               {card.title}
                             </span>
-                            <span className="block mt-1 text-[12px] min-[375px]:text-[12.5px] text-[#7A746B] font-normal leading-snug">
+                            <span className="block mt-1 text-[11.5px] min-[375px]:text-[12px] text-[#7A746B] font-normal leading-snug">
                               {card.subtitle}
                             </span>
                           </span>
