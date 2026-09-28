@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Flame, Snowflake, Bath, Droplets, Check, ArrowRight, Heart, Calendar } from 'lucide-react';
+import { Sparkles, Flame, Snowflake, Bath, Droplets, Heart, Waves, Users } from 'lucide-react';
 
 export default function WellnessPage({ onNavigate, onOpenReservation }) {
   const spaFacilities = [
@@ -211,6 +211,80 @@ export default function WellnessPage({ onNavigate, onOpenReservation }) {
             </div>
           </div>
         </motion.div>
+
+        {/* Family, Beach & Guest Services */}
+        <div className="mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs uppercase tracking-[0.3em] text-[#A38B68] font-semibold mb-2 block font-sans">
+              Beyond the Thermal Circuit
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-light text-[#23211E]">
+              Beach, Family & Seamless Arrival
+            </h2>
+            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mt-3" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                slug: 'kids-club',
+                title: 'Kids Club & Family Care',
+                desc: 'Creative play, family suites, and thoughtful amenities for younger guests.',
+                icon: Users,
+                image: '/images/Breakfast.webp',
+              },
+              {
+                slug: 'beach-access',
+                title: 'Direct Bang Tao Beach',
+                desc: 'Step from the gardens onto golden sand — no roads to cross.',
+                icon: Waves,
+                image: '/images/cocktail.png',
+              },
+              {
+                slug: 'airport-transfers',
+                title: 'Private Airport Transfers',
+                desc: 'Meet-and-greet chauffeur service from Phuket International Airport (HKT).',
+                icon: Sparkles,
+                image: '/images/suite.png',
+              },
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  onClick={() => onNavigate(`facilities/${item.slug}`)}
+                  className="bg-white rounded-3xl overflow-hidden border border-[#A38B68]/25 shadow-lg group hover:shadow-2xl hover:border-[#A38B68] transition-all cursor-pointer"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={`${item.title} at Elia Boutique Hotel Phuket`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#23211E]/80 backdrop-blur-md flex items-center justify-center text-[#A38B68]">
+                      <Icon size={20} />
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-serif text-xl font-light text-[#23211E] mb-2 group-hover:text-[#8B6E3F] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-[#6E6A63] font-light leading-relaxed font-sans mb-3">
+                      {item.desc}
+                    </p>
+                    <span className="text-[11px] text-[#A38B68] font-semibold uppercase tracking-wider">
+                      Learn more →
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
 
         {/* Bottom CTA Callout */}
         <div className="p-8 sm:p-12 rounded-3xl bg-[#FAF7F2] border border-[#A38B68]/30 text-center">

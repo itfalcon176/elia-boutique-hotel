@@ -198,6 +198,34 @@ export default function LegalAndPolicyPages({ pageType, onNavigate }) {
           ))}
         </div>
 
+        {pageType === 'directions' && (
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#23211E] text-[#F7F4EF] text-xs font-semibold uppercase tracking-wider hover:bg-[#A38B68] transition-all shadow-md"
+            >
+              <Navigation size={14} />
+              <span>Open in Google Maps</span>
+            </a>
+            <button
+              type="button"
+              onClick={() => onNavigate('contact')}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#A38B68] text-[#8B6E3F] text-xs font-semibold uppercase tracking-wider hover:bg-[#A38B68]/10 transition-all cursor-pointer"
+            >
+              <span>Location &amp; Contact</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('facilities/airport-transfers')}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#A38B68]/40 text-[#23211E] text-xs font-semibold uppercase tracking-wider hover:bg-[#FAF7F2] transition-all cursor-pointer"
+            >
+              <span>Book Airport Transfer</span>
+            </button>
+          </div>
+        )}
+
         {/* Bottom Concierge Help Box */}
         <div className="mt-12 p-6 rounded-3xl bg-[#FAF7F2] border border-[#A38B68]/30 text-center text-xs text-[#6E6A63]">
           <p className="mb-3">

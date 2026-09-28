@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, Navigation, Plane, Car, Compass, Clock, Phone, Mail } from 'lucide-react';
+import { MapPin, Clock, Phone, Mail } from 'lucide-react';
 
 export default function LocationPage() {
   const nearbyHighlights = [
@@ -64,27 +64,39 @@ export default function LocationPage() {
             </div>
           </div>
 
-          {/* Right Interactive Map Placeholder Box */}
-          <div className="lg:col-span-7 rounded-3xl overflow-hidden glass-card border border-[#A38B68]/30 relative min-h-[380px] flex items-center justify-center p-8 text-center bg-gradient-to-br from-[#EFEAE2] via-[#F7F4EF] to-[#EFEAE2]">
-            <div className="max-w-md">
-              <div className="w-16 h-16 rounded-full bg-[#23211E] text-[#F7F4EF] flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Navigation size={28} className="text-[#A38B68]" />
+          {/* Right: Google Maps embed (same embed as Location & Contact page) */}
+          <div className="lg:col-span-7 rounded-3xl overflow-hidden glass-card border border-[#A38B68]/30 shadow-xl flex flex-col">
+            <div className="p-6 border-b border-[#A38B68]/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="font-serif text-xl font-light text-[#23211E]">
+                  Bang Tao Beach Frontline
+                </h3>
+                <p className="text-xs text-[#6E6A63] font-light mt-1 font-sans">
+                  ~40 minutes from Phuket International Airport (HKT)
+                </p>
               </div>
-              <h3 className="font-serif text-2xl font-medium text-[#23211E] mb-2">
-                Bang Tao Beach Frontline
-              </h3>
-              <p className="text-xs text-[#6E6A63] font-light mb-6 font-sans">
-                Conveniently accessible by private car, taxi, or airport transfer. 40 minutes south of Phuket International Airport (HKT).
-              </p>
               <a
                 href="https://maps.app.goo.gl/D4kSwVVSjBbioifd8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold text-xs uppercase tracking-widest hover:bg-[#A38B68] transition-all shadow-md"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold text-[10px] uppercase tracking-widest hover:bg-[#A38B68] transition-all shadow-md shrink-0"
               >
                 <MapPin size={14} />
                 <span>Open in Google Maps</span>
               </a>
+            </div>
+            <div className="flex-1 min-h-[380px]">
+              <iframe
+                title="Elia Boutique Hotel Phuket on Google Maps"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.1335163944177!2d98.2837060761358!3d7.985144892040057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3050392384ea56ab%3A0x121edcebcc33814c!2sELIA%20Boutique%20Hotel%20Phuket!5e0!3m2!1sen!2sth!4v1710000000000!5m2!1sen!2sth"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '380px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              />
             </div>
           </div>
         </div>
