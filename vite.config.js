@@ -9,8 +9,14 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
+    host: true,
+    allowedHosts: true,
     watch: {
       ignored: ['**/16475202_3840_2160_60fps.mp4'],
     },
+  },
+  preview: {
+    host: true,
+    allowedHosts: true,
   },
 })
