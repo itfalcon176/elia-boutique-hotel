@@ -74,7 +74,7 @@ const languages = [
   { code: 'DE', name: 'German', native: 'Deutsch', FlagComponent: FlagDE },
 ];
 
-export default function Navbar({ activePage, setActivePage, onOpenReservation }) {
+export default function Navbar({ activePage, setActivePage }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [roomsDropdownOpen, setRoomsDropdownOpen] = useState(false);
@@ -544,8 +544,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
               <button
                 type="button"
                 onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenReservation?.();
+                  handleNavClick('book-your-stay');
                 }}
                 className="w-full min-h-12 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold uppercase tracking-[0.18em] text-xs flex items-center justify-center gap-2 cursor-pointer"
               >

@@ -360,17 +360,6 @@ function App() {
     };
   }, []);
 
-  const openReservation = (roomId) => {
-    const onBookingPage = window.location.pathname.replace(/\/$/, '').toLowerCase() === '/book-your-stay';
-    if (onBookingPage) {
-      document.getElementById('elia-booking-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return;
-    }
-    window.dispatchEvent(new CustomEvent('elia-open-booking', {
-      detail: { roomId: typeof roomId === 'string' ? roomId : '' },
-    }));
-  };
-
   const handleNavClick = (id) => {
     const targetPath = pageToPath[id] || `/${id}`;
     // Search opens the booking engine with a full page load. The logo and
@@ -390,6 +379,10 @@ function App() {
     setTimeout(trackPageView, 0);
   };
 
+  const openReservation = () => {
+    handleNavClick('book-your-stay');
+  };
+
   const isRoomPage = activePage.startsWith('rooms/');
   const whatsappMessage = isRoomPage
     ? roomEnquiryMessage(activePage.replace('rooms/', '').replace(/-/g, ' '))
@@ -407,7 +400,6 @@ function App() {
       <Navbar
         activePage={activePage}
         setActivePage={handleNavClick}
-        onOpenReservation={openReservation}
       />
 
       {/* Page Content Rendering */}
