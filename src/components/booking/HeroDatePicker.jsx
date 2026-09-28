@@ -58,14 +58,6 @@ export default function HeroDatePicker() {
 
   return (
     <div className="elia-stay-search w-full">
-      {!failed && (
-        <div className="elia-stay-search-labels" aria-hidden="true">
-          <span>Check-in</span>
-          <span>Check-out</span>
-          <span>Guests</span>
-          <span>Availability</span>
-        </div>
-      )}
       <div
         ref={hostRef}
         className={`elia-hero-date-picker w-full select-text ${failed ? 'elia-cloudbeds-failed' : ''}`}
