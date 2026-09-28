@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { BedDouble, Users, Maximize, ArrowRight, Sparkles, Waves } from 'lucide-react';
+import { BedDouble, Users, Maximize, ArrowRight, Sparkles, Waves, MapPin } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
 
 export default function RoomsPage({ onNavigate }) {
@@ -111,18 +111,23 @@ export default function RoomsPage({ onNavigate }) {
                   {/* Room Details & Specifications (lg:col-span-5) */}
                   <div className={`lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between ${isEven ? '' : 'lg:order-1'}`}>
                     <div>
-                      <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center justify-between mb-3 gap-3">
                         <span className="text-[10px] uppercase tracking-[0.25em] text-[#A38B68] font-bold">
                           {room.countLabel}
                         </span>
-                        <span className="text-xs font-serif font-medium text-[#23211E]">
-                          {room.pricePerNight}
-                        </span>
+                        {room.pricePerNight ? (
+                          <span className="text-xs font-serif font-medium text-[#23211E] text-right">
+                            {room.pricePerNight}
+                          </span>
+                        ) : null}
                       </div>
 
-                      <h3 className="font-serif text-2xl sm:text-3xl text-[#23211E] font-light mb-2">
+                      <h3 className="font-serif text-2xl sm:text-3xl text-[#23211E] font-light mb-1">
                         {room.title}
                       </h3>
+                      <p className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-[#8B6E3F] font-semibold mb-2 font-sans">
+                        {room.subtitle}
+                      </p>
 
                       <p className="text-[#8B6E3F] text-xs font-serif italic mb-3">
                         {room.headline}
@@ -159,13 +164,30 @@ export default function RoomsPage({ onNavigate }) {
                         </div>
                       </div>
 
-                      {/* Outdoor Area Highlight */}
-                      <div className="mt-4 mb-6">
-                        <div className="flex items-start gap-2 text-xs text-[#555047] font-light">
-                          <Waves size={15} className="text-[#A38B68] shrink-0 mt-0.5" />
-                          <span><strong className="font-medium text-[#23211E]">Outdoor Area:</strong> {room.outdoorArea}</span>
+                      {/* Location / outdoor highlight */}
+                      {(room.outdoorArea || room.locationType) && (
+                        <div className="mt-4 mb-6">
+                          <div className="flex items-start gap-2 text-xs text-[#555047] font-light">
+                            {room.outdoorArea ? (
+                              <>
+                                <Waves size={15} className="text-[#A38B68] shrink-0 mt-0.5" />
+                                <span>
+                                  <strong className="font-medium text-[#23211E]">Outdoor area:</strong>{' '}
+                                  {room.outdoorArea}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <MapPin size={15} className="text-[#A38B68] shrink-0 mt-0.5" />
+                                <span>
+                                  <strong className="font-medium text-[#23211E]">Location:</strong>{' '}
+                                  {room.locationType}
+                                </span>
+                              </>
+                            )}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
 
                     {/* Action CTAs */}

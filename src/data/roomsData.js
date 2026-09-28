@@ -22,12 +22,7 @@ export const roomsData = [
     pricePerNight: 'From 8,500 THB / night',
     tag: '8 Rooms • Ground Floor',
     mainImage: '/accommodation/garden-beach-room.jpg',
-    gallery: [
-      '/accommodation/garden-beach-room.jpg',
-      '/images/dining.png',
-      '/images/spa.png',
-      '/images/cocktail.png',
-    ],
+    gallery: ['/accommodation/garden-beach-room.jpg'],
     highlights: [
       'King-size bed',
       'Ground-floor location',
@@ -69,8 +64,7 @@ export const roomsData = [
     mainImage: '/accommodation/garden-family-suite.jpg',
     gallery: [
       '/accommodation/garden-family-suite.jpg',
-      '/images/spa.png',
-      '/images/latenight.png',
+      '/accommodation/Garden%20Family%20Suite%202.webp',
     ],
     highlights: [
       'King-size bed',
@@ -111,8 +105,7 @@ export const roomsData = [
     mainImage: '/accommodation/loft-apartment.jpg',
     gallery: [
       '/accommodation/loft-apartment.jpg',
-      '/images/cocktail.png',
-      '/images/dining.png',
+      '/accommodation/Loft%20Apartment%203.webp',
     ],
     highlights: [
       'Upstairs location',
@@ -151,8 +144,7 @@ export const roomsData = [
     mainImage: '/accommodation/one-bedroom-loft-suite.jpg',
     gallery: [
       '/accommodation/one-bedroom-loft-suite.jpg',
-      '/images/spa.png',
-      '/images/dining.png',
+      '/accommodation/One-Bedroom%20Loft%20Suite%204.webp',
     ],
     highlights: [
       'Separate bedroom',
@@ -171,6 +163,13 @@ export const roomsData = [
     metaDesc: 'Our spacious One-Bedroom Loft Suite offers extra room for couples and families just moments from Bang Tao Beach in Phuket.',
   },
 ];
+
+/** Room photos only — deduped, main image first. */
+export const getRoomPhotoGallery = (room) => {
+  if (!room) return [];
+  const items = [room.mainImage, ...(room.gallery || [])].filter(Boolean);
+  return [...new Set(items)];
+};
 
 export const getRoomBySlug = (slug) => {
   const clean = (slug || '').replace(/^rooms\//, '');

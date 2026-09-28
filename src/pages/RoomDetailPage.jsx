@@ -9,8 +9,10 @@ import {
   Sparkles,
   ArrowRight,
   ShieldCheck,
+  MapPin,
+  X,
 } from 'lucide-react';
-import { roomsData, getRoomBySlug } from '../data/roomsData';
+import { roomsData, getRoomBySlug, getRoomPhotoGallery } from '../data/roomsData';
 import AccommodationDatePicker from '../components/booking/AccommodationDatePicker';
 import RoomPropertyDatePicker from '../components/booking/RoomPropertyDatePicker';
 
@@ -48,6 +50,29 @@ function useCompactBookingBar() {
 export default function RoomDetailPage({ roomSlug, onNavigate }) {
   const room = getRoomBySlug(roomSlug) || roomsData[0];
   const compactBookingBar = useCompactBookingBar();
+  const photos = getRoomPhotoGallery(room);
+  const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  useEffect(() => {
+    setActivePhotoIndex(0);
+    setLightboxOpen(false);
+  }, [room.id]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setLightboxOpen(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [lightboxOpen]);
+
+  const activePhoto = photos[activePhotoIndex] || room.mainImage;
 
   // Other room suggestions
   const otherRooms = roomsData.filter((r) => r.id !== room.id);
@@ -98,10 +123,12 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
             </p>
           </div>
 
-          <div className="text-left md:text-right">
-            <span className="text-[10px] uppercase tracking-widest text-[#6E6A63] block">Rates starting from</span>
-            <span className="font-serif text-2xl sm:text-3xl text-[#23211E] font-medium">{room.pricePerNight}</span>
-          </div>
+          {room.pricePerNight ? (
+            <div className="text-left md:text-right">
+              <span className="text-[10px] uppercase tracking-widest text-[#6E6A63] block">Rates starting from</span>
+              <span className="font-serif text-2xl sm:text-3xl text-[#23211E] font-medium">{room.pricePerNight}</span>
+            </div>
+          ) : null}
         </div>
 
         {/* Hero Photo Gallery & Accommodation Category Selector */}
@@ -110,25 +137,34 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
           {/* Main Photo Display (lg:col-span-9) */}
           <div className="lg:col-span-9 relative rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] shadow-2xl border border-[#A38B68]/30 group">
             <AnimatePresence mode="wait">
-              <motion.img
-                key={room.id}
-                src={room.mainImage}
-                alt={`${room.title} at Elia Boutique Hotel Phuket`}
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="w-full h-full object-cover"
-              />
+              <motion.button
+                type="button"
+                key={`${room.id}-${activePhotoIndex}`}
+                onClick={() => photos.length > 0 && setLightboxOpen(true)}
+                className="relative block w-full h-full cursor-zoom-in text-left"
+                aria-label={`View larger photo of ${room.title}`}
+              >
+                <motion.img
+                  src={activePhoto}
+                  alt={`${room.title} at Elia Boutique Hotel Phuket`}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full h-full object-cover"
+                />
+              </motion.button>
             </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs backdrop-blur-md bg-black/40 px-4 py-2.5 rounded-xl border border-white/20">
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs backdrop-blur-md bg-black/40 px-4 py-2.5 rounded-xl border border-white/20 pointer-events-none">
               <div>
                 <span className="font-serif text-sm sm:text-base font-normal tracking-wide block">{room.title}</span>
                 <span className="text-[10px] text-white/80">{room.countLabel} • {room.size}</span>
               </div>
-              <span className="text-[#C5A880] uppercase tracking-wider text-[10px] font-semibold">Bang Tao Beach, Phuket</span>
+              <span className="text-[#C5A880] uppercase tracking-wider text-[10px] font-semibold hidden sm:inline">
+                {photos.length > 1 ? `Photo ${activePhotoIndex + 1} of ${photos.length}` : 'Bang Tao Beach, Phuket'}
+              </span>
             </div>
           </div>
 
@@ -174,6 +210,43 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
           </div>
 
         </div>
+
+        {photos.length > 1 && (
+          <div className="mb-12">
+            <div className="flex items-center justify-between mb-3 px-1">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-[#6E6A63] font-semibold font-sans">
+                Room gallery
+              </span>
+              <span className="text-[10px] text-[#8B6E3F] font-light lg:hidden">
+                Tap a photo to view larger
+              </span>
+            </div>
+            <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar snap-x snap-mandatory lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0">
+              {photos.map((src, index) => {
+                const isActive = index === activePhotoIndex;
+                return (
+                  <button
+                    key={`${room.id}-photo-${index}`}
+                    type="button"
+                    onClick={() => {
+                      setActivePhotoIndex(index);
+                      setLightboxOpen(true);
+                    }}
+                    className={`relative shrink-0 w-[42%] sm:w-[32%] lg:w-auto snap-start rounded-2xl overflow-hidden aspect-[4/3] border-2 transition-all cursor-pointer ${
+                      isActive
+                        ? 'border-[#A38B68] ring-2 ring-[#A38B68]/35 shadow-lg'
+                        : 'border-[#A38B68]/20 opacity-90 hover:opacity-100 hover:border-[#A38B68]/45'
+                    }`}
+                    aria-label={`Show photo ${index + 1} of ${photos.length} for ${room.title}`}
+                    aria-pressed={isActive}
+                  >
+                    <img src={src} alt="" className="w-full h-full object-cover" />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Detailed Room Specs, Description & Action Sidebar Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -223,19 +296,31 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
               </p>
 
               {/* Private Outdoor Area Box */}
-              {room.outdoorArea && (
+              {room.outdoorArea ? (
                 <div className="p-5 rounded-2xl bg-[#FAF7F2] border border-[#A38B68]/30 flex items-start gap-3.5">
                   <Waves size={20} className="text-[#A38B68] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs uppercase tracking-wider font-bold text-[#23211E] mb-1">
-                      Private Outdoor Area
+                      Private outdoor area
                     </h4>
                     <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
                       {room.outdoorArea}
                     </p>
                   </div>
                 </div>
-              )}
+              ) : room.locationType ? (
+                <div className="p-5 rounded-2xl bg-[#FAF7F2] border border-[#A38B68]/30 flex items-start gap-3.5">
+                  <MapPin size={20} className="text-[#A38B68] shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-xs uppercase tracking-wider font-bold text-[#23211E] mb-1">
+                      Location in the hotel
+                    </h4>
+                    <p className="text-xs text-[#6E6A63] font-light leading-relaxed">
+                      {room.locationType}. Shared Elia facilities, the plunge pool and Bang Tao Beach are a short walk away.
+                    </p>
+                  </div>
+                </div>
+              ) : null}
             </div>
 
             {/* Room Key Highlights */}
@@ -368,6 +453,58 @@ export default function RoomDetailPage({ roomSlug, onNavigate }) {
           />
         </div>
       )}
+
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#181715]/95 p-4 sm:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${room.title} photo gallery`}
+            onClick={() => setLightboxOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setLightboxOpen(false)}
+              className="absolute top-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white hover:bg-black/60 transition-colors"
+              aria-label="Close gallery"
+            >
+              <X size={22} />
+            </button>
+            <motion.img
+              key={activePhoto}
+              src={activePhoto}
+              alt={`${room.title} at Elia Boutique Hotel Phuket`}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              className="max-h-[85vh] max-w-full rounded-2xl object-contain shadow-2xl"
+              onClick={(event) => event.stopPropagation()}
+            />
+            {photos.length > 1 && (
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 rounded-full bg-black/50 px-3 py-2 backdrop-blur-md border border-white/15">
+                {photos.map((src, index) => (
+                  <button
+                    key={`lightbox-dot-${index}`}
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setActivePhotoIndex(index);
+                    }}
+                    className={`h-2 w-2 rounded-full transition-all ${
+                      index === activePhotoIndex ? 'bg-[#C5A880] w-5' : 'bg-white/40 hover:bg-white/70'
+                    }`}
+                    aria-label={`Photo ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
