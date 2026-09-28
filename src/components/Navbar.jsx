@@ -580,7 +580,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                 </div>
               </div>
 
-              <nav className="my-auto w-full py-5" aria-label="Primary">
+              <nav className="my-auto w-full py-3" aria-label="Primary">
                 <ul className="flex flex-col">
                   {navLinks.map((link) => {
                     if (link.hasDropdown) {
@@ -597,7 +597,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                           >
                             {link.label}
                           </button>
-                          <ul className="mb-3 mt-0.5 flex flex-col" aria-label="Rooms">
+                          <ul className="mb-2 mt-0.5 flex flex-col" aria-label="Rooms">
                             {roomsData.map((room) => {
                               const roomPage = `rooms/${room.slug}`;
                               const isRoomActive = activePage === roomPage;
@@ -642,7 +642,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReservation })
                 </ul>
               </nav>
 
-              <div className="sticky bottom-0 z-10 -mx-6 shrink-0 bg-[#F7F4EF] px-6 pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+              <div className="sticky bottom-0 z-10 -mx-6 shrink-0 bg-[#F7F4EF] px-6 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
                 <button
                   type="button"
                   onClick={() => {
