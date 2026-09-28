@@ -1,88 +1,173 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Sparkles } from 'lucide-react';
 import { top10GuestFaqs, additionalGuestFaqs, allFaqs } from '../data/faqsData';
+import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export { top10GuestFaqs, additionalGuestFaqs, allFaqs };
+
+const HOME_FAQS = [
+  {
+    question: 'What time is check-in and check-out?',
+    answer:
+      'Check-in is from 2:00 PM and check-out is by 12:00 PM. Early check-in or late check-out is subject to availability.',
+  },
+  {
+    question: 'Is Elia Hotel directly on the beach?',
+    answer: top10GuestFaqs[1].answer,
+  },
+  {
+    question: 'Is breakfast included and where is it served?',
+    answer: top10GuestFaqs[2].answer,
+  },
+  {
+    question: 'Does Elia have a swimming pool and spa facilities?',
+    answer: top10GuestFaqs[3].answer,
+  },
+  {
+    question: 'Can I book massages through the hotel?',
+    answer: top10GuestFaqs[4].answer,
+  },
+  {
+    question: 'Does Elia arrange airport transfers?',
+    answer: top10GuestFaqs[5].answer,
+  },
+];
+
+function FaqIntro() {
+  return (
+    <>
+      <span className="block font-sans text-[11px] uppercase tracking-[0.26em] font-normal text-[#C5B7A0]">
+        Good to know
+      </span>
+      <h2 className="mt-5 font-serif font-normal text-[2.35rem] lg:text-[3.15rem] leading-[1.12] tracking-[-0.02em] text-[#1A1612]">
+        Your questions,
+        <br />
+        <span className="italic font-serif font-normal text-gold-gradient">answered.</span>
+      </h2>
+      <p className="mt-4 font-sans text-[15px] leading-[1.55] font-normal text-[#6E6860] max-w-[20rem]">
+        A few helpful details before your stay.
+      </p>
+    </>
+  );
+}
+
+function FaqHelp() {
+  return (
+    <div>
+      <h3 className="font-serif font-normal text-[1.45rem] lg:text-[1.6rem] leading-snug text-[#1A1612]">
+        Still have a question?
+      </h3>
+      <p className="mt-2 font-sans text-[15px] leading-relaxed font-normal text-[#6E6860]">
+        Our concierge is here to help.
+      </p>
+      <a
+        href={whatsappUrl(WHATSAPP_MESSAGES.default)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-5 w-full lg:w-auto lg:min-w-[15.5rem] h-[3.25rem] px-6 rounded-full border border-[#1A1612] text-[#1A1612] font-sans text-[12px] font-medium uppercase tracking-[0.12em] inline-flex items-center justify-center gap-2.5"
+      >
+        <WhatsAppIcon size={15} />
+        WhatsApp Concierge
+      </a>
+    </div>
+  );
+}
+
+function FaqList({ openIndex, onToggle }) {
+  return (
+    <div>
+      {HOME_FAQS.map((faq, idx) => {
+        const isOpen = openIndex === idx;
+        return (
+          <div key={faq.question} className="border-b border-[#E4DED3]">
+            <button
+              type="button"
+              onClick={() => onToggle(idx)}
+              aria-expanded={isOpen}
+              className="w-full py-5 text-left flex items-start justify-between gap-6 cursor-pointer"
+            >
+              <span className="font-sans text-[15px] lg:text-[16px] font-medium leading-snug text-[#1A1612]">
+                {faq.question}
+              </span>
+              <span
+                aria-hidden="true"
+                className="mt-0.5 shrink-0 font-sans text-[18px] leading-none text-[#C5A880]"
+              >
+                {isOpen ? '−' : '+'}
+              </span>
+            </button>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.28, ease: 'easeOut' }}
+                  className="overflow-hidden"
+                >
+                  <p className="pb-5 font-sans text-[14px] leading-[1.65] font-normal text-[#6E6860] max-w-[34rem]">
+                    {faq.answer}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function FaqsSection({ onNavigate }) {
   const [openIndex, setOpenIndex] = useState(0);
 
+  const onToggle = (idx) => {
+    setOpenIndex((current) => (current === idx ? null : idx));
+  };
+
   return (
-    <section id="faqs" className="relative py-20 sm:py-28 bg-[#F7F4EF] text-[#23211E] overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-14">
-          <span className="text-xs uppercase tracking-[0.4em] text-[#A38B68] font-semibold mb-3 block font-sans">
-            Top Guest FAQs
-          </span>
-          <h2 className="font-serif text-3xl sm:text-5xl font-light tracking-wide text-[#23211E] mb-4">
-            Frequently Asked <span className="italic text-gold-gradient font-serif">Questions</span>
-          </h2>
-          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#A38B68] to-transparent mx-auto mb-6" />
-          <p className="text-[#6E6A63] font-light text-base font-sans">
-            Key information for your stay at Elia Boutique Hotel Phuket, dining at GOAT Beach Club, hotel facilities, and concierge services.
-          </p>
+    <section id="faqs" className="bg-[#FAF7F2] text-[#1A1612]">
+      <div className="lg:hidden max-w-[22.75rem] min-[390px]:max-w-[24rem] mx-auto px-6 py-16">
+        <FaqIntro />
+        <div className="mt-10">
+          <FaqList openIndex={openIndex} onToggle={onToggle} />
         </div>
-
-        {/* Top 10 Accordion List */}
-        <div className="space-y-3.5 mb-10">
-          {top10GuestFaqs.map((faq, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <div
-                key={faq.id}
-                className="bg-white rounded-2xl border border-[#A38B68]/20 overflow-hidden shadow-sm transition-all duration-300 hover:border-[#A38B68]/40"
-              >
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-serif text-base sm:text-lg font-medium text-[#23211E] hover:text-[#A38B68] transition-colors cursor-pointer"
-                >
-                  <span className="flex items-center gap-3">
-                    <span className="w-6 h-6 rounded-full bg-[#A38B68]/15 text-[#8B6E3F] text-xs font-sans font-semibold flex items-center justify-center shrink-0">
-                      {idx + 1}
-                    </span>
-                    <span>{faq.question}</span>
-                  </span>
-                  <ChevronDown
-                    size={18}
-                    className={`text-[#A38B68] shrink-0 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="px-5 sm:px-6 pb-6 pt-0 border-t border-[#A38B68]/10"
-                    >
-                      <p className="text-[#6E6A63] text-xs sm:text-sm font-light leading-relaxed font-sans mt-3.5">
-                        {faq.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+        <div className="mt-12">
+          <FaqHelp />
         </div>
-
-        {/* View All FAQs Link */}
         {onNavigate && (
-          <div className="text-center pt-2">
-            <button
-              onClick={() => onNavigate('faq')}
-              className="px-8 py-3 rounded-full bg-[#23211E] text-white text-xs uppercase tracking-widest font-semibold hover:bg-[#A38B68] transition-all cursor-pointer shadow-md"
-            >
-              EXPLORE ALL 20 GUEST FAQS
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => onNavigate('faq')}
+            className="mt-8 font-sans text-[12px] font-medium uppercase tracking-[0.16em] text-[#C5A880] cursor-pointer"
+          >
+            View all 20 FAQs →
+          </button>
         )}
+      </div>
+
+      <div className="hidden lg:block max-w-7xl mx-auto px-8 xl:px-12 py-24">
+        <div className="grid grid-cols-12 gap-16 xl:gap-24 items-start">
+          <div className="col-span-5">
+            <FaqIntro />
+            <div className="mt-16">
+              <FaqHelp />
+            </div>
+          </div>
+          <div className="col-span-7 pt-2">
+            <FaqList openIndex={openIndex} onToggle={onToggle} />
+            {onNavigate && (
+              <button
+                type="button"
+                onClick={() => onNavigate('faq')}
+                className="mt-8 font-sans text-[12px] font-medium uppercase tracking-[0.16em] text-[#C5A880] cursor-pointer"
+              >
+                View all 20 FAQs →
+              </button>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );
