@@ -605,19 +605,21 @@ export default function EliaShowcaseSection({ onNavigate }) {
             From breakfast and barista coffee to sunset cocktails and dinner. Enjoy it all next door—or let room service come to you.
           </p>
 
-          <div className="mt-7 grid grid-cols-3 text-center font-sans text-[13.5px] font-normal text-[#2A2620]">
-            <span className="whitespace-nowrap">Breakfast</span>
-            <span className="whitespace-nowrap border-x border-[#E5E0D6]">Beachfront dining</span>
-            <span className="whitespace-nowrap">Room service</span>
+          <div className="mt-7 flex items-center justify-between font-sans text-[13.5px] font-normal text-[#2A2620]">
+            <span className="flex-1 text-center whitespace-nowrap">Breakfast</span>
+            <span className="w-px h-[14px] bg-[#D0C9BC] shrink-0" aria-hidden="true" />
+            <span className="flex-1 text-center whitespace-nowrap">Beachfront dining</span>
+            <span className="w-px h-[14px] bg-[#D0C9BC] shrink-0" aria-hidden="true" />
+            <span className="flex-1 text-center whitespace-nowrap">Room service</span>
           </div>
 
           <button
             type="button"
             onClick={() => onNavigate('menus/breakfast')}
-            className="mt-8 w-full h-[3.4rem] rounded-full bg-[#111111] text-white font-sans text-[12px] font-medium uppercase tracking-[0.14em] inline-flex items-center justify-center gap-2 cursor-pointer"
+            className="mt-8 w-full h-[3.45rem] rounded-full bg-[#111111] text-white font-sans text-[13px] font-medium uppercase tracking-[0.12em] inline-flex items-center justify-center gap-2.5 cursor-pointer"
           >
             View GOAT menus
-            <span aria-hidden="true" className="text-[15px] font-normal tracking-normal">→</span>
+            <span aria-hidden="true" className="text-[16px] font-normal tracking-normal">→</span>
           </button>
           <button
             type="button"
