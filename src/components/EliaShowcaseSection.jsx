@@ -313,7 +313,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
 
             <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-[#A38B68]/30">
               <img
-                src="/images/dining.png"
+                src="/images/goat-beach-club.jpg"
                 alt="GOAT Beach Club beside Elia Boutique Hotel"
                 className="w-full h-full object-cover"
               />
