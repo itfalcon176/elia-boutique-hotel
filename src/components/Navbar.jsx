@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu as MenuIcon, X, Calendar, MapPin, ChevronDown, ArrowRight, Globe, Check } from 'lucide-react';
+import { Menu as MenuIcon, X, Calendar, ChevronDown, ArrowRight, Globe, Check } from 'lucide-react';
 import { roomsData } from '../data/roomsData';
-import WhatsAppIcon from './WhatsAppIcon';
-import { whatsappUrl, WHATSAPP_MESSAGES } from '../utils/whatsapp';
-import { GOAT_BEACH_CLUB_URL } from '../utils/goat';
+import MobileMenu from './MobileMenu';
 
 // Crisp Vector SVG Flag Components for 100% Consistent Cross-Platform Rendering (iOS, Android, Windows, Mac)
 const FlagGB = ({ className = 'w-5 h-3.5' }) => (
@@ -81,7 +79,6 @@ export default function Navbar({ activePage, setActivePage }) {
   const [roomsDropdownOpen, setRoomsDropdownOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(languages[0]);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-  const [mobileRoomsOpen, setMobileRoomsOpen] = useState(true);
   const langDropdownRef = useRef(null);
 
   // Restore selected language from storage/cookies on mount
@@ -194,7 +191,7 @@ export default function Navbar({ activePage, setActivePage }) {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isLightHeader
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${mobileMenuOpen ? 'max-lg:hidden' : ''} ${isLightHeader}
             ? 'bg-[#FAF7F2]/95 backdrop-blur-md shadow-sm border-b border-[#A38B68]/20 py-3'
             : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-4'
           }`}
@@ -440,142 +437,14 @@ export default function Navbar({ activePage, setActivePage }) {
         </div>
       </motion.header>
 
-      {/* Mobile Navigation Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed inset-0 z-40 bg-[#F7F4EF] text-[#23211E] lg:hidden flex flex-col px-5 pt-[4.75rem] pb-[max(1.25rem,env(safe-area-inset-bottom))] overflow-y-auto"
-          >
-            <div className="flex-1">
-              <p className="pb-3 text-[10px] uppercase tracking-[0.28em] text-[#A38B68] font-semibold">
-                13 rooms · Bang Tao Beach
-              </p>
-
-              <nav className="flex flex-col gap-1.5" aria-label="Mobile">
-                {navLinks.map((link) => {
-                  const isSelected = activePage === link.id || (link.id === 'rooms' && activePage.startsWith('rooms'));
-                  if (link.hasDropdown) {
-                    return (
-                      <div key={link.id} className="rounded-2xl border border-[#A38B68]/20 bg-white overflow-hidden">
-                        <div className="flex items-stretch">
-                          <button
-                            type="button"
-                            onClick={() => handleNavClick(link.id)}
-                            className={`flex-1 text-left px-4 py-3.5 text-xs uppercase tracking-[0.18em] font-semibold cursor-pointer ${
-                              isSelected ? 'text-[#A38B68]' : 'text-[#23211E]'
-                            }`}
-                          >
-                            {link.label}
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setMobileRoomsOpen((open) => !open)}
-                            className="px-4 text-[#6E6A63] cursor-pointer"
-                            aria-expanded={mobileRoomsOpen}
-                            aria-label="Show room types"
-                          >
-                            <ChevronDown size={16} className={`transition-transform ${mobileRoomsOpen ? 'rotate-180' : ''}`} />
-                          </button>
-                        </div>
-                        {mobileRoomsOpen && (
-                          <div className="px-2 pb-2 space-y-1 border-t border-[#A38B68]/10">
-                            {roomsData.map((room) => (
-                              <button
-                                key={room.id}
-                                type="button"
-                                onClick={() => handleNavClick(`rooms/${room.slug}`)}
-                                className={`w-full min-h-11 text-left px-3 py-2.5 rounded-xl text-[13px] cursor-pointer flex items-center justify-between ${
-                                  activePage === `rooms/${room.slug}`
-                                    ? 'bg-[#23211E] text-white'
-                                    : 'text-[#555047] hover:bg-[#FAF7F2]'
-                                }`}
-                              >
-                                <span>{room.title}</span>
-                                <span className="text-[10px] uppercase tracking-wider text-[#A38B68]">{room.countLabel}</span>
-                              </button>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
-
-                  return (
-                    <button
-                      key={link.id}
-                      type="button"
-                      onClick={() => handleNavClick(link.id)}
-                      className={`min-h-12 px-4 rounded-2xl border text-left text-xs uppercase tracking-[0.18em] font-semibold cursor-pointer ${
-                        isSelected
-                          ? 'bg-[#23211E] text-[#F7F4EF] border-[#23211E]'
-                          : 'bg-white text-[#23211E] border-[#A38B68]/20'
-                      }`}
-                    >
-                      {link.label}
-                    </button>
-                  );
-                })}
-              </nav>
-
-              <div className="pt-6 flex flex-wrap gap-x-5 gap-y-2 text-[12px] text-[#6E6A63]">
-                <a
-                  href={GOAT_BEACH_CLUB_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline-offset-4 hover:text-[#23211E] hover:underline"
-                >
-                  GOAT Beach Club
-                </a>
-                {[
-                  { id: 'experiences', label: 'Experiences' },
-                  { id: 'family-hotel-phuket', label: 'Families' },
-                  { id: 'offers', label: 'Offers' },
-                  { id: 'about', label: 'About' },
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => handleNavClick(item.id)}
-                    className="underline-offset-4 hover:text-[#23211E] hover:underline cursor-pointer"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-6 space-y-2.5">
-              <button
-                type="button"
-                onClick={() => {
-                  handleNavClick('book-your-stay');
-                }}
-                className="w-full min-h-12 rounded-full bg-[#23211E] text-[#F7F4EF] font-semibold uppercase tracking-[0.18em] text-xs flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Calendar size={15} />
-                Book Now
-              </button>
-              <a
-                href={whatsappUrl(WHATSAPP_MESSAGES.default)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full min-h-12 rounded-full bg-[#25D366] text-white font-semibold uppercase tracking-[0.16em] text-xs flex items-center justify-center gap-2"
-              >
-                <WhatsAppIcon size={16} />
-                WhatsApp Concierge
-              </a>
-              <p className="flex items-center justify-center gap-1.5 text-[11px] text-[#6E6A63]">
-                <MapPin size={12} className="text-[#A38B68]" />
-                Bang Tao Beach, Phuket
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileMenu
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        onNavigate={handleNavClick}
+        selectedLang={selectedLang}
+        languages={languages}
+        onSelectLanguage={handleSelectLanguage}
+      />
     </>
   );
 }
