@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Utensils, Waves, Clock, Check, Calendar, ArrowRight, Sun, Music, GlassWater, ExternalLink } from 'lucide-react';
+import { Sparkles, Utensils, Check, Sun, GlassWater } from 'lucide-react';
+import { eatDrinkRoutes, eatDrinkWhatsapp, eatDrinkWhatsappHref } from '../data/eatDrinkData';
 
 export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
   return (
@@ -96,20 +97,33 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
                 Complimentary access is included for Elia guests. Food, beverages, reserved seating and paid experiences are charged separately unless specifically included within your booking.
               </div>
 
-              <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+              <div className="pt-4 flex flex-col sm:flex-row sm:flex-wrap items-center gap-4">
                 <button
-                  onClick={() => onNavigate('eat-drink')}
+                  type="button"
+                  onClick={() => onNavigate(eatDrinkRoutes.food)}
                   className="w-full sm:w-auto px-7 py-4 rounded-full bg-[#C5A880] text-[#141312] font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all cursor-pointer shadow-lg text-center"
                 >
                   DISCOVER FOOD & DRINKS
                 </button>
+                <a
+                  href={eatDrinkWhatsappHref('Hello Elia Phuket, I would like to book a table at GOAT Beach Club.')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer text-center"
+                >
+                  BOOK A TABLE
+                </a>
                 <button
+                  type="button"
                   onClick={onOpenReservation}
                   className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all cursor-pointer text-center"
                 >
                   BOOK YOUR STAY
                 </button>
               </div>
+              <p className="text-[11px] text-[#FAF7F2]/60 font-light">
+                Table requests go to WhatsApp {eatDrinkWhatsapp.display}.
+              </p>
             </div>
 
             <div className="lg:col-span-6 relative aspect-[4/3] lg:h-full min-h-[400px] overflow-hidden">
@@ -140,6 +154,14 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
                 Enjoy breakfast, barista coffee, proper restaurant-quality food throughout the day, and barefoot lunches right by the Andaman Sea.
               </p>
             </div>
+            <a
+              href={eatDrinkWhatsappHref('Hello Elia Phuket, I would like to book a table at GOAT Beach Club.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex text-[11px] uppercase tracking-[0.2em] font-semibold text-[#8B6E3F] hover:text-[#23211E] transition-colors"
+            >
+              Book a table
+            </a>
           </div>
 
           <div className="p-8 rounded-3xl bg-white border border-[#A38B68]/25 shadow-md flex flex-col justify-between">
@@ -157,6 +179,14 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
                 As afternoon turns to evening, stay for sunset drinks, craft cocktails, music, and beachfront dinner before walking back to your room.
               </p>
             </div>
+            <a
+              href={eatDrinkWhatsappHref('Hello Elia Phuket, I would like to book a table for sunset drinks and dinner at GOAT Beach Club.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex text-[11px] uppercase tracking-[0.2em] font-semibold text-[#8B6E3F] hover:text-[#23211E] transition-colors"
+            >
+              Book a table
+            </a>
           </div>
 
           <div className="p-8 rounded-3xl bg-white border border-[#A38B68]/25 shadow-md flex flex-col justify-between">
@@ -174,6 +204,14 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
                 When you'd rather stay exactly where you are, order from GOAT and enjoy restaurant-quality dishes from your private Elia room or garden terrace.
               </p>
             </div>
+            <a
+              href={eatDrinkWhatsappHref('Hello Elia Phuket, I would like to ask about room service from GOAT Beach Club.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex text-[11px] uppercase tracking-[0.2em] font-semibold text-[#8B6E3F] hover:text-[#23211E] transition-colors"
+            >
+              WhatsApp {eatDrinkWhatsapp.display}
+            </a>
           </div>
         </div>
 
@@ -193,7 +231,8 @@ export default function GoatBeachClubPage({ onNavigate, onOpenReservation }) {
               BOOK YOUR STAY
             </button>
             <button
-              onClick={() => onNavigate('rooms')}
+              type="button"
+              onClick={() => onNavigate(eatDrinkRoutes.rooms)}
               className="px-7 py-3.5 rounded-full border border-[#A38B68] text-[#8B6E3F] font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#A38B68]/10 transition-all cursor-pointer"
             >
               EXPLORE ROOMS & SUITES
