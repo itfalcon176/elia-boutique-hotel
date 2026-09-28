@@ -630,7 +630,7 @@ export default function EliaShowcaseSection({ onNavigate }) {
             <br />
             <span className="italic font-serif font-normal text-gold-gradient">Phuket.</span>
           </h2>
-          <p className="mt-4 font-sans text-[15px] leading-[1.55] font-normal text-[#6E6860]">
+          <p className="mt-3.5 font-serif font-normal text-[1.2rem] leading-[1.35] tracking-[-0.015em] text-[#1A1612]">
             A little closer to the sea.
           </p>
 
@@ -648,14 +648,14 @@ export default function EliaShowcaseSection({ onNavigate }) {
           <p className="mt-5 font-sans text-[15px] leading-[1.6] font-normal text-[#5F5A52]">
             Elia sits beside Bang Tao Beach on Phuket’s west coast. Beachfront restaurants, laid-back beach clubs and island experiences are all part of the neighbourhood.
           </p>
-          <p className="mt-5 font-serif italic text-[1.35rem] leading-snug text-gold-gradient">
+          <p className="mt-5 font-serif italic font-normal text-[1.55rem] leading-[1.25] tracking-[-0.018em] text-gold-gradient">
             Right in it. A way from it all.
           </p>
 
           <button
             type="button"
             onClick={() => onNavigate('bang-tao-beach-phuket')}
-            className="mt-8 w-full h-[3.45rem] rounded-full bg-[#111111] text-white font-sans text-[12px] font-medium uppercase tracking-[0.14em] inline-flex items-center justify-between px-6 cursor-pointer"
+            className="mt-8 w-full h-[3.45rem] rounded-[10px] bg-[#111111] text-white font-sans text-[13px] font-medium uppercase tracking-[0.12em] inline-flex items-center justify-between px-6 cursor-pointer"
           >
             Discover Bang Tao
             <span aria-hidden="true" className="text-[16px] font-normal tracking-normal">→</span>
