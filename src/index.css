@@ -1215,4 +1215,21 @@ img {
   }
 }
 
+/* Mobile-only: every Elia button uses 10px corners. Desktop and Cloudbeds stay unchanged. */
+@media (max-width: 1023.98px) {
+  #elia-app button,
+  #elia-app [type="button"],
+  #elia-app [type="submit"],
+  #elia-app a.rounded-full,
+  #elia-app a.rounded-xl,
+  #elia-app a.rounded-2xl,
+  #elia-app a.rounded-lg,
+  #elia-app a.rounded-3xl,
+  #elia-app .elia-whatsapp-fab,
+  #elia-app .elia-availability-fallback,
+  #elia-app .elia-skip-link {
+    border-radius: 10px;
+  }
+}
+
 
