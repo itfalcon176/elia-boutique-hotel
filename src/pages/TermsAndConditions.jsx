@@ -144,10 +144,7 @@ export default function TermsAndConditions() {
           <p>Postal address: 82/9 Moo 3, Bang Tao Beach
 Choeng Thale, Thalang, Phuket 83110
 Thailand</p>
-          <p>
-            The site does not publish a registered company name or street address. Replace
-            both placeholders before you rely on this page for a store listing.
-          </p>
+          
         </PlaceholderNote>
       </LegalSection>
     </LegalPage>

@@ -20,12 +20,7 @@ export default function PrivacyPolicy() {
       </p>
 
       <LegalSection title="Who we are">
-        <p>
-          The operator named on this site is Elia Boutique Hotel. A registered legal entity
-          name and postal address are not published in the product yet. Until they are,
-          please use the contact details below. The highlighted lines are placeholders for
-          the hotel to replace.
-        </p>
+       
         <p>
           Email: <a className="text-gold hover:text-white" href="mailto:info@eliaphuket.com">info@eliaphuket.com</a>
           <br />
@@ -190,14 +185,7 @@ Thailand</p>
           Questions about this policy, or a request about your information, can be sent to
           info@eliaphuket.com or by WhatsApp to +66 93 271 9103.
         </p>
-        <PlaceholderNote>
-          <p>
-            Replace Elia Boutique Hotel and 82/9 Moo 3, Bang Tao Beach
-Choeng Thale, Thalang, Phuket 83110
-Thailand with the registered operator
-            before you submit this page to Google Play.
-          </p>
-        </PlaceholderNote>
+        
       </LegalSection>
     </LegalPage>
   );
