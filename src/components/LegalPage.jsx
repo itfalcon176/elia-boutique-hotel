@@ -59,9 +59,7 @@ export function LegalSection({ title, children }) {
 export function PlaceholderNote({ children }) {
   return (
     <aside className="rounded-2xl border border-gold/40 bg-gold/10 px-5 py-4 text-sm text-white/90">
-      <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.22em] text-gold">
-        Replace before publishing
-      </p>
+     
       <div className="space-y-2">{children}</div>
     </aside>
   );

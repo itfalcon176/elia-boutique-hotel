@@ -34,8 +34,10 @@ export default function PrivacyPolicy() {
           Website: eliaphuket.com
         </p>
         <PlaceholderNote>
-          <p>Legal entity name: [Legal entity name]</p>
-          <p>Postal address: [Postal address]</p>
+          <p>Legal entity name: Elia Boutique Hotel</p>
+          <p>Postal address: 82/9 Moo 3, Bang Tao Beach
+Choeng Thale, Thalang, Phuket 83110
+Thailand</p>
         </PlaceholderNote>
       </LegalSection>
 
@@ -190,7 +192,9 @@ export default function PrivacyPolicy() {
         </p>
         <PlaceholderNote>
           <p>
-            Replace [Legal entity name] and [Postal address] with the registered operator
+            Replace Elia Boutique Hotel and 82/9 Moo 3, Bang Tao Beach
+Choeng Thale, Thalang, Phuket 83110
+Thailand with the registered operator
             before you submit this page to Google Play.
           </p>
         </PlaceholderNote>

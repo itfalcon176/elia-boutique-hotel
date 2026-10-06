@@ -140,8 +140,10 @@ export default function TermsAndConditions() {
           or by WhatsApp to +66 93 271 9103.
         </p>
         <PlaceholderNote>
-          <p>Legal entity name: [Legal entity name]</p>
-          <p>Postal address: [Postal address]</p>
+          <p>Legal entity name: Elia Boutique Hotel</p>
+          <p>Postal address: 82/9 Moo 3, Bang Tao Beach
+Choeng Thale, Thalang, Phuket 83110
+Thailand</p>
           <p>
             The site does not publish a registered company name or street address. Replace
             both placeholders before you rely on this page for a store listing.
