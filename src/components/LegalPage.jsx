@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { initGA, trackPageView } from '../utils/analytics';
 
 export default function LegalPage({ title, children }) {
@@ -16,13 +17,13 @@ export default function LegalPage({ title, children }) {
   return (
     <div className="h-full overflow-y-auto bg-[#08080a] text-white">
       <article className="mx-auto w-full max-w-3xl px-6 py-10 sm:px-8 sm:py-16">
-        <a href="/" aria-label="Elia Boutique Hotel" className="mb-8 inline-flex sm:mb-10">
+        <Link to="/" aria-label="Elia Boutique Hotel" className="mb-8 inline-flex sm:mb-10">
           <img
             src="/Logos/logo-4.png"
             alt="Elia Boutique Hotel"
             className="h-14 w-auto object-contain sm:h-16"
           />
-        </a>
+        </Link>
 
         <p className="text-[10px] font-medium uppercase tracking-[0.35em] text-gold sm:text-[11px]">
           Elia Boutique Hotel

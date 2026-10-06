@@ -1,21 +1,17 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import TermsAndConditions from './pages/TermsAndConditions.jsx'
 
-function currentPath() {
-  const path = window.location.pathname.replace(/\/+$/, '') || '/'
-  try {
-    return decodeURIComponent(path)
-  } catch {
-    return path
-  }
-}
-
 export default function Root() {
-  const path = currentPath()
-
-  if (path === '/privacy-policy') return <PrivacyPolicy />
-  if (path === '/term-and-condition') return <TermsAndConditions />
-
-  return <App />
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/term-and-condition" element={<TermsAndConditions />} />
+        <Route path="*" element={<App />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
